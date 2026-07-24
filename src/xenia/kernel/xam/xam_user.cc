@@ -658,10 +658,6 @@ dword_result_t XamUserCreateAchievementEnumerator_entry(
                                       std::views::drop(offset) |
                                       std::views::take(count);
 
-  if (requested_achievements.empty()) {
-    return X_ERROR_INVALID_PARAMETER;
-  }
-
   for (const auto& entry : requested_achievements) {
     auto unlock_time = X_FILETIME();
     if (entry.IsUnlocked() && entry.unlock_time.is_valid()) {
