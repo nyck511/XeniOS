@@ -134,7 +134,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "set -e\nif [ \"${CONFIGURATION}\" = \"Checked\" ]; then\ncmake -DSNAPPY_BUILD_TESTS=OFF -DSNAPPY_BUILD_BENCHMARKS=OFF $(SRCROOT)/../third_party/snappy -B$(SRCROOT)/../third_party/snappy\nfi\nif [ \"${CONFIGURATION}\" = \"Debug\" ]; then\ncmake -DSNAPPY_BUILD_TESTS=OFF -DSNAPPY_BUILD_BENCHMARKS=OFF $(SRCROOT)/../third_party/snappy -B$(SRCROOT)/../third_party/snappy\nfi\nif [ \"${CONFIGURATION}\" = \"Release\" ]; then\ncmake -DSNAPPY_BUILD_TESTS=OFF -DSNAPPY_BUILD_BENCHMARKS=OFF $(SRCROOT)/../third_party/snappy -B$(SRCROOT)/../third_party/snappy\nfi\nif [ \"${CONFIGURATION}\" = \"Valgrind\" ]; then\ncmake -DSNAPPY_BUILD_TESTS=OFF -DSNAPPY_BUILD_BENCHMARKS=OFF $(SRCROOT)/../third_party/snappy -B$(SRCROOT)/../third_party/snappy\nfi";
+			shellScript = "set -e\n# Snappy is built from the generated Xcode sources for iOS; no CMake prebuild is required.";
 		};
 /* End PBXShellScriptBuildPhase section */
 
