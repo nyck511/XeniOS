@@ -98,9 +98,6 @@ class TextureCache {
   virtual void BeginFrame();
 
   void MarkRangeAsResolved(uint32_t start_unscaled, uint32_t length_unscaled);
-  uint64_t texture_binding_generation() const {
-    return texture_binding_generation_.load(std::memory_order_relaxed);
-  }
   // Ensures the memory backing the range in the scaled resolve address space is
   // allocated and returns whether it is.
   virtual bool EnsureScaledResolveMemoryCommitted(
@@ -114,7 +111,6 @@ class TextureCache {
 
   void TextureFetchConstantWritten(uint32_t index) {
     texture_bindings_in_sync_ &= ~(UINT32_C(1) << index);
-    texture_binding_generation_.fetch_add(1, std::memory_order_relaxed);
   }
   void TextureFetchConstantsWritten(uint32_t first_index, uint32_t last_index) {
     // generate a mask of all bits from before the first index, and xor it with
@@ -125,26 +121,13 @@ class TextureCache {
     // todo: check that this is right
 
     texture_bindings_in_sync_ &= ~res;
-    texture_binding_generation_.fetch_add(1, std::memory_order_relaxed);
   }
 
   virtual void RequestTextures(uint32_t used_texture_mask);
   // Returns whether RequestTextures(used_texture_mask) may need to process
-  // bindings or reload texture data from guest memory.
+  // bindings or reload texture data from guest memory. Used as a cheap
+  // pre-check to skip the full RequestTextures call when nothing changed.
   bool AnyUsedTextureRequestWorkPending(uint32_t used_texture_mask) const;
-  // Returns a bitmask of used fetch constants that RequestTextures would need
-  // to process (unsynchronized or referencing outdated textures).
-  uint32_t GetUsedTextureRequestWorkMask(uint32_t used_texture_mask) const;
-  // Returns a bitmask of used fetch constants that may require loading texture
-  // data from shared memory in RequestTextures (actual copy->draw hazard path).
-  uint32_t GetUsedTexturePotentialLoadMask(uint32_t used_texture_mask) const;
-
-  struct RequestWorkStats {
-    uint64_t potential_load_mask_slots = 0;
-    uint64_t request_work_mask_slots = 0;
-    uint64_t actual_textures_enqueued_for_load = 0;
-  };
-  RequestWorkStats ConsumeRequestWorkStats();
 
   // "ActiveTexture" means as of the latest RequestTextures call.
 
@@ -157,6 +140,11 @@ class TextureCache {
     const TextureBinding* binding =
         GetValidTextureBinding(fetch_constant_index);
     return binding ? binding->swizzled_signs : kSwizzledSignsUnsigned;
+  }
+  uint32_t GetActiveIntegerScaleBits(uint32_t fetch_constant_index) const {
+    const TextureBinding* binding =
+        GetValidTextureBinding(fetch_constant_index);
+    return binding ? binding->integer_scale_bits : 0;
   }
   bool IsActiveTextureResolutionScaled(uint32_t fetch_constant_index) const {
     const TextureBinding* binding =
@@ -182,8 +170,6 @@ class TextureCache {
   }
 
  protected:
-  void RequestTextures(uint32_t used_texture_mask, bool load_data);
-
   struct TextureKey {
     // Dimensions minus 1 are stored similarly to how they're stored in fetch
     // constants so fewer bits can be used, while the maximum size (8192 for 2D)
@@ -301,24 +287,17 @@ class TextureCache {
     uint64_t last_usage_time() const { return last_usage_time_; }
 
     bool base_outdated(const global_unique_lock_type& global_lock) const {
-      return base_outdated_.load(std::memory_order_relaxed);
+      return base_outdated_;
     }
     bool mips_outdated(const global_unique_lock_type& global_lock) const {
-      return mips_outdated_.load(std::memory_order_relaxed);
+      return mips_outdated_;
     }
     // Lockless accessors for pre-check optimization.
     // Safe to read without lock - worst case is false positive (outdated when
     // not).
-    bool base_outdated_lockless() const {
-      return base_outdated_.load(std::memory_order_relaxed);
-    }
-    bool mips_outdated_lockless() const {
-      return mips_outdated_.load(std::memory_order_relaxed);
-    }
-    void MakeUpToDateAndWatch(const global_unique_lock_type& global_lock);
-    void MakeLoadedDataUpToDateAndWatch(
-        const global_unique_lock_type& global_lock, bool loaded_base,
-        bool loaded_mips);
+    bool base_outdated_lockless() const { return base_outdated_; }
+    bool mips_outdated_lockless() const { return mips_outdated_; }
+    bool MakeUpToDateAndWatch(const global_unique_lock_type& global_lock);
 
     void WatchCallback(const global_unique_lock_type& global_lock, bool is_mip);
 
@@ -367,9 +346,9 @@ class TextureCache {
     // These are to be accessed within the global critical region to synchronize
     // with shared memory.
     // Whether the recent base level data needs reloading from the memory.
-    std::atomic<bool> base_outdated_{false};
+    bool base_outdated_ = false;
     // Whether the recent mip data needs reloading from the memory.
-    std::atomic<bool> mips_outdated_{false};
+    bool mips_outdated_ = false;
     // Watch handles for the memory ranges.
     SharedMemory::WatchHandle base_watch_handle_ = nullptr;
     SharedMemory::WatchHandle mips_watch_handle_ = nullptr;
@@ -544,6 +523,8 @@ class TextureCache {
 
   struct TextureBinding {
     TextureKey key;
+    // Packed integer scale, 5 bits per component.
+    uint32_t integer_scale_bits;
     // Destination swizzle merged with guest to host format swizzle.
     uint32_t host_swizzle;
     // Packed TextureSign values, 2 bit per each component, with guest-side
@@ -577,7 +558,6 @@ class TextureCache {
   // to the implementation that are used in their destructor, and will become
   // invalid if the implementation is destroyed before the texture.
   void DestroyAllTextures(bool from_destructor = false);
-  bool DestroyOldestTextureIfUnused(uint64_t completed_submission_index);
 
   // Whether the signed version of the texture has a different representation on
   // the host than its unsigned version (for example, if it's a fixed-point
@@ -622,25 +602,14 @@ class TextureCache {
     assert_true(load_shader_index < kLoadShaderCount);
     return load_shader_info_[load_shader_index];
   }
+  // Integer num_format on fixed textures. Returns the packed scale used by the
+  // shader to restore guest integer units from normalized host samples.
+  static uint32_t GetIntegerScaleBits(xenos::TextureFormat guest_format,
+                                      uint32_t num_format,
+                                      uint32_t host_swizzle,
+                                      uint8_t swizzled_signs);
   bool LoadTextureData(Texture& texture);
   void LoadTexturesData(Texture** textures, uint32_t n_textures);
-  virtual bool PrepareTextureDataLoadRanges(Texture** textures,
-                                            uint32_t texture_count,
-                                            uint64_t base_outdated_mask,
-                                            uint64_t mips_outdated_mask) {
-    return true;
-  }
-  enum class TextureDataRangeSource {
-    kBase,
-    kMips,
-  };
-  virtual bool RequestTextureDataRange(Texture&, TextureDataRangeSource,
-                                       uint32_t start, uint32_t length) {
-    // TODO(xenios-jp): Backend texture caches with encoder-lifetime ownership
-    // must not use this default direct shared-memory request while an encoder
-    // is active. Metal routes texture residency through backend preflight.
-    return shared_memory().RequestRange(start, length);
-  }
   // Writes the texture data (for base, mips or both - but not neither) from the
   // shared memory or the scaled resolve memory. The shared memory management is
   // done outside this function, the implementation just needs to load the data
@@ -648,9 +617,6 @@ class TextureCache {
   virtual bool LoadTextureDataFromResidentMemoryImpl(Texture& texture,
                                                      bool load_base,
                                                      bool load_mips) = 0;
-  global_unique_lock_type AcquireGlobalLock() {
-    return global_critical_region_.Acquire();
-  }
 
   // Converts a texture fetch constant to a texture key, normalizing and
   // validating the values, or creating an invalid key, and also gets the
@@ -677,17 +643,27 @@ class TextureCache {
 
  private:
   void UpdateTexturesTotalHostMemoryUsage(uint64_t add, uint64_t subtract);
-  TextureKey GetHostTextureKey(TextureKey key) const;
 
   // Shared memory callback for texture data invalidation.
   static void WatchCallback(const global_unique_lock_type& global_lock,
                             void* context, void* data, uint64_t argument,
                             bool invalidated_by_gpu);
 
+ protected:
   // Checks if there are any pages that contain scaled resolve data within the
   // range.
-  bool IsRangeScaledResolved(uint32_t start_unscaled,
-                             uint32_t length_unscaled) const;
+  bool IsRangeScaledResolved(uint32_t start_unscaled, uint32_t length_unscaled);
+
+  // Whether a scaled resolve texture's mips must be host-generated (the guest
+  // did not resolve them into scaled memory itself).
+  bool ScaledResolveMipsNeedGeneration(const Texture& texture) {
+    const TextureKey& key = texture.key();
+    return key.scaled_resolve && key.mip_max_level != 0 &&
+           !IsRangeScaledResolved(key.mip_page << 12,
+                                  texture.GetGuestMipsSize());
+  }
+
+ private:
   // Global shared memory invalidation callback for invalidating scaled resolved
   // texture data.
   static void ScaledResolveGlobalWatchCallbackThunk(
@@ -739,10 +715,6 @@ class TextureCache {
   // Bit vector with bits reset on fetch constant writes to avoid parsing fetch
   // constants again and again.
   uint32_t texture_bindings_in_sync_ = 0;
-  std::atomic<uint64_t> texture_binding_generation_{1};
-  mutable std::atomic<uint64_t> request_work_mask_slots_total_{0};
-  mutable std::atomic<uint64_t> potential_load_mask_slots_total_{0};
-  mutable std::atomic<uint64_t> actual_textures_enqueued_for_load_total_{0};
 };
 
 }  // namespace gpu

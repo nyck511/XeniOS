@@ -79,6 +79,7 @@ struct A64BackendContext {
   uint64_t pending_stack_sync_target = 0;
   uint32_t cached_reserve_bit = 0;
   uint32_t current_stackpoint_depth = 0;
+  uint32_t pending_stackpoint_sync_depth = 0;
   uint32_t pending_stack_sync = 0;
   uint32_t fpcr_fpu = DEFAULT_FPU_FPCR;
   uint32_t fpcr_vmx = DEFAULT_VMX_FPCR;

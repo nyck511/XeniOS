@@ -18,6 +18,15 @@ if(CMAKE_SYSTEM_NAME STREQUAL "Android" OR XE_PLATFORM_IOS)
   )
   list(APPEND _ui_exclude ${_wx_exclude})
 endif()
+if(XE_PLATFORM_IOS)
+  file(GLOB _qt_exclude
+    "${CMAKE_CURRENT_SOURCE_DIR}/*_qt.cc"
+    "${CMAKE_CURRENT_SOURCE_DIR}/*_qt.h"
+    "${CMAKE_CURRENT_SOURCE_DIR}/qt_util.h"
+    "${CMAKE_CURRENT_SOURCE_DIR}/ui_resources_qrc.cpp"
+  )
+  list(APPEND _ui_exclude ${_qt_exclude})
+endif()
 get_target_property(_ui_srcs xenia-ui SOURCES)
 if(_ui_exclude AND _ui_srcs)
   list(REMOVE_ITEM _ui_srcs ${_ui_exclude})

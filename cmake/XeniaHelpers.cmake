@@ -282,6 +282,7 @@ function(xe_shader_rules_metal target shader_dir)
   endif()
   get_filename_component(shader_dir "${shader_dir}" ABSOLUTE)
   file(GLOB _sources "${shader_dir}/*.xesl" "${shader_dir}/*.xesli")
+  file(GLOB _metal_sources "${shader_dir}/*.metal")
   file(RELATIVE_PATH _rel_dir "${PROJECT_SOURCE_DIR}/src" "${shader_dir}")
   set(_generated_root "${PROJECT_BINARY_DIR}/generated")
   set(_bytecode_dir "${_generated_root}/${_rel_dir}/bytecode/metal")
@@ -324,11 +325,31 @@ function(xe_shader_rules_metal target shader_dir)
       VERBATIM
     )
   endforeach()
+  # Some shaders have a hand-written Metal implementation rather than an
+  # XESL translation. Compile those through the same metallib embedding path.
+  foreach(src ${_metal_sources})
+    get_filename_component(_name ${src} NAME)
+    string(REGEX REPLACE "\\.metal$" "" _basename "${_name}")
+    string(REPLACE "." "_" _id "${_basename}")
+    set(_out "${_bytecode_dir}/${_id}.h")
+    set(_dep "${_out}.d")
+    list(APPEND _outputs "${_out}")
+    add_custom_command(
+      OUTPUT "${_out}"
+      COMMAND $<TARGET_FILE:xenia-shader-cc> ${_metal_args} --depfile "${_dep}"
+              "${src}" "${_out}"
+      DEPENDS "${src}" xenia-shader-cc
+      DEPFILE "${_dep}"
+      COMMENT "Metal: ${_name}"
+      VERBATIM
+    )
+  endforeach()
   add_custom_target(${target}-metal-shaders DEPENDS ${_outputs})
   add_dependencies(${target} ${target}-metal-shaders)
   target_include_directories(${target} BEFORE PRIVATE "${_generated_root}")
-  set_source_files_properties(${_sources} PROPERTIES HEADER_FILE_ONLY TRUE)
-  target_sources(${target} PRIVATE ${_sources})
+  set_source_files_properties(${_sources} ${_metal_sources}
+                              PROPERTIES HEADER_FILE_ONLY TRUE)
+  target_sources(${target} PRIVATE ${_sources} ${_metal_sources})
 endfunction()
 
 # xe_shader_rules_slang(target shader_dir TARGET dxil|spirv|msl)

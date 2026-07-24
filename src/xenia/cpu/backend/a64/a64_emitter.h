@@ -106,6 +106,13 @@ struct TailEmitter {
 
 class A64Emitter : public Xbyak_aarch64::CodeGenerator {
  public:
+  using Xbyak_aarch64::CodeGenerator::L;
+  using Xbyak_aarch64::CodeGenerator::b;
+  using Xbyak_aarch64::CodeGenerator::cbnz;
+  using Xbyak_aarch64::CodeGenerator::cbz;
+  using Xbyak_aarch64::CodeGenerator::tbnz;
+  using Xbyak_aarch64::CodeGenerator::tbz;
+
   A64Emitter(A64Backend* backend, XbyakA64Allocator* allocator);
   virtual ~A64Emitter();
 
@@ -172,6 +179,24 @@ class A64Emitter : public Xbyak_aarch64::CodeGenerator {
 
   void DebugBreak();
   void Trap(uint16_t trap_type = 0);
+  void b(const Xbyak_aarch64::Cond cond,
+         const Xbyak_aarch64::Label& label);
+  void cbz(const Xbyak_aarch64::WReg& rt,
+           const Xbyak_aarch64::Label& label);
+  void cbz(const Xbyak_aarch64::XReg& rt,
+           const Xbyak_aarch64::Label& label);
+  void cbnz(const Xbyak_aarch64::WReg& rt,
+            const Xbyak_aarch64::Label& label);
+  void cbnz(const Xbyak_aarch64::XReg& rt,
+            const Xbyak_aarch64::Label& label);
+  void tbz(const Xbyak_aarch64::WReg& rt, uint32_t imm,
+           const Xbyak_aarch64::Label& label);
+  void tbz(const Xbyak_aarch64::XReg& rt, uint32_t imm,
+           const Xbyak_aarch64::Label& label);
+  void tbnz(const Xbyak_aarch64::WReg& rt, uint32_t imm,
+            const Xbyak_aarch64::Label& label);
+  void tbnz(const Xbyak_aarch64::XReg& rt, uint32_t imm,
+            const Xbyak_aarch64::Label& label);
   void UnimplementedInstr(const hir::Instr* i);
   static void HandleStackpointOverflowError(ppc::PPCContext* context);
 

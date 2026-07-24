@@ -277,16 +277,6 @@ DEFINE_int32(anisotropic_override, -1,
              "  5 = Force 16x anisotropic filtering",
              "GPU");
 
-DEFINE_bool(metal_shader_disk_cache, true,
-            "Cache translated Metal shader artifacts and binding metadata in "
-            "the packed Metal artifact store.",
-            "Metal");
-
-DEFINE_bool(metal_pipeline_binary_archive, true,
-            "Use MTLBinaryArchive for Metal pipeline compilation caching. "
-            "Requires store_shaders and a compatible OS/driver.",
-            "Metal");
-
 DEFINE_int32(
     metal_draw_ring_count, 128,
     "Metal per-command-buffer draw ring size (descriptor-table pages). "

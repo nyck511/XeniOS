@@ -138,6 +138,8 @@ uint32_t ExCreateThread(xe::be<uint32_t>* handle_ptr, uint32_t stack_size,
     return X_STATUS_PROCESS_IS_TERMINATING;
   }
 #endif  // XE_PLATFORM_IOS
+  std::string summary = "ExCreateThread Active:";
+  uint32_t unused_flag = creation_flags;
   // xenia_assert((creation_flags & 2) == 0);  // creating system thread?
   if (creation_flags & 2) {
     XELOGE("Guest is creating a system thread!");

@@ -427,9 +427,9 @@ if(XE_PLATFORM_MACOS OR (XE_PLATFORM_IOS AND XENIA_ENABLE_IOS_MOLTENVK))
 endif()
 
 # ==============================================================================
-# Metal Shader Converter and dxilconv (Apple only)
+# Metal Shader Converter and dxilconv (macOS only)
 # ==============================================================================
-if(APPLE)
+if(APPLE AND NOT XE_PLATFORM_IOS)
   set(_xe_metal_shader_converter_root
       "${CMAKE_CURRENT_SOURCE_DIR}/metal-shader-converter")
   if(XE_PLATFORM_IOS)

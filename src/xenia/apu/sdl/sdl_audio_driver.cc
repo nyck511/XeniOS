@@ -73,40 +73,14 @@ bool SDLAudioDriver::Initialize() {
   }
   sdl_initialized_ = true;
 
-  SDL_AudioSpec desired_spec = {};
-  SDL_AudioSpec obtained_spec;
-  desired_spec.freq = frame_frequency_;
-  desired_spec.format = AUDIO_F32;
-  desired_spec.channels = frame_channels_;
-  desired_spec.samples = channel_samples_;
-  desired_spec.callback = SDLCallback;
-  desired_spec.userdata = this;
-  // Allow the hardware to decide between 5.1 and stereo,
-  // unless the input is stereo
-  int allowed_change =
-      frame_channels_ != 2 ? SDL_AUDIO_ALLOW_CHANNELS_CHANGE : 0;
-  for (int i = 0; i < 2; i++) {
-    sdl_device_id_ = SDL_OpenAudioDevice(nullptr, 0, &desired_spec,
-                                         &obtained_spec, allowed_change);
-    if (sdl_device_id_ <= 0) {
-      XELOGE(
-          "SDL_OpenAudioDevice failed: {} (requested freq={}, channels={}, "
-          "samples={}, allowed_change=0x{:X})",
-          SDL_GetError(), desired_spec.freq, desired_spec.channels,
-          desired_spec.samples, static_cast<uint32_t>(allowed_change));
-      return false;
-    }
-    if (obtained_spec.channels == 2 || obtained_spec.channels == 6) {
-      break;
-    }
-    // If the system is 4 or 7.1, let SDL convert
-    allowed_change = 0;
-    SDL_CloseAudioDevice(sdl_device_id_);
-    sdl_device_id_ = -1;
-  }
-  if (sdl_device_id_ <= 0) {
-    XELOGE("Failed to get a compatible SDL Audio Device. Last error: {}",
-           SDL_GetError());
+  SDL_AudioSpec spec = {};
+  spec.freq = static_cast<int>(frame_frequency_);
+  spec.format = SDL_AUDIO_F32;
+  spec.channels = static_cast<int>(frame_channels_);
+  sdl_stream_ = SDL_OpenAudioDeviceStream(
+      SDL_AUDIO_DEVICE_DEFAULT_PLAYBACK, &spec, SDLCallback, this);
+  if (!sdl_stream_) {
+    XELOGE("SDL_OpenAudioDeviceStream failed: {}", SDL_GetError());
     return false;
   }
 

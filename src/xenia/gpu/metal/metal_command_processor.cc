@@ -2317,7 +2317,6 @@ void MetalCommandProcessor::OnPrimaryBufferEnd() {
 }
 
 Shader* MetalCommandProcessor::LoadShader(xenos::ShaderType shader_type,
-                                          uint32_t guest_address,
                                           const uint32_t* host_address,
                                           uint32_t dword_count) {
   // Create hash for caching using XXH3 (same as D3D12)
@@ -2333,9 +2332,9 @@ Shader* MetalCommandProcessor::LoadShader(xenos::ShaderType shader_type,
                                               dword_count);
     MslShader* result = shader.get();
     msl_shader_cache_[hash] = std::move(shader);
-    XELOGD("Loaded {} shader (SPIRV-Cross) at {:08X} ({} dwords, hash {:016X})",
+    XELOGD("Loaded {} shader (SPIRV-Cross) ({} dwords, hash {:016X})",
            shader_type == xenos::ShaderType::kVertex ? "vertex" : "pixel",
-           guest_address, dword_count, hash);
+           dword_count, hash);
     return result;
   }
 
@@ -2354,9 +2353,9 @@ Shader* MetalCommandProcessor::LoadShader(xenos::ShaderType shader_type,
   MetalShader* result = shader.get();
   shader_cache_[hash] = std::move(shader);
 
-  XELOGD("Loaded {} shader at {:08X} ({} dwords, hash {:016X})",
+  XELOGD("Loaded {} shader ({} dwords, hash {:016X})",
          shader_type == xenos::ShaderType::kVertex ? "vertex" : "pixel",
-         guest_address, dword_count, hash);
+         dword_count, hash);
 
   return result;
 #else

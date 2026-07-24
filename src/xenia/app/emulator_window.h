@@ -15,6 +15,7 @@
 #include <string>
 
 #include "xenia/base/platform.h"
+#include "xenia/app/game_library.h"
 
 #if !XE_PLATFORM_IOS
 #include <QPointer>

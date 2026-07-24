@@ -18,6 +18,12 @@ from shutil import rmtree
 import subprocess
 import sys
 import stat
+import tarfile
+import urllib.request
+import zipfile
+import tarfile
+import urllib.request
+import zipfile
 
 __author__ = "ben.vanik@gmail.com (Ben Vanik)"
 
@@ -1408,6 +1414,92 @@ class SetupCommand(Command):
         return ret
 
 
+SLANG_VERSION = "2026.8"
+SLANG_RELEASE_URL = "https://github.com/shader-slang/slang/releases/download"
+
+
+def download_slang():
+    """Downloads the pinned Slang compiler used for generated shaders."""
+    machine = platform.machine().lower()
+    arch = "aarch64" if machine in ("arm64", "aarch64") else "x86_64"
+    if sys.platform == "darwin":
+        archive_name = f"slang-{SLANG_VERSION}-macos-{arch}.zip"
+        executable = "slangc"
+    elif sys.platform == "linux":
+        archive_name = f"slang-{SLANG_VERSION}-linux-{arch}.tar.gz"
+        executable = "slangc"
+    elif sys.platform == "win32":
+        archive_name = f"slang-{SLANG_VERSION}-windows-x86_64.zip"
+        executable = "slangc.exe"
+    else:
+        raise RuntimeError(f"Unsupported Slang host: {sys.platform}/{machine}")
+    slang_dir = os.path.abspath(os.path.join(".slang", SLANG_VERSION))
+    matches = glob(os.path.join(slang_dir, "**", executable), recursive=True)
+    if matches:
+        return matches[0]
+    if os.path.isdir(".slang"):
+        shutil.rmtree(".slang")
+    os.makedirs(slang_dir)
+    archive_path = os.path.join(slang_dir, archive_name)
+    url = f"{SLANG_RELEASE_URL}/v{SLANG_VERSION}/{archive_name}"
+    urllib.request.urlretrieve(url, archive_path)
+    if archive_name.endswith(".zip"):
+        with zipfile.ZipFile(archive_path) as archive:
+            archive.extractall(slang_dir)
+    else:
+        with tarfile.open(archive_path) as archive:
+            archive.extractall(slang_dir)
+    os.remove(archive_path)
+    matches = glob(os.path.join(slang_dir, "**", executable), recursive=True)
+    if not matches:
+        raise RuntimeError(f"Slang archive did not contain {executable}")
+    os.chmod(matches[0], os.stat(matches[0]).st_mode | stat.S_IEXEC)
+    return matches[0]
+
+
+SLANG_VERSION = "2026.8"
+SLANG_RELEASE_URL = "https://github.com/shader-slang/slang/releases/download"
+
+
+def download_slang():
+    """Downloads the pinned Slang compiler used for generated shaders."""
+    machine = platform.machine().lower()
+    arch = "aarch64" if machine in ("arm64", "aarch64") else "x86_64"
+    if sys.platform == "darwin":
+        archive_name = f"slang-{SLANG_VERSION}-macos-{arch}.zip"
+        executable = "slangc"
+    elif sys.platform == "linux":
+        archive_name = f"slang-{SLANG_VERSION}-linux-{arch}.tar.gz"
+        executable = "slangc"
+    elif sys.platform == "win32":
+        archive_name = f"slang-{SLANG_VERSION}-windows-x86_64.zip"
+        executable = "slangc.exe"
+    else:
+        raise RuntimeError(f"Unsupported Slang host: {sys.platform}/{machine}")
+    slang_dir = os.path.abspath(os.path.join(".slang", SLANG_VERSION))
+    matches = glob(os.path.join(slang_dir, "**", executable), recursive=True)
+    if matches:
+        return matches[0]
+    if os.path.isdir(".slang"):
+        shutil.rmtree(".slang")
+    os.makedirs(slang_dir)
+    archive_path = os.path.join(slang_dir, archive_name)
+    url = f"{SLANG_RELEASE_URL}/v{SLANG_VERSION}/{archive_name}"
+    urllib.request.urlretrieve(url, archive_path)
+    if archive_name.endswith(".zip"):
+        with zipfile.ZipFile(archive_path) as archive:
+            archive.extractall(slang_dir)
+    else:
+        with tarfile.open(archive_path) as archive:
+            archive.extractall(slang_dir)
+    os.remove(archive_path)
+    matches = glob(os.path.join(slang_dir, "**", executable), recursive=True)
+    if not matches:
+        raise RuntimeError(f"Slang archive did not contain {executable}")
+    os.chmod(matches[0], os.stat(matches[0]).st_mode | stat.S_IEXEC)
+    return matches[0]
+
+
 class FetchDataCommand(Command):
     """'fetchdata' command.
     """
@@ -1515,6 +1607,34 @@ class PremakeCommand(Command):
         print("Success!" if ret == 0 else "Error!")
 
         return ret
+
+
+class SlangCommand(Command):
+    """Downloads the Slang shader compiler build dependency."""
+
+    def __init__(self, subparsers, *args, **kwargs):
+        super(SlangCommand, self).__init__(
+            subparsers, name="slang",
+            help_short="Downloads the Slang shader compiler.", *args, **kwargs)
+
+    def execute(self, args, pass_args, cwd):
+        print(f"Downloading Slang {SLANG_VERSION}...")
+        print(download_slang())
+        return 0
+
+
+class SlangCommand(Command):
+    """Downloads the Slang shader compiler build dependency."""
+
+    def __init__(self, subparsers, *args, **kwargs):
+        super(SlangCommand, self).__init__(
+            subparsers, name="slang",
+            help_short="Downloads the Slang shader compiler.", *args, **kwargs)
+
+    def execute(self, args, pass_args, cwd):
+        print(f"Downloading Slang {SLANG_VERSION}...")
+        print(download_slang())
+        return 0
 
 
 class BaseBuildCommand(Command):
