@@ -1,0 +1,559 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6F3A8A4C1124263E084B388C /* nop_audio_system.cc in Sources */ = {isa = PBXBuildFile; fileRef = 453D45B4136099669A6EEBF4 /* nop_audio_system.cc */; };
+		9F6839157E0AD48732ECD755 /* libxenia-base.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E9AE83DDE951670F23A61A1D /* libxenia-base.a */; };
+		CAE1538B24E26A7DEC2961CB /* libxenia-apu.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 02A414F31D7083A521411B33 /* libxenia-apu.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2B17BD835AA98C7535B6CBC3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 97B9115065DC6502ECEAB790 /* xenia-apu.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 55F86B1D6D0B064F5D27015D;
+			remoteInfo = "libxenia-apu.a";
+		};
+		AA4B43DFCC16F11108CC1A1F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2D378CBA117E94EC956BC2FA /* xenia-base.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 6C73464C929975FEF9A06C8C;
+			remoteInfo = "libxenia-base.a";
+		};
+		D8DD4AEA086F19DCE37C592A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 97B9115065DC6502ECEAB790 /* xenia-apu.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = CF42FA17C8A8FB89BC445857;
+			remoteInfo = "libxenia-apu.a";
+		};
+		FC85B6781E5163AA5B068CB8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2D378CBA117E94EC956BC2FA /* xenia-base.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 818584B27AEB86246E86E2F2;
+			remoteInfo = "libxenia-base.a";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		09D125F89F47E52A0DE43C38 /* nop_audio_system.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = nop_audio_system.h; path = ../src/xenia/apu/nop/nop_audio_system.h; sourceTree = "<group>"; };
+		2D378CBA117E94EC956BC2FA /* libxenia-base.a */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = xenia-base.xcodeproj; path = "xenia-base.xcodeproj"; sourceTree = SOURCE_ROOT; };
+		3908D8918F964303680F56D1 /* libxenia-apu-nop.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libxenia-apu-nop.a"; path = "libxenia-apu-nop.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		453D45B4136099669A6EEBF4 /* nop_audio_system.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = nop_audio_system.cc; path = ../src/xenia/apu/nop/nop_audio_system.cc; sourceTree = "<group>"; };
+		97B9115065DC6502ECEAB790 /* libxenia-apu.a */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = xenia-apu.xcodeproj; path = "xenia-apu.xcodeproj"; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FA2B2D81F3912EF3E72C8BC1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9F6839157E0AD48732ECD755 /* libxenia-base.a in Frameworks */,
+				CAE1538B24E26A7DEC2961CB /* libxenia-apu.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		0777E22DF264081F3A49D06D /* Embed Libraries */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Libraries";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXGroup section */
+		041A22EA2C54DB9C13F0692A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				02A414F31D7083A521411B33 /* libxenia-apu.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		47132EC27FCDF5340F652D02 /* xenia-apu-nop */ = {
+			isa = PBXGroup;
+			children = (
+				453D45B4136099669A6EEBF4 /* nop_audio_system.cc */,
+				09D125F89F47E52A0DE43C38 /* nop_audio_system.h */,
+				A6C936B49B3FADE6EA134CF4 /* Products */,
+				9D968EAA920D05DCE0E0A4EA /* Projects */,
+			);
+			name = "xenia-apu-nop";
+			sourceTree = "<group>";
+		};
+		4882513F7814203153215F7F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E9AE83DDE951670F23A61A1D /* libxenia-base.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9D968EAA920D05DCE0E0A4EA /* Projects */ = {
+			isa = PBXGroup;
+			children = (
+				2D378CBA117E94EC956BC2FA /* xenia-base.xcodeproj */,
+				97B9115065DC6502ECEAB790 /* xenia-apu.xcodeproj */,
+			);
+			name = Projects;
+			sourceTree = "<group>";
+		};
+		A6C936B49B3FADE6EA134CF4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3908D8918F964303680F56D1 /* libxenia-apu-nop.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		22DF62576B504689AFEF1897 /* xenia-apu-nop */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E86675E0E1CC7752D567D420 /* Build configuration list for PBXNativeTarget "xenia-apu-nop" */;
+			buildPhases = (
+				6A12AE216378AF9357140C61 /* Resources */,
+				D3BFC778CD25C8EAC0C125B8 /* Sources */,
+				FA2B2D81F3912EF3E72C8BC1 /* Frameworks */,
+				0777E22DF264081F3A49D06D /* Embed Libraries */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				363A8E4865CC5D3A40D99C88 /* PBXTargetDependency */,
+				F1D25FF31A0D18A501A8A633 /* PBXTargetDependency */,
+			);
+			name = "xenia-apu-nop";
+			productName = "xenia-apu-nop";
+			productReference = 3908D8918F964303680F56D1 /* libxenia-apu-nop.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		08FB7793FE84155DC02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 1DEB928908733DD80010E9CD /* Build configuration list for PBXProject "xenia-apu-nop" */;
+			compatibilityVersion = "Xcode 3.2";
+			hasScannedForEncodings = 1;
+			mainGroup = 47132EC27FCDF5340F652D02 /* xenia-apu-nop */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 4882513F7814203153215F7F /* Products */;
+					ProjectRef = 2D378CBA117E94EC956BC2FA /* xenia-base.xcodeproj */;
+				},
+				{
+					ProductGroup = 041A22EA2C54DB9C13F0692A /* Products */;
+					ProjectRef = 97B9115065DC6502ECEAB790 /* xenia-apu.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				22DF62576B504689AFEF1897 /* libxenia-apu-nop.a */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		02A414F31D7083A521411B33 /* libxenia-apu.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libxenia-apu.a";
+			remoteRef = D8DD4AEA086F19DCE37C592A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E9AE83DDE951670F23A61A1D /* libxenia-base.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libxenia-base.a";
+			remoteRef = AA4B43DFCC16F11108CC1A1F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6A12AE216378AF9357140C61 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D3BFC778CD25C8EAC0C125B8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6F3A8A4C1124263E084B388C /* nop_audio_system.cc in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		363A8E4865CC5D3A40D99C88 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "libxenia-base.a";
+			targetProxy = FC85B6781E5163AA5B068CB8 /* PBXContainerItemProxy */;
+		};
+		F1D25FF31A0D18A501A8A633 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "libxenia-apu.a";
+			targetProxy = 2B17BD835AA98C7535B6CBC3 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		116A9E610AD09FD3FE6BFCA1 /* Valgrind */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					arm64,
+				);
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = c17;
+				GCC_OPTIMIZATION_LEVEL = g;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					VULKAN_HPP_NO_TO_STRING,
+					IMGUI_DISABLE_OBSOLETE_FUNCTIONS,
+					IMGUI_DISABLE_DEFAULT_FONT,
+					IMGUI_USE_STB_SPRINTF,
+					USE_CPP17,
+					_LIB,
+					DEBUG,
+					NDEBUG,
+					"_NO_DEBUG_HEAP=1",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				OBJROOT = "obj/iOS-ARM64/Valgrind/iOS-ARM64/Valgrind/xenia-apu-nop";
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = (
+					"-fno-omit-frame-pointer",
+					"-fno-inline-functions",
+					"-w",
+					"-fno-modules",
+				);
+				SDKROOT = (
+					iphoneos,
+				);
+				SYMROOT = "bin/iOS-ARM64/Valgrind";
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+				USER_HEADER_SEARCH_PATHS = (
+					..,
+					../src,
+					../third_party,
+				);
+			};
+			name = Valgrind;
+		};
+		174FD8A6887279983E3926E6 /* Checked */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					arm64,
+				);
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "bin/iOS-ARM64/Checked";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_DYNAMIC_NO_PIC = NO;
+				INSTALL_PATH = /usr/local/lib;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				PRODUCT_NAME = "xenia-apu-nop";
+				SDKROOT = (
+					iphoneos,
+				);
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+			};
+			name = Checked;
+		};
+		910ADC0BA81D773D9839724B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					arm64,
+				);
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				GCC_C_LANGUAGE_STANDARD = c17;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					VULKAN_HPP_NO_TO_STRING,
+					IMGUI_DISABLE_OBSOLETE_FUNCTIONS,
+					IMGUI_DISABLE_DEFAULT_FONT,
+					IMGUI_USE_STB_SPRINTF,
+					USE_CPP17,
+					_LIB,
+					NDEBUG,
+					"_NO_DEBUG_HEAP=1",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				OBJROOT = "obj/iOS-ARM64/Release/iOS-ARM64/Release/xenia-apu-nop";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CFLAGS = (
+					"-O3",
+					"-finline-functions",
+					"-funroll-loops",
+					"-fomit-frame-pointer",
+					"-w",
+					"-fno-modules",
+				);
+				SDKROOT = (
+					iphoneos,
+				);
+				SYMROOT = "bin/iOS-ARM64/Release";
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+				USER_HEADER_SEARCH_PATHS = (
+					..,
+					../src,
+					../third_party,
+				);
+			};
+			name = Release;
+		};
+		92397DB627B03CE8964C93F6 /* Valgrind */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					arm64,
+				);
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "bin/iOS-ARM64/Valgrind";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_DYNAMIC_NO_PIC = NO;
+				INSTALL_PATH = /usr/local/lib;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				PRODUCT_NAME = "xenia-apu-nop";
+				SDKROOT = (
+					iphoneos,
+				);
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+			};
+			name = Valgrind;
+		};
+		99A659913C948043CBBA5FD1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					arm64,
+				);
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = c17;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					VULKAN_HPP_NO_TO_STRING,
+					IMGUI_DISABLE_OBSOLETE_FUNCTIONS,
+					IMGUI_DISABLE_DEFAULT_FONT,
+					IMGUI_USE_STB_SPRINTF,
+					USE_CPP17,
+					_LIB,
+					DEBUG,
+					"_NO_DEBUG_HEAP=1",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				OBJROOT = "obj/iOS-ARM64/Debug/iOS-ARM64/Debug/xenia-apu-nop";
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = (
+					"-w",
+					"-fno-modules",
+				);
+				SDKROOT = (
+					iphoneos,
+				);
+				SYMROOT = "bin/iOS-ARM64/Debug";
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+				USER_HEADER_SEARCH_PATHS = (
+					..,
+					../src,
+					../third_party,
+				);
+			};
+			name = Debug;
+		};
+		A5DD3E11BCEFD943AD0BD451 /* Checked */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					arm64,
+				);
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = c17;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					VULKAN_HPP_NO_TO_STRING,
+					IMGUI_DISABLE_OBSOLETE_FUNCTIONS,
+					IMGUI_DISABLE_DEFAULT_FONT,
+					USE_CPP17,
+					_LIB,
+					DEBUG,
+					NDEBUG,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				OBJROOT = "obj/iOS-ARM64/Checked/iOS-ARM64/Checked/xenia-apu-nop";
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = (
+					"-w",
+					"-fno-modules",
+				);
+				SDKROOT = (
+					iphoneos,
+				);
+				SYMROOT = "bin/iOS-ARM64/Checked";
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+				USER_HEADER_SEARCH_PATHS = (
+					..,
+					../src,
+					../third_party,
+				);
+			};
+			name = Checked;
+		};
+		B66EB72027915812DD580560 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					arm64,
+				);
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "bin/iOS-ARM64/Release";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_DYNAMIC_NO_PIC = NO;
+				INSTALL_PATH = /usr/local/lib;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				PRODUCT_NAME = "xenia-apu-nop";
+				SDKROOT = (
+					iphoneos,
+				);
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+			};
+			name = Release;
+		};
+		DBAA5AA6D56C17180F6B18E6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					arm64,
+				);
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "bin/iOS-ARM64/Debug";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_DYNAMIC_NO_PIC = NO;
+				INSTALL_PATH = /usr/local/lib;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				PRODUCT_NAME = "xenia-apu-nop";
+				SDKROOT = (
+					iphoneos,
+				);
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1DEB928908733DD80010E9CD /* Build configuration list for PBXProject "xenia-apu-nop" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A5DD3E11BCEFD943AD0BD451 /* Checked */,
+				99A659913C948043CBBA5FD1 /* Debug */,
+				910ADC0BA81D773D9839724B /* Release */,
+				116A9E610AD09FD3FE6BFCA1 /* Valgrind */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Checked;
+		};
+		E86675E0E1CC7752D567D420 /* Build configuration list for PBXNativeTarget "libxenia-apu-nop.a" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				174FD8A6887279983E3926E6 /* Checked */,
+				DBAA5AA6D56C17180F6B18E6 /* Debug */,
+				B66EB72027915812DD580560 /* Release */,
+				92397DB627B03CE8964C93F6 /* Valgrind */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Checked;
+		};
+/* End XCConfigurationList section */
+};
+rootObject = 08FB7793FE84155DC02AAC07 /* Project object */;
+}

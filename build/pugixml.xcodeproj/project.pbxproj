@@ -1,0 +1,452 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4C17268E7CFB1E80901354CE /* pugixml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8E76B8D6B49CE8881BA3DF16 /* pugixml.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		5DA4FD155E57FA07D239CB55 /* libpugixml.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libpugixml.a; path = libpugixml.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		8E76B8D6B49CE8881BA3DF16 /* pugixml.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = pugixml.cpp; path = ../third_party/pugixml/src/pugixml.cpp; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EA01B00518A803F771E95E45 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		46F915B1B8842E23678553F1 /* Embed Libraries */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Libraries";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXGroup section */
+		A6C936B49B3FADE6EA134CF4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5DA4FD155E57FA07D239CB55 /* libpugixml.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DA7D0A066D8862F8B5BD5846 /* pugixml */ = {
+			isa = PBXGroup;
+			children = (
+				8E76B8D6B49CE8881BA3DF16 /* pugixml.cpp */,
+				A6C936B49B3FADE6EA134CF4 /* Products */,
+			);
+			name = pugixml;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5287065BF5752D0D849B0C9B /* pugixml */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D83CF86406E34C566024A6A4 /* Build configuration list for PBXNativeTarget "pugixml" */;
+			buildPhases = (
+				59E930A5888F8497E1D0DEE5 /* Resources */,
+				C39649FCF23C9DEE4B7DF83C /* Sources */,
+				EA01B00518A803F771E95E45 /* Frameworks */,
+				46F915B1B8842E23678553F1 /* Embed Libraries */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = pugixml;
+			productName = pugixml;
+			productReference = 5DA4FD155E57FA07D239CB55 /* libpugixml.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		08FB7793FE84155DC02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 1DEB928908733DD80010E9CD /* Build configuration list for PBXProject "pugixml" */;
+			compatibilityVersion = "Xcode 3.2";
+			hasScannedForEncodings = 1;
+			mainGroup = DA7D0A066D8862F8B5BD5846 /* pugixml */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5287065BF5752D0D849B0C9B /* libpugixml.a */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		59E930A5888F8497E1D0DEE5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C39649FCF23C9DEE4B7DF83C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4C17268E7CFB1E80901354CE /* pugixml.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1B5550A47696A41649F0EEE4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					arm64,
+				);
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "bin/iOS-ARM64/Release";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_DYNAMIC_NO_PIC = NO;
+				INSTALL_PATH = /usr/local/lib;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				PRODUCT_NAME = pugixml;
+				SDKROOT = (
+					iphoneos,
+				);
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+			};
+			name = Release;
+		};
+		30252155D370AA87EE417795 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					arm64,
+				);
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = c17;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					VULKAN_HPP_NO_TO_STRING,
+					IMGUI_DISABLE_OBSOLETE_FUNCTIONS,
+					IMGUI_DISABLE_DEFAULT_FONT,
+					IMGUI_USE_STB_SPRINTF,
+					USE_CPP17,
+					_LIB,
+					DEBUG,
+					"_NO_DEBUG_HEAP=1",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				OBJROOT = "obj/iOS-ARM64/Debug/iOS-ARM64/Debug/pugixml";
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = (
+					"-w",
+					"-fno-modules",
+				);
+				SDKROOT = (
+					iphoneos,
+				);
+				SYMROOT = "bin/iOS-ARM64/Debug";
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+				USER_HEADER_SEARCH_PATHS = (
+					..,
+					../src,
+					../third_party,
+				);
+			};
+			name = Debug;
+		};
+		6C54C32A9BE6921C76F3D16A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					arm64,
+				);
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "bin/iOS-ARM64/Debug";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_DYNAMIC_NO_PIC = NO;
+				INSTALL_PATH = /usr/local/lib;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				PRODUCT_NAME = pugixml;
+				SDKROOT = (
+					iphoneos,
+				);
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+			};
+			name = Debug;
+		};
+		6CB37FA59B59D397F49B2DE5 /* Valgrind */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					arm64,
+				);
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = c17;
+				GCC_OPTIMIZATION_LEVEL = g;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					VULKAN_HPP_NO_TO_STRING,
+					IMGUI_DISABLE_OBSOLETE_FUNCTIONS,
+					IMGUI_DISABLE_DEFAULT_FONT,
+					IMGUI_USE_STB_SPRINTF,
+					USE_CPP17,
+					_LIB,
+					DEBUG,
+					NDEBUG,
+					"_NO_DEBUG_HEAP=1",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				OBJROOT = "obj/iOS-ARM64/Valgrind/iOS-ARM64/Valgrind/pugixml";
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = (
+					"-fno-omit-frame-pointer",
+					"-fno-inline-functions",
+					"-w",
+					"-fno-modules",
+				);
+				SDKROOT = (
+					iphoneos,
+				);
+				SYMROOT = "bin/iOS-ARM64/Valgrind";
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+				USER_HEADER_SEARCH_PATHS = (
+					..,
+					../src,
+					../third_party,
+				);
+			};
+			name = Valgrind;
+		};
+		7C36722AD777C59CAAD2106A /* Checked */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					arm64,
+				);
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "bin/iOS-ARM64/Checked";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_DYNAMIC_NO_PIC = NO;
+				INSTALL_PATH = /usr/local/lib;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				PRODUCT_NAME = pugixml;
+				SDKROOT = (
+					iphoneos,
+				);
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+			};
+			name = Checked;
+		};
+		93F347BA575F096C9602ADFA /* Valgrind */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					arm64,
+				);
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "bin/iOS-ARM64/Valgrind";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_DYNAMIC_NO_PIC = NO;
+				INSTALL_PATH = /usr/local/lib;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				PRODUCT_NAME = pugixml;
+				SDKROOT = (
+					iphoneos,
+				);
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+			};
+			name = Valgrind;
+		};
+		C25AA4CF66AD428178E58B0F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					arm64,
+				);
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				GCC_C_LANGUAGE_STANDARD = c17;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					VULKAN_HPP_NO_TO_STRING,
+					IMGUI_DISABLE_OBSOLETE_FUNCTIONS,
+					IMGUI_DISABLE_DEFAULT_FONT,
+					IMGUI_USE_STB_SPRINTF,
+					USE_CPP17,
+					_LIB,
+					NDEBUG,
+					"_NO_DEBUG_HEAP=1",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				OBJROOT = "obj/iOS-ARM64/Release/iOS-ARM64/Release/pugixml";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CFLAGS = (
+					"-O3",
+					"-finline-functions",
+					"-funroll-loops",
+					"-fomit-frame-pointer",
+					"-w",
+					"-fno-modules",
+				);
+				SDKROOT = (
+					iphoneos,
+				);
+				SYMROOT = "bin/iOS-ARM64/Release";
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+				USER_HEADER_SEARCH_PATHS = (
+					..,
+					../src,
+					../third_party,
+				);
+			};
+			name = Release;
+		};
+		D72D06D57B7FA4878DB7ED15 /* Checked */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					arm64,
+				);
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = c17;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					VULKAN_HPP_NO_TO_STRING,
+					IMGUI_DISABLE_OBSOLETE_FUNCTIONS,
+					IMGUI_DISABLE_DEFAULT_FONT,
+					USE_CPP17,
+					_LIB,
+					DEBUG,
+					NDEBUG,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				OBJROOT = "obj/iOS-ARM64/Checked/iOS-ARM64/Checked/pugixml";
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = (
+					"-w",
+					"-fno-modules",
+				);
+				SDKROOT = (
+					iphoneos,
+				);
+				SYMROOT = "bin/iOS-ARM64/Checked";
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+				USER_HEADER_SEARCH_PATHS = (
+					..,
+					../src,
+					../third_party,
+				);
+			};
+			name = Checked;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1DEB928908733DD80010E9CD /* Build configuration list for PBXProject "pugixml" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D72D06D57B7FA4878DB7ED15 /* Checked */,
+				30252155D370AA87EE417795 /* Debug */,
+				C25AA4CF66AD428178E58B0F /* Release */,
+				6CB37FA59B59D397F49B2DE5 /* Valgrind */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Checked;
+		};
+		D83CF86406E34C566024A6A4 /* Build configuration list for PBXNativeTarget "libpugixml.a" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7C36722AD777C59CAAD2106A /* Checked */,
+				6C54C32A9BE6921C76F3D16A /* Debug */,
+				1B5550A47696A41649F0EEE4 /* Release */,
+				93F347BA575F096C9602ADFA /* Valgrind */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Checked;
+		};
+/* End XCConfigurationList section */
+};
+rootObject = 08FB7793FE84155DC02AAC07 /* Project object */;
+}

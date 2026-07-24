@@ -1,0 +1,651 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1605C4577006DB49374DD297 /* libxenia-gpu.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D0289EFFEAF50DB1EEC5A53F /* libxenia-gpu.a */; };
+		53BD3D2644B4AB18B0B82B66 /* null_graphics_system.cc in Sources */ = {isa = PBXBuildFile; fileRef = ED4ABDEE8597A3A0B3DEA42E /* null_graphics_system.cc */; };
+		99C3BF9BA64E720D21333DDB /* libxenia-ui.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B7301034A901B3526997743 /* libxenia-ui.a */; };
+		9F6839157E0AD48732ECD755 /* libxenia-base.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E9AE83DDE951670F23A61A1D /* libxenia-base.a */; };
+		A9FD4F839DFC98F522E7ADC3 /* libxxhash.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AF89D06BF39DA19DE76F26AB /* libxxhash.a */; };
+		FCD4003856D5172A1E1C0E78 /* null_command_processor.cc in Sources */ = {isa = PBXBuildFile; fileRef = 343FCCE04F0C3B9252DCD320 /* null_command_processor.cc */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2FBF42895F51117B3A5E50C9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0C52F29CDA76464E618498DC /* xenia-gpu.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 7B16D0A392296BD5824566E3;
+			remoteInfo = "libxenia-gpu.a";
+		};
+		396FBF0F81E0A341C67F754F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3CD171E88A34681A00536828 /* xxhash.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = E01FA10951AAB97B00ABDF49;
+			remoteInfo = libxxhash.a;
+		};
+		563001A27E6ABA54660647E2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0F8A5740A5011672139D6D80 /* xenia-ui.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 57BBBAEF6ECE56215EEA512F;
+			remoteInfo = "libxenia-ui.a";
+		};
+		A86A743BD0A52CEDB840BA7B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0F8A5740A5011672139D6D80 /* xenia-ui.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = AF7070F5B0236DE724053F35;
+			remoteInfo = "libxenia-ui.a";
+		};
+		AA4B43DFCC16F11108CC1A1F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2D378CBA117E94EC956BC2FA /* xenia-base.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 6C73464C929975FEF9A06C8C;
+			remoteInfo = "libxenia-base.a";
+		};
+		DD84CFF00D169EE2E823DE30 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0C52F29CDA76464E618498DC /* xenia-gpu.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 982E105D919411CF852F6E9D;
+			remoteInfo = "libxenia-gpu.a";
+		};
+		E7354C762FA630A8744502B6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3CD171E88A34681A00536828 /* xxhash.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9E50ED83413F1435D064F3C3;
+			remoteInfo = libxxhash.a;
+		};
+		FC85B6781E5163AA5B068CB8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2D378CBA117E94EC956BC2FA /* xenia-base.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 818584B27AEB86246E86E2F2;
+			remoteInfo = "libxenia-base.a";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0C52F29CDA76464E618498DC /* libxenia-gpu.a */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = xenia-gpu.xcodeproj; path = "xenia-gpu.xcodeproj"; sourceTree = SOURCE_ROOT; };
+		0F8A5740A5011672139D6D80 /* libxenia-ui.a */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = xenia-ui.xcodeproj; path = "xenia-ui.xcodeproj"; sourceTree = SOURCE_ROOT; };
+		2D378CBA117E94EC956BC2FA /* libxenia-base.a */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = xenia-base.xcodeproj; path = "xenia-base.xcodeproj"; sourceTree = SOURCE_ROOT; };
+		343FCCE04F0C3B9252DCD320 /* null_command_processor.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = null_command_processor.cc; path = ../src/xenia/gpu/null/null_command_processor.cc; sourceTree = "<group>"; };
+		3CD171E88A34681A00536828 /* libxxhash.a */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "xxhash.xcodeproj"; path = xxhash.xcodeproj; sourceTree = SOURCE_ROOT; };
+		71E62652B5F9F784A9CB7C92 /* null_graphics_system.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = null_graphics_system.h; path = ../src/xenia/gpu/null/null_graphics_system.h; sourceTree = "<group>"; };
+		A696DBE5CED19497B66D2225 /* libxenia-gpu-null.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libxenia-gpu-null.a"; path = "libxenia-gpu-null.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C3E4EA64A30204967F0B60A4 /* null_command_processor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = null_command_processor.h; path = ../src/xenia/gpu/null/null_command_processor.h; sourceTree = "<group>"; };
+		ED4ABDEE8597A3A0B3DEA42E /* null_graphics_system.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = null_graphics_system.cc; path = ../src/xenia/gpu/null/null_graphics_system.cc; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		37B4A6D55DDAD687C4E1CD15 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9F6839157E0AD48732ECD755 /* libxenia-base.a in Frameworks */,
+				1605C4577006DB49374DD297 /* libxenia-gpu.a in Frameworks */,
+				99C3BF9BA64E720D21333DDB /* libxenia-ui.a in Frameworks */,
+				A9FD4F839DFC98F522E7ADC3 /* libxxhash.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		CD45008115B5E4B35A54B6C1 /* Embed Libraries */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Libraries";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXGroup section */
+		13C21F303BFCD7E223986570 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D0289EFFEAF50DB1EEC5A53F /* libxenia-gpu.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		186052B66873E768EAF218F6 /* xenia-gpu-null */ = {
+			isa = PBXGroup;
+			children = (
+				343FCCE04F0C3B9252DCD320 /* null_command_processor.cc */,
+				C3E4EA64A30204967F0B60A4 /* null_command_processor.h */,
+				ED4ABDEE8597A3A0B3DEA42E /* null_graphics_system.cc */,
+				71E62652B5F9F784A9CB7C92 /* null_graphics_system.h */,
+				A6C936B49B3FADE6EA134CF4 /* Products */,
+				9D968EAA920D05DCE0E0A4EA /* Projects */,
+			);
+			name = "xenia-gpu-null";
+			sourceTree = "<group>";
+		};
+		4882513F7814203153215F7F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E9AE83DDE951670F23A61A1D /* libxenia-base.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9D968EAA920D05DCE0E0A4EA /* Projects */ = {
+			isa = PBXGroup;
+			children = (
+				2D378CBA117E94EC956BC2FA /* xenia-base.xcodeproj */,
+				0C52F29CDA76464E618498DC /* xenia-gpu.xcodeproj */,
+				0F8A5740A5011672139D6D80 /* xenia-ui.xcodeproj */,
+				3CD171E88A34681A00536828 /* xxhash.xcodeproj */,
+			);
+			name = Projects;
+			sourceTree = "<group>";
+		};
+		A6C936B49B3FADE6EA134CF4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A696DBE5CED19497B66D2225 /* libxenia-gpu-null.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A77222F6925E48E8DA441136 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AF89D06BF39DA19DE76F26AB /* libxxhash.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C214E2A218A24D14F11B60E2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6B7301034A901B3526997743 /* libxenia-ui.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A2504B2BF8DDB59DD156C96B /* xenia-gpu-null */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 25EFEF344C161EE6B31D1574 /* Build configuration list for PBXNativeTarget "xenia-gpu-null" */;
+			buildPhases = (
+				A79C2775CDC2572734C94DB5 /* Resources */,
+				114940CC376F707E9E76670C /* Sources */,
+				37B4A6D55DDAD687C4E1CD15 /* Frameworks */,
+				CD45008115B5E4B35A54B6C1 /* Embed Libraries */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				363A8E4865CC5D3A40D99C88 /* PBXTargetDependency */,
+				017A5C3929B514EB1150A279 /* PBXTargetDependency */,
+				AFCD1FAB065A8A1DDED39DEB /* PBXTargetDependency */,
+				952A5FFF801685F1C7FC4E3F /* PBXTargetDependency */,
+			);
+			name = "xenia-gpu-null";
+			productName = "xenia-gpu-null";
+			productReference = A696DBE5CED19497B66D2225 /* libxenia-gpu-null.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		08FB7793FE84155DC02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 1DEB928908733DD80010E9CD /* Build configuration list for PBXProject "xenia-gpu-null" */;
+			compatibilityVersion = "Xcode 3.2";
+			hasScannedForEncodings = 1;
+			mainGroup = 186052B66873E768EAF218F6 /* xenia-gpu-null */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 4882513F7814203153215F7F /* Products */;
+					ProjectRef = 2D378CBA117E94EC956BC2FA /* xenia-base.xcodeproj */;
+				},
+				{
+					ProductGroup = 13C21F303BFCD7E223986570 /* Products */;
+					ProjectRef = 0C52F29CDA76464E618498DC /* xenia-gpu.xcodeproj */;
+				},
+				{
+					ProductGroup = C214E2A218A24D14F11B60E2 /* Products */;
+					ProjectRef = 0F8A5740A5011672139D6D80 /* xenia-ui.xcodeproj */;
+				},
+				{
+					ProductGroup = A77222F6925E48E8DA441136 /* Products */;
+					ProjectRef = 3CD171E88A34681A00536828 /* xxhash.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				A2504B2BF8DDB59DD156C96B /* libxenia-gpu-null.a */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		6B7301034A901B3526997743 /* libxenia-ui.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libxenia-ui.a";
+			remoteRef = 563001A27E6ABA54660647E2 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		AF89D06BF39DA19DE76F26AB /* libxxhash.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libxxhash.a;
+			remoteRef = E7354C762FA630A8744502B6 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D0289EFFEAF50DB1EEC5A53F /* libxenia-gpu.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libxenia-gpu.a";
+			remoteRef = DD84CFF00D169EE2E823DE30 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E9AE83DDE951670F23A61A1D /* libxenia-base.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libxenia-base.a";
+			remoteRef = AA4B43DFCC16F11108CC1A1F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A79C2775CDC2572734C94DB5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		114940CC376F707E9E76670C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FCD4003856D5172A1E1C0E78 /* null_command_processor.cc in Sources */,
+				53BD3D2644B4AB18B0B82B66 /* null_graphics_system.cc in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		017A5C3929B514EB1150A279 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "libxenia-gpu.a";
+			targetProxy = 2FBF42895F51117B3A5E50C9 /* PBXContainerItemProxy */;
+		};
+		363A8E4865CC5D3A40D99C88 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "libxenia-base.a";
+			targetProxy = FC85B6781E5163AA5B068CB8 /* PBXContainerItemProxy */;
+		};
+		952A5FFF801685F1C7FC4E3F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = libxxhash.a;
+			targetProxy = 396FBF0F81E0A341C67F754F /* PBXContainerItemProxy */;
+		};
+		AFCD1FAB065A8A1DDED39DEB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "libxenia-ui.a";
+			targetProxy = A86A743BD0A52CEDB840BA7B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		26E914FABC5FD42C2AFC2B3A /* Checked */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					arm64,
+				);
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "bin/iOS-ARM64/Checked";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_DYNAMIC_NO_PIC = NO;
+				INSTALL_PATH = /usr/local/lib;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				PRODUCT_NAME = "xenia-gpu-null";
+				SDKROOT = (
+					iphoneos,
+				);
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+			};
+			name = Checked;
+		};
+		7D7D30057E302CF7F211FE45 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					arm64,
+				);
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = c17;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					VULKAN_HPP_NO_TO_STRING,
+					IMGUI_DISABLE_OBSOLETE_FUNCTIONS,
+					IMGUI_DISABLE_DEFAULT_FONT,
+					IMGUI_USE_STB_SPRINTF,
+					USE_CPP17,
+					_LIB,
+					DEBUG,
+					"_NO_DEBUG_HEAP=1",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				OBJROOT = "obj/iOS-ARM64/Debug/iOS-ARM64/Debug/xenia-gpu-null";
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = (
+					"-w",
+					"-fno-modules",
+				);
+				SDKROOT = (
+					iphoneos,
+				);
+				SYMROOT = "bin/iOS-ARM64/Debug";
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+				USER_HEADER_SEARCH_PATHS = (
+					..,
+					../src,
+					../third_party,
+				);
+			};
+			name = Debug;
+		};
+		94FA448AD948E9FC1B7022CA /* Valgrind */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					arm64,
+				);
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "bin/iOS-ARM64/Valgrind";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_DYNAMIC_NO_PIC = NO;
+				INSTALL_PATH = /usr/local/lib;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				PRODUCT_NAME = "xenia-gpu-null";
+				SDKROOT = (
+					iphoneos,
+				);
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+			};
+			name = Valgrind;
+		};
+		A56071FAD759BCAC5138F83A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					arm64,
+				);
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "bin/iOS-ARM64/Debug";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_DYNAMIC_NO_PIC = NO;
+				INSTALL_PATH = /usr/local/lib;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				PRODUCT_NAME = "xenia-gpu-null";
+				SDKROOT = (
+					iphoneos,
+				);
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+			};
+			name = Debug;
+		};
+		C5F11F7FBF5720F1B2F27DBF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					arm64,
+				);
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				GCC_C_LANGUAGE_STANDARD = c17;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					VULKAN_HPP_NO_TO_STRING,
+					IMGUI_DISABLE_OBSOLETE_FUNCTIONS,
+					IMGUI_DISABLE_DEFAULT_FONT,
+					IMGUI_USE_STB_SPRINTF,
+					USE_CPP17,
+					_LIB,
+					NDEBUG,
+					"_NO_DEBUG_HEAP=1",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				OBJROOT = "obj/iOS-ARM64/Release/iOS-ARM64/Release/xenia-gpu-null";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CFLAGS = (
+					"-O3",
+					"-finline-functions",
+					"-funroll-loops",
+					"-fomit-frame-pointer",
+					"-w",
+					"-fno-modules",
+				);
+				SDKROOT = (
+					iphoneos,
+				);
+				SYMROOT = "bin/iOS-ARM64/Release";
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+				USER_HEADER_SEARCH_PATHS = (
+					..,
+					../src,
+					../third_party,
+				);
+			};
+			name = Release;
+		};
+		C607F3745B7EB2A6CA1B09B4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					arm64,
+				);
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "bin/iOS-ARM64/Release";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_DYNAMIC_NO_PIC = NO;
+				INSTALL_PATH = /usr/local/lib;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				PRODUCT_NAME = "xenia-gpu-null";
+				SDKROOT = (
+					iphoneos,
+				);
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+			};
+			name = Release;
+		};
+		DAC38185D42982F7C7C4DFC5 /* Checked */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					arm64,
+				);
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = c17;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					VULKAN_HPP_NO_TO_STRING,
+					IMGUI_DISABLE_OBSOLETE_FUNCTIONS,
+					IMGUI_DISABLE_DEFAULT_FONT,
+					USE_CPP17,
+					_LIB,
+					DEBUG,
+					NDEBUG,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				OBJROOT = "obj/iOS-ARM64/Checked/iOS-ARM64/Checked/xenia-gpu-null";
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = (
+					"-w",
+					"-fno-modules",
+				);
+				SDKROOT = (
+					iphoneos,
+				);
+				SYMROOT = "bin/iOS-ARM64/Checked";
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+				USER_HEADER_SEARCH_PATHS = (
+					..,
+					../src,
+					../third_party,
+				);
+			};
+			name = Checked;
+		};
+		E3195055093F800770467695 /* Valgrind */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					arm64,
+				);
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = c17;
+				GCC_OPTIMIZATION_LEVEL = g;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					VULKAN_HPP_NO_TO_STRING,
+					IMGUI_DISABLE_OBSOLETE_FUNCTIONS,
+					IMGUI_DISABLE_DEFAULT_FONT,
+					IMGUI_USE_STB_SPRINTF,
+					USE_CPP17,
+					_LIB,
+					DEBUG,
+					NDEBUG,
+					"_NO_DEBUG_HEAP=1",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				OBJROOT = "obj/iOS-ARM64/Valgrind/iOS-ARM64/Valgrind/xenia-gpu-null";
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = (
+					"-fno-omit-frame-pointer",
+					"-fno-inline-functions",
+					"-w",
+					"-fno-modules",
+				);
+				SDKROOT = (
+					iphoneos,
+				);
+				SYMROOT = "bin/iOS-ARM64/Valgrind";
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+				USER_HEADER_SEARCH_PATHS = (
+					..,
+					../src,
+					../third_party,
+				);
+			};
+			name = Valgrind;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1DEB928908733DD80010E9CD /* Build configuration list for PBXProject "xenia-gpu-null" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DAC38185D42982F7C7C4DFC5 /* Checked */,
+				7D7D30057E302CF7F211FE45 /* Debug */,
+				C5F11F7FBF5720F1B2F27DBF /* Release */,
+				E3195055093F800770467695 /* Valgrind */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Checked;
+		};
+		25EFEF344C161EE6B31D1574 /* Build configuration list for PBXNativeTarget "libxenia-gpu-null.a" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				26E914FABC5FD42C2AFC2B3A /* Checked */,
+				A56071FAD759BCAC5138F83A /* Debug */,
+				C607F3745B7EB2A6CA1B09B4 /* Release */,
+				94FA448AD948E9FC1B7022CA /* Valgrind */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Checked;
+		};
+/* End XCConfigurationList section */
+};
+rootObject = 08FB7793FE84155DC02AAC07 /* Project object */;
+}

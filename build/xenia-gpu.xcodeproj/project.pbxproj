@@ -1,0 +1,1048 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		02392E0E594ED68085976C4E /* spirv_shader_translator_memexport.cc in Sources */ = {isa = PBXBuildFile; fileRef = 207537567BC0878869F26D96 /* spirv_shader_translator_memexport.cc */; };
+		065E5CD2FA5DA6447F48BB12 /* packet_disassembler.cc in Sources */ = {isa = PBXBuildFile; fileRef = B33091DAF744630CEB15E81A /* packet_disassembler.cc */; };
+		09A58602662C8A74EECF4442 /* hlsl_shader_translator_om.cc in Sources */ = {isa = PBXBuildFile; fileRef = 7291320A82765E3C6EE9E84A /* hlsl_shader_translator_om.cc */; };
+		09A93B009C3704F2050FA940 /* texture_info.cc in Sources */ = {isa = PBXBuildFile; fileRef = 8455052847C0C6DA86646B68 /* texture_info.cc */; };
+		1214D1E9B3FE6DDBAB258029 /* libfmt.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FD2DA671CB50FA23525F4CB1 /* libfmt.a */; };
+		14928D80211D3FF29C020BC0 /* draw_extent_estimator.cc in Sources */ = {isa = PBXBuildFile; fileRef = FC78FCA8DB9616DAB79F72E8 /* draw_extent_estimator.cc */; };
+		16506084D910C0F636459EC4 /* command_processor.cc in Sources */ = {isa = PBXBuildFile; fileRef = B2E5CD6C972CD59E1B1A03AC /* command_processor.cc */; };
+		165C6114A8EA2B0611C2CF54 /* texture_dump.cc in Sources */ = {isa = PBXBuildFile; fileRef = A1FA17FC6565D9AEA4097E3C /* texture_dump.cc */; };
+		1697208683BF2EF885521EC6 /* shared_memory.cc in Sources */ = {isa = PBXBuildFile; fileRef = 5E57524EABBA488021D9488E /* shared_memory.cc */; };
+		2166B0EC7B67C7DE42AEBF2C /* hlsl_shader_translator.cc in Sources */ = {isa = PBXBuildFile; fileRef = 6BFF685486CBD7068A9C6E94 /* hlsl_shader_translator.cc */; };
+		21AE4AB0BA263822E60D28F0 /* spirv_shader_translator_alu.cc in Sources */ = {isa = PBXBuildFile; fileRef = B7961CD851BA120A01DFF318 /* spirv_shader_translator_alu.cc */; };
+		25A7B29092CFC1029462B0D0 /* texture_cache.cc in Sources */ = {isa = PBXBuildFile; fileRef = 0FC0F0B85D23E6EAD342E6F8 /* texture_cache.cc */; };
+		2657CA06B8E593F821BE3846 /* sampler_info.cc in Sources */ = {isa = PBXBuildFile; fileRef = 9CA954CE601516809EB8BB0E /* sampler_info.cc */; };
+		291DE188831EF87A4A65EFC8 /* dxbc_shader_translator.cc in Sources */ = {isa = PBXBuildFile; fileRef = 6EE6313089B29FE28D833770 /* dxbc_shader_translator.cc */; };
+		2C44747E260630F0600532BE /* draw_util.cc in Sources */ = {isa = PBXBuildFile; fileRef = 96C4A6C6DF358AF823D45D06 /* draw_util.cc */; };
+		35B6879129B5D103AEA0E5D1 /* libsnappy.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BBC90899FFDCD9CBF3AE5ED9 /* libsnappy.a */; };
+		35D913DCC866DDCE313F821C /* spirv_shader.cc in Sources */ = {isa = PBXBuildFile; fileRef = 004FAA44C3BB6BF6025F1084 /* spirv_shader.cc */; };
+		3C3F5A6892CCC4DA6B45D8A8 /* ucode.cc in Sources */ = {isa = PBXBuildFile; fileRef = F330FF10F6A1D142780E7550 /* ucode.cc */; };
+		3F5BB850AC83C6C2AE16B690 /* register_file.cc in Sources */ = {isa = PBXBuildFile; fileRef = 03AE7A78511170AAC73070B8 /* register_file.cc */; };
+		408875BED6B187B09817E3FE /* hlsl_shader_translator_fetch.cc in Sources */ = {isa = PBXBuildFile; fileRef = F7176906AA0D72B8FB2FCF46 /* hlsl_shader_translator_fetch.cc */; };
+		40B50B1A34B4548CB99F695A /* render_target_cache.cc in Sources */ = {isa = PBXBuildFile; fileRef = 145E6FA2587240D44C43C5E2 /* render_target_cache.cc */; };
+		4378A8429A0612B4727F2682 /* xenos.cc in Sources */ = {isa = PBXBuildFile; fileRef = A9DB144AAD4BE67C2EB88A8A /* xenos.cc */; };
+		475C4C8859138C7ACE817AC8 /* shader_translator_disasm.cc in Sources */ = {isa = PBXBuildFile; fileRef = 5B3EC630CF273DE2F174EC70 /* shader_translator_disasm.cc */; };
+		4A5E57400F13ADB2C3825580 /* spirv_shader_translator_fetch.cc in Sources */ = {isa = PBXBuildFile; fileRef = 12E9B2685B88F09A7EB4A8A8 /* spirv_shader_translator_fetch.cc */; };
+		59FAB2D8B16025CA636E4118 /* texture_extent.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2C569D805E4FE832D82F23C0 /* texture_extent.cc */; };
+		5AFA4A88ED88147A5660B8C8 /* trace_viewer.cc in Sources */ = {isa = PBXBuildFile; fileRef = A559483068C509E2A768AE70 /* trace_viewer.cc */; };
+		6CFC47FCDA24566EDBB7463C /* spirv_builder.cc in Sources */ = {isa = PBXBuildFile; fileRef = FE8A95644BED8B96C20C8BA4 /* spirv_builder.cc */; };
+		6EB2F8786874B4EAA273B6B8 /* gpu_flags.cc in Sources */ = {isa = PBXBuildFile; fileRef = C2F178200B625C5250012E60 /* gpu_flags.cc */; };
+		6FDDCEEE0A37B7E046701D2E /* hlsl_shader_translator_alu.cc in Sources */ = {isa = PBXBuildFile; fileRef = F4B4C9369295C9E86A140F76 /* hlsl_shader_translator_alu.cc */; };
+		784D45D6BC9BEB48FEC32416 /* dxbc_shader.cc in Sources */ = {isa = PBXBuildFile; fileRef = 0C50AC9E2E1C59D06AD182DE /* dxbc_shader.cc */; };
+		7966CEB873288B2AAD278CF8 /* registers.cc in Sources */ = {isa = PBXBuildFile; fileRef = BEBD0A60072DEE924BCCC0A0 /* registers.cc */; };
+		7A8B70786E8AB9EAF375CEB8 /* primitive_processor.cc in Sources */ = {isa = PBXBuildFile; fileRef = 807D9220C4916352B862E860 /* primitive_processor.cc */; };
+		7C746936AC06382887137776 /* shader.cc in Sources */ = {isa = PBXBuildFile; fileRef = 9E3E6EFE412C95B0D052753E /* shader.cc */; };
+		8129111D43E9718FA11E4F5D /* libdxbc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F1D3965F364419777516FA5 /* libdxbc.a */; };
+		8733FDDA1D5D0FCCDEC36C1A /* dxbc_shader_translator_fetch.cc in Sources */ = {isa = PBXBuildFile; fileRef = BCD8E9626FCEF314C0F14FA2 /* dxbc_shader_translator_fetch.cc */; };
+		93F3A22D2E4D8B1F6A85F06D /* libglslang-spirv.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 45073E75E2E83F27BA6684B5 /* libglslang-spirv.a */; };
+		99C3BF9BA64E720D21333DDB /* libxenia-ui.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B7301034A901B3526997743 /* libxenia-ui.a */; };
+		9CB6C7485F7727BABCAC0588 /* shader_translator.cc in Sources */ = {isa = PBXBuildFile; fileRef = 32FDA9F01744B2229B31E030 /* shader_translator.cc */; };
+		9F6839157E0AD48732ECD755 /* libxenia-base.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E9AE83DDE951670F23A61A1D /* libxenia-base.a */; };
+		9F914292661F3A04D42160D2 /* graphics_system.cc in Sources */ = {isa = PBXBuildFile; fileRef = 3A1CAF9ACF936ECC3E2FC5DA /* graphics_system.cc */; };
+		A587848A3FE16D7C7C19D2CA /* dxbc_shader_translator_alu.cc in Sources */ = {isa = PBXBuildFile; fileRef = E6C2571284A357C45C219D52 /* dxbc_shader_translator_alu.cc */; };
+		A7D3BDB698CB2BA804CEABF6 /* texture_info_formats.cc in Sources */ = {isa = PBXBuildFile; fileRef = AA4D4D7E429A333070E133BE /* texture_info_formats.cc */; };
+		A96E901E3BFC5A10A4D4FE5E /* trace_writer.cc in Sources */ = {isa = PBXBuildFile; fileRef = 32F57D66F6613F183504E3A6 /* trace_writer.cc */; };
+		A9FD4F839DFC98F522E7ADC3 /* libxxhash.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AF89D06BF39DA19DE76F26AB /* libxxhash.a */; };
+		ACDECA0A3F6C93FCA845384A /* trace_reader.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2ECDCA92F2398C4430DD30D2 /* trace_reader.cc */; };
+		CCE559BE5F7323B0C84BC7FE /* trace_player.cc in Sources */ = {isa = PBXBuildFile; fileRef = 9A839D065DEF5EB89C930346 /* trace_player.cc */; };
+		D0B39ADC450DDFCEC2F1691C /* shader_interpreter.cc in Sources */ = {isa = PBXBuildFile; fileRef = 0E2A17442053F3F65444DD84 /* shader_interpreter.cc */; };
+		D747AE6469D57856D2AE1CA4 /* texture_util.cc in Sources */ = {isa = PBXBuildFile; fileRef = FADD484CBE4909FEFCECAE8C /* texture_util.cc */; };
+		D98A3F0EB82CDA806D0EDD4E /* spirv_shader_translator.cc in Sources */ = {isa = PBXBuildFile; fileRef = EBBA9256EB5D758825B22896 /* spirv_shader_translator.cc */; };
+		DC697148ECB6553AEAA31F88 /* dxbc_shader_translator_memexport.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2B8126F0D2F6C2A27BBBCD30 /* dxbc_shader_translator_memexport.cc */; };
+		E0C89DCCD1C00BBE3DC38C0C /* dxbc_geometry_shader.cc in Sources */ = {isa = PBXBuildFile; fileRef = 5EA90534F6F5EAE6253CEB74 /* dxbc_geometry_shader.cc */; };
+		E7BAF65E4441FAD0CCE4B49E /* dxbc_shader_translator_om.cc in Sources */ = {isa = PBXBuildFile; fileRef = 85B76AA6959C96D8821020E6 /* dxbc_shader_translator_om.cc */; };
+		F36331548DBD1A46C9F57F94 /* spirv_shader_translator_rb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2EE3D23CCCC4D2EEA443187C /* spirv_shader_translator_rb.cc */; };
+		FB51242C0B9E081E098AD26C /* hlsl_shader_translator_memexport.cc in Sources */ = {isa = PBXBuildFile; fileRef = D9BEA19481343D4629F947D4 /* hlsl_shader_translator_memexport.cc */; };
+		FE39C0906F5C618225230ED0 /* trace_dump.cc in Sources */ = {isa = PBXBuildFile; fileRef = CC9F7FB8F4DA386ADC75C5F8 /* trace_dump.cc */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		08531FDD50C4040F9562D61D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 801FFD36CD82F36843A1F376 /* snappy.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = B663D90A5951FFBCE877DF4A;
+			remoteInfo = libsnappy.a;
+		};
+		32E4CD7C590AFD2EC011F3BC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 21786B02434418347FF94142 /* dxbc.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = E12F01760FD555686916AFB6;
+			remoteInfo = libdxbc.a;
+		};
+		396FBF0F81E0A341C67F754F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3CD171E88A34681A00536828 /* xxhash.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = E01FA10951AAB97B00ABDF49;
+			remoteInfo = libxxhash.a;
+		};
+		563001A27E6ABA54660647E2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0F8A5740A5011672139D6D80 /* xenia-ui.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 57BBBAEF6ECE56215EEA512F;
+			remoteInfo = "libxenia-ui.a";
+		};
+		5A8D9276A2FE76A8E79D48B6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 801FFD36CD82F36843A1F376 /* snappy.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 362FB7B0A7BAD02256BBF5F0;
+			remoteInfo = libsnappy.a;
+		};
+		70C63E696A2C3FDB5DC79CA9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3612C02E5E4D78E045E9066E /* fmt.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A4498576D2EFD9682C3133B6;
+			remoteInfo = libfmt.a;
+		};
+		96DAFAABC7BEF29DDAD728EB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D72BFB326F78E0E49DBFE172 /* glslang-spirv.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C90ED8381F9C42AAF8155678;
+			remoteInfo = "libglslang-spirv.a";
+		};
+		A86A743BD0A52CEDB840BA7B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0F8A5740A5011672139D6D80 /* xenia-ui.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = AF7070F5B0236DE724053F35;
+			remoteInfo = "libxenia-ui.a";
+		};
+		AA4B43DFCC16F11108CC1A1F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2D378CBA117E94EC956BC2FA /* xenia-base.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 6C73464C929975FEF9A06C8C;
+			remoteInfo = "libxenia-base.a";
+		};
+		C300B102BC66B274B0020F42 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3612C02E5E4D78E045E9066E /* fmt.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 169B869CBAEE244ECD266CDC;
+			remoteInfo = libfmt.a;
+		};
+		E0AA5AE306D08A956DD78123 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 21786B02434418347FF94142 /* dxbc.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C14C5B90C4BD2DC24629D1D0;
+			remoteInfo = libdxbc.a;
+		};
+		E7354C762FA630A8744502B6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3CD171E88A34681A00536828 /* xxhash.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9E50ED83413F1435D064F3C3;
+			remoteInfo = libxxhash.a;
+		};
+		E9156D4419F965362D119B84 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D72BFB326F78E0E49DBFE172 /* glslang-spirv.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 36C0891E7F316D50C3D03F5E;
+			remoteInfo = "libglslang-spirv.a";
+		};
+		FC85B6781E5163AA5B068CB8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2D378CBA117E94EC956BC2FA /* xenia-base.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 818584B27AEB86246E86E2F2;
+			remoteInfo = "libxenia-base.a";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		004FAA44C3BB6BF6025F1084 /* spirv_shader.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = spirv_shader.cc; path = ../src/xenia/gpu/spirv_shader.cc; sourceTree = "<group>"; };
+		03AE7A78511170AAC73070B8 /* register_file.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = register_file.cc; path = ../src/xenia/gpu/register_file.cc; sourceTree = "<group>"; };
+		0A8B9C342C574966690C7274 /* trace_viewer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = trace_viewer.h; path = ../src/xenia/gpu/trace_viewer.h; sourceTree = "<group>"; };
+		0C50AC9E2E1C59D06AD182DE /* dxbc_shader.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = dxbc_shader.cc; path = ../src/xenia/gpu/dxbc_shader.cc; sourceTree = "<group>"; };
+		0E2A17442053F3F65444DD84 /* shader_interpreter.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = shader_interpreter.cc; path = ../src/xenia/gpu/shader_interpreter.cc; sourceTree = "<group>"; };
+		0F8A5740A5011672139D6D80 /* libxenia-ui.a */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = xenia-ui.xcodeproj; path = "xenia-ui.xcodeproj"; sourceTree = SOURCE_ROOT; };
+		0FC0F0B85D23E6EAD342E6F8 /* texture_cache.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = texture_cache.cc; path = ../src/xenia/gpu/texture_cache.cc; sourceTree = "<group>"; };
+		1157A536B4A32E68CF73FB76 /* dxbc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = dxbc.h; path = ../src/xenia/gpu/dxbc.h; sourceTree = "<group>"; };
+		125DA3103429504270DE7950 /* texture_util.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = texture_util.h; path = ../src/xenia/gpu/texture_util.h; sourceTree = "<group>"; };
+		12E9B2685B88F09A7EB4A8A8 /* spirv_shader_translator_fetch.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = spirv_shader_translator_fetch.cc; path = ../src/xenia/gpu/spirv_shader_translator_fetch.cc; sourceTree = "<group>"; };
+		145E6FA2587240D44C43C5E2 /* render_target_cache.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = render_target_cache.cc; path = ../src/xenia/gpu/render_target_cache.cc; sourceTree = "<group>"; };
+		18D4DDFA33A14CAC3771E43A /* spirv_shader_translator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = spirv_shader_translator.h; path = ../src/xenia/gpu/spirv_shader_translator.h; sourceTree = "<group>"; };
+		1DE1FE7861F5CFAA55C754B8 /* dxbc_geometry_shader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = dxbc_geometry_shader.h; path = ../src/xenia/gpu/dxbc_geometry_shader.h; sourceTree = "<group>"; };
+		207537567BC0878869F26D96 /* spirv_shader_translator_memexport.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = spirv_shader_translator_memexport.cc; path = ../src/xenia/gpu/spirv_shader_translator_memexport.cc; sourceTree = "<group>"; };
+		21786B02434418347FF94142 /* libdxbc.a */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "dxbc.xcodeproj"; path = dxbc.xcodeproj; sourceTree = SOURCE_ROOT; };
+		264ACD080A91D53A8E7F0348 /* shader_interpreter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = shader_interpreter.h; path = ../src/xenia/gpu/shader_interpreter.h; sourceTree = "<group>"; };
+		2B8126F0D2F6C2A27BBBCD30 /* dxbc_shader_translator_memexport.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = dxbc_shader_translator_memexport.cc; path = ../src/xenia/gpu/dxbc_shader_translator_memexport.cc; sourceTree = "<group>"; };
+		2BD7C2AC4DA36FDE8A5898EC /* texture_info.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = texture_info.h; path = ../src/xenia/gpu/texture_info.h; sourceTree = "<group>"; };
+		2BEC50F2EF5812A42DFBB732 /* shared_memory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = shared_memory.h; path = ../src/xenia/gpu/shared_memory.h; sourceTree = "<group>"; };
+		2C569D805E4FE832D82F23C0 /* texture_extent.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = texture_extent.cc; path = ../src/xenia/gpu/texture_extent.cc; sourceTree = "<group>"; };
+		2D378CBA117E94EC956BC2FA /* libxenia-base.a */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = xenia-base.xcodeproj; path = "xenia-base.xcodeproj"; sourceTree = SOURCE_ROOT; };
+		2ECDCA92F2398C4430DD30D2 /* trace_reader.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = trace_reader.cc; path = ../src/xenia/gpu/trace_reader.cc; sourceTree = "<group>"; };
+		2EE3D23CCCC4D2EEA443187C /* spirv_shader_translator_rb.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = spirv_shader_translator_rb.cc; path = ../src/xenia/gpu/spirv_shader_translator_rb.cc; sourceTree = "<group>"; };
+		30329AE4425C7796764D6124 /* primitive_processor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = primitive_processor.h; path = ../src/xenia/gpu/primitive_processor.h; sourceTree = "<group>"; };
+		32F57D66F6613F183504E3A6 /* trace_writer.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = trace_writer.cc; path = ../src/xenia/gpu/trace_writer.cc; sourceTree = "<group>"; };
+		32FDA9F01744B2229B31E030 /* shader_translator.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = shader_translator.cc; path = ../src/xenia/gpu/shader_translator.cc; sourceTree = "<group>"; };
+		3612C02E5E4D78E045E9066E /* libfmt.a */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "fmt.xcodeproj"; path = fmt.xcodeproj; sourceTree = SOURCE_ROOT; };
+		3A1CAF9ACF936ECC3E2FC5DA /* graphics_system.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = graphics_system.cc; path = ../src/xenia/gpu/graphics_system.cc; sourceTree = "<group>"; };
+		3CD171E88A34681A00536828 /* libxxhash.a */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "xxhash.xcodeproj"; path = xxhash.xcodeproj; sourceTree = SOURCE_ROOT; };
+		40A2D636626E83689F23AC76 /* trace_reader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = trace_reader.h; path = ../src/xenia/gpu/trace_reader.h; sourceTree = "<group>"; };
+		4D18F46CE565DA1E13ACDAAC /* draw_extent_estimator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = draw_extent_estimator.h; path = ../src/xenia/gpu/draw_extent_estimator.h; sourceTree = "<group>"; };
+		516D1C18308A364A0C939258 /* hlsl_shader_translator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = hlsl_shader_translator.h; path = ../src/xenia/gpu/hlsl_shader_translator.h; sourceTree = "<group>"; };
+		52F9F6EA74C5A41CB17ACD2A /* trace_player.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = trace_player.h; path = ../src/xenia/gpu/trace_player.h; sourceTree = "<group>"; };
+		5B3EC630CF273DE2F174EC70 /* shader_translator_disasm.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = shader_translator_disasm.cc; path = ../src/xenia/gpu/shader_translator_disasm.cc; sourceTree = "<group>"; };
+		5E57524EABBA488021D9488E /* shared_memory.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = shared_memory.cc; path = ../src/xenia/gpu/shared_memory.cc; sourceTree = "<group>"; };
+		5EA90534F6F5EAE6253CEB74 /* dxbc_geometry_shader.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = dxbc_geometry_shader.cc; path = ../src/xenia/gpu/dxbc_geometry_shader.cc; sourceTree = "<group>"; };
+		678921328954CE64C609F772 /* sampler_info.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = sampler_info.h; path = ../src/xenia/gpu/sampler_info.h; sourceTree = "<group>"; };
+		684B147E9A445F3014239ABE /* graphics_system.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = graphics_system.h; path = ../src/xenia/gpu/graphics_system.h; sourceTree = "<group>"; };
+		6BAD437C2F19052E6DBCA9BC /* texture_cache.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = texture_cache.h; path = ../src/xenia/gpu/texture_cache.h; sourceTree = "<group>"; };
+		6BFF685486CBD7068A9C6E94 /* hlsl_shader_translator.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = hlsl_shader_translator.cc; path = ../src/xenia/gpu/hlsl_shader_translator.cc; sourceTree = "<group>"; };
+		6E2FBCA49455EC56FB5CE2E4 /* registers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = registers.h; path = ../src/xenia/gpu/registers.h; sourceTree = "<group>"; };
+		6EE6313089B29FE28D833770 /* dxbc_shader_translator.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = dxbc_shader_translator.cc; path = ../src/xenia/gpu/dxbc_shader_translator.cc; sourceTree = "<group>"; };
+		71A29F5415F53D06282D8594 /* ucode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ucode.h; path = ../src/xenia/gpu/ucode.h; sourceTree = "<group>"; };
+		7291320A82765E3C6EE9E84A /* hlsl_shader_translator_om.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = hlsl_shader_translator_om.cc; path = ../src/xenia/gpu/hlsl_shader_translator_om.cc; sourceTree = "<group>"; };
+		76C1ABA464293E56012331E4 /* pm4_command_processor_implement.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = pm4_command_processor_implement.h; path = ../src/xenia/gpu/pm4_command_processor_implement.h; sourceTree = "<group>"; };
+		7E1953BE90433070C43419FE /* packet_disassembler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = packet_disassembler.h; path = ../src/xenia/gpu/packet_disassembler.h; sourceTree = "<group>"; };
+		7E33ACE281A47F1403112322 /* shader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = shader.h; path = ../src/xenia/gpu/shader.h; sourceTree = "<group>"; };
+		801FFD36CD82F36843A1F376 /* libsnappy.a */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "snappy.xcodeproj"; path = snappy.xcodeproj; sourceTree = SOURCE_ROOT; };
+		807D9220C4916352B862E860 /* primitive_processor.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = primitive_processor.cc; path = ../src/xenia/gpu/primitive_processor.cc; sourceTree = "<group>"; };
+		8455052847C0C6DA86646B68 /* texture_info.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = texture_info.cc; path = ../src/xenia/gpu/texture_info.cc; sourceTree = "<group>"; };
+		85B76AA6959C96D8821020E6 /* dxbc_shader_translator_om.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = dxbc_shader_translator_om.cc; path = ../src/xenia/gpu/dxbc_shader_translator_om.cc; sourceTree = "<group>"; };
+		8F0FA54AB0DB527CED907B8A /* trace_writer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = trace_writer.h; path = ../src/xenia/gpu/trace_writer.h; sourceTree = "<group>"; };
+		956B002EA794DCE0DB85C66E /* spirv_compatibility.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = spirv_compatibility.h; path = ../src/xenia/gpu/spirv_compatibility.h; sourceTree = "<group>"; };
+		96C4A6C6DF358AF823D45D06 /* draw_util.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = draw_util.cc; path = ../src/xenia/gpu/draw_util.cc; sourceTree = "<group>"; };
+		982E105D919411CF852F6E9D /* libxenia-gpu.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libxenia-gpu.a"; path = "libxenia-gpu.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A839D065DEF5EB89C930346 /* trace_player.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = trace_player.cc; path = ../src/xenia/gpu/trace_player.cc; sourceTree = "<group>"; };
+		9CA954CE601516809EB8BB0E /* sampler_info.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = sampler_info.cc; path = ../src/xenia/gpu/sampler_info.cc; sourceTree = "<group>"; };
+		9D4BF7E860B7B99A9F5B5E28 /* spirv_builder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = spirv_builder.h; path = ../src/xenia/gpu/spirv_builder.h; sourceTree = "<group>"; };
+		9E3E6EFE412C95B0D052753E /* shader.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = shader.cc; path = ../src/xenia/gpu/shader.cc; sourceTree = "<group>"; };
+		9FB486DE352B4610A3C79D1E /* xenos_zpd_report.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = xenos_zpd_report.h; path = ../src/xenia/gpu/xenos_zpd_report.h; sourceTree = "<group>"; };
+		A12A2FC2C964E874B1007602 /* dxbc_shader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = dxbc_shader.h; path = ../src/xenia/gpu/dxbc_shader.h; sourceTree = "<group>"; };
+		A1FA17FC6565D9AEA4097E3C /* texture_dump.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = texture_dump.cc; path = ../src/xenia/gpu/texture_dump.cc; sourceTree = "<group>"; };
+		A559483068C509E2A768AE70 /* trace_viewer.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = trace_viewer.cc; path = ../src/xenia/gpu/trace_viewer.cc; sourceTree = "<group>"; };
+		A9DB144AAD4BE67C2EB88A8A /* xenos.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = xenos.cc; path = ../src/xenia/gpu/xenos.cc; sourceTree = "<group>"; };
+		AA4D4D7E429A333070E133BE /* texture_info_formats.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = texture_info_formats.cc; path = ../src/xenia/gpu/texture_info_formats.cc; sourceTree = "<group>"; };
+		B2548C06C47E68B8F86F5246 /* render_target_cache.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = render_target_cache.h; path = ../src/xenia/gpu/render_target_cache.h; sourceTree = "<group>"; };
+		B2E5CD6C972CD59E1B1A03AC /* command_processor.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = command_processor.cc; path = ../src/xenia/gpu/command_processor.cc; sourceTree = "<group>"; };
+		B33091DAF744630CEB15E81A /* packet_disassembler.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = packet_disassembler.cc; path = ../src/xenia/gpu/packet_disassembler.cc; sourceTree = "<group>"; };
+		B75A49BCFFCB2DEE4469FFFC /* trace_dump.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = trace_dump.h; path = ../src/xenia/gpu/trace_dump.h; sourceTree = "<group>"; };
+		B7961CD851BA120A01DFF318 /* spirv_shader_translator_alu.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = spirv_shader_translator_alu.cc; path = ../src/xenia/gpu/spirv_shader_translator_alu.cc; sourceTree = "<group>"; };
+		B965410A06C8373C7CE7374A /* shader_storage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = shader_storage.h; path = ../src/xenia/gpu/shader_storage.h; sourceTree = "<group>"; };
+		BCD8E9626FCEF314C0F14FA2 /* dxbc_shader_translator_fetch.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = dxbc_shader_translator_fetch.cc; path = ../src/xenia/gpu/dxbc_shader_translator_fetch.cc; sourceTree = "<group>"; };
+		BE64D1AE62B76F6074EFB7EE /* xenos.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = xenos.h; path = ../src/xenia/gpu/xenos.h; sourceTree = "<group>"; };
+		BEBD0A60072DEE924BCCC0A0 /* registers.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = registers.cc; path = ../src/xenia/gpu/registers.cc; sourceTree = "<group>"; };
+		BEBE15FA8229D7ACC0CD7C3A /* pipeline_util.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = pipeline_util.h; path = ../src/xenia/gpu/pipeline_util.h; sourceTree = "<group>"; };
+		C10555EAE72B859C4E327C2A /* draw_util.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = draw_util.h; path = ../src/xenia/gpu/draw_util.h; sourceTree = "<group>"; };
+		C15BF93C84C7BAEEC36B5F7C /* register_file.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = register_file.h; path = ../src/xenia/gpu/register_file.h; sourceTree = "<group>"; };
+		C2F178200B625C5250012E60 /* gpu_flags.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = gpu_flags.cc; path = ../src/xenia/gpu/gpu_flags.cc; sourceTree = "<group>"; };
+		CC3EEFB4AB5C09E6876565F4 /* dxbc_shader_translator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = dxbc_shader_translator.h; path = ../src/xenia/gpu/dxbc_shader_translator.h; sourceTree = "<group>"; };
+		CC9F7FB8F4DA386ADC75C5F8 /* trace_dump.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = trace_dump.cc; path = ../src/xenia/gpu/trace_dump.cc; sourceTree = "<group>"; };
+		CE9B19B41BFE0FE6921D0FF4 /* trace_protocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = trace_protocol.h; path = ../src/xenia/gpu/trace_protocol.h; sourceTree = "<group>"; };
+		D2408F70A063E322277235B0 /* command_processor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = command_processor.h; path = ../src/xenia/gpu/command_processor.h; sourceTree = "<group>"; };
+		D48FD334A2B326E629C17974 /* shader_translator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = shader_translator.h; path = ../src/xenia/gpu/shader_translator.h; sourceTree = "<group>"; };
+		D72BFB326F78E0E49DBFE172 /* libglslang-spirv.a */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = glslang-spirv.xcodeproj; path = "glslang-spirv.xcodeproj"; sourceTree = SOURCE_ROOT; };
+		D9BEA19481343D4629F947D4 /* hlsl_shader_translator_memexport.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = hlsl_shader_translator_memexport.cc; path = ../src/xenia/gpu/hlsl_shader_translator_memexport.cc; sourceTree = "<group>"; };
+		DFF437CE92EA4180E40C9E0E /* pm4_command_processor_declare.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = pm4_command_processor_declare.h; path = ../src/xenia/gpu/pm4_command_processor_declare.h; sourceTree = "<group>"; };
+		E316D2B0788D91E2E729E8F0 /* register_table.inc */ = {isa = PBXFileReference; lastKnownFileType = text; name = register_table.inc; path = ../src/xenia/gpu/register_table.inc; sourceTree = "<group>"; };
+		E4B196640AD7C61671DEBCA4 /* gpu_flags.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = gpu_flags.h; path = ../src/xenia/gpu/gpu_flags.h; sourceTree = "<group>"; };
+		E6C2571284A357C45C219D52 /* dxbc_shader_translator_alu.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = dxbc_shader_translator_alu.cc; path = ../src/xenia/gpu/dxbc_shader_translator_alu.cc; sourceTree = "<group>"; };
+		E93A7E880B062BBA47BB54C8 /* spirv_shader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = spirv_shader.h; path = ../src/xenia/gpu/spirv_shader.h; sourceTree = "<group>"; };
+		EBBA9256EB5D758825B22896 /* spirv_shader_translator.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = spirv_shader_translator.cc; path = ../src/xenia/gpu/spirv_shader_translator.cc; sourceTree = "<group>"; };
+		EC3BE8201E3532D298146E60 /* texture_address.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = texture_address.h; path = ../src/xenia/gpu/texture_address.h; sourceTree = "<group>"; };
+		F330FF10F6A1D142780E7550 /* ucode.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ucode.cc; path = ../src/xenia/gpu/ucode.cc; sourceTree = "<group>"; };
+		F4B4C9369295C9E86A140F76 /* hlsl_shader_translator_alu.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = hlsl_shader_translator_alu.cc; path = ../src/xenia/gpu/hlsl_shader_translator_alu.cc; sourceTree = "<group>"; };
+		F7176906AA0D72B8FB2FCF46 /* hlsl_shader_translator_fetch.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = hlsl_shader_translator_fetch.cc; path = ../src/xenia/gpu/hlsl_shader_translator_fetch.cc; sourceTree = "<group>"; };
+		FADD484CBE4909FEFCECAE8C /* texture_util.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = texture_util.cc; path = ../src/xenia/gpu/texture_util.cc; sourceTree = "<group>"; };
+		FC78FCA8DB9616DAB79F72E8 /* draw_extent_estimator.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = draw_extent_estimator.cc; path = ../src/xenia/gpu/draw_extent_estimator.cc; sourceTree = "<group>"; };
+		FE8A95644BED8B96C20C8BA4 /* spirv_builder.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = spirv_builder.cc; path = ../src/xenia/gpu/spirv_builder.cc; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		37B45F4DA93F77BF58409D8D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8129111D43E9718FA11E4F5D /* libdxbc.a in Frameworks */,
+				1214D1E9B3FE6DDBAB258029 /* libfmt.a in Frameworks */,
+				93F3A22D2E4D8B1F6A85F06D /* libglslang-spirv.a in Frameworks */,
+				35B6879129B5D103AEA0E5D1 /* libsnappy.a in Frameworks */,
+				9F6839157E0AD48732ECD755 /* libxenia-base.a in Frameworks */,
+				99C3BF9BA64E720D21333DDB /* libxenia-ui.a in Frameworks */,
+				A9FD4F839DFC98F522E7ADC3 /* libxxhash.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		CC14B6F9CCC7B3EB40A98539 /* Embed Libraries */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Libraries";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXGroup section */
+		0C1897C3057E9935F919F603 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0F1D3965F364419777516FA5 /* libdxbc.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1F42CE8EA2882C00CBCFACCE /* xenia-gpu */ = {
+			isa = PBXGroup;
+			children = (
+				B2E5CD6C972CD59E1B1A03AC /* command_processor.cc */,
+				D2408F70A063E322277235B0 /* command_processor.h */,
+				FC78FCA8DB9616DAB79F72E8 /* draw_extent_estimator.cc */,
+				4D18F46CE565DA1E13ACDAAC /* draw_extent_estimator.h */,
+				96C4A6C6DF358AF823D45D06 /* draw_util.cc */,
+				C10555EAE72B859C4E327C2A /* draw_util.h */,
+				1157A536B4A32E68CF73FB76 /* dxbc.h */,
+				5EA90534F6F5EAE6253CEB74 /* dxbc_geometry_shader.cc */,
+				1DE1FE7861F5CFAA55C754B8 /* dxbc_geometry_shader.h */,
+				0C50AC9E2E1C59D06AD182DE /* dxbc_shader.cc */,
+				A12A2FC2C964E874B1007602 /* dxbc_shader.h */,
+				6EE6313089B29FE28D833770 /* dxbc_shader_translator.cc */,
+				CC3EEFB4AB5C09E6876565F4 /* dxbc_shader_translator.h */,
+				E6C2571284A357C45C219D52 /* dxbc_shader_translator_alu.cc */,
+				BCD8E9626FCEF314C0F14FA2 /* dxbc_shader_translator_fetch.cc */,
+				2B8126F0D2F6C2A27BBBCD30 /* dxbc_shader_translator_memexport.cc */,
+				85B76AA6959C96D8821020E6 /* dxbc_shader_translator_om.cc */,
+				C2F178200B625C5250012E60 /* gpu_flags.cc */,
+				E4B196640AD7C61671DEBCA4 /* gpu_flags.h */,
+				3A1CAF9ACF936ECC3E2FC5DA /* graphics_system.cc */,
+				684B147E9A445F3014239ABE /* graphics_system.h */,
+				6BFF685486CBD7068A9C6E94 /* hlsl_shader_translator.cc */,
+				516D1C18308A364A0C939258 /* hlsl_shader_translator.h */,
+				F4B4C9369295C9E86A140F76 /* hlsl_shader_translator_alu.cc */,
+				F7176906AA0D72B8FB2FCF46 /* hlsl_shader_translator_fetch.cc */,
+				D9BEA19481343D4629F947D4 /* hlsl_shader_translator_memexport.cc */,
+				7291320A82765E3C6EE9E84A /* hlsl_shader_translator_om.cc */,
+				B33091DAF744630CEB15E81A /* packet_disassembler.cc */,
+				7E1953BE90433070C43419FE /* packet_disassembler.h */,
+				BEBE15FA8229D7ACC0CD7C3A /* pipeline_util.h */,
+				DFF437CE92EA4180E40C9E0E /* pm4_command_processor_declare.h */,
+				76C1ABA464293E56012331E4 /* pm4_command_processor_implement.h */,
+				807D9220C4916352B862E860 /* primitive_processor.cc */,
+				30329AE4425C7796764D6124 /* primitive_processor.h */,
+				03AE7A78511170AAC73070B8 /* register_file.cc */,
+				C15BF93C84C7BAEEC36B5F7C /* register_file.h */,
+				E316D2B0788D91E2E729E8F0 /* register_table.inc */,
+				BEBD0A60072DEE924BCCC0A0 /* registers.cc */,
+				6E2FBCA49455EC56FB5CE2E4 /* registers.h */,
+				145E6FA2587240D44C43C5E2 /* render_target_cache.cc */,
+				B2548C06C47E68B8F86F5246 /* render_target_cache.h */,
+				9CA954CE601516809EB8BB0E /* sampler_info.cc */,
+				678921328954CE64C609F772 /* sampler_info.h */,
+				9E3E6EFE412C95B0D052753E /* shader.cc */,
+				7E33ACE281A47F1403112322 /* shader.h */,
+				0E2A17442053F3F65444DD84 /* shader_interpreter.cc */,
+				264ACD080A91D53A8E7F0348 /* shader_interpreter.h */,
+				B965410A06C8373C7CE7374A /* shader_storage.h */,
+				32FDA9F01744B2229B31E030 /* shader_translator.cc */,
+				D48FD334A2B326E629C17974 /* shader_translator.h */,
+				5B3EC630CF273DE2F174EC70 /* shader_translator_disasm.cc */,
+				5E57524EABBA488021D9488E /* shared_memory.cc */,
+				2BEC50F2EF5812A42DFBB732 /* shared_memory.h */,
+				FE8A95644BED8B96C20C8BA4 /* spirv_builder.cc */,
+				9D4BF7E860B7B99A9F5B5E28 /* spirv_builder.h */,
+				956B002EA794DCE0DB85C66E /* spirv_compatibility.h */,
+				004FAA44C3BB6BF6025F1084 /* spirv_shader.cc */,
+				E93A7E880B062BBA47BB54C8 /* spirv_shader.h */,
+				EBBA9256EB5D758825B22896 /* spirv_shader_translator.cc */,
+				18D4DDFA33A14CAC3771E43A /* spirv_shader_translator.h */,
+				B7961CD851BA120A01DFF318 /* spirv_shader_translator_alu.cc */,
+				12E9B2685B88F09A7EB4A8A8 /* spirv_shader_translator_fetch.cc */,
+				207537567BC0878869F26D96 /* spirv_shader_translator_memexport.cc */,
+				2EE3D23CCCC4D2EEA443187C /* spirv_shader_translator_rb.cc */,
+				EC3BE8201E3532D298146E60 /* texture_address.h */,
+				0FC0F0B85D23E6EAD342E6F8 /* texture_cache.cc */,
+				6BAD437C2F19052E6DBCA9BC /* texture_cache.h */,
+				A1FA17FC6565D9AEA4097E3C /* texture_dump.cc */,
+				2C569D805E4FE832D82F23C0 /* texture_extent.cc */,
+				8455052847C0C6DA86646B68 /* texture_info.cc */,
+				2BD7C2AC4DA36FDE8A5898EC /* texture_info.h */,
+				AA4D4D7E429A333070E133BE /* texture_info_formats.cc */,
+				FADD484CBE4909FEFCECAE8C /* texture_util.cc */,
+				125DA3103429504270DE7950 /* texture_util.h */,
+				CC9F7FB8F4DA386ADC75C5F8 /* trace_dump.cc */,
+				B75A49BCFFCB2DEE4469FFFC /* trace_dump.h */,
+				9A839D065DEF5EB89C930346 /* trace_player.cc */,
+				52F9F6EA74C5A41CB17ACD2A /* trace_player.h */,
+				CE9B19B41BFE0FE6921D0FF4 /* trace_protocol.h */,
+				2ECDCA92F2398C4430DD30D2 /* trace_reader.cc */,
+				40A2D636626E83689F23AC76 /* trace_reader.h */,
+				A559483068C509E2A768AE70 /* trace_viewer.cc */,
+				0A8B9C342C574966690C7274 /* trace_viewer.h */,
+				32F57D66F6613F183504E3A6 /* trace_writer.cc */,
+				8F0FA54AB0DB527CED907B8A /* trace_writer.h */,
+				F330FF10F6A1D142780E7550 /* ucode.cc */,
+				71A29F5415F53D06282D8594 /* ucode.h */,
+				A9DB144AAD4BE67C2EB88A8A /* xenos.cc */,
+				BE64D1AE62B76F6074EFB7EE /* xenos.h */,
+				9FB486DE352B4610A3C79D1E /* xenos_zpd_report.h */,
+				A6C936B49B3FADE6EA134CF4 /* Products */,
+				9D968EAA920D05DCE0E0A4EA /* Projects */,
+			);
+			name = "xenia-gpu";
+			sourceTree = "<group>";
+		};
+		4882513F7814203153215F7F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E9AE83DDE951670F23A61A1D /* libxenia-base.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5ADFA57D45CBCB6F8DB193BD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BBC90899FFDCD9CBF3AE5ED9 /* libsnappy.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9D968EAA920D05DCE0E0A4EA /* Projects */ = {
+			isa = PBXGroup;
+			children = (
+				21786B02434418347FF94142 /* dxbc.xcodeproj */,
+				3612C02E5E4D78E045E9066E /* fmt.xcodeproj */,
+				D72BFB326F78E0E49DBFE172 /* glslang-spirv.xcodeproj */,
+				801FFD36CD82F36843A1F376 /* snappy.xcodeproj */,
+				2D378CBA117E94EC956BC2FA /* xenia-base.xcodeproj */,
+				0F8A5740A5011672139D6D80 /* xenia-ui.xcodeproj */,
+				3CD171E88A34681A00536828 /* xxhash.xcodeproj */,
+			);
+			name = Projects;
+			sourceTree = "<group>";
+		};
+		A6C936B49B3FADE6EA134CF4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				982E105D919411CF852F6E9D /* libxenia-gpu.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A77222F6925E48E8DA441136 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AF89D06BF39DA19DE76F26AB /* libxxhash.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C214E2A218A24D14F11B60E2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6B7301034A901B3526997743 /* libxenia-ui.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C2E32289D9F5BDBBCA11B8C9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FD2DA671CB50FA23525F4CB1 /* libfmt.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DB505E8B9EBC203DDD5FC4CB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				45073E75E2E83F27BA6684B5 /* libglslang-spirv.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		7B16D0A392296BD5824566E3 /* xenia-gpu */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 25EFA7AC977AC01E467BE5EC /* Build configuration list for PBXNativeTarget "xenia-gpu" */;
+			buildPhases = (
+				A79BDFED1926F85FC8281E2D /* Resources */,
+				1148F94482D411B631D53784 /* Sources */,
+				37B45F4DA93F77BF58409D8D /* Frameworks */,
+				CC14B6F9CCC7B3EB40A98539 /* Embed Libraries */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F9D0D4CCF336D63EE6D2330C /* PBXTargetDependency */,
+				B09B5F92C7ADFAC4B7C9F5D2 /* PBXTargetDependency */,
+				C9089B948C745D46CB1801D4 /* PBXTargetDependency */,
+				4897E286338408787B69D0C6 /* PBXTargetDependency */,
+				363A8E4865CC5D3A40D99C88 /* PBXTargetDependency */,
+				AFCD1FAB065A8A1DDED39DEB /* PBXTargetDependency */,
+				952A5FFF801685F1C7FC4E3F /* PBXTargetDependency */,
+			);
+			name = "xenia-gpu";
+			productName = "xenia-gpu";
+			productReference = 982E105D919411CF852F6E9D /* libxenia-gpu.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		08FB7793FE84155DC02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 1DEB928908733DD80010E9CD /* Build configuration list for PBXProject "xenia-gpu" */;
+			compatibilityVersion = "Xcode 3.2";
+			hasScannedForEncodings = 1;
+			mainGroup = 1F42CE8EA2882C00CBCFACCE /* xenia-gpu */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 0C1897C3057E9935F919F603 /* Products */;
+					ProjectRef = 21786B02434418347FF94142 /* dxbc.xcodeproj */;
+				},
+				{
+					ProductGroup = C2E32289D9F5BDBBCA11B8C9 /* Products */;
+					ProjectRef = 3612C02E5E4D78E045E9066E /* fmt.xcodeproj */;
+				},
+				{
+					ProductGroup = DB505E8B9EBC203DDD5FC4CB /* Products */;
+					ProjectRef = D72BFB326F78E0E49DBFE172 /* glslang-spirv.xcodeproj */;
+				},
+				{
+					ProductGroup = 5ADFA57D45CBCB6F8DB193BD /* Products */;
+					ProjectRef = 801FFD36CD82F36843A1F376 /* snappy.xcodeproj */;
+				},
+				{
+					ProductGroup = 4882513F7814203153215F7F /* Products */;
+					ProjectRef = 2D378CBA117E94EC956BC2FA /* xenia-base.xcodeproj */;
+				},
+				{
+					ProductGroup = C214E2A218A24D14F11B60E2 /* Products */;
+					ProjectRef = 0F8A5740A5011672139D6D80 /* xenia-ui.xcodeproj */;
+				},
+				{
+					ProductGroup = A77222F6925E48E8DA441136 /* Products */;
+					ProjectRef = 3CD171E88A34681A00536828 /* xxhash.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				7B16D0A392296BD5824566E3 /* libxenia-gpu.a */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		0F1D3965F364419777516FA5 /* libdxbc.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libdxbc.a;
+			remoteRef = E0AA5AE306D08A956DD78123 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		45073E75E2E83F27BA6684B5 /* libglslang-spirv.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libglslang-spirv.a";
+			remoteRef = 96DAFAABC7BEF29DDAD728EB /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		6B7301034A901B3526997743 /* libxenia-ui.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libxenia-ui.a";
+			remoteRef = 563001A27E6ABA54660647E2 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		AF89D06BF39DA19DE76F26AB /* libxxhash.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libxxhash.a;
+			remoteRef = E7354C762FA630A8744502B6 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		BBC90899FFDCD9CBF3AE5ED9 /* libsnappy.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libsnappy.a;
+			remoteRef = 08531FDD50C4040F9562D61D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E9AE83DDE951670F23A61A1D /* libxenia-base.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libxenia-base.a";
+			remoteRef = AA4B43DFCC16F11108CC1A1F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		FD2DA671CB50FA23525F4CB1 /* libfmt.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libfmt.a;
+			remoteRef = 70C63E696A2C3FDB5DC79CA9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A79BDFED1926F85FC8281E2D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1148F94482D411B631D53784 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				16506084D910C0F636459EC4 /* command_processor.cc in Sources */,
+				14928D80211D3FF29C020BC0 /* draw_extent_estimator.cc in Sources */,
+				2C44747E260630F0600532BE /* draw_util.cc in Sources */,
+				E0C89DCCD1C00BBE3DC38C0C /* dxbc_geometry_shader.cc in Sources */,
+				784D45D6BC9BEB48FEC32416 /* dxbc_shader.cc in Sources */,
+				291DE188831EF87A4A65EFC8 /* dxbc_shader_translator.cc in Sources */,
+				A587848A3FE16D7C7C19D2CA /* dxbc_shader_translator_alu.cc in Sources */,
+				8733FDDA1D5D0FCCDEC36C1A /* dxbc_shader_translator_fetch.cc in Sources */,
+				DC697148ECB6553AEAA31F88 /* dxbc_shader_translator_memexport.cc in Sources */,
+				E7BAF65E4441FAD0CCE4B49E /* dxbc_shader_translator_om.cc in Sources */,
+				6EB2F8786874B4EAA273B6B8 /* gpu_flags.cc in Sources */,
+				9F914292661F3A04D42160D2 /* graphics_system.cc in Sources */,
+				2166B0EC7B67C7DE42AEBF2C /* hlsl_shader_translator.cc in Sources */,
+				6FDDCEEE0A37B7E046701D2E /* hlsl_shader_translator_alu.cc in Sources */,
+				408875BED6B187B09817E3FE /* hlsl_shader_translator_fetch.cc in Sources */,
+				FB51242C0B9E081E098AD26C /* hlsl_shader_translator_memexport.cc in Sources */,
+				09A58602662C8A74EECF4442 /* hlsl_shader_translator_om.cc in Sources */,
+				065E5CD2FA5DA6447F48BB12 /* packet_disassembler.cc in Sources */,
+				7A8B70786E8AB9EAF375CEB8 /* primitive_processor.cc in Sources */,
+				3F5BB850AC83C6C2AE16B690 /* register_file.cc in Sources */,
+				7966CEB873288B2AAD278CF8 /* registers.cc in Sources */,
+				40B50B1A34B4548CB99F695A /* render_target_cache.cc in Sources */,
+				2657CA06B8E593F821BE3846 /* sampler_info.cc in Sources */,
+				7C746936AC06382887137776 /* shader.cc in Sources */,
+				D0B39ADC450DDFCEC2F1691C /* shader_interpreter.cc in Sources */,
+				9CB6C7485F7727BABCAC0588 /* shader_translator.cc in Sources */,
+				475C4C8859138C7ACE817AC8 /* shader_translator_disasm.cc in Sources */,
+				1697208683BF2EF885521EC6 /* shared_memory.cc in Sources */,
+				6CFC47FCDA24566EDBB7463C /* spirv_builder.cc in Sources */,
+				35D913DCC866DDCE313F821C /* spirv_shader.cc in Sources */,
+				D98A3F0EB82CDA806D0EDD4E /* spirv_shader_translator.cc in Sources */,
+				21AE4AB0BA263822E60D28F0 /* spirv_shader_translator_alu.cc in Sources */,
+				4A5E57400F13ADB2C3825580 /* spirv_shader_translator_fetch.cc in Sources */,
+				02392E0E594ED68085976C4E /* spirv_shader_translator_memexport.cc in Sources */,
+				F36331548DBD1A46C9F57F94 /* spirv_shader_translator_rb.cc in Sources */,
+				25A7B29092CFC1029462B0D0 /* texture_cache.cc in Sources */,
+				165C6114A8EA2B0611C2CF54 /* texture_dump.cc in Sources */,
+				59FAB2D8B16025CA636E4118 /* texture_extent.cc in Sources */,
+				09A93B009C3704F2050FA940 /* texture_info.cc in Sources */,
+				A7D3BDB698CB2BA804CEABF6 /* texture_info_formats.cc in Sources */,
+				D747AE6469D57856D2AE1CA4 /* texture_util.cc in Sources */,
+				FE39C0906F5C618225230ED0 /* trace_dump.cc in Sources */,
+				CCE559BE5F7323B0C84BC7FE /* trace_player.cc in Sources */,
+				ACDECA0A3F6C93FCA845384A /* trace_reader.cc in Sources */,
+				5AFA4A88ED88147A5660B8C8 /* trace_viewer.cc in Sources */,
+				A96E901E3BFC5A10A4D4FE5E /* trace_writer.cc in Sources */,
+				3C3F5A6892CCC4DA6B45D8A8 /* ucode.cc in Sources */,
+				4378A8429A0612B4727F2682 /* xenos.cc in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		363A8E4865CC5D3A40D99C88 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "libxenia-base.a";
+			targetProxy = FC85B6781E5163AA5B068CB8 /* PBXContainerItemProxy */;
+		};
+		4897E286338408787B69D0C6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = libsnappy.a;
+			targetProxy = 5A8D9276A2FE76A8E79D48B6 /* PBXContainerItemProxy */;
+		};
+		952A5FFF801685F1C7FC4E3F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = libxxhash.a;
+			targetProxy = 396FBF0F81E0A341C67F754F /* PBXContainerItemProxy */;
+		};
+		AFCD1FAB065A8A1DDED39DEB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "libxenia-ui.a";
+			targetProxy = A86A743BD0A52CEDB840BA7B /* PBXContainerItemProxy */;
+		};
+		B09B5F92C7ADFAC4B7C9F5D2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = libfmt.a;
+			targetProxy = C300B102BC66B274B0020F42 /* PBXContainerItemProxy */;
+		};
+		C9089B948C745D46CB1801D4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "libglslang-spirv.a";
+			targetProxy = E9156D4419F965362D119B84 /* PBXContainerItemProxy */;
+		};
+		F9D0D4CCF336D63EE6D2330C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = libdxbc.a;
+			targetProxy = 32E4CD7C590AFD2EC011F3BC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1F409E727A81F1E44DDC3CB2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					arm64,
+				);
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "bin/iOS-ARM64/Debug";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_DYNAMIC_NO_PIC = NO;
+				INSTALL_PATH = /usr/local/lib;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				PRODUCT_NAME = "xenia-gpu";
+				SDKROOT = (
+					iphoneos,
+				);
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+			};
+			name = Debug;
+		};
+		38A51DEC698915DE7CA14C2C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					arm64,
+				);
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "bin/iOS-ARM64/Release";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_DYNAMIC_NO_PIC = NO;
+				INSTALL_PATH = /usr/local/lib;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				PRODUCT_NAME = "xenia-gpu";
+				SDKROOT = (
+					iphoneos,
+				);
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+			};
+			name = Release;
+		};
+		5B3CBE02A89FB4341EBEB442 /* Valgrind */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					arm64,
+				);
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "bin/iOS-ARM64/Valgrind";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_DYNAMIC_NO_PIC = NO;
+				INSTALL_PATH = /usr/local/lib;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				PRODUCT_NAME = "xenia-gpu";
+				SDKROOT = (
+					iphoneos,
+				);
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+			};
+			name = Valgrind;
+		};
+		99863F72CA6A3764DD826DB2 /* Checked */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					arm64,
+				);
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "bin/iOS-ARM64/Checked";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_DYNAMIC_NO_PIC = NO;
+				INSTALL_PATH = /usr/local/lib;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				PRODUCT_NAME = "xenia-gpu";
+				SDKROOT = (
+					iphoneos,
+				);
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+			};
+			name = Checked;
+		};
+		B6C78457BA3856893BA4FA97 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					arm64,
+				);
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				GCC_C_LANGUAGE_STANDARD = c17;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					VULKAN_HPP_NO_TO_STRING,
+					IMGUI_DISABLE_OBSOLETE_FUNCTIONS,
+					IMGUI_DISABLE_DEFAULT_FONT,
+					IMGUI_USE_STB_SPRINTF,
+					USE_CPP17,
+					_LIB,
+					NDEBUG,
+					"_NO_DEBUG_HEAP=1",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				OBJROOT = "obj/iOS-ARM64/Release/iOS-ARM64/Release/xenia-gpu";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CFLAGS = (
+					"-O3",
+					"-finline-functions",
+					"-funroll-loops",
+					"-fomit-frame-pointer",
+					"-w",
+					"-fno-modules",
+				);
+				SDKROOT = (
+					iphoneos,
+				);
+				SYMROOT = "bin/iOS-ARM64/Release";
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+				USER_HEADER_SEARCH_PATHS = (
+					..,
+					../src,
+					../third_party,
+					../third_party/glslang,
+				);
+			};
+			name = Release;
+		};
+		CB99E65DCF0AB88F50775C9D /* Checked */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					arm64,
+				);
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = c17;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					VULKAN_HPP_NO_TO_STRING,
+					IMGUI_DISABLE_OBSOLETE_FUNCTIONS,
+					IMGUI_DISABLE_DEFAULT_FONT,
+					USE_CPP17,
+					_LIB,
+					DEBUG,
+					NDEBUG,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				OBJROOT = "obj/iOS-ARM64/Checked/iOS-ARM64/Checked/xenia-gpu";
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = (
+					"-w",
+					"-fno-modules",
+				);
+				SDKROOT = (
+					iphoneos,
+				);
+				SYMROOT = "bin/iOS-ARM64/Checked";
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+				USER_HEADER_SEARCH_PATHS = (
+					..,
+					../src,
+					../third_party,
+					../third_party/glslang,
+				);
+			};
+			name = Checked;
+		};
+		DF447EDD83971C8F95CF651D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					arm64,
+				);
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = c17;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					VULKAN_HPP_NO_TO_STRING,
+					IMGUI_DISABLE_OBSOLETE_FUNCTIONS,
+					IMGUI_DISABLE_DEFAULT_FONT,
+					IMGUI_USE_STB_SPRINTF,
+					USE_CPP17,
+					_LIB,
+					DEBUG,
+					"_NO_DEBUG_HEAP=1",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				OBJROOT = "obj/iOS-ARM64/Debug/iOS-ARM64/Debug/xenia-gpu";
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = (
+					"-w",
+					"-fno-modules",
+				);
+				SDKROOT = (
+					iphoneos,
+				);
+				SYMROOT = "bin/iOS-ARM64/Debug";
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+				USER_HEADER_SEARCH_PATHS = (
+					..,
+					../src,
+					../third_party,
+					../third_party/glslang,
+				);
+			};
+			name = Debug;
+		};
+		EEBC502D6047689F0F488E6D /* Valgrind */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					arm64,
+				);
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = c17;
+				GCC_OPTIMIZATION_LEVEL = g;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					VULKAN_HPP_NO_TO_STRING,
+					IMGUI_DISABLE_OBSOLETE_FUNCTIONS,
+					IMGUI_DISABLE_DEFAULT_FONT,
+					IMGUI_USE_STB_SPRINTF,
+					USE_CPP17,
+					_LIB,
+					DEBUG,
+					NDEBUG,
+					"_NO_DEBUG_HEAP=1",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				OBJROOT = "obj/iOS-ARM64/Valgrind/iOS-ARM64/Valgrind/xenia-gpu";
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = (
+					"-fno-omit-frame-pointer",
+					"-fno-inline-functions",
+					"-w",
+					"-fno-modules",
+				);
+				SDKROOT = (
+					iphoneos,
+				);
+				SYMROOT = "bin/iOS-ARM64/Valgrind";
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+				USER_HEADER_SEARCH_PATHS = (
+					..,
+					../src,
+					../third_party,
+					../third_party/glslang,
+				);
+			};
+			name = Valgrind;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1DEB928908733DD80010E9CD /* Build configuration list for PBXProject "xenia-gpu" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CB99E65DCF0AB88F50775C9D /* Checked */,
+				DF447EDD83971C8F95CF651D /* Debug */,
+				B6C78457BA3856893BA4FA97 /* Release */,
+				EEBC502D6047689F0F488E6D /* Valgrind */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Checked;
+		};
+		25EFA7AC977AC01E467BE5EC /* Build configuration list for PBXNativeTarget "libxenia-gpu.a" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				99863F72CA6A3764DD826DB2 /* Checked */,
+				1F409E727A81F1E44DDC3CB2 /* Debug */,
+				38A51DEC698915DE7CA14C2C /* Release */,
+				5B3CBE02A89FB4341EBEB442 /* Valgrind */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Checked;
+		};
+/* End XCConfigurationList section */
+};
+rootObject = 08FB7793FE84155DC02AAC07 /* Project object */;
+}

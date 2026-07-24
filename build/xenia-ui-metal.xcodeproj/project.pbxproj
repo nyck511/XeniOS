@@ -1,0 +1,654 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1FFDD082E4B326F49921CEC2 /* metal_gpu_completion_timeline.cc in Sources */ = {isa = PBXBuildFile; fileRef = 67E1208AB0805EBCD3AC16CA /* metal_gpu_completion_timeline.cc */; };
+		38158DC28F7B00B441891C02 /* metal_provider.cc in Sources */ = {isa = PBXBuildFile; fileRef = 23E98CCA55E2D77CCFC2130A /* metal_provider.cc */; };
+		4B007C2E118E73A07F909A6E /* MetalKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0271576359DD4A8A43A2BB6 /* MetalKit.framework */; };
+		67D1FA206193B6929B92B860 /* metal_api.cc in Sources */ = {isa = PBXBuildFile; fileRef = 5A097348A27A577AE7192988 /* metal_api.cc */; };
+		6A1198FAC412AFEC8B59A73A /* metal_immediate_drawer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 27AC40824278AF34464946C2 /* metal_immediate_drawer.mm */; };
+		82413D28F363DE1AA92A8B68 /* metal_util.cc in Sources */ = {isa = PBXBuildFile; fileRef = 340266D05C3D1F8243D8AD10 /* metal_util.cc */; };
+		9130093853F069AAB1254778 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B91C4E06FD8CD12F3C5FB20 /* QuartzCore.framework */; };
+		91FA684458885FB6C68A8684 /* metal_presenter.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9F1A572C3491165EA32D6D6C /* metal_presenter.mm */; };
+		99C3BF9BA64E720D21333DDB /* libxenia-ui.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B7301034A901B3526997743 /* libxenia-ui.a */; };
+		9F6839157E0AD48732ECD755 /* libxenia-base.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E9AE83DDE951670F23A61A1D /* libxenia-base.a */; };
+		C39B3D3E56290730BF01AB7E /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EF28886D25E4A381101EEC6 /* Metal.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		563001A27E6ABA54660647E2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0F8A5740A5011672139D6D80 /* xenia-ui.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 57BBBAEF6ECE56215EEA512F;
+			remoteInfo = "libxenia-ui.a";
+		};
+		80145925AFA628178AB36765 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FF398266CD5CD618546B28A6 /* metal-cpp.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F091CBACF4029DDE756F41EC;
+			remoteInfo = "metal-cpp";
+		};
+		A86A743BD0A52CEDB840BA7B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0F8A5740A5011672139D6D80 /* xenia-ui.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = AF7070F5B0236DE724053F35;
+			remoteInfo = "libxenia-ui.a";
+		};
+		AA4B43DFCC16F11108CC1A1F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2D378CBA117E94EC956BC2FA /* xenia-base.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 6C73464C929975FEF9A06C8C;
+			remoteInfo = "libxenia-base.a";
+		};
+		D24ECBBE01E09AB0DCEDD9FE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FF398266CD5CD618546B28A6 /* metal-cpp.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 4F38DE127DDF3204D7208C52;
+			remoteInfo = "metal-cpp";
+		};
+		FC85B6781E5163AA5B068CB8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2D378CBA117E94EC956BC2FA /* xenia-base.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 818584B27AEB86246E86E2F2;
+			remoteInfo = "libxenia-base.a";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0EF28886D25E4A381101EEC6 /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
+		0F8A5740A5011672139D6D80 /* libxenia-ui.a */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = xenia-ui.xcodeproj; path = "xenia-ui.xcodeproj"; sourceTree = SOURCE_ROOT; };
+		0FBBE68841B5313ABB946CC8 /* metal_presenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = metal_presenter.h; path = ../src/xenia/ui/metal/metal_presenter.h; sourceTree = "<group>"; };
+		1D78C7EED06ED1A021912E2E /* metal_gpu_completion_timeline.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = metal_gpu_completion_timeline.h; path = ../src/xenia/ui/metal/metal_gpu_completion_timeline.h; sourceTree = "<group>"; };
+		21114A6E6E7440A0E49340AE /* metal_provider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = metal_provider.h; path = ../src/xenia/ui/metal/metal_provider.h; sourceTree = "<group>"; };
+		23E98CCA55E2D77CCFC2130A /* metal_provider.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = metal_provider.cc; path = ../src/xenia/ui/metal/metal_provider.cc; sourceTree = "<group>"; };
+		27AC40824278AF34464946C2 /* metal_immediate_drawer.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objc; name = metal_immediate_drawer.mm; path = ../src/xenia/ui/metal/metal_immediate_drawer.mm; sourceTree = "<group>"; };
+		2D378CBA117E94EC956BC2FA /* libxenia-base.a */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = xenia-base.xcodeproj; path = "xenia-base.xcodeproj"; sourceTree = SOURCE_ROOT; };
+		340266D05C3D1F8243D8AD10 /* metal_util.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = metal_util.cc; path = ../src/xenia/ui/metal/metal_util.cc; sourceTree = "<group>"; };
+		46BB1DFE25D8383001E1943E /* metal_immediate_drawer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = metal_immediate_drawer.h; path = ../src/xenia/ui/metal/metal_immediate_drawer.h; sourceTree = "<group>"; };
+		59CB8454A23C6886E6DB3A94 /* metal_util.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = metal_util.h; path = ../src/xenia/ui/metal/metal_util.h; sourceTree = "<group>"; };
+		5A097348A27A577AE7192988 /* metal_api.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = metal_api.cc; path = ../src/xenia/ui/metal/metal_api.cc; sourceTree = "<group>"; };
+		67E1208AB0805EBCD3AC16CA /* metal_gpu_completion_timeline.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = metal_gpu_completion_timeline.cc; path = ../src/xenia/ui/metal/metal_gpu_completion_timeline.cc; sourceTree = "<group>"; };
+		6EC73A0C94ED69BEFBF4604C /* metal_api.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = metal_api.h; path = ../src/xenia/ui/metal/metal_api.h; sourceTree = "<group>"; };
+		8488C60FACC37EC1945F0C4F /* libxenia-ui-metal.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libxenia-ui-metal.a"; path = "libxenia-ui-metal.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8B91C4E06FD8CD12F3C5FB20 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		9F1A572C3491165EA32D6D6C /* metal_presenter.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objc; name = metal_presenter.mm; path = ../src/xenia/ui/metal/metal_presenter.mm; sourceTree = "<group>"; };
+		A0271576359DD4A8A43A2BB6 /* MetalKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalKit.framework; path = System/Library/Frameworks/MetalKit.framework; sourceTree = SDKROOT; };
+		FF398266CD5CD618546B28A6 /* metal-cpp */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = metal-cpp.xcodeproj; path = "metal-cpp.xcodeproj"; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9F840BFFC5AA3BB12CB1323F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C39B3D3E56290730BF01AB7E /* Metal.framework in Frameworks */,
+				4B007C2E118E73A07F909A6E /* MetalKit.framework in Frameworks */,
+				9130093853F069AAB1254778 /* QuartzCore.framework in Frameworks */,
+				9F6839157E0AD48732ECD755 /* libxenia-base.a in Frameworks */,
+				99C3BF9BA64E720D21333DDB /* libxenia-ui.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		6682582BAEF33C5DF3920E6B /* Embed Libraries */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Libraries";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXGroup section */
+		473AD5C56F758E7757111C05 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2FDFE71D1426EF4F98141D5D /* metal-cpp */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4882513F7814203153215F7F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E9AE83DDE951670F23A61A1D /* libxenia-base.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		675670A0B76A055239E836E0 /* xenia-ui-metal */ = {
+			isa = PBXGroup;
+			children = (
+				5A097348A27A577AE7192988 /* metal_api.cc */,
+				6EC73A0C94ED69BEFBF4604C /* metal_api.h */,
+				67E1208AB0805EBCD3AC16CA /* metal_gpu_completion_timeline.cc */,
+				1D78C7EED06ED1A021912E2E /* metal_gpu_completion_timeline.h */,
+				46BB1DFE25D8383001E1943E /* metal_immediate_drawer.h */,
+				27AC40824278AF34464946C2 /* metal_immediate_drawer.mm */,
+				0FBBE68841B5313ABB946CC8 /* metal_presenter.h */,
+				9F1A572C3491165EA32D6D6C /* metal_presenter.mm */,
+				23E98CCA55E2D77CCFC2130A /* metal_provider.cc */,
+				21114A6E6E7440A0E49340AE /* metal_provider.h */,
+				340266D05C3D1F8243D8AD10 /* metal_util.cc */,
+				59CB8454A23C6886E6DB3A94 /* metal_util.h */,
+				BBF76781A7E87333FA200DC1 /* Frameworks */,
+				A6C936B49B3FADE6EA134CF4 /* Products */,
+				9D968EAA920D05DCE0E0A4EA /* Projects */,
+			);
+			name = "xenia-ui-metal";
+			sourceTree = "<group>";
+		};
+		9D968EAA920D05DCE0E0A4EA /* Projects */ = {
+			isa = PBXGroup;
+			children = (
+				2D378CBA117E94EC956BC2FA /* xenia-base.xcodeproj */,
+				0F8A5740A5011672139D6D80 /* xenia-ui.xcodeproj */,
+				FF398266CD5CD618546B28A6 /* metal-cpp.xcodeproj */,
+			);
+			name = Projects;
+			sourceTree = "<group>";
+		};
+		A6C936B49B3FADE6EA134CF4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8488C60FACC37EC1945F0C4F /* libxenia-ui-metal.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BBF76781A7E87333FA200DC1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0EF28886D25E4A381101EEC6 /* Metal.framework */,
+				A0271576359DD4A8A43A2BB6 /* MetalKit.framework */,
+				8B91C4E06FD8CD12F3C5FB20 /* QuartzCore.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C214E2A218A24D14F11B60E2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6B7301034A901B3526997743 /* libxenia-ui.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		63389815B9C60287923F1655 /* xenia-ui-metal */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8DBF545EB3E584101AEC7A9E /* Build configuration list for PBXNativeTarget "xenia-ui-metal" */;
+			buildPhases = (
+				0F6B8C9F3591BC519C98B2DF /* Resources */,
+				7918A5F69F3ED5A80645CC36 /* Sources */,
+				9F840BFFC5AA3BB12CB1323F /* Frameworks */,
+				6682582BAEF33C5DF3920E6B /* Embed Libraries */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				363A8E4865CC5D3A40D99C88 /* PBXTargetDependency */,
+				AFCD1FAB065A8A1DDED39DEB /* PBXTargetDependency */,
+				34F312CE5D2DCB8044C9590E /* PBXTargetDependency */,
+			);
+			name = "xenia-ui-metal";
+			productName = "xenia-ui-metal";
+			productReference = 8488C60FACC37EC1945F0C4F /* libxenia-ui-metal.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		08FB7793FE84155DC02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 1DEB928908733DD80010E9CD /* Build configuration list for PBXProject "xenia-ui-metal" */;
+			compatibilityVersion = "Xcode 3.2";
+			hasScannedForEncodings = 1;
+			mainGroup = 675670A0B76A055239E836E0 /* xenia-ui-metal */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 4882513F7814203153215F7F /* Products */;
+					ProjectRef = 2D378CBA117E94EC956BC2FA /* xenia-base.xcodeproj */;
+				},
+				{
+					ProductGroup = C214E2A218A24D14F11B60E2 /* Products */;
+					ProjectRef = 0F8A5740A5011672139D6D80 /* xenia-ui.xcodeproj */;
+				},
+				{
+					ProductGroup = 473AD5C56F758E7757111C05 /* Products */;
+					ProjectRef = FF398266CD5CD618546B28A6 /* metal-cpp.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				63389815B9C60287923F1655 /* libxenia-ui-metal.a */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		2FDFE71D1426EF4F98141D5D /* metal-cpp */ = {
+			isa = PBXReferenceProxy;
+			fileType = nil;
+			path = "metal-cpp";
+			remoteRef = 80145925AFA628178AB36765 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		6B7301034A901B3526997743 /* libxenia-ui.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libxenia-ui.a";
+			remoteRef = 563001A27E6ABA54660647E2 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E9AE83DDE951670F23A61A1D /* libxenia-base.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libxenia-base.a";
+			remoteRef = AA4B43DFCC16F11108CC1A1F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0F6B8C9F3591BC519C98B2DF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7918A5F69F3ED5A80645CC36 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				67D1FA206193B6929B92B860 /* metal_api.cc in Sources */,
+				1FFDD082E4B326F49921CEC2 /* metal_gpu_completion_timeline.cc in Sources */,
+				6A1198FAC412AFEC8B59A73A /* metal_immediate_drawer.mm in Sources */,
+				91FA684458885FB6C68A8684 /* metal_presenter.mm in Sources */,
+				38158DC28F7B00B441891C02 /* metal_provider.cc in Sources */,
+				82413D28F363DE1AA92A8B68 /* metal_util.cc in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		34F312CE5D2DCB8044C9590E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "metal-cpp";
+			targetProxy = D24ECBBE01E09AB0DCEDD9FE /* PBXContainerItemProxy */;
+		};
+		363A8E4865CC5D3A40D99C88 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "libxenia-base.a";
+			targetProxy = FC85B6781E5163AA5B068CB8 /* PBXContainerItemProxy */;
+		};
+		AFCD1FAB065A8A1DDED39DEB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "libxenia-ui.a";
+			targetProxy = A86A743BD0A52CEDB840BA7B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		241C1A1EB992D950282F305E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					arm64,
+				);
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "bin/iOS-ARM64/Release";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_DYNAMIC_NO_PIC = NO;
+				INSTALL_PATH = /usr/local/lib;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				PRODUCT_NAME = "xenia-ui-metal";
+				SDKROOT = (
+					iphoneos,
+				);
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+			};
+			name = Release;
+		};
+		5F2E77295894789B4C2FD569 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					arm64,
+				);
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				GCC_C_LANGUAGE_STANDARD = c17;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					VULKAN_HPP_NO_TO_STRING,
+					IMGUI_DISABLE_OBSOLETE_FUNCTIONS,
+					IMGUI_DISABLE_DEFAULT_FONT,
+					IMGUI_USE_STB_SPRINTF,
+					USE_CPP17,
+					_LIB,
+					NDEBUG,
+					"_NO_DEBUG_HEAP=1",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				OBJROOT = "obj/iOS-ARM64/Release/iOS-ARM64/Release/xenia-ui-metal";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CFLAGS = (
+					"-O3",
+					"-finline-functions",
+					"-funroll-loops",
+					"-fomit-frame-pointer",
+					"-w",
+					"-fno-modules",
+				);
+				SDKROOT = (
+					iphoneos,
+				);
+				SYMROOT = "bin/iOS-ARM64/Release";
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+				USER_HEADER_SEARCH_PATHS = (
+					..,
+					../src,
+					../third_party,
+					"../third_party/metal-cpp",
+				);
+			};
+			name = Release;
+		};
+		7400D92F6D66DAA16102376F /* Checked */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					arm64,
+				);
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = c17;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					VULKAN_HPP_NO_TO_STRING,
+					IMGUI_DISABLE_OBSOLETE_FUNCTIONS,
+					IMGUI_DISABLE_DEFAULT_FONT,
+					USE_CPP17,
+					_LIB,
+					DEBUG,
+					NDEBUG,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				OBJROOT = "obj/iOS-ARM64/Checked/iOS-ARM64/Checked/xenia-ui-metal";
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = (
+					"-w",
+					"-fno-modules",
+				);
+				SDKROOT = (
+					iphoneos,
+				);
+				SYMROOT = "bin/iOS-ARM64/Checked";
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+				USER_HEADER_SEARCH_PATHS = (
+					..,
+					../src,
+					../third_party,
+					"../third_party/metal-cpp",
+				);
+			};
+			name = Checked;
+		};
+		84FD3BA41A73FAD6891051E4 /* Checked */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					arm64,
+				);
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "bin/iOS-ARM64/Checked";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_DYNAMIC_NO_PIC = NO;
+				INSTALL_PATH = /usr/local/lib;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				PRODUCT_NAME = "xenia-ui-metal";
+				SDKROOT = (
+					iphoneos,
+				);
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+			};
+			name = Checked;
+		};
+		A4019D3FCA27CCF1312EC37F /* Valgrind */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					arm64,
+				);
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = c17;
+				GCC_OPTIMIZATION_LEVEL = g;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					VULKAN_HPP_NO_TO_STRING,
+					IMGUI_DISABLE_OBSOLETE_FUNCTIONS,
+					IMGUI_DISABLE_DEFAULT_FONT,
+					IMGUI_USE_STB_SPRINTF,
+					USE_CPP17,
+					_LIB,
+					DEBUG,
+					NDEBUG,
+					"_NO_DEBUG_HEAP=1",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				OBJROOT = "obj/iOS-ARM64/Valgrind/iOS-ARM64/Valgrind/xenia-ui-metal";
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = (
+					"-fno-omit-frame-pointer",
+					"-fno-inline-functions",
+					"-w",
+					"-fno-modules",
+				);
+				SDKROOT = (
+					iphoneos,
+				);
+				SYMROOT = "bin/iOS-ARM64/Valgrind";
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+				USER_HEADER_SEARCH_PATHS = (
+					..,
+					../src,
+					../third_party,
+					"../third_party/metal-cpp",
+				);
+			};
+			name = Valgrind;
+		};
+		B5934074F9E1E5E63C091EB4 /* Valgrind */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					arm64,
+				);
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "bin/iOS-ARM64/Valgrind";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_DYNAMIC_NO_PIC = NO;
+				INSTALL_PATH = /usr/local/lib;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				PRODUCT_NAME = "xenia-ui-metal";
+				SDKROOT = (
+					iphoneos,
+				);
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+			};
+			name = Valgrind;
+		};
+		C006E624F20030D66BDF6C64 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					arm64,
+				);
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "bin/iOS-ARM64/Debug";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_DYNAMIC_NO_PIC = NO;
+				INSTALL_PATH = /usr/local/lib;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				PRODUCT_NAME = "xenia-ui-metal";
+				SDKROOT = (
+					iphoneos,
+				);
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+			};
+			name = Debug;
+		};
+		E54C952FE5FF922159E1636F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					arm64,
+				);
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = c17;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					VULKAN_HPP_NO_TO_STRING,
+					IMGUI_DISABLE_OBSOLETE_FUNCTIONS,
+					IMGUI_DISABLE_DEFAULT_FONT,
+					IMGUI_USE_STB_SPRINTF,
+					USE_CPP17,
+					_LIB,
+					DEBUG,
+					"_NO_DEBUG_HEAP=1",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				OBJROOT = "obj/iOS-ARM64/Debug/iOS-ARM64/Debug/xenia-ui-metal";
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = (
+					"-w",
+					"-fno-modules",
+				);
+				SDKROOT = (
+					iphoneos,
+				);
+				SYMROOT = "bin/iOS-ARM64/Debug";
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+				USER_HEADER_SEARCH_PATHS = (
+					..,
+					../src,
+					../third_party,
+					"../third_party/metal-cpp",
+				);
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1DEB928908733DD80010E9CD /* Build configuration list for PBXProject "xenia-ui-metal" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7400D92F6D66DAA16102376F /* Checked */,
+				E54C952FE5FF922159E1636F /* Debug */,
+				5F2E77295894789B4C2FD569 /* Release */,
+				A4019D3FCA27CCF1312EC37F /* Valgrind */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Checked;
+		};
+		8DBF545EB3E584101AEC7A9E /* Build configuration list for PBXNativeTarget "libxenia-ui-metal.a" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				84FD3BA41A73FAD6891051E4 /* Checked */,
+				C006E624F20030D66BDF6C64 /* Debug */,
+				241C1A1EB992D950282F305E /* Release */,
+				B5934074F9E1E5E63C091EB4 /* Valgrind */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Checked;
+		};
+/* End XCConfigurationList section */
+};
+rootObject = 08FB7793FE84155DC02AAC07 /* Project object */;
+}

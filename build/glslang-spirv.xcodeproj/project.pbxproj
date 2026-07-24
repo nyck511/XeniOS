@@ -1,0 +1,546 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		104BA5916B8CF9033EE743D1 /* doc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2E6B8BD9457E270B359A2219 /* doc.cpp */; };
+		190F9EFDDF9D966F4D9FBD3D /* disassemble.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 933D008528B3BFB7975016C5 /* disassemble.cpp */; };
+		4021E439D2AFAE2B3B885279 /* SpvTools.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 06253501C990F6B308349B41 /* SpvTools.cpp */; };
+		6A835425DBA5F517916CA265 /* Logger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9FD422DD237FADFB9D3886D /* Logger.cpp */; };
+		B161B56BA560FEDD2A4C13AB /* InReadableOrder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C3EF5137052C64564244B53 /* InReadableOrder.cpp */; };
+		E20B29A156656E93D448F7E1 /* SpvPostProcess.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D51855E9E742329B1B331C29 /* SpvPostProcess.cpp */; };
+		F0FE65254863D817FA71F365 /* SpvBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AD9C272DDF9571DF5974AD6D /* SpvBuilder.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		06253501C990F6B308349B41 /* SpvTools.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = SpvTools.cpp; path = ../third_party/glslang/SPIRV/SpvTools.cpp; sourceTree = "<group>"; };
+		166048DB4859938DC238CF1B /* GLSL.std.450.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GLSL.std.450.h; path = ../third_party/glslang/SPIRV/GLSL.std.450.h; sourceTree = "<group>"; };
+		1BDE94B7DF4A56691DEDFAF7 /* SpvBuilder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SpvBuilder.h; path = ../third_party/glslang/SPIRV/SpvBuilder.h; sourceTree = "<group>"; };
+		2476D7CB0A0DDEFDCD52EE0B /* NonSemanticShaderDebugInfo100.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = NonSemanticShaderDebugInfo100.h; path = ../third_party/glslang/SPIRV/NonSemanticShaderDebugInfo100.h; sourceTree = "<group>"; };
+		2BF121B55DEA6C67D7C9A7F5 /* GLSL.ext.ARM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GLSL.ext.ARM.h; path = ../third_party/glslang/SPIRV/GLSL.ext.ARM.h; sourceTree = "<group>"; };
+		2C3EF5137052C64564244B53 /* InReadableOrder.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = InReadableOrder.cpp; path = ../third_party/glslang/SPIRV/InReadableOrder.cpp; sourceTree = "<group>"; };
+		2CD5AFA9A0BE275BC30BD5E9 /* NonSemanticDebugPrintf.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = NonSemanticDebugPrintf.h; path = ../third_party/glslang/SPIRV/NonSemanticDebugPrintf.h; sourceTree = "<group>"; };
+		2D580537537E34E9BA852B77 /* Logger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Logger.h; path = ../third_party/glslang/SPIRV/Logger.h; sourceTree = "<group>"; };
+		2E6B8BD9457E270B359A2219 /* doc.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = doc.cpp; path = ../third_party/glslang/SPIRV/doc.cpp; sourceTree = "<group>"; };
+		3E14A1C35FE04EF59C957803 /* spirv.hpp11 */ = {isa = PBXFileReference; lastKnownFileType = text; name = spirv.hpp11; path = ../third_party/glslang/SPIRV/spirv.hpp11; sourceTree = "<group>"; };
+		4BFA3EFF630CDA315328D53F /* spvIR.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = spvIR.h; path = ../third_party/glslang/SPIRV/spvIR.h; sourceTree = "<group>"; };
+		509381AF9DF677E1141577EF /* disassemble.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = disassemble.h; path = ../third_party/glslang/SPIRV/disassemble.h; sourceTree = "<group>"; };
+		5C5164FF8E4AAFB10829EB3F /* GlslangToSpv.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GlslangToSpv.h; path = ../third_party/glslang/SPIRV/GlslangToSpv.h; sourceTree = "<group>"; };
+		6A909825B3017C57F7A04E65 /* spvUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = spvUtil.h; path = ../third_party/glslang/SPIRV/spvUtil.h; sourceTree = "<group>"; };
+		933D008528B3BFB7975016C5 /* disassemble.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = disassemble.cpp; path = ../third_party/glslang/SPIRV/disassemble.cpp; sourceTree = "<group>"; };
+		A9FD422DD237FADFB9D3886D /* Logger.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Logger.cpp; path = ../third_party/glslang/SPIRV/Logger.cpp; sourceTree = "<group>"; };
+		AC16A159DE0FEC0B57EF2799 /* GLSL.ext.AMD.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GLSL.ext.AMD.h; path = ../third_party/glslang/SPIRV/GLSL.ext.AMD.h; sourceTree = "<group>"; };
+		AD9C272DDF9571DF5974AD6D /* SpvBuilder.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = SpvBuilder.cpp; path = ../third_party/glslang/SPIRV/SpvBuilder.cpp; sourceTree = "<group>"; };
+		B57052BFE7699D716148D8FF /* GLSL.ext.KHR.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GLSL.ext.KHR.h; path = ../third_party/glslang/SPIRV/GLSL.ext.KHR.h; sourceTree = "<group>"; };
+		BC75BD8EA0BCC5C024A9F3CE /* visibility.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = visibility.h; path = ../third_party/glslang/glslang/Include/visibility.h; sourceTree = "<group>"; };
+		C1DEDF7D0F41D5AF8560D5BD /* GLSL.ext.NV.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GLSL.ext.NV.h; path = ../third_party/glslang/SPIRV/GLSL.ext.NV.h; sourceTree = "<group>"; };
+		C90ED8381F9C42AAF8155678 /* libglslang-spirv.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libglslang-spirv.a"; path = "libglslang-spirv.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CC081315617ED247D01B2955 /* GLSL.ext.QCOM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GLSL.ext.QCOM.h; path = ../third_party/glslang/SPIRV/GLSL.ext.QCOM.h; sourceTree = "<group>"; };
+		CE14AD17F64F65C9DDEAF357 /* bitutils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = bitutils.h; path = ../third_party/glslang/SPIRV/bitutils.h; sourceTree = "<group>"; };
+		CEF43883D2650AB553D1AEC3 /* doc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = doc.h; path = ../third_party/glslang/SPIRV/doc.h; sourceTree = "<group>"; };
+		D51855E9E742329B1B331C29 /* SpvPostProcess.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = SpvPostProcess.cpp; path = ../third_party/glslang/SPIRV/SpvPostProcess.cpp; sourceTree = "<group>"; };
+		D65FDBCBF82B88FD34E0B20B /* hex_float.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = hex_float.h; path = ../third_party/glslang/SPIRV/hex_float.h; sourceTree = "<group>"; };
+		E0BEF9D712B844898C978017 /* GLSL.ext.EXT.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GLSL.ext.EXT.h; path = ../third_party/glslang/SPIRV/GLSL.ext.EXT.h; sourceTree = "<group>"; };
+		F04D9DCB1888567D0023E40B /* SpvTools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SpvTools.h; path = ../third_party/glslang/SPIRV/SpvTools.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A7ED71A8A153731A94EECFE8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		2EDBCC1419C7F20661ADBA54 /* Embed Libraries */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Libraries";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXGroup section */
+		1DA2CED8C1F56C8AD42DB518 /* glslang */ = {
+			isa = PBXGroup;
+			children = (
+				CE207687F446A6395B4D9CC7 /* Include */,
+			);
+			name = glslang;
+			sourceTree = "<group>";
+		};
+		8B70C030DB8454E25E028670 /* SPIRV */ = {
+			isa = PBXGroup;
+			children = (
+				AC16A159DE0FEC0B57EF2799 /* GLSL.ext.AMD.h */,
+				2BF121B55DEA6C67D7C9A7F5 /* GLSL.ext.ARM.h */,
+				E0BEF9D712B844898C978017 /* GLSL.ext.EXT.h */,
+				B57052BFE7699D716148D8FF /* GLSL.ext.KHR.h */,
+				C1DEDF7D0F41D5AF8560D5BD /* GLSL.ext.NV.h */,
+				CC081315617ED247D01B2955 /* GLSL.ext.QCOM.h */,
+				166048DB4859938DC238CF1B /* GLSL.std.450.h */,
+				5C5164FF8E4AAFB10829EB3F /* GlslangToSpv.h */,
+				2C3EF5137052C64564244B53 /* InReadableOrder.cpp */,
+				A9FD422DD237FADFB9D3886D /* Logger.cpp */,
+				2D580537537E34E9BA852B77 /* Logger.h */,
+				2CD5AFA9A0BE275BC30BD5E9 /* NonSemanticDebugPrintf.h */,
+				2476D7CB0A0DDEFDCD52EE0B /* NonSemanticShaderDebugInfo100.h */,
+				AD9C272DDF9571DF5974AD6D /* SpvBuilder.cpp */,
+				1BDE94B7DF4A56691DEDFAF7 /* SpvBuilder.h */,
+				D51855E9E742329B1B331C29 /* SpvPostProcess.cpp */,
+				06253501C990F6B308349B41 /* SpvTools.cpp */,
+				F04D9DCB1888567D0023E40B /* SpvTools.h */,
+				CE14AD17F64F65C9DDEAF357 /* bitutils.h */,
+				933D008528B3BFB7975016C5 /* disassemble.cpp */,
+				509381AF9DF677E1141577EF /* disassemble.h */,
+				2E6B8BD9457E270B359A2219 /* doc.cpp */,
+				CEF43883D2650AB553D1AEC3 /* doc.h */,
+				D65FDBCBF82B88FD34E0B20B /* hex_float.h */,
+				3E14A1C35FE04EF59C957803 /* spirv.hpp11 */,
+				4BFA3EFF630CDA315328D53F /* spvIR.h */,
+				6A909825B3017C57F7A04E65 /* spvUtil.h */,
+			);
+			name = SPIRV;
+			sourceTree = "<group>";
+		};
+		A6C936B49B3FADE6EA134CF4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C90ED8381F9C42AAF8155678 /* libglslang-spirv.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B032B309E8ED797B7884B149 /* glslang-spirv */ = {
+			isa = PBXGroup;
+			children = (
+				8B70C030DB8454E25E028670 /* SPIRV */,
+				1DA2CED8C1F56C8AD42DB518 /* glslang */,
+				A6C936B49B3FADE6EA134CF4 /* Products */,
+			);
+			name = "glslang-spirv";
+			sourceTree = "<group>";
+		};
+		CE207687F446A6395B4D9CC7 /* Include */ = {
+			isa = PBXGroup;
+			children = (
+				BC75BD8EA0BCC5C024A9F3CE /* visibility.h */,
+			);
+			name = Include;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		36C0891E7F316D50C3D03F5E /* glslang-spirv */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9628BA078F8EBB79832A1847 /* Build configuration list for PBXNativeTarget "glslang-spirv" */;
+			buildPhases = (
+				17D4F248113AF3BA04D65088 /* Resources */,
+				81820B9F7AE80D116E8369DF /* Sources */,
+				A7ED71A8A153731A94EECFE8 /* Frameworks */,
+				2EDBCC1419C7F20661ADBA54 /* Embed Libraries */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "glslang-spirv";
+			productName = "glslang-spirv";
+			productReference = C90ED8381F9C42AAF8155678 /* libglslang-spirv.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		08FB7793FE84155DC02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 1DEB928908733DD80010E9CD /* Build configuration list for PBXProject "glslang-spirv" */;
+			compatibilityVersion = "Xcode 3.2";
+			hasScannedForEncodings = 1;
+			mainGroup = B032B309E8ED797B7884B149 /* glslang-spirv */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				36C0891E7F316D50C3D03F5E /* libglslang-spirv.a */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		17D4F248113AF3BA04D65088 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		81820B9F7AE80D116E8369DF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B161B56BA560FEDD2A4C13AB /* InReadableOrder.cpp in Sources */,
+				6A835425DBA5F517916CA265 /* Logger.cpp in Sources */,
+				F0FE65254863D817FA71F365 /* SpvBuilder.cpp in Sources */,
+				E20B29A156656E93D448F7E1 /* SpvPostProcess.cpp in Sources */,
+				4021E439D2AFAE2B3B885279 /* SpvTools.cpp in Sources */,
+				190F9EFDDF9D966F4D9FBD3D /* disassemble.cpp in Sources */,
+				104BA5916B8CF9033EE743D1 /* doc.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		254BC5281EB1C69A124D2368 /* Valgrind */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					arm64,
+				);
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = c17;
+				GCC_OPTIMIZATION_LEVEL = g;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					VULKAN_HPP_NO_TO_STRING,
+					IMGUI_DISABLE_OBSOLETE_FUNCTIONS,
+					IMGUI_DISABLE_DEFAULT_FONT,
+					IMGUI_USE_STB_SPRINTF,
+					USE_CPP17,
+					_LIB,
+					DEBUG,
+					NDEBUG,
+					"_NO_DEBUG_HEAP=1",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				OBJROOT = "obj/iOS-ARM64/Valgrind/iOS-ARM64/Valgrind/glslang-spirv";
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = (
+					"-fno-omit-frame-pointer",
+					"-fno-inline-functions",
+					"-w",
+					"-fno-modules",
+				);
+				SDKROOT = (
+					iphoneos,
+				);
+				SYMROOT = "bin/iOS-ARM64/Valgrind";
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+				USER_HEADER_SEARCH_PATHS = (
+					..,
+					../src,
+					../third_party,
+					../third_party/glslang,
+				);
+			};
+			name = Valgrind;
+		};
+		28B9B38799DC54794FA301C7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					arm64,
+				);
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "bin/iOS-ARM64/Release";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_DYNAMIC_NO_PIC = NO;
+				INSTALL_PATH = /usr/local/lib;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				PRODUCT_NAME = "glslang-spirv";
+				SDKROOT = (
+					iphoneos,
+				);
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+			};
+			name = Release;
+		};
+		47689DB8EA56C46A797CA3F8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					arm64,
+				);
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = c17;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					VULKAN_HPP_NO_TO_STRING,
+					IMGUI_DISABLE_OBSOLETE_FUNCTIONS,
+					IMGUI_DISABLE_DEFAULT_FONT,
+					IMGUI_USE_STB_SPRINTF,
+					USE_CPP17,
+					_LIB,
+					DEBUG,
+					"_NO_DEBUG_HEAP=1",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				OBJROOT = "obj/iOS-ARM64/Debug/iOS-ARM64/Debug/glslang-spirv";
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = (
+					"-w",
+					"-fno-modules",
+				);
+				SDKROOT = (
+					iphoneos,
+				);
+				SYMROOT = "bin/iOS-ARM64/Debug";
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+				USER_HEADER_SEARCH_PATHS = (
+					..,
+					../src,
+					../third_party,
+					../third_party/glslang,
+				);
+			};
+			name = Debug;
+		};
+		4DE406FDE35AC62F51F71D3D /* Valgrind */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					arm64,
+				);
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "bin/iOS-ARM64/Valgrind";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_DYNAMIC_NO_PIC = NO;
+				INSTALL_PATH = /usr/local/lib;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				PRODUCT_NAME = "glslang-spirv";
+				SDKROOT = (
+					iphoneos,
+				);
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+			};
+			name = Valgrind;
+		};
+		899AD50DFABD75FFB084234D /* Checked */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					arm64,
+				);
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "bin/iOS-ARM64/Checked";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_DYNAMIC_NO_PIC = NO;
+				INSTALL_PATH = /usr/local/lib;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				PRODUCT_NAME = "glslang-spirv";
+				SDKROOT = (
+					iphoneos,
+				);
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+			};
+			name = Checked;
+		};
+		926D114D8C2ECDBFC62DCF8D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					arm64,
+				);
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "bin/iOS-ARM64/Debug";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_DYNAMIC_NO_PIC = NO;
+				INSTALL_PATH = /usr/local/lib;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				PRODUCT_NAME = "glslang-spirv";
+				SDKROOT = (
+					iphoneos,
+				);
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+			};
+			name = Debug;
+		};
+		B86EC5F2CF816124BF9D5C32 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					arm64,
+				);
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				GCC_C_LANGUAGE_STANDARD = c17;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					VULKAN_HPP_NO_TO_STRING,
+					IMGUI_DISABLE_OBSOLETE_FUNCTIONS,
+					IMGUI_DISABLE_DEFAULT_FONT,
+					IMGUI_USE_STB_SPRINTF,
+					USE_CPP17,
+					_LIB,
+					NDEBUG,
+					"_NO_DEBUG_HEAP=1",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				OBJROOT = "obj/iOS-ARM64/Release/iOS-ARM64/Release/glslang-spirv";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CFLAGS = (
+					"-O3",
+					"-finline-functions",
+					"-funroll-loops",
+					"-fomit-frame-pointer",
+					"-w",
+					"-fno-modules",
+				);
+				SDKROOT = (
+					iphoneos,
+				);
+				SYMROOT = "bin/iOS-ARM64/Release";
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+				USER_HEADER_SEARCH_PATHS = (
+					..,
+					../src,
+					../third_party,
+					../third_party/glslang,
+				);
+			};
+			name = Release;
+		};
+		CD4127F8E453C32AD46FBE38 /* Checked */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					arm64,
+				);
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = c17;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					VULKAN_HPP_NO_TO_STRING,
+					IMGUI_DISABLE_OBSOLETE_FUNCTIONS,
+					IMGUI_DISABLE_DEFAULT_FONT,
+					USE_CPP17,
+					_LIB,
+					DEBUG,
+					NDEBUG,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				OBJROOT = "obj/iOS-ARM64/Checked/iOS-ARM64/Checked/glslang-spirv";
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = (
+					"-w",
+					"-fno-modules",
+				);
+				SDKROOT = (
+					iphoneos,
+				);
+				SYMROOT = "bin/iOS-ARM64/Checked";
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+				USER_HEADER_SEARCH_PATHS = (
+					..,
+					../src,
+					../third_party,
+					../third_party/glslang,
+				);
+			};
+			name = Checked;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1DEB928908733DD80010E9CD /* Build configuration list for PBXProject "glslang-spirv" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CD4127F8E453C32AD46FBE38 /* Checked */,
+				47689DB8EA56C46A797CA3F8 /* Debug */,
+				B86EC5F2CF816124BF9D5C32 /* Release */,
+				254BC5281EB1C69A124D2368 /* Valgrind */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Checked;
+		};
+		9628BA078F8EBB79832A1847 /* Build configuration list for PBXNativeTarget "libglslang-spirv.a" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				899AD50DFABD75FFB084234D /* Checked */,
+				926D114D8C2ECDBFC62DCF8D /* Debug */,
+				28B9B38799DC54794FA301C7 /* Release */,
+				4DE406FDE35AC62F51F71D3D /* Valgrind */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Checked;
+		};
+/* End XCConfigurationList section */
+};
+rootObject = 08FB7793FE84155DC02AAC07 /* Project object */;
+}

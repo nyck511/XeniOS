@@ -1,0 +1,957 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0333088F4781AE0189A8E6CF /* backend.cc in Sources */ = {isa = PBXBuildFile; fileRef = C732F437E8FEA16925B3CA77 /* backend.cc */; };
+		09AD3E1E6112B1101320CC5E /* ppc_frontend.cc in Sources */ = {isa = PBXBuildFile; fileRef = 9CFE4586CEF7903848D6CBC6 /* ppc_frontend.cc */; };
+		0D5D0DCA81B752BCFF9ADC0A /* ppc_emit_altivec.cc in Sources */ = {isa = PBXBuildFile; fileRef = BE6CC072D0969D24048786B2 /* ppc_emit_altivec.cc */; };
+		0DB6DBD0D0773C422DAC1A10 /* ppc_hir_builder.cc in Sources */ = {isa = PBXBuildFile; fileRef = C3227418A7697C4A2B56AA58 /* ppc_hir_builder.cc */; };
+		10D82C5067EDD4C294366A90 /* conditional_group_subpass.cc in Sources */ = {isa = PBXBuildFile; fileRef = 1E869AF879D1EB2A6803D138 /* conditional_group_subpass.cc */; };
+		1117A150216485421F514F90 /* register_allocation_pass.cc in Sources */ = {isa = PBXBuildFile; fileRef = 59D492F8014A2EAAAA0F3938 /* register_allocation_pass.cc */; };
+		1B2ECF70767022E249CA6DB0 /* block.cc in Sources */ = {isa = PBXBuildFile; fileRef = 59A391B870B62CEA60D227F8 /* block.cc */; };
+		1C20B214776205864ABC5054 /* value.cc in Sources */ = {isa = PBXBuildFile; fileRef = 1D913C1C34A3D74E24BFD25C /* value.cc */; };
+		1C4FF7384BE1C62A26EF0578 /* thread.cc in Sources */ = {isa = PBXBuildFile; fileRef = 8AB703E02DA52A92BCCB0A20 /* thread.cc */; };
+		2F5AFBAC9C830A1E9E15F9EC /* hir_builder.cc in Sources */ = {isa = PBXBuildFile; fileRef = 47D81234953B08660B5A0874 /* hir_builder.cc */; };
+		3BDA0E88FE9A6EFA5BCF4CC8 /* ppc_opcode_info.cc in Sources */ = {isa = PBXBuildFile; fileRef = 776EE7505BB5EF82DFA31D90 /* ppc_opcode_info.cc */; };
+		3DA00F32B0C19C241186DD72 /* control_flow_analysis_pass.cc in Sources */ = {isa = PBXBuildFile; fileRef = 137F0BBA6EDF306CB122D1FA /* control_flow_analysis_pass.cc */; };
+		40F1B8606E9C40526F3FE6A0 /* control_flow_simplification_pass.cc in Sources */ = {isa = PBXBuildFile; fileRef = DFAC3908D876F8BA62EB5F48 /* control_flow_simplification_pass.cc */; };
+		4116195A8564BECCC78BF79A /* entry_table.cc in Sources */ = {isa = PBXBuildFile; fileRef = 19D3E1E23B9F8F147854B822 /* entry_table.cc */; };
+		4B940CFEA2F97FF055079B3E /* ppc_emit_alu.cc in Sources */ = {isa = PBXBuildFile; fileRef = 15B7766647B0C118C18FFCA6 /* ppc_emit_alu.cc */; };
+		509EFB0C135F5B7E7094394C /* ppc_emit_memory.cc in Sources */ = {isa = PBXBuildFile; fileRef = A360059487A70DC60B943BD4 /* ppc_emit_memory.cc */; };
+		5729A5883B70ADBABF5DDBC8 /* compiler.cc in Sources */ = {isa = PBXBuildFile; fileRef = D38609D0046A01C217823810 /* compiler.cc */; };
+		59B7C8B6385A6428ED3C66F6 /* ppc_opcode_lookup_gen.cc in Sources */ = {isa = PBXBuildFile; fileRef = DBFCD79EDB9FBAD015F46DDE /* ppc_opcode_lookup_gen.cc */; };
+		5AF669BCCC190AAE81DFB7FC /* xex_module.cc in Sources */ = {isa = PBXBuildFile; fileRef = AA53C024D28E78D6BA2A0664 /* xex_module.cc */; };
+		5BC0BEBBC8E8CD2DCA7BBCFB /* assembler.cc in Sources */ = {isa = PBXBuildFile; fileRef = 473F13A394A209D50AC109E3 /* assembler.cc */; };
+		5C5579B2FE3F15A4F56627F2 /* ppc_translator.cc in Sources */ = {isa = PBXBuildFile; fileRef = A7EDB7DA76110B8CFD1F5E1A /* ppc_translator.cc */; };
+		5DC2A50E24509C809252C34E /* export_resolver.cc in Sources */ = {isa = PBXBuildFile; fileRef = C2E2E05658599F88C6F5F696 /* export_resolver.cc */; };
+		67F2952446953096FB773364 /* ppc_opcode_disasm_gen.cc in Sources */ = {isa = PBXBuildFile; fileRef = B7BEE42CB761C75EF1B67A6C /* ppc_opcode_disasm_gen.cc */; };
+		69E6CA595DE613CBE2D12899 /* libmspack.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F3D19AE137E56C132BB6F121 /* libmspack.a */; };
+		6ADB3CD65EDA8648E3C59B16 /* function_debug_info.cc in Sources */ = {isa = PBXBuildFile; fileRef = 11752B9E5588FCD0495A81DE /* function_debug_info.cc */; };
+		76CDA874708F64E6AA8E66B4 /* opcodes.cc in Sources */ = {isa = PBXBuildFile; fileRef = C4F04A7C0D612EAE520000BC /* opcodes.cc */; };
+		836F383C4AD3F32ED58BC67C /* conditional_group_pass.cc in Sources */ = {isa = PBXBuildFile; fileRef = 4B753B2438DCCDD6D5D6C164 /* conditional_group_pass.cc */; };
+		8BDA98220034DD147E186662 /* stack_walker_posix.cc in Sources */ = {isa = PBXBuildFile; fileRef = D6364D2AE86029DC1C51136A /* stack_walker_posix.cc */; };
+		8CF2B766FE155858B3DC05A6 /* raw_module.cc in Sources */ = {isa = PBXBuildFile; fileRef = 69BCFE2E91F7B6E07993446E /* raw_module.cc */; };
+		8E0C3F5226842CC4526B1D92 /* simplification_pass.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2AA40CDAC4C8020C74EDE31A /* simplification_pass.cc */; };
+		9125DB88FE4DE9FAFFE0D9C8 /* ppc_context.cc in Sources */ = {isa = PBXBuildFile; fileRef = BD0F98500A728E8280918E90 /* ppc_context.cc */; };
+		977DCD7C0A9F5A6E6B649BBC /* dead_code_elimination_pass.cc in Sources */ = {isa = PBXBuildFile; fileRef = 088D206463ED4516A630E6A4 /* dead_code_elimination_pass.cc */; };
+		9E30DD92F831F484BF78EBD2 /* ppc_opcode_table_gen.cc in Sources */ = {isa = PBXBuildFile; fileRef = 230443BA3DD0B26C41A149FA /* ppc_opcode_table_gen.cc */; };
+		9E8D7888984F34FAD24E36C8 /* processor.cc in Sources */ = {isa = PBXBuildFile; fileRef = 97027F30DF73636224123570 /* processor.cc */; };
+		9F6839157E0AD48732ECD755 /* libxenia-base.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E9AE83DDE951670F23A61A1D /* libxenia-base.a */; };
+		A209F3783497BD6A9D7061B8 /* thread_state.cc in Sources */ = {isa = PBXBuildFile; fileRef = 78720A203BDDCBD27A817060 /* thread_state.cc */; };
+		A26C36B20F944524112734F2 /* ppc_scanner.cc in Sources */ = {isa = PBXBuildFile; fileRef = 15EE49DA6351400CD970401A /* ppc_scanner.cc */; };
+		A2CDDDC2D07865B4D11C0C02 /* memory_sequence_combination_pass.cc in Sources */ = {isa = PBXBuildFile; fileRef = AD38CB4AA6038AFC3077F18A /* memory_sequence_combination_pass.cc */; };
+		BFB3F5329E5690A453389372 /* validation_pass.cc in Sources */ = {isa = PBXBuildFile; fileRef = D88DE8BAD830CBEC12857EFA /* validation_pass.cc */; };
+		C2DF0ADA1E205E4CF17AA91A /* instr.cc in Sources */ = {isa = PBXBuildFile; fileRef = 88FFDB82A01276B4902E71C2 /* instr.cc */; };
+		C6BBFBBC3B1640AEB8F9C9FC /* ppc_emit_control.cc in Sources */ = {isa = PBXBuildFile; fileRef = B219A244C4437EF6F8346884 /* ppc_emit_control.cc */; };
+		C797A912BB96F28440820752 /* ppc_opcode_disasm.cc in Sources */ = {isa = PBXBuildFile; fileRef = C0E49C3A04F86D6CF8C9F27A /* ppc_opcode_disasm.cc */; };
+		CB428CD4FAD45BC6D5E19B14 /* module.cc in Sources */ = {isa = PBXBuildFile; fileRef = 74B821BC17A6486EA6CC27FC /* module.cc */; };
+		CE4E82E660DC4CD8C9B4F126 /* mmio_handler.cc in Sources */ = {isa = PBXBuildFile; fileRef = C05A4FAE83C61160C269B5EE /* mmio_handler.cc */; };
+		D1056E84CA6B6FF6BE06CCC4 /* lzx.cc in Sources */ = {isa = PBXBuildFile; fileRef = 1C1ACD6CBF66569EDA3723AC /* lzx.cc */; };
+		D98F6D637B79095572A01BA3 /* null_backend.cc in Sources */ = {isa = PBXBuildFile; fileRef = 3CE6D0CB0B0A247D9218770B /* null_backend.cc */; };
+		D9BAE712A11FA2042BD77552 /* context_promotion_pass.cc in Sources */ = {isa = PBXBuildFile; fileRef = 0DA6C99AFB0E5C4C98084FDA /* context_promotion_pass.cc */; };
+		DB3832264C5AD31802218066 /* breakpoint.cc in Sources */ = {isa = PBXBuildFile; fileRef = C8D96CEEF11425A0D8AFB32E /* breakpoint.cc */; };
+		E1D5A450393B1742EB493290 /* ppc_emit_fpu.cc in Sources */ = {isa = PBXBuildFile; fileRef = E770039819694E4A934889D8 /* ppc_emit_fpu.cc */; };
+		E48A0F14156E070628863D54 /* function.cc in Sources */ = {isa = PBXBuildFile; fileRef = 5E2861FC844E91AEEB55883C /* function.cc */; };
+		E5190F40563BB0320C025D80 /* elf_module.cc in Sources */ = {isa = PBXBuildFile; fileRef = CADD8B68F318441ADAB3D1A8 /* elf_module.cc */; };
+		E959F6CE7F8308C040E9650E /* value_reduction_pass.cc in Sources */ = {isa = PBXBuildFile; fileRef = 71855196247B5B48759DB7D6 /* value_reduction_pass.cc */; };
+		EBB4E05406814F060A51E694 /* compiler_pass.cc in Sources */ = {isa = PBXBuildFile; fileRef = 8E2B18DCFB53274EFCE6171C /* compiler_pass.cc */; };
+		EF44C2F23393686475BAA132 /* test_module.cc in Sources */ = {isa = PBXBuildFile; fileRef = 7DB2CDFA9F7E7B2CDC33A43A /* test_module.cc */; };
+		F060C36423E002D63BD9E1A4 /* data_flow_analysis_pass.cc in Sources */ = {isa = PBXBuildFile; fileRef = 0BEE18CCF1851FFEB4CA2F0C /* data_flow_analysis_pass.cc */; };
+		F0FD8CF0EABF496224BE4B30 /* cpu_flags.cc in Sources */ = {isa = PBXBuildFile; fileRef = FCA1C1184512A54A89B17758 /* cpu_flags.cc */; };
+		F6569F4C52DDA3BEDB805D8C /* finalization_pass.cc in Sources */ = {isa = PBXBuildFile; fileRef = C8153434D7FA6066C46DEA74 /* finalization_pass.cc */; };
+		FD99CA7654AF72E880F808B6 /* constant_propagation_pass.cc in Sources */ = {isa = PBXBuildFile; fileRef = D75F19BE32AA69F020DC4FFE /* constant_propagation_pass.cc */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		69C0D3C1B231B7F3F6D08A01 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 37AB12FE850E0930FB2D093E /* mspack.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0BA97C6EAE97A3203DBD82AE;
+			remoteInfo = libmspack.a;
+		};
+		AA4B43DFCC16F11108CC1A1F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2D378CBA117E94EC956BC2FA /* xenia-base.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 6C73464C929975FEF9A06C8C;
+			remoteInfo = "libxenia-base.a";
+		};
+		BBFB465A046C2A8C490AFC9A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 37AB12FE850E0930FB2D093E /* mspack.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 95DC7E9407679706B668BCD4;
+			remoteInfo = libmspack.a;
+		};
+		FC85B6781E5163AA5B068CB8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2D378CBA117E94EC956BC2FA /* xenia-base.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 818584B27AEB86246E86E2F2;
+			remoteInfo = "libxenia-base.a";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		05352CFCEACC342EAE11433C /* register_allocation_pass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = register_allocation_pass.h; path = ../src/xenia/cpu/compiler/passes/register_allocation_pass.h; sourceTree = "<group>"; };
+		06BB1D66D4DE71185BECC3A6 /* thread_debug_info.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = thread_debug_info.h; path = ../src/xenia/cpu/thread_debug_info.h; sourceTree = "<group>"; };
+		0750222B9CC6E15D0B63386B /* machine_info.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = machine_info.h; path = ../src/xenia/cpu/backend/machine_info.h; sourceTree = "<group>"; };
+		088D206463ED4516A630E6A4 /* dead_code_elimination_pass.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = dead_code_elimination_pass.cc; path = ../src/xenia/cpu/compiler/passes/dead_code_elimination_pass.cc; sourceTree = "<group>"; };
+		0BEE18CCF1851FFEB4CA2F0C /* data_flow_analysis_pass.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = data_flow_analysis_pass.cc; path = ../src/xenia/cpu/compiler/passes/data_flow_analysis_pass.cc; sourceTree = "<group>"; };
+		0DA6C99AFB0E5C4C98084FDA /* context_promotion_pass.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = context_promotion_pass.cc; path = ../src/xenia/cpu/compiler/passes/context_promotion_pass.cc; sourceTree = "<group>"; };
+		0ED4CA7434FAFA269C01F0B4 /* processor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = processor.h; path = ../src/xenia/cpu/processor.h; sourceTree = "<group>"; };
+		11752B9E5588FCD0495A81DE /* function_debug_info.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = function_debug_info.cc; path = ../src/xenia/cpu/function_debug_info.cc; sourceTree = "<group>"; };
+		137F0BBA6EDF306CB122D1FA /* control_flow_analysis_pass.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = control_flow_analysis_pass.cc; path = ../src/xenia/cpu/compiler/passes/control_flow_analysis_pass.cc; sourceTree = "<group>"; };
+		1544A926B832CFD84758AF66 /* label.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = label.h; path = ../src/xenia/cpu/hir/label.h; sourceTree = "<group>"; };
+		15B7766647B0C118C18FFCA6 /* ppc_emit_alu.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ppc_emit_alu.cc; path = ../src/xenia/cpu/ppc/ppc_emit_alu.cc; sourceTree = "<group>"; };
+		15EE49DA6351400CD970401A /* ppc_scanner.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ppc_scanner.cc; path = ../src/xenia/cpu/ppc/ppc_scanner.cc; sourceTree = "<group>"; };
+		19D3E1E23B9F8F147854B822 /* entry_table.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = entry_table.cc; path = ../src/xenia/cpu/entry_table.cc; sourceTree = "<group>"; };
+		1C1ACD6CBF66569EDA3723AC /* lzx.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = lzx.cc; path = ../src/xenia/cpu/lzx.cc; sourceTree = "<group>"; };
+		1D913C1C34A3D74E24BFD25C /* value.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = value.cc; path = ../src/xenia/cpu/hir/value.cc; sourceTree = "<group>"; };
+		1E869AF879D1EB2A6803D138 /* conditional_group_subpass.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = conditional_group_subpass.cc; path = ../src/xenia/cpu/compiler/passes/conditional_group_subpass.cc; sourceTree = "<group>"; };
+		1EFB7834ED1ECBE6742D1E74 /* ppc_opcode_info.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ppc_opcode_info.h; path = ../src/xenia/cpu/ppc/ppc_opcode_info.h; sourceTree = "<group>"; };
+		225E9938964710EAB894BF78 /* finalization_pass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = finalization_pass.h; path = ../src/xenia/cpu/compiler/passes/finalization_pass.h; sourceTree = "<group>"; };
+		230443BA3DD0B26C41A149FA /* ppc_opcode_table_gen.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ppc_opcode_table_gen.cc; path = ../src/xenia/cpu/ppc/ppc_opcode_table_gen.cc; sourceTree = "<group>"; };
+		2AA40CDAC4C8020C74EDE31A /* simplification_pass.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = simplification_pass.cc; path = ../src/xenia/cpu/compiler/passes/simplification_pass.cc; sourceTree = "<group>"; };
+		2D378CBA117E94EC956BC2FA /* libxenia-base.a */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = xenia-base.xcodeproj; path = "xenia-base.xcodeproj"; sourceTree = SOURCE_ROOT; };
+		2DB1E7DE88FD3810772F1E1E /* control_flow_analysis_pass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = control_flow_analysis_pass.h; path = ../src/xenia/cpu/compiler/passes/control_flow_analysis_pass.h; sourceTree = "<group>"; };
+		2DF982A88944D2DA7776B8E8 /* dead_code_elimination_pass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = dead_code_elimination_pass.h; path = ../src/xenia/cpu/compiler/passes/dead_code_elimination_pass.h; sourceTree = "<group>"; };
+		2F8AF7DE57C5B0903F613E1E /* test_module.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = test_module.h; path = ../src/xenia/cpu/test_module.h; sourceTree = "<group>"; };
+		2FD1855B41FB620D75EC4B9B /* code_cache_base.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = code_cache_base.h; path = ../src/xenia/cpu/backend/code_cache_base.h; sourceTree = "<group>"; };
+		3459F8687CF9369AA024EEA8 /* conditional_group_pass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = conditional_group_pass.h; path = ../src/xenia/cpu/compiler/passes/conditional_group_pass.h; sourceTree = "<group>"; };
+		35EB773ED3CC77F0AB4ABD7E /* simplification_pass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = simplification_pass.h; path = ../src/xenia/cpu/compiler/passes/simplification_pass.h; sourceTree = "<group>"; };
+		361F59FA6818A4ACE1F7E03A /* export_resolver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = export_resolver.h; path = ../src/xenia/cpu/export_resolver.h; sourceTree = "<group>"; };
+		37AB12FE850E0930FB2D093E /* libmspack.a */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "mspack.xcodeproj"; path = mspack.xcodeproj; sourceTree = SOURCE_ROOT; };
+		383BBB708FA12E6241AF49B0 /* compiler_passes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = compiler_passes.h; path = ../src/xenia/cpu/compiler/compiler_passes.h; sourceTree = "<group>"; };
+		3CE6D0CB0B0A247D9218770B /* null_backend.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = null_backend.cc; path = ../src/xenia/cpu/backend/null_backend.cc; sourceTree = "<group>"; };
+		40EADBE40F0E2F96961C8224 /* ppc_decode_data.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ppc_decode_data.h; path = ../src/xenia/cpu/ppc/ppc_decode_data.h; sourceTree = "<group>"; };
+		4401F31B6C3CABCD53D8395B /* backend.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = backend.h; path = ../src/xenia/cpu/backend/backend.h; sourceTree = "<group>"; };
+		473F13A394A209D50AC109E3 /* assembler.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = assembler.cc; path = ../src/xenia/cpu/backend/assembler.cc; sourceTree = "<group>"; };
+		475E86004ACF5832CC3BFC40 /* module.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = module.h; path = ../src/xenia/cpu/module.h; sourceTree = "<group>"; };
+		47C4DBF097D870A21A56A230 /* lzx.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = lzx.h; path = ../src/xenia/cpu/lzx.h; sourceTree = "<group>"; };
+		47D81234953B08660B5A0874 /* hir_builder.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = hir_builder.cc; path = ../src/xenia/cpu/hir/hir_builder.cc; sourceTree = "<group>"; };
+		4B753B2438DCCDD6D5D6C164 /* conditional_group_pass.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = conditional_group_pass.cc; path = ../src/xenia/cpu/compiler/passes/conditional_group_pass.cc; sourceTree = "<group>"; };
+		4BD6C5079939BB390F58BB47 /* code_cache.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = code_cache.h; path = ../src/xenia/cpu/backend/code_cache.h; sourceTree = "<group>"; };
+		4E4840467682F8F85E1E8686 /* entry_table.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = entry_table.h; path = ../src/xenia/cpu/entry_table.h; sourceTree = "<group>"; };
+		513EE2FAEB62D82C9B88B93A /* value_reduction_pass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = value_reduction_pass.h; path = ../src/xenia/cpu/compiler/passes/value_reduction_pass.h; sourceTree = "<group>"; };
+		58A5C3C0EB338DB2540C3200 /* compiler_pass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = compiler_pass.h; path = ../src/xenia/cpu/compiler/compiler_pass.h; sourceTree = "<group>"; };
+		59A391B870B62CEA60D227F8 /* block.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = block.cc; path = ../src/xenia/cpu/hir/block.cc; sourceTree = "<group>"; };
+		59D492F8014A2EAAAA0F3938 /* register_allocation_pass.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = register_allocation_pass.cc; path = ../src/xenia/cpu/compiler/passes/register_allocation_pass.cc; sourceTree = "<group>"; };
+		5AFFE20C32530D3EABC0784C /* control_flow_simplification_pass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = control_flow_simplification_pass.h; path = ../src/xenia/cpu/compiler/passes/control_flow_simplification_pass.h; sourceTree = "<group>"; };
+		5E2861FC844E91AEEB55883C /* function.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = function.cc; path = ../src/xenia/cpu/function.cc; sourceTree = "<group>"; };
+		617D8F7C2FA0E32EB6AF35BC /* ppc_hir_builder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ppc_hir_builder.h; path = ../src/xenia/cpu/ppc/ppc_hir_builder.h; sourceTree = "<group>"; };
+		62798D6465EA5F96E75703A4 /* thread.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = thread.h; path = ../src/xenia/cpu/thread.h; sourceTree = "<group>"; };
+		6563A2BEAE02E0F0D12E98FE /* context_promotion_pass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = context_promotion_pass.h; path = ../src/xenia/cpu/compiler/passes/context_promotion_pass.h; sourceTree = "<group>"; };
+		676FB124893B5E56C5F08764 /* thread_state.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = thread_state.h; path = ../src/xenia/cpu/thread_state.h; sourceTree = "<group>"; };
+		679156D960F7584B5492B519 /* libxenia-cpu.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libxenia-cpu.a"; path = "libxenia-cpu.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		69BCFE2E91F7B6E07993446E /* raw_module.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = raw_module.cc; path = ../src/xenia/cpu/raw_module.cc; sourceTree = "<group>"; };
+		6F1DC2D05C855582F97F4910 /* data_flow_analysis_pass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = data_flow_analysis_pass.h; path = ../src/xenia/cpu/compiler/passes/data_flow_analysis_pass.h; sourceTree = "<group>"; };
+		6FBF4A385406526AD7F38078 /* ppc_emit-private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "ppc_emit-private.h"; path = "../src/xenia/cpu/ppc/ppc_emit-private.h"; sourceTree = "<group>"; };
+		71855196247B5B48759DB7D6 /* value_reduction_pass.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = value_reduction_pass.cc; path = ../src/xenia/cpu/compiler/passes/value_reduction_pass.cc; sourceTree = "<group>"; };
+		74375E8617258538A64B64C6 /* instr.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = instr.h; path = ../src/xenia/cpu/hir/instr.h; sourceTree = "<group>"; };
+		74B821BC17A6486EA6CC27FC /* module.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = module.cc; path = ../src/xenia/cpu/module.cc; sourceTree = "<group>"; };
+		776EE7505BB5EF82DFA31D90 /* ppc_opcode_info.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ppc_opcode_info.cc; path = ../src/xenia/cpu/ppc/ppc_opcode_info.cc; sourceTree = "<group>"; };
+		78720A203BDDCBD27A817060 /* thread_state.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = thread_state.cc; path = ../src/xenia/cpu/thread_state.cc; sourceTree = "<group>"; };
+		78FA4F2F0E710E617D0D656F /* null_backend.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = null_backend.h; path = ../src/xenia/cpu/backend/null_backend.h; sourceTree = "<group>"; };
+		7B3C869E10B345D07F4F9CDE /* ppc_translator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ppc_translator.h; path = ../src/xenia/cpu/ppc/ppc_translator.h; sourceTree = "<group>"; };
+		7DB2CDFA9F7E7B2CDC33A43A /* test_module.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = test_module.cc; path = ../src/xenia/cpu/test_module.cc; sourceTree = "<group>"; };
+		7DDE5F8ACB4155BC416055CA /* ppc_frontend.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ppc_frontend.h; path = ../src/xenia/cpu/ppc/ppc_frontend.h; sourceTree = "<group>"; };
+		7E685BB4D9A9AF26AD03F9F4 /* compiler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = compiler.h; path = ../src/xenia/cpu/compiler/compiler.h; sourceTree = "<group>"; };
+		8367826E95915F20C98248AE /* function_trace_data.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = function_trace_data.h; path = ../src/xenia/cpu/function_trace_data.h; sourceTree = "<group>"; };
+		8757F46CCFC8D89E1467AAAC /* elf_module.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = elf_module.h; path = ../src/xenia/cpu/elf_module.h; sourceTree = "<group>"; };
+		88FFDB82A01276B4902E71C2 /* instr.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = instr.cc; path = ../src/xenia/cpu/hir/instr.cc; sourceTree = "<group>"; };
+		8AB703E02DA52A92BCCB0A20 /* thread.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = thread.cc; path = ../src/xenia/cpu/thread.cc; sourceTree = "<group>"; };
+		8E2B18DCFB53274EFCE6171C /* compiler_pass.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = compiler_pass.cc; path = ../src/xenia/cpu/compiler/compiler_pass.cc; sourceTree = "<group>"; };
+		8F0C12C75277D479911B7907 /* assembler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = assembler.h; path = ../src/xenia/cpu/backend/assembler.h; sourceTree = "<group>"; };
+		91564DBEA3802A70D77113FE /* ppc_opcode_disasm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ppc_opcode_disasm.h; path = ../src/xenia/cpu/ppc/ppc_opcode_disasm.h; sourceTree = "<group>"; };
+		928DCBAABAC8845CA26411EA /* ppc_instr.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ppc_instr.h; path = ../src/xenia/cpu/ppc/ppc_instr.h; sourceTree = "<group>"; };
+		9564B03458D071E697741674 /* ppc_context.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ppc_context.h; path = ../src/xenia/cpu/ppc/ppc_context.h; sourceTree = "<group>"; };
+		9694CBDE5A008D9098A4321E /* ppc_scanner.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ppc_scanner.h; path = ../src/xenia/cpu/ppc/ppc_scanner.h; sourceTree = "<group>"; };
+		97027F30DF73636224123570 /* processor.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = processor.cc; path = ../src/xenia/cpu/processor.cc; sourceTree = "<group>"; };
+		9CFE4586CEF7903848D6CBC6 /* ppc_frontend.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ppc_frontend.cc; path = ../src/xenia/cpu/ppc/ppc_frontend.cc; sourceTree = "<group>"; };
+		9DC74C12E63830442AD70252 /* raw_module.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = raw_module.h; path = ../src/xenia/cpu/raw_module.h; sourceTree = "<group>"; };
+		A360059487A70DC60B943BD4 /* ppc_emit_memory.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ppc_emit_memory.cc; path = ../src/xenia/cpu/ppc/ppc_emit_memory.cc; sourceTree = "<group>"; };
+		A37FE6E24AF58294F3BA8D22 /* constant_propagation_pass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = constant_propagation_pass.h; path = ../src/xenia/cpu/compiler/passes/constant_propagation_pass.h; sourceTree = "<group>"; };
+		A7554E7EC920FBB005D624BE /* ppc_opcode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ppc_opcode.h; path = ../src/xenia/cpu/ppc/ppc_opcode.h; sourceTree = "<group>"; };
+		A7EDB7DA76110B8CFD1F5E1A /* ppc_translator.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ppc_translator.cc; path = ../src/xenia/cpu/ppc/ppc_translator.cc; sourceTree = "<group>"; };
+		AA53C024D28E78D6BA2A0664 /* xex_module.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = xex_module.cc; path = ../src/xenia/cpu/xex_module.cc; sourceTree = "<group>"; };
+		AC0916CCF96C0CFE6F8B0D0C /* debug_listener.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = debug_listener.h; path = ../src/xenia/cpu/debug_listener.h; sourceTree = "<group>"; };
+		AD38CB4AA6038AFC3077F18A /* memory_sequence_combination_pass.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = memory_sequence_combination_pass.cc; path = ../src/xenia/cpu/compiler/passes/memory_sequence_combination_pass.cc; sourceTree = "<group>"; };
+		AFA4C9EE86F7F5200065602E /* memory_sequence_combination_pass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = memory_sequence_combination_pass.h; path = ../src/xenia/cpu/compiler/passes/memory_sequence_combination_pass.h; sourceTree = "<group>"; };
+		B13C301ECC089ED0CFD9365E /* validation_pass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = validation_pass.h; path = ../src/xenia/cpu/compiler/passes/validation_pass.h; sourceTree = "<group>"; };
+		B219A244C4437EF6F8346884 /* ppc_emit_control.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ppc_emit_control.cc; path = ../src/xenia/cpu/ppc/ppc_emit_control.cc; sourceTree = "<group>"; };
+		B7BEE42CB761C75EF1B67A6C /* ppc_opcode_disasm_gen.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ppc_opcode_disasm_gen.cc; path = ../src/xenia/cpu/ppc/ppc_opcode_disasm_gen.cc; sourceTree = "<group>"; };
+		BAD64AAADCA1F7DC195720EA /* stack_walker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = stack_walker.h; path = ../src/xenia/cpu/stack_walker.h; sourceTree = "<group>"; };
+		BD0F98500A728E8280918E90 /* ppc_context.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ppc_context.cc; path = ../src/xenia/cpu/ppc/ppc_context.cc; sourceTree = "<group>"; };
+		BE6CC072D0969D24048786B2 /* ppc_emit_altivec.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ppc_emit_altivec.cc; path = ../src/xenia/cpu/ppc/ppc_emit_altivec.cc; sourceTree = "<group>"; };
+		C05A4FAE83C61160C269B5EE /* mmio_handler.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = mmio_handler.cc; path = ../src/xenia/cpu/mmio_handler.cc; sourceTree = "<group>"; };
+		C0E49C3A04F86D6CF8C9F27A /* ppc_opcode_disasm.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ppc_opcode_disasm.cc; path = ../src/xenia/cpu/ppc/ppc_opcode_disasm.cc; sourceTree = "<group>"; };
+		C2E2E05658599F88C6F5F696 /* export_resolver.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = export_resolver.cc; path = ../src/xenia/cpu/export_resolver.cc; sourceTree = "<group>"; };
+		C3227418A7697C4A2B56AA58 /* ppc_hir_builder.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ppc_hir_builder.cc; path = ../src/xenia/cpu/ppc/ppc_hir_builder.cc; sourceTree = "<group>"; };
+		C377295886E2EB0AC5868F98 /* hir_builder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = hir_builder.h; path = ../src/xenia/cpu/hir/hir_builder.h; sourceTree = "<group>"; };
+		C44B9D3C6BC138EE1486437C /* conditional_group_subpass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = conditional_group_subpass.h; path = ../src/xenia/cpu/compiler/passes/conditional_group_subpass.h; sourceTree = "<group>"; };
+		C4F04A7C0D612EAE520000BC /* opcodes.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = opcodes.cc; path = ../src/xenia/cpu/hir/opcodes.cc; sourceTree = "<group>"; };
+		C732F437E8FEA16925B3CA77 /* backend.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = backend.cc; path = ../src/xenia/cpu/backend/backend.cc; sourceTree = "<group>"; };
+		C8153434D7FA6066C46DEA74 /* finalization_pass.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = finalization_pass.cc; path = ../src/xenia/cpu/compiler/passes/finalization_pass.cc; sourceTree = "<group>"; };
+		C8D96CEEF11425A0D8AFB32E /* breakpoint.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = breakpoint.cc; path = ../src/xenia/cpu/breakpoint.cc; sourceTree = "<group>"; };
+		CADD8B68F318441ADAB3D1A8 /* elf_module.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = elf_module.cc; path = ../src/xenia/cpu/elf_module.cc; sourceTree = "<group>"; };
+		CE235240711178F200375880 /* value.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = value.h; path = ../src/xenia/cpu/hir/value.h; sourceTree = "<group>"; };
+		D276A6A81AE78ADA5F865CE8 /* ppc_emit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ppc_emit.h; path = ../src/xenia/cpu/ppc/ppc_emit.h; sourceTree = "<group>"; };
+		D38609D0046A01C217823810 /* compiler.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = compiler.cc; path = ../src/xenia/cpu/compiler/compiler.cc; sourceTree = "<group>"; };
+		D414D0C2E63EAD741A2F9702 /* function_debug_info.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = function_debug_info.h; path = ../src/xenia/cpu/function_debug_info.h; sourceTree = "<group>"; };
+		D6364D2AE86029DC1C51136A /* stack_walker_posix.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = stack_walker_posix.cc; path = ../src/xenia/cpu/stack_walker_posix.cc; sourceTree = "<group>"; };
+		D75F19BE32AA69F020DC4FFE /* constant_propagation_pass.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = constant_propagation_pass.cc; path = ../src/xenia/cpu/compiler/passes/constant_propagation_pass.cc; sourceTree = "<group>"; };
+		D802FAC0EF1595F2DF319100 /* function.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = function.h; path = ../src/xenia/cpu/function.h; sourceTree = "<group>"; };
+		D88DE8BAD830CBEC12857EFA /* validation_pass.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = validation_pass.cc; path = ../src/xenia/cpu/compiler/passes/validation_pass.cc; sourceTree = "<group>"; };
+		DAD636D223471B0467E5ED12 /* breakpoint.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = breakpoint.h; path = ../src/xenia/cpu/breakpoint.h; sourceTree = "<group>"; };
+		DBFCD79EDB9FBAD015F46DDE /* ppc_opcode_lookup_gen.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ppc_opcode_lookup_gen.cc; path = ../src/xenia/cpu/ppc/ppc_opcode_lookup_gen.cc; sourceTree = "<group>"; };
+		DC4969E824BA4E1A69592028 /* xex_module.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = xex_module.h; path = ../src/xenia/cpu/xex_module.h; sourceTree = "<group>"; };
+		DD61BA9C804FE14E0F75C0DC /* block.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = block.h; path = ../src/xenia/cpu/hir/block.h; sourceTree = "<group>"; };
+		DFAC3908D876F8BA62EB5F48 /* control_flow_simplification_pass.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = control_flow_simplification_pass.cc; path = ../src/xenia/cpu/compiler/passes/control_flow_simplification_pass.cc; sourceTree = "<group>"; };
+		E770039819694E4A934889D8 /* ppc_emit_fpu.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ppc_emit_fpu.cc; path = ../src/xenia/cpu/ppc/ppc_emit_fpu.cc; sourceTree = "<group>"; };
+		EB8905A0EEF9D7D270667BE0 /* symbol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = symbol.h; path = ../src/xenia/cpu/symbol.h; sourceTree = "<group>"; };
+		EC0E4B2012347AD2793B7160 /* opcodes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = opcodes.h; path = ../src/xenia/cpu/hir/opcodes.h; sourceTree = "<group>"; };
+		ED9D72120F691F444C1E4852 /* mmio_handler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = mmio_handler.h; path = ../src/xenia/cpu/mmio_handler.h; sourceTree = "<group>"; };
+		F12E70DC1754A08E7E5B971C /* cpu_flags.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = cpu_flags.h; path = ../src/xenia/cpu/cpu_flags.h; sourceTree = "<group>"; };
+		FCA1C1184512A54A89B17758 /* cpu_flags.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = cpu_flags.cc; path = ../src/xenia/cpu/cpu_flags.cc; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		06DFC7C9786AE03B276C0609 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9F6839157E0AD48732ECD755 /* libxenia-base.a in Frameworks */,
+				69E6CA595DE613CBE2D12899 /* libmspack.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		13BC2E75146F2B678850FCB5 /* Embed Libraries */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Libraries";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXGroup section */
+		1B5E0CAE074F18605986B2EE /* ppc */ = {
+			isa = PBXGroup;
+			children = (
+				BD0F98500A728E8280918E90 /* ppc_context.cc */,
+				9564B03458D071E697741674 /* ppc_context.h */,
+				40EADBE40F0E2F96961C8224 /* ppc_decode_data.h */,
+				6FBF4A385406526AD7F38078 /* ppc_emit-private.h */,
+				D276A6A81AE78ADA5F865CE8 /* ppc_emit.h */,
+				BE6CC072D0969D24048786B2 /* ppc_emit_altivec.cc */,
+				15B7766647B0C118C18FFCA6 /* ppc_emit_alu.cc */,
+				B219A244C4437EF6F8346884 /* ppc_emit_control.cc */,
+				E770039819694E4A934889D8 /* ppc_emit_fpu.cc */,
+				A360059487A70DC60B943BD4 /* ppc_emit_memory.cc */,
+				9CFE4586CEF7903848D6CBC6 /* ppc_frontend.cc */,
+				7DDE5F8ACB4155BC416055CA /* ppc_frontend.h */,
+				C3227418A7697C4A2B56AA58 /* ppc_hir_builder.cc */,
+				617D8F7C2FA0E32EB6AF35BC /* ppc_hir_builder.h */,
+				928DCBAABAC8845CA26411EA /* ppc_instr.h */,
+				A7554E7EC920FBB005D624BE /* ppc_opcode.h */,
+				C0E49C3A04F86D6CF8C9F27A /* ppc_opcode_disasm.cc */,
+				91564DBEA3802A70D77113FE /* ppc_opcode_disasm.h */,
+				B7BEE42CB761C75EF1B67A6C /* ppc_opcode_disasm_gen.cc */,
+				776EE7505BB5EF82DFA31D90 /* ppc_opcode_info.cc */,
+				1EFB7834ED1ECBE6742D1E74 /* ppc_opcode_info.h */,
+				DBFCD79EDB9FBAD015F46DDE /* ppc_opcode_lookup_gen.cc */,
+				230443BA3DD0B26C41A149FA /* ppc_opcode_table_gen.cc */,
+				15EE49DA6351400CD970401A /* ppc_scanner.cc */,
+				9694CBDE5A008D9098A4321E /* ppc_scanner.h */,
+				A7EDB7DA76110B8CFD1F5E1A /* ppc_translator.cc */,
+				7B3C869E10B345D07F4F9CDE /* ppc_translator.h */,
+			);
+			name = ppc;
+			sourceTree = "<group>";
+		};
+		4882513F7814203153215F7F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E9AE83DDE951670F23A61A1D /* libxenia-base.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7CEEE2EE68DFEEA0BB17892E /* hir */ = {
+			isa = PBXGroup;
+			children = (
+				59A391B870B62CEA60D227F8 /* block.cc */,
+				DD61BA9C804FE14E0F75C0DC /* block.h */,
+				47D81234953B08660B5A0874 /* hir_builder.cc */,
+				C377295886E2EB0AC5868F98 /* hir_builder.h */,
+				88FFDB82A01276B4902E71C2 /* instr.cc */,
+				74375E8617258538A64B64C6 /* instr.h */,
+				1544A926B832CFD84758AF66 /* label.h */,
+				C4F04A7C0D612EAE520000BC /* opcodes.cc */,
+				EC0E4B2012347AD2793B7160 /* opcodes.h */,
+				1D913C1C34A3D74E24BFD25C /* value.cc */,
+				CE235240711178F200375880 /* value.h */,
+			);
+			name = hir;
+			sourceTree = "<group>";
+		};
+		93A517B08D0B192280A675F0 /* passes */ = {
+			isa = PBXGroup;
+			children = (
+				4B753B2438DCCDD6D5D6C164 /* conditional_group_pass.cc */,
+				3459F8687CF9369AA024EEA8 /* conditional_group_pass.h */,
+				1E869AF879D1EB2A6803D138 /* conditional_group_subpass.cc */,
+				C44B9D3C6BC138EE1486437C /* conditional_group_subpass.h */,
+				D75F19BE32AA69F020DC4FFE /* constant_propagation_pass.cc */,
+				A37FE6E24AF58294F3BA8D22 /* constant_propagation_pass.h */,
+				0DA6C99AFB0E5C4C98084FDA /* context_promotion_pass.cc */,
+				6563A2BEAE02E0F0D12E98FE /* context_promotion_pass.h */,
+				137F0BBA6EDF306CB122D1FA /* control_flow_analysis_pass.cc */,
+				2DB1E7DE88FD3810772F1E1E /* control_flow_analysis_pass.h */,
+				DFAC3908D876F8BA62EB5F48 /* control_flow_simplification_pass.cc */,
+				5AFFE20C32530D3EABC0784C /* control_flow_simplification_pass.h */,
+				0BEE18CCF1851FFEB4CA2F0C /* data_flow_analysis_pass.cc */,
+				6F1DC2D05C855582F97F4910 /* data_flow_analysis_pass.h */,
+				088D206463ED4516A630E6A4 /* dead_code_elimination_pass.cc */,
+				2DF982A88944D2DA7776B8E8 /* dead_code_elimination_pass.h */,
+				C8153434D7FA6066C46DEA74 /* finalization_pass.cc */,
+				225E9938964710EAB894BF78 /* finalization_pass.h */,
+				AD38CB4AA6038AFC3077F18A /* memory_sequence_combination_pass.cc */,
+				AFA4C9EE86F7F5200065602E /* memory_sequence_combination_pass.h */,
+				59D492F8014A2EAAAA0F3938 /* register_allocation_pass.cc */,
+				05352CFCEACC342EAE11433C /* register_allocation_pass.h */,
+				2AA40CDAC4C8020C74EDE31A /* simplification_pass.cc */,
+				35EB773ED3CC77F0AB4ABD7E /* simplification_pass.h */,
+				D88DE8BAD830CBEC12857EFA /* validation_pass.cc */,
+				B13C301ECC089ED0CFD9365E /* validation_pass.h */,
+				71855196247B5B48759DB7D6 /* value_reduction_pass.cc */,
+				513EE2FAEB62D82C9B88B93A /* value_reduction_pass.h */,
+			);
+			name = passes;
+			sourceTree = "<group>";
+		};
+		9D968EAA920D05DCE0E0A4EA /* Projects */ = {
+			isa = PBXGroup;
+			children = (
+				2D378CBA117E94EC956BC2FA /* xenia-base.xcodeproj */,
+				37AB12FE850E0930FB2D093E /* mspack.xcodeproj */,
+			);
+			name = Projects;
+			sourceTree = "<group>";
+		};
+		A6C936B49B3FADE6EA134CF4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				679156D960F7584B5492B519 /* libxenia-cpu.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BD885E9861DAFC4A741344D8 /* backend */ = {
+			isa = PBXGroup;
+			children = (
+				473F13A394A209D50AC109E3 /* assembler.cc */,
+				8F0C12C75277D479911B7907 /* assembler.h */,
+				C732F437E8FEA16925B3CA77 /* backend.cc */,
+				4401F31B6C3CABCD53D8395B /* backend.h */,
+				4BD6C5079939BB390F58BB47 /* code_cache.h */,
+				2FD1855B41FB620D75EC4B9B /* code_cache_base.h */,
+				0750222B9CC6E15D0B63386B /* machine_info.h */,
+				3CE6D0CB0B0A247D9218770B /* null_backend.cc */,
+				78FA4F2F0E710E617D0D656F /* null_backend.h */,
+			);
+			name = backend;
+			sourceTree = "<group>";
+		};
+		C5571FBEC8C7F1F04A3495FE /* compiler */ = {
+			isa = PBXGroup;
+			children = (
+				D38609D0046A01C217823810 /* compiler.cc */,
+				7E685BB4D9A9AF26AD03F9F4 /* compiler.h */,
+				8E2B18DCFB53274EFCE6171C /* compiler_pass.cc */,
+				58A5C3C0EB338DB2540C3200 /* compiler_pass.h */,
+				383BBB708FA12E6241AF49B0 /* compiler_passes.h */,
+				93A517B08D0B192280A675F0 /* passes */,
+			);
+			name = compiler;
+			sourceTree = "<group>";
+		};
+		E1B46CE1CCA092D314865B21 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F3D19AE137E56C132BB6F121 /* libmspack.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EB59DB8A6E9F38FC97E6B9CA /* xenia-cpu */ = {
+			isa = PBXGroup;
+			children = (
+				BD885E9861DAFC4A741344D8 /* backend */,
+				C8D96CEEF11425A0D8AFB32E /* breakpoint.cc */,
+				DAD636D223471B0467E5ED12 /* breakpoint.h */,
+				C5571FBEC8C7F1F04A3495FE /* compiler */,
+				FCA1C1184512A54A89B17758 /* cpu_flags.cc */,
+				F12E70DC1754A08E7E5B971C /* cpu_flags.h */,
+				AC0916CCF96C0CFE6F8B0D0C /* debug_listener.h */,
+				CADD8B68F318441ADAB3D1A8 /* elf_module.cc */,
+				8757F46CCFC8D89E1467AAAC /* elf_module.h */,
+				19D3E1E23B9F8F147854B822 /* entry_table.cc */,
+				4E4840467682F8F85E1E8686 /* entry_table.h */,
+				C2E2E05658599F88C6F5F696 /* export_resolver.cc */,
+				361F59FA6818A4ACE1F7E03A /* export_resolver.h */,
+				5E2861FC844E91AEEB55883C /* function.cc */,
+				D802FAC0EF1595F2DF319100 /* function.h */,
+				11752B9E5588FCD0495A81DE /* function_debug_info.cc */,
+				D414D0C2E63EAD741A2F9702 /* function_debug_info.h */,
+				8367826E95915F20C98248AE /* function_trace_data.h */,
+				7CEEE2EE68DFEEA0BB17892E /* hir */,
+				1C1ACD6CBF66569EDA3723AC /* lzx.cc */,
+				47C4DBF097D870A21A56A230 /* lzx.h */,
+				C05A4FAE83C61160C269B5EE /* mmio_handler.cc */,
+				ED9D72120F691F444C1E4852 /* mmio_handler.h */,
+				74B821BC17A6486EA6CC27FC /* module.cc */,
+				475E86004ACF5832CC3BFC40 /* module.h */,
+				1B5E0CAE074F18605986B2EE /* ppc */,
+				97027F30DF73636224123570 /* processor.cc */,
+				0ED4CA7434FAFA269C01F0B4 /* processor.h */,
+				69BCFE2E91F7B6E07993446E /* raw_module.cc */,
+				9DC74C12E63830442AD70252 /* raw_module.h */,
+				BAD64AAADCA1F7DC195720EA /* stack_walker.h */,
+				D6364D2AE86029DC1C51136A /* stack_walker_posix.cc */,
+				EB8905A0EEF9D7D270667BE0 /* symbol.h */,
+				7DB2CDFA9F7E7B2CDC33A43A /* test_module.cc */,
+				2F8AF7DE57C5B0903F613E1E /* test_module.h */,
+				8AB703E02DA52A92BCCB0A20 /* thread.cc */,
+				62798D6465EA5F96E75703A4 /* thread.h */,
+				06BB1D66D4DE71185BECC3A6 /* thread_debug_info.h */,
+				78720A203BDDCBD27A817060 /* thread_state.cc */,
+				676FB124893B5E56C5F08764 /* thread_state.h */,
+				AA53C024D28E78D6BA2A0664 /* xex_module.cc */,
+				DC4969E824BA4E1A69592028 /* xex_module.h */,
+				A6C936B49B3FADE6EA134CF4 /* Products */,
+				9D968EAA920D05DCE0E0A4EA /* Projects */,
+			);
+			name = "xenia-cpu";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B7AD379FCEBFD2D1BEDBCDDF /* xenia-cpu */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F51B102866A6289A15A74E68 /* Build configuration list for PBXNativeTarget "xenia-cpu" */;
+			buildPhases = (
+				76C74869E85260DB975386A9 /* Resources */,
+				E07461C051FF7A320100A000 /* Sources */,
+				06DFC7C9786AE03B276C0609 /* Frameworks */,
+				13BC2E75146F2B678850FCB5 /* Embed Libraries */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				363A8E4865CC5D3A40D99C88 /* PBXTargetDependency */,
+				CF6CA9EABA58CFDC023E982A /* PBXTargetDependency */,
+			);
+			name = "xenia-cpu";
+			productName = "xenia-cpu";
+			productReference = 679156D960F7584B5492B519 /* libxenia-cpu.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		08FB7793FE84155DC02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 1DEB928908733DD80010E9CD /* Build configuration list for PBXProject "xenia-cpu" */;
+			compatibilityVersion = "Xcode 3.2";
+			hasScannedForEncodings = 1;
+			mainGroup = EB59DB8A6E9F38FC97E6B9CA /* xenia-cpu */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 4882513F7814203153215F7F /* Products */;
+					ProjectRef = 2D378CBA117E94EC956BC2FA /* xenia-base.xcodeproj */;
+				},
+				{
+					ProductGroup = E1B46CE1CCA092D314865B21 /* Products */;
+					ProjectRef = 37AB12FE850E0930FB2D093E /* mspack.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				B7AD379FCEBFD2D1BEDBCDDF /* libxenia-cpu.a */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		E9AE83DDE951670F23A61A1D /* libxenia-base.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libxenia-base.a";
+			remoteRef = AA4B43DFCC16F11108CC1A1F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F3D19AE137E56C132BB6F121 /* libmspack.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libmspack.a;
+			remoteRef = 69C0D3C1B231B7F3F6D08A01 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		76C74869E85260DB975386A9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E07461C051FF7A320100A000 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5BC0BEBBC8E8CD2DCA7BBCFB /* assembler.cc in Sources */,
+				0333088F4781AE0189A8E6CF /* backend.cc in Sources */,
+				D98F6D637B79095572A01BA3 /* null_backend.cc in Sources */,
+				DB3832264C5AD31802218066 /* breakpoint.cc in Sources */,
+				5729A5883B70ADBABF5DDBC8 /* compiler.cc in Sources */,
+				EBB4E05406814F060A51E694 /* compiler_pass.cc in Sources */,
+				836F383C4AD3F32ED58BC67C /* conditional_group_pass.cc in Sources */,
+				10D82C5067EDD4C294366A90 /* conditional_group_subpass.cc in Sources */,
+				FD99CA7654AF72E880F808B6 /* constant_propagation_pass.cc in Sources */,
+				D9BAE712A11FA2042BD77552 /* context_promotion_pass.cc in Sources */,
+				3DA00F32B0C19C241186DD72 /* control_flow_analysis_pass.cc in Sources */,
+				40F1B8606E9C40526F3FE6A0 /* control_flow_simplification_pass.cc in Sources */,
+				F060C36423E002D63BD9E1A4 /* data_flow_analysis_pass.cc in Sources */,
+				977DCD7C0A9F5A6E6B649BBC /* dead_code_elimination_pass.cc in Sources */,
+				F6569F4C52DDA3BEDB805D8C /* finalization_pass.cc in Sources */,
+				A2CDDDC2D07865B4D11C0C02 /* memory_sequence_combination_pass.cc in Sources */,
+				1117A150216485421F514F90 /* register_allocation_pass.cc in Sources */,
+				8E0C3F5226842CC4526B1D92 /* simplification_pass.cc in Sources */,
+				BFB3F5329E5690A453389372 /* validation_pass.cc in Sources */,
+				E959F6CE7F8308C040E9650E /* value_reduction_pass.cc in Sources */,
+				F0FD8CF0EABF496224BE4B30 /* cpu_flags.cc in Sources */,
+				E5190F40563BB0320C025D80 /* elf_module.cc in Sources */,
+				4116195A8564BECCC78BF79A /* entry_table.cc in Sources */,
+				5DC2A50E24509C809252C34E /* export_resolver.cc in Sources */,
+				E48A0F14156E070628863D54 /* function.cc in Sources */,
+				6ADB3CD65EDA8648E3C59B16 /* function_debug_info.cc in Sources */,
+				1B2ECF70767022E249CA6DB0 /* block.cc in Sources */,
+				2F5AFBAC9C830A1E9E15F9EC /* hir_builder.cc in Sources */,
+				C2DF0ADA1E205E4CF17AA91A /* instr.cc in Sources */,
+				76CDA874708F64E6AA8E66B4 /* opcodes.cc in Sources */,
+				1C20B214776205864ABC5054 /* value.cc in Sources */,
+				D1056E84CA6B6FF6BE06CCC4 /* lzx.cc in Sources */,
+				CE4E82E660DC4CD8C9B4F126 /* mmio_handler.cc in Sources */,
+				CB428CD4FAD45BC6D5E19B14 /* module.cc in Sources */,
+				9125DB88FE4DE9FAFFE0D9C8 /* ppc_context.cc in Sources */,
+				0D5D0DCA81B752BCFF9ADC0A /* ppc_emit_altivec.cc in Sources */,
+				4B940CFEA2F97FF055079B3E /* ppc_emit_alu.cc in Sources */,
+				C6BBFBBC3B1640AEB8F9C9FC /* ppc_emit_control.cc in Sources */,
+				E1D5A450393B1742EB493290 /* ppc_emit_fpu.cc in Sources */,
+				509EFB0C135F5B7E7094394C /* ppc_emit_memory.cc in Sources */,
+				09AD3E1E6112B1101320CC5E /* ppc_frontend.cc in Sources */,
+				0DB6DBD0D0773C422DAC1A10 /* ppc_hir_builder.cc in Sources */,
+				C797A912BB96F28440820752 /* ppc_opcode_disasm.cc in Sources */,
+				67F2952446953096FB773364 /* ppc_opcode_disasm_gen.cc in Sources */,
+				3BDA0E88FE9A6EFA5BCF4CC8 /* ppc_opcode_info.cc in Sources */,
+				59B7C8B6385A6428ED3C66F6 /* ppc_opcode_lookup_gen.cc in Sources */,
+				9E30DD92F831F484BF78EBD2 /* ppc_opcode_table_gen.cc in Sources */,
+				A26C36B20F944524112734F2 /* ppc_scanner.cc in Sources */,
+				5C5579B2FE3F15A4F56627F2 /* ppc_translator.cc in Sources */,
+				9E8D7888984F34FAD24E36C8 /* processor.cc in Sources */,
+				8CF2B766FE155858B3DC05A6 /* raw_module.cc in Sources */,
+				8BDA98220034DD147E186662 /* stack_walker_posix.cc in Sources */,
+				EF44C2F23393686475BAA132 /* test_module.cc in Sources */,
+				1C4FF7384BE1C62A26EF0578 /* thread.cc in Sources */,
+				A209F3783497BD6A9D7061B8 /* thread_state.cc in Sources */,
+				5AF669BCCC190AAE81DFB7FC /* xex_module.cc in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		363A8E4865CC5D3A40D99C88 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "libxenia-base.a";
+			targetProxy = FC85B6781E5163AA5B068CB8 /* PBXContainerItemProxy */;
+		};
+		CF6CA9EABA58CFDC023E982A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = libmspack.a;
+			targetProxy = BBFB465A046C2A8C490AFC9A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		13415DD916B2300B981ED419 /* Checked */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					arm64,
+				);
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = c17;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					VULKAN_HPP_NO_TO_STRING,
+					IMGUI_DISABLE_OBSOLETE_FUNCTIONS,
+					IMGUI_DISABLE_DEFAULT_FONT,
+					USE_CPP17,
+					_LIB,
+					DEBUG,
+					NDEBUG,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				OBJROOT = "obj/iOS-ARM64/Checked/iOS-ARM64/Checked/xenia-cpu";
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = (
+					"-w",
+					"-fno-modules",
+				);
+				SDKROOT = (
+					iphoneos,
+				);
+				SYMROOT = "bin/iOS-ARM64/Checked";
+				SYSTEM_HEADER_SEARCH_PATHS = (
+					../third_party/llvm/include,
+					"$(inherited)",
+				);
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+				USER_HEADER_SEARCH_PATHS = (
+					..,
+					../src,
+					../third_party,
+				);
+			};
+			name = Checked;
+		};
+		14D0A0EE7011F460436C3F2E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					arm64,
+				);
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "bin/iOS-ARM64/Debug";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_DYNAMIC_NO_PIC = NO;
+				INSTALL_PATH = /usr/local/lib;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				PRODUCT_NAME = "xenia-cpu";
+				SDKROOT = (
+					iphoneos,
+				);
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+			};
+			name = Debug;
+		};
+		28297EFE758C7530EBAB753E /* Valgrind */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					arm64,
+				);
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "bin/iOS-ARM64/Valgrind";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_DYNAMIC_NO_PIC = NO;
+				INSTALL_PATH = /usr/local/lib;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				PRODUCT_NAME = "xenia-cpu";
+				SDKROOT = (
+					iphoneos,
+				);
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+			};
+			name = Valgrind;
+		};
+		2B52B7299CDDCF9B4BDEF569 /* Valgrind */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					arm64,
+				);
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = c17;
+				GCC_OPTIMIZATION_LEVEL = g;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					VULKAN_HPP_NO_TO_STRING,
+					IMGUI_DISABLE_OBSOLETE_FUNCTIONS,
+					IMGUI_DISABLE_DEFAULT_FONT,
+					IMGUI_USE_STB_SPRINTF,
+					USE_CPP17,
+					_LIB,
+					DEBUG,
+					NDEBUG,
+					"_NO_DEBUG_HEAP=1",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				OBJROOT = "obj/iOS-ARM64/Valgrind/iOS-ARM64/Valgrind/xenia-cpu";
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = (
+					"-fno-omit-frame-pointer",
+					"-fno-inline-functions",
+					"-w",
+					"-fno-modules",
+				);
+				SDKROOT = (
+					iphoneos,
+				);
+				SYMROOT = "bin/iOS-ARM64/Valgrind";
+				SYSTEM_HEADER_SEARCH_PATHS = (
+					../third_party/llvm/include,
+					"$(inherited)",
+				);
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+				USER_HEADER_SEARCH_PATHS = (
+					..,
+					../src,
+					../third_party,
+				);
+			};
+			name = Valgrind;
+		};
+		3320D0EE6404C8E0771CFF2E /* Checked */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					arm64,
+				);
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "bin/iOS-ARM64/Checked";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_DYNAMIC_NO_PIC = NO;
+				INSTALL_PATH = /usr/local/lib;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				PRODUCT_NAME = "xenia-cpu";
+				SDKROOT = (
+					iphoneos,
+				);
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+			};
+			name = Checked;
+		};
+		AE6FE75952C2850B64FACD99 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					arm64,
+				);
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = c17;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					VULKAN_HPP_NO_TO_STRING,
+					IMGUI_DISABLE_OBSOLETE_FUNCTIONS,
+					IMGUI_DISABLE_DEFAULT_FONT,
+					IMGUI_USE_STB_SPRINTF,
+					USE_CPP17,
+					_LIB,
+					DEBUG,
+					"_NO_DEBUG_HEAP=1",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				OBJROOT = "obj/iOS-ARM64/Debug/iOS-ARM64/Debug/xenia-cpu";
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = (
+					"-w",
+					"-fno-modules",
+				);
+				SDKROOT = (
+					iphoneos,
+				);
+				SYMROOT = "bin/iOS-ARM64/Debug";
+				SYSTEM_HEADER_SEARCH_PATHS = (
+					../third_party/llvm/include,
+					"$(inherited)",
+				);
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+				USER_HEADER_SEARCH_PATHS = (
+					..,
+					../src,
+					../third_party,
+				);
+			};
+			name = Debug;
+		};
+		D23FAF680323A75A163BDDA8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					arm64,
+				);
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "bin/iOS-ARM64/Release";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_DYNAMIC_NO_PIC = NO;
+				INSTALL_PATH = /usr/local/lib;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				PRODUCT_NAME = "xenia-cpu";
+				SDKROOT = (
+					iphoneos,
+				);
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+			};
+			name = Release;
+		};
+		FE6EFBD301DFCE05834C7213 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					arm64,
+				);
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				GCC_C_LANGUAGE_STANDARD = c17;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					VULKAN_HPP_NO_TO_STRING,
+					IMGUI_DISABLE_OBSOLETE_FUNCTIONS,
+					IMGUI_DISABLE_DEFAULT_FONT,
+					IMGUI_USE_STB_SPRINTF,
+					USE_CPP17,
+					_LIB,
+					NDEBUG,
+					"_NO_DEBUG_HEAP=1",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				OBJROOT = "obj/iOS-ARM64/Release/iOS-ARM64/Release/xenia-cpu";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CFLAGS = (
+					"-O3",
+					"-finline-functions",
+					"-funroll-loops",
+					"-fomit-frame-pointer",
+					"-w",
+					"-fno-modules",
+				);
+				SDKROOT = (
+					iphoneos,
+				);
+				SYMROOT = "bin/iOS-ARM64/Release";
+				SYSTEM_HEADER_SEARCH_PATHS = (
+					../third_party/llvm/include,
+					"$(inherited)",
+				);
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+				USER_HEADER_SEARCH_PATHS = (
+					..,
+					../src,
+					../third_party,
+				);
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1DEB928908733DD80010E9CD /* Build configuration list for PBXProject "xenia-cpu" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				13415DD916B2300B981ED419 /* Checked */,
+				AE6FE75952C2850B64FACD99 /* Debug */,
+				FE6EFBD301DFCE05834C7213 /* Release */,
+				2B52B7299CDDCF9B4BDEF569 /* Valgrind */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Checked;
+		};
+		F51B102866A6289A15A74E68 /* Build configuration list for PBXNativeTarget "libxenia-cpu.a" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3320D0EE6404C8E0771CFF2E /* Checked */,
+				14D0A0EE7011F460436C3F2E /* Debug */,
+				D23FAF680323A75A163BDDA8 /* Release */,
+				28297EFE758C7530EBAB753E /* Valgrind */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Checked;
+		};
+/* End XCConfigurationList section */
+};
+rootObject = 08FB7793FE84155DC02AAC07 /* Project object */;
+}

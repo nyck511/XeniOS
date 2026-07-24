@@ -1,0 +1,735 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		121A71CE0B807340FF1BD00E /* dump.c in Sources */ = {isa = PBXBuildFile; fileRef = 3020AD16D36C3648EE3D0356 /* dump.c */; };
+		144C597614FF566888E127B6 /* asf.c in Sources */ = {isa = PBXBuildFile; fileRef = 23C5FF3E73D993F0F657C57E /* asf.c */; };
+		1942F45373440B453A8B0293 /* liblibavutil.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 44148D3B5EE0FBED62B1937B /* liblibavutil.a */; };
+		1C1B1B464CFF133860174986 /* to_upper4.c in Sources */ = {isa = PBXBuildFile; fileRef = 35A4760E5BCAA5C0C2D19C4E /* to_upper4.c */; };
+		24E8C382259BC074997D91C2 /* pcm.c in Sources */ = {isa = PBXBuildFile; fileRef = 68ECE28AB900773C3B7EA8CA /* pcm.c */; };
+		2DE5E8362E98E528A27AB676 /* mux.c in Sources */ = {isa = PBXBuildFile; fileRef = 063141FE5644D6B0D8C3083E /* mux.c */; };
+		2F71421A5F03110C3A10505A /* options.c in Sources */ = {isa = PBXBuildFile; fileRef = 8A9097A22D7EBE54BCA49DE2 /* options.c */; };
+		316272EC2B242F5E6523312C /* allformats.c in Sources */ = {isa = PBXBuildFile; fileRef = A373A554EBE4898630835B94 /* allformats.c */; };
+		4C365122A777A4947AD1EF62 /* avformat.c in Sources */ = {isa = PBXBuildFile; fileRef = 31C1252A48D3C05C38EFBB6A /* avformat.c */; };
+		51BB88643CA7AE56848D76A4 /* utils.c in Sources */ = {isa = PBXBuildFile; fileRef = 7ABFFA4C1F1297FE314AE08C /* utils.c */; };
+		58B59ED043A1C4C28B878D10 /* id3v1.c in Sources */ = {isa = PBXBuildFile; fileRef = CF397BF8738C19AA85C46238 /* id3v1.c */; };
+		5F389DB33DDB3925F2BD3BF3 /* liblibavcodec.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FACBDF9BFA6EC2CD34C375DB /* liblibavcodec.a */; };
+		6E85D5286F38D21AE31AA368 /* url.c in Sources */ = {isa = PBXBuildFile; fileRef = 6F3A16D0BF4DAB8241CBDD10 /* url.c */; };
+		789E711AA830400C833D7F5A /* aviobuf.c in Sources */ = {isa = PBXBuildFile; fileRef = A19F56A2448D7D54D3B35CE2 /* aviobuf.c */; };
+		793262FAD473B66CA7CE013A /* asfcrypt.c in Sources */ = {isa = PBXBuildFile; fileRef = 2008F582371B90B427378BC2 /* asfcrypt.c */; };
+		821035787BD1F1EAB5D0F3B8 /* avlanguage.c in Sources */ = {isa = PBXBuildFile; fileRef = F36165203BD2495280711B60 /* avlanguage.c */; };
+		839ECD94DA2C3806B2A54BD4 /* format.c in Sources */ = {isa = PBXBuildFile; fileRef = AE5FE57CB1D0B7AE333D5BBC /* format.c */; };
+		8406E218DF48358AB2A28058 /* asfdec_f.c in Sources */ = {isa = PBXBuildFile; fileRef = 71971DC088A9B8F278C5B400 /* asfdec_f.c */; };
+		935560487E41863AC6274E88 /* demux.c in Sources */ = {isa = PBXBuildFile; fileRef = B5A439F059F6D7A26C2F2030 /* demux.c */; };
+		93D22A508D382BC280D38890 /* riff.c in Sources */ = {isa = PBXBuildFile; fileRef = 1C161A78BF61A3AADA3270B8 /* riff.c */; };
+		9C382E5AF2C598CCCB3EAC9A /* mp3dec.c in Sources */ = {isa = PBXBuildFile; fileRef = D8AC64E2DC1D37145D89DB22 /* mp3dec.c */; };
+		A35FE484FEA137F6D1FB82C4 /* metadata.c in Sources */ = {isa = PBXBuildFile; fileRef = 03FA276C1B0CC29E0B28BDAC /* metadata.c */; };
+		A6EDCC30D7D1C422EAE9FA70 /* urldecode.c in Sources */ = {isa = PBXBuildFile; fileRef = 8438F758AA5F270A11661D98 /* urldecode.c */; };
+		A721AE0CD805A5FEEB1DDC4C /* protocols.c in Sources */ = {isa = PBXBuildFile; fileRef = 3C5E85746284B526C98BABB4 /* protocols.c */; };
+		B928F2D2A41518C4EBFAE112 /* id3v2.c in Sources */ = {isa = PBXBuildFile; fileRef = 0A49DADAAE9C788CC0D4C11A /* id3v2.c */; };
+		C3659390C418908237FA61D0 /* sdp.c in Sources */ = {isa = PBXBuildFile; fileRef = 1B4E7AB86B620F6AEDE040F8 /* sdp.c */; };
+		CBFF9F28FB916E1AD69EAD68 /* riffdec.c in Sources */ = {isa = PBXBuildFile; fileRef = 5190F4D0F47F1B8283A4FB10 /* riffdec.c */; };
+		D92670723467C3E407C20EB2 /* asf_tags.c in Sources */ = {isa = PBXBuildFile; fileRef = 5B05177A7217B2AC6233ADBA /* asf_tags.c */; };
+		DB25395ED4E6F5D00EE5F79E /* os_support.c in Sources */ = {isa = PBXBuildFile; fileRef = 06468DA64EB771D8935643E6 /* os_support.c */; };
+		DC48EBA2D5AEED14C94A49E2 /* file.c in Sources */ = {isa = PBXBuildFile; fileRef = 97FCCBAA3B4854DC561921EA /* file.c */; };
+		DFCFDDD60F61ACC8EA6EEC16 /* network.c in Sources */ = {isa = PBXBuildFile; fileRef = E440C99E872EF0501654CFDE /* network.c */; };
+		F009EB28612C8C1A16F33968 /* demux_utils.c in Sources */ = {isa = PBXBuildFile; fileRef = F5C934D01E03ED82059F7B10 /* demux_utils.c */; };
+		FA1F37BAF3E0F42C2DDFF5FA /* replaygain.c in Sources */ = {isa = PBXBuildFile; fileRef = 065F34424ED01874936EEA82 /* replaygain.c */; };
+		FE6CA8B2F7D2AA24EB6E06F2 /* seek.c in Sources */ = {isa = PBXBuildFile; fileRef = DBB91FBA7F04A8EC99D575FA /* seek.c */; };
+		FFB6CBE0F91CCD52ECB82A20 /* avio.c in Sources */ = {isa = PBXBuildFile; fileRef = 9BAE4B083EF9D43A59CAA148 /* avio.c */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		0F7F3D67314AEA996E0013A7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C74C5A98AB9362CA2F8090D8 /* libavcodec.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = CE29C4E1C78FC653BB2B2321;
+			remoteInfo = liblibavcodec.a;
+		};
+		7735070EA6C6D60081D4154E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 522DD518205128CAA75F7B58 /* libavutil.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 7B565DBB74BC5F2D6857BBFB;
+			remoteInfo = liblibavutil.a;
+		};
+		BD44CACEDF1078001BC5A10E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C74C5A98AB9362CA2F8090D8 /* libavcodec.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4D9F8C5B73C5BC0DDACCB29B;
+			remoteInfo = liblibavcodec.a;
+		};
+		C96F79A7F9014899D40E87E7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 522DD518205128CAA75F7B58 /* libavutil.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 0D9BEA4124AE857314CA8081;
+			remoteInfo = liblibavutil.a;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		03FA276C1B0CC29E0B28BDAC /* metadata.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = metadata.c; path = ../third_party/FFmpeg/libavformat/metadata.c; sourceTree = "<group>"; };
+		063141FE5644D6B0D8C3083E /* mux.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = mux.c; path = ../third_party/FFmpeg/libavformat/mux.c; sourceTree = "<group>"; };
+		06468DA64EB771D8935643E6 /* os_support.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = os_support.c; path = ../third_party/FFmpeg/libavformat/os_support.c; sourceTree = "<group>"; };
+		065F34424ED01874936EEA82 /* replaygain.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = replaygain.c; path = ../third_party/FFmpeg/libavformat/replaygain.c; sourceTree = "<group>"; };
+		0A49DADAAE9C788CC0D4C11A /* id3v2.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = id3v2.c; path = ../third_party/FFmpeg/libavformat/id3v2.c; sourceTree = "<group>"; };
+		1B4E7AB86B620F6AEDE040F8 /* sdp.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = sdp.c; path = ../third_party/FFmpeg/libavformat/sdp.c; sourceTree = "<group>"; };
+		1C161A78BF61A3AADA3270B8 /* riff.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = riff.c; path = ../third_party/FFmpeg/libavformat/riff.c; sourceTree = "<group>"; };
+		2008F582371B90B427378BC2 /* asfcrypt.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = asfcrypt.c; path = ../third_party/FFmpeg/libavformat/asfcrypt.c; sourceTree = "<group>"; };
+		23C5FF3E73D993F0F657C57E /* asf.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = asf.c; path = ../third_party/FFmpeg/libavformat/asf.c; sourceTree = "<group>"; };
+		3020AD16D36C3648EE3D0356 /* dump.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = dump.c; path = ../third_party/FFmpeg/libavformat/dump.c; sourceTree = "<group>"; };
+		31C1252A48D3C05C38EFBB6A /* avformat.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = avformat.c; path = ../third_party/FFmpeg/libavformat/avformat.c; sourceTree = "<group>"; };
+		35A4760E5BCAA5C0C2D19C4E /* to_upper4.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = to_upper4.c; path = ../third_party/FFmpeg/libavformat/to_upper4.c; sourceTree = "<group>"; };
+		3C5E85746284B526C98BABB4 /* protocols.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = protocols.c; path = ../third_party/FFmpeg/libavformat/protocols.c; sourceTree = "<group>"; };
+		5190F4D0F47F1B8283A4FB10 /* riffdec.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = riffdec.c; path = ../third_party/FFmpeg/libavformat/riffdec.c; sourceTree = "<group>"; };
+		522DD518205128CAA75F7B58 /* liblibavutil.a */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "libavutil.xcodeproj"; path = libavutil.xcodeproj; sourceTree = SOURCE_ROOT; };
+		5B05177A7217B2AC6233ADBA /* asf_tags.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = asf_tags.c; path = ../third_party/FFmpeg/libavformat/asf_tags.c; sourceTree = "<group>"; };
+		68ECE28AB900773C3B7EA8CA /* pcm.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = pcm.c; path = ../third_party/FFmpeg/libavformat/pcm.c; sourceTree = "<group>"; };
+		6F3A16D0BF4DAB8241CBDD10 /* url.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = url.c; path = ../third_party/FFmpeg/libavformat/url.c; sourceTree = "<group>"; };
+		71971DC088A9B8F278C5B400 /* asfdec_f.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = asfdec_f.c; path = ../third_party/FFmpeg/libavformat/asfdec_f.c; sourceTree = "<group>"; };
+		777CE08662690678AA4ECEC6 /* liblibavformat.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = liblibavformat.a; path = liblibavformat.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		7ABFFA4C1F1297FE314AE08C /* utils.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = utils.c; path = ../third_party/FFmpeg/libavformat/utils.c; sourceTree = "<group>"; };
+		8438F758AA5F270A11661D98 /* urldecode.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = urldecode.c; path = ../third_party/FFmpeg/libavformat/urldecode.c; sourceTree = "<group>"; };
+		8A9097A22D7EBE54BCA49DE2 /* options.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = options.c; path = ../third_party/FFmpeg/libavformat/options.c; sourceTree = "<group>"; };
+		97FCCBAA3B4854DC561921EA /* file.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = file.c; path = ../third_party/FFmpeg/libavformat/file.c; sourceTree = "<group>"; };
+		9BAE4B083EF9D43A59CAA148 /* avio.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = avio.c; path = ../third_party/FFmpeg/libavformat/avio.c; sourceTree = "<group>"; };
+		A19F56A2448D7D54D3B35CE2 /* aviobuf.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = aviobuf.c; path = ../third_party/FFmpeg/libavformat/aviobuf.c; sourceTree = "<group>"; };
+		A373A554EBE4898630835B94 /* allformats.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = allformats.c; path = ../third_party/FFmpeg/libavformat/allformats.c; sourceTree = "<group>"; };
+		A65F9EF4BD723A26AD8E3534 /* avformat.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = avformat.h; path = ../third_party/FFmpeg/libavformat/avformat.h; sourceTree = "<group>"; };
+		AE5FE57CB1D0B7AE333D5BBC /* format.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = format.c; path = ../third_party/FFmpeg/libavformat/format.c; sourceTree = "<group>"; };
+		B5A439F059F6D7A26C2F2030 /* demux.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = demux.c; path = ../third_party/FFmpeg/libavformat/demux.c; sourceTree = "<group>"; };
+		C74C5A98AB9362CA2F8090D8 /* liblibavcodec.a */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "libavcodec.xcodeproj"; path = libavcodec.xcodeproj; sourceTree = SOURCE_ROOT; };
+		CC6DEA526FB973848A8A4092 /* avio.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = avio.h; path = ../third_party/FFmpeg/libavformat/avio.h; sourceTree = "<group>"; };
+		CE0E298070FC503200222FC0 /* version.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = version.h; path = ../third_party/FFmpeg/libavformat/version.h; sourceTree = "<group>"; };
+		CF397BF8738C19AA85C46238 /* id3v1.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = id3v1.c; path = ../third_party/FFmpeg/libavformat/id3v1.c; sourceTree = "<group>"; };
+		D8AC64E2DC1D37145D89DB22 /* mp3dec.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = mp3dec.c; path = ../third_party/FFmpeg/libavformat/mp3dec.c; sourceTree = "<group>"; };
+		DBB91FBA7F04A8EC99D575FA /* seek.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = seek.c; path = ../third_party/FFmpeg/libavformat/seek.c; sourceTree = "<group>"; };
+		E440C99E872EF0501654CFDE /* network.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = network.c; path = ../third_party/FFmpeg/libavformat/network.c; sourceTree = "<group>"; };
+		F36165203BD2495280711B60 /* avlanguage.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = avlanguage.c; path = ../third_party/FFmpeg/libavformat/avlanguage.c; sourceTree = "<group>"; };
+		F5C934D01E03ED82059F7B10 /* demux_utils.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = demux_utils.c; path = ../third_party/FFmpeg/libavformat/demux_utils.c; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		083782F608EA7FE87CCC5136 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1942F45373440B453A8B0293 /* liblibavutil.a in Frameworks */,
+				5F389DB33DDB3925F2BD3BF3 /* liblibavcodec.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		C9EF68E2C3556A54B6F0C722 /* Embed Libraries */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Libraries";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXGroup section */
+		6FDF364E9F7105407A7E448E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FACBDF9BFA6EC2CD34C375DB /* liblibavcodec.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		71DA5E57DBECE0497517CC97 /* libavformat */ = {
+			isa = PBXGroup;
+			children = (
+				A373A554EBE4898630835B94 /* allformats.c */,
+				23C5FF3E73D993F0F657C57E /* asf.c */,
+				5B05177A7217B2AC6233ADBA /* asf_tags.c */,
+				2008F582371B90B427378BC2 /* asfcrypt.c */,
+				71971DC088A9B8F278C5B400 /* asfdec_f.c */,
+				31C1252A48D3C05C38EFBB6A /* avformat.c */,
+				A65F9EF4BD723A26AD8E3534 /* avformat.h */,
+				9BAE4B083EF9D43A59CAA148 /* avio.c */,
+				CC6DEA526FB973848A8A4092 /* avio.h */,
+				A19F56A2448D7D54D3B35CE2 /* aviobuf.c */,
+				F36165203BD2495280711B60 /* avlanguage.c */,
+				B5A439F059F6D7A26C2F2030 /* demux.c */,
+				F5C934D01E03ED82059F7B10 /* demux_utils.c */,
+				3020AD16D36C3648EE3D0356 /* dump.c */,
+				97FCCBAA3B4854DC561921EA /* file.c */,
+				AE5FE57CB1D0B7AE333D5BBC /* format.c */,
+				CF397BF8738C19AA85C46238 /* id3v1.c */,
+				0A49DADAAE9C788CC0D4C11A /* id3v2.c */,
+				03FA276C1B0CC29E0B28BDAC /* metadata.c */,
+				D8AC64E2DC1D37145D89DB22 /* mp3dec.c */,
+				063141FE5644D6B0D8C3083E /* mux.c */,
+				E440C99E872EF0501654CFDE /* network.c */,
+				8A9097A22D7EBE54BCA49DE2 /* options.c */,
+				06468DA64EB771D8935643E6 /* os_support.c */,
+				68ECE28AB900773C3B7EA8CA /* pcm.c */,
+				3C5E85746284B526C98BABB4 /* protocols.c */,
+				065F34424ED01874936EEA82 /* replaygain.c */,
+				1C161A78BF61A3AADA3270B8 /* riff.c */,
+				5190F4D0F47F1B8283A4FB10 /* riffdec.c */,
+				1B4E7AB86B620F6AEDE040F8 /* sdp.c */,
+				DBB91FBA7F04A8EC99D575FA /* seek.c */,
+				35A4760E5BCAA5C0C2D19C4E /* to_upper4.c */,
+				6F3A16D0BF4DAB8241CBDD10 /* url.c */,
+				8438F758AA5F270A11661D98 /* urldecode.c */,
+				7ABFFA4C1F1297FE314AE08C /* utils.c */,
+				CE0E298070FC503200222FC0 /* version.h */,
+				A6C936B49B3FADE6EA134CF4 /* Products */,
+				9D968EAA920D05DCE0E0A4EA /* Projects */,
+			);
+			name = libavformat;
+			sourceTree = "<group>";
+		};
+		9D968EAA920D05DCE0E0A4EA /* Projects */ = {
+			isa = PBXGroup;
+			children = (
+				522DD518205128CAA75F7B58 /* libavutil.xcodeproj */,
+				C74C5A98AB9362CA2F8090D8 /* libavcodec.xcodeproj */,
+			);
+			name = Projects;
+			sourceTree = "<group>";
+		};
+		A6C936B49B3FADE6EA134CF4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				777CE08662690678AA4ECEC6 /* liblibavformat.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D298EA8EFAD3A340E26F30CE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				44148D3B5EE0FBED62B1937B /* liblibavutil.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3447BFAC5A6DEF5EC174E5EC /* libavformat */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F672CB55F725C8476B079995 /* Build configuration list for PBXNativeTarget "libavformat" */;
+			buildPhases = (
+				781F039678D20088ECB3D1D6 /* Resources */,
+				E1CC1CEDE27F19DF5660EB2D /* Sources */,
+				083782F608EA7FE87CCC5136 /* Frameworks */,
+				C9EF68E2C3556A54B6F0C722 /* Embed Libraries */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C0512797E88BE049D0276DD7 /* PBXTargetDependency */,
+				5D9773578D29424968368197 /* PBXTargetDependency */,
+			);
+			name = libavformat;
+			productName = libavformat;
+			productReference = 777CE08662690678AA4ECEC6 /* liblibavformat.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		08FB7793FE84155DC02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 1DEB928908733DD80010E9CD /* Build configuration list for PBXProject "libavformat" */;
+			compatibilityVersion = "Xcode 3.2";
+			hasScannedForEncodings = 1;
+			mainGroup = 71DA5E57DBECE0497517CC97 /* libavformat */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = D298EA8EFAD3A340E26F30CE /* Products */;
+					ProjectRef = 522DD518205128CAA75F7B58 /* libavutil.xcodeproj */;
+				},
+				{
+					ProductGroup = 6FDF364E9F7105407A7E448E /* Products */;
+					ProjectRef = C74C5A98AB9362CA2F8090D8 /* libavcodec.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				3447BFAC5A6DEF5EC174E5EC /* liblibavformat.a */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		44148D3B5EE0FBED62B1937B /* liblibavutil.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = liblibavutil.a;
+			remoteRef = 7735070EA6C6D60081D4154E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		FACBDF9BFA6EC2CD34C375DB /* liblibavcodec.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = liblibavcodec.a;
+			remoteRef = BD44CACEDF1078001BC5A10E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		781F039678D20088ECB3D1D6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E1CC1CEDE27F19DF5660EB2D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				316272EC2B242F5E6523312C /* allformats.c in Sources */,
+				144C597614FF566888E127B6 /* asf.c in Sources */,
+				D92670723467C3E407C20EB2 /* asf_tags.c in Sources */,
+				793262FAD473B66CA7CE013A /* asfcrypt.c in Sources */,
+				8406E218DF48358AB2A28058 /* asfdec_f.c in Sources */,
+				4C365122A777A4947AD1EF62 /* avformat.c in Sources */,
+				FFB6CBE0F91CCD52ECB82A20 /* avio.c in Sources */,
+				789E711AA830400C833D7F5A /* aviobuf.c in Sources */,
+				821035787BD1F1EAB5D0F3B8 /* avlanguage.c in Sources */,
+				935560487E41863AC6274E88 /* demux.c in Sources */,
+				F009EB28612C8C1A16F33968 /* demux_utils.c in Sources */,
+				121A71CE0B807340FF1BD00E /* dump.c in Sources */,
+				DC48EBA2D5AEED14C94A49E2 /* file.c in Sources */,
+				839ECD94DA2C3806B2A54BD4 /* format.c in Sources */,
+				58B59ED043A1C4C28B878D10 /* id3v1.c in Sources */,
+				B928F2D2A41518C4EBFAE112 /* id3v2.c in Sources */,
+				A35FE484FEA137F6D1FB82C4 /* metadata.c in Sources */,
+				9C382E5AF2C598CCCB3EAC9A /* mp3dec.c in Sources */,
+				2DE5E8362E98E528A27AB676 /* mux.c in Sources */,
+				DFCFDDD60F61ACC8EA6EEC16 /* network.c in Sources */,
+				2F71421A5F03110C3A10505A /* options.c in Sources */,
+				DB25395ED4E6F5D00EE5F79E /* os_support.c in Sources */,
+				24E8C382259BC074997D91C2 /* pcm.c in Sources */,
+				A721AE0CD805A5FEEB1DDC4C /* protocols.c in Sources */,
+				FA1F37BAF3E0F42C2DDFF5FA /* replaygain.c in Sources */,
+				93D22A508D382BC280D38890 /* riff.c in Sources */,
+				CBFF9F28FB916E1AD69EAD68 /* riffdec.c in Sources */,
+				C3659390C418908237FA61D0 /* sdp.c in Sources */,
+				FE6CA8B2F7D2AA24EB6E06F2 /* seek.c in Sources */,
+				1C1B1B464CFF133860174986 /* to_upper4.c in Sources */,
+				6E85D5286F38D21AE31AA368 /* url.c in Sources */,
+				A6EDCC30D7D1C422EAE9FA70 /* urldecode.c in Sources */,
+				51BB88643CA7AE56848D76A4 /* utils.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5D9773578D29424968368197 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = liblibavcodec.a;
+			targetProxy = 0F7F3D67314AEA996E0013A7 /* PBXContainerItemProxy */;
+		};
+		C0512797E88BE049D0276DD7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = liblibavutil.a;
+			targetProxy = C96F79A7F9014899D40E87E7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1F18E0C62289B2F8A3F65706 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					arm64,
+				);
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = c17;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					VULKAN_HPP_NO_TO_STRING,
+					IMGUI_DISABLE_OBSOLETE_FUNCTIONS,
+					IMGUI_DISABLE_DEFAULT_FONT,
+					IMGUI_USE_STB_SPRINTF,
+					USE_CPP17,
+					_LIB,
+					DEBUG,
+					"_NO_DEBUG_HEAP=1",
+					HAVE_AV_CONFIG_H,
+					_USE_MATH_DEFINES,
+					"CONFIG_NETWORK=1",
+					"HAVE_CLOSESOCKET=0",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				OBJROOT = "obj/iOS-ARM64/Debug/iOS-ARM64/Debug/libavformat";
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = (
+					"-w",
+					"-fno-modules",
+					"-include config.h",
+				);
+				OTHER_LDFLAGS = (
+					"-liconv",
+				);
+				SDKROOT = (
+					iphoneos,
+				);
+				SYMROOT = "bin/iOS-ARM64/Debug";
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+				USER_HEADER_SEARCH_PATHS = (
+					..,
+					../src,
+					../third_party,
+					"../third_party/ffmpeg-xenia",
+					../third_party/FFmpeg,
+					../third_party/FFmpeg/compat/atomics/gcc,
+				);
+			};
+			name = Debug;
+		};
+		217216DB1B33D34D5532D51B /* Checked */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					arm64,
+				);
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "bin/iOS-ARM64/Checked";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_DYNAMIC_NO_PIC = NO;
+				INSTALL_PATH = /usr/local/lib;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				PRODUCT_NAME = libavformat;
+				SDKROOT = (
+					iphoneos,
+				);
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+			};
+			name = Checked;
+		};
+		304D879B61317F8D7449B5DB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					arm64,
+				);
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "bin/iOS-ARM64/Debug";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_DYNAMIC_NO_PIC = NO;
+				INSTALL_PATH = /usr/local/lib;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				PRODUCT_NAME = libavformat;
+				SDKROOT = (
+					iphoneos,
+				);
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+			};
+			name = Debug;
+		};
+		3D3C0480E02A2B326F500AC0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					arm64,
+				);
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				GCC_C_LANGUAGE_STANDARD = c17;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					VULKAN_HPP_NO_TO_STRING,
+					IMGUI_DISABLE_OBSOLETE_FUNCTIONS,
+					IMGUI_DISABLE_DEFAULT_FONT,
+					IMGUI_USE_STB_SPRINTF,
+					USE_CPP17,
+					_LIB,
+					NDEBUG,
+					"_NO_DEBUG_HEAP=1",
+					HAVE_AV_CONFIG_H,
+					_USE_MATH_DEFINES,
+					"CONFIG_NETWORK=1",
+					"HAVE_CLOSESOCKET=0",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				OBJROOT = "obj/iOS-ARM64/Release/iOS-ARM64/Release/libavformat";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CFLAGS = (
+					"-O3",
+					"-finline-functions",
+					"-funroll-loops",
+					"-fomit-frame-pointer",
+					"-w",
+					"-fno-modules",
+					"-include config.h",
+				);
+				OTHER_LDFLAGS = (
+					"-liconv",
+				);
+				SDKROOT = (
+					iphoneos,
+				);
+				SYMROOT = "bin/iOS-ARM64/Release";
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+				USER_HEADER_SEARCH_PATHS = (
+					..,
+					../src,
+					../third_party,
+					"../third_party/ffmpeg-xenia",
+					../third_party/FFmpeg,
+					../third_party/FFmpeg/compat/atomics/gcc,
+				);
+			};
+			name = Release;
+		};
+		43C0D5764473D268B855A3B6 /* Valgrind */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					arm64,
+				);
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = c17;
+				GCC_OPTIMIZATION_LEVEL = g;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					VULKAN_HPP_NO_TO_STRING,
+					IMGUI_DISABLE_OBSOLETE_FUNCTIONS,
+					IMGUI_DISABLE_DEFAULT_FONT,
+					IMGUI_USE_STB_SPRINTF,
+					USE_CPP17,
+					_LIB,
+					DEBUG,
+					NDEBUG,
+					"_NO_DEBUG_HEAP=1",
+					HAVE_AV_CONFIG_H,
+					_USE_MATH_DEFINES,
+					"CONFIG_NETWORK=1",
+					"HAVE_CLOSESOCKET=0",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				OBJROOT = "obj/iOS-ARM64/Valgrind/iOS-ARM64/Valgrind/libavformat";
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = (
+					"-fno-omit-frame-pointer",
+					"-fno-inline-functions",
+					"-w",
+					"-fno-modules",
+					"-include config.h",
+				);
+				OTHER_LDFLAGS = (
+					"-liconv",
+				);
+				SDKROOT = (
+					iphoneos,
+				);
+				SYMROOT = "bin/iOS-ARM64/Valgrind";
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+				USER_HEADER_SEARCH_PATHS = (
+					..,
+					../src,
+					../third_party,
+					"../third_party/ffmpeg-xenia",
+					../third_party/FFmpeg,
+					../third_party/FFmpeg/compat/atomics/gcc,
+				);
+			};
+			name = Valgrind;
+		};
+		520E6686F4FC8D3884226CC6 /* Checked */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					arm64,
+				);
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = c17;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					VULKAN_HPP_NO_TO_STRING,
+					IMGUI_DISABLE_OBSOLETE_FUNCTIONS,
+					IMGUI_DISABLE_DEFAULT_FONT,
+					USE_CPP17,
+					_LIB,
+					DEBUG,
+					NDEBUG,
+					HAVE_AV_CONFIG_H,
+					_USE_MATH_DEFINES,
+					"CONFIG_NETWORK=1",
+					"HAVE_CLOSESOCKET=0",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				OBJROOT = "obj/iOS-ARM64/Checked/iOS-ARM64/Checked/libavformat";
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = (
+					"-w",
+					"-fno-modules",
+					"-include config.h",
+				);
+				OTHER_LDFLAGS = (
+					"-liconv",
+				);
+				SDKROOT = (
+					iphoneos,
+				);
+				SYMROOT = "bin/iOS-ARM64/Checked";
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+				USER_HEADER_SEARCH_PATHS = (
+					..,
+					../src,
+					../third_party,
+					"../third_party/ffmpeg-xenia",
+					../third_party/FFmpeg,
+					../third_party/FFmpeg/compat/atomics/gcc,
+				);
+			};
+			name = Checked;
+		};
+		C090F555BA52B1C7F451B395 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					arm64,
+				);
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "bin/iOS-ARM64/Release";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_DYNAMIC_NO_PIC = NO;
+				INSTALL_PATH = /usr/local/lib;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				PRODUCT_NAME = libavformat;
+				SDKROOT = (
+					iphoneos,
+				);
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+			};
+			name = Release;
+		};
+		E0A3828B129CCD3D8C7C08CB /* Valgrind */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					arm64,
+				);
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "bin/iOS-ARM64/Valgrind";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_DYNAMIC_NO_PIC = NO;
+				INSTALL_PATH = /usr/local/lib;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				PRODUCT_NAME = libavformat;
+				SDKROOT = (
+					iphoneos,
+				);
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+			};
+			name = Valgrind;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1DEB928908733DD80010E9CD /* Build configuration list for PBXProject "libavformat" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				520E6686F4FC8D3884226CC6 /* Checked */,
+				1F18E0C62289B2F8A3F65706 /* Debug */,
+				3D3C0480E02A2B326F500AC0 /* Release */,
+				43C0D5764473D268B855A3B6 /* Valgrind */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Checked;
+		};
+		F672CB55F725C8476B079995 /* Build configuration list for PBXNativeTarget "liblibavformat.a" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				217216DB1B33D34D5532D51B /* Checked */,
+				304D879B61317F8D7449B5DB /* Debug */,
+				C090F555BA52B1C7F451B395 /* Release */,
+				E0A3828B129CCD3D8C7C08CB /* Valgrind */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Checked;
+		};
+/* End XCConfigurationList section */
+};
+rootObject = 08FB7793FE84155DC02AAC07 /* Project object */;
+}

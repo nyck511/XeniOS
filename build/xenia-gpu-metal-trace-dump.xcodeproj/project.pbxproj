@@ -1,0 +1,1545 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		02DC39D799054BC95A6BA817 /* libxenia-gpu-metal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E9669E7F9C5CA831ED7F04BF /* libxenia-gpu-metal.a */; };
+		0635D14AF72D3F3C6330BF8A /* console_app_main_ios.cc in Sources */ = {isa = PBXBuildFile; fileRef = 144D15D2AC99FB84DAE0FC12 /* console_app_main_ios.cc */; };
+		1214D1E9B3FE6DDBAB258029 /* libfmt.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FD2DA671CB50FA23525F4CB1 /* libfmt.a */; };
+		1605C4577006DB49374DD297 /* libxenia-gpu.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D0289EFFEAF50DB1EEC5A53F /* libxenia-gpu.a */; };
+		1942F45373440B453A8B0293 /* liblibavutil.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 44148D3B5EE0FBED62B1937B /* liblibavutil.a */; };
+		30C1A6ADCB1B8F9F0753F4ED /* libxenia-patcher.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E1BD3AF57F9E3BA7571C8135 /* libxenia-patcher.a */; };
+		345EB0D540E96347BBCE2F15 /* libcapstone.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 06C4459DE5E15FCFC1EABBDD /* libcapstone.a */; };
+		35B6879129B5D103AEA0E5D1 /* libsnappy.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BBC90899FFDCD9CBF3AE5ED9 /* libsnappy.a */; };
+		4AFB6D31299E08A3DE800B71 /* libxenia-core.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2590883925336B6B5F881E79 /* libxenia-core.a */; };
+		5440199BECB8070D189EF7DB /* libxenia-ui-metal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D554503E7793A35979F1B43 /* libxenia-ui-metal.a */; };
+		5579D1A1B200D6133AA38FE1 /* libxenia-kernel.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F974EFA9095A1BDBF5CDA5E9 /* libxenia-kernel.a */; };
+		5F389DB33DDB3925F2BD3BF3 /* liblibavcodec.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FACBDF9BFA6EC2CD34C375DB /* liblibavcodec.a */; };
+		69E6CA595DE613CBE2D12899 /* libmspack.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F3D19AE137E56C132BB6F121 /* libmspack.a */; };
+		6AE14789C4E25E7B8C2955C9 /* libxenia-hid.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B553A811D02016C3D3F0AE51 /* libxenia-hid.a */; };
+		783717BF129100B14EC965FF /* libxenia-apu-nop.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 75F73BE713D83C99EB568227 /* libxenia-apu-nop.a */; };
+		7837B83DD238CF2F997FC67D /* libxenia-vfs.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C64A785773116377B01ADC5 /* libxenia-vfs.a */; };
+		7CF8FA3D1752E32F538B487D /* libxenia-hid-nop.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A625DD854406DE371B8523C5 /* libxenia-hid-nop.a */; };
+		8CA080C9FFC20DBB60874F09 /* libxenia-cpu-backend-a64.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 22F719517E573E03C09ADF91 /* libxenia-cpu-backend-a64.a */; };
+		8E9823CFE8993AC1AFE0320F /* libxenia-cpu.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F1D042F70C9CB1A9106D4937 /* libxenia-cpu.a */; };
+		90306A018127D7F3ED2B5841 /* libaes_128.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0626DD099E73C2BBCCBAC349 /* libaes_128.a */; };
+		99C3BF9BA64E720D21333DDB /* libxenia-ui.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B7301034A901B3526997743 /* libxenia-ui.a */; };
+		9F6839157E0AD48732ECD755 /* libxenia-base.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E9AE83DDE951670F23A61A1D /* libxenia-base.a */; };
+		A9FD4F839DFC98F522E7ADC3 /* libxxhash.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AF89D06BF39DA19DE76F26AB /* libxxhash.a */; };
+		CAE1538B24E26A7DEC2961CB /* libxenia-apu.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 02A414F31D7083A521411B33 /* libxenia-apu.a */; };
+		DD9A69D151F4AEC3CFD83811 /* libimgui.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D4DD05D9E706E28B1AF7CC19 /* libimgui.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		06DF3F76F1CB656839B12DB6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EE4BFB56B1B7BD08F05B6196 /* imgui.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 2D2BCDD0309CA002B2094410;
+			remoteInfo = libimgui.a;
+		};
+		07C16F2438A567164BBD9D64 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C3900D845BDCF3368A23F3C4 /* xenia-apu-nop.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3908D8918F964303680F56D1;
+			remoteInfo = "libxenia-apu-nop.a";
+		};
+		08531FDD50C4040F9562D61D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 801FFD36CD82F36843A1F376 /* snappy.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = B663D90A5951FFBCE877DF4A;
+			remoteInfo = libsnappy.a;
+		};
+		0D79DB843E5DD376517609C4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 713D2FB2098A156437D115F2 /* xenia-patcher.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 98DA275EE14B0B9025E9DD9E;
+			remoteInfo = "libxenia-patcher.a";
+		};
+		0F7F3D67314AEA996E0013A7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C74C5A98AB9362CA2F8090D8 /* libavcodec.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = CE29C4E1C78FC653BB2B2321;
+			remoteInfo = liblibavcodec.a;
+		};
+		219E883352828025659AB673 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3B650942D3B1EEF401F8EF82 /* xenia-hid-nop.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = CA82CCC021103732F9894B00;
+			remoteInfo = "libxenia-hid-nop.a";
+		};
+		27F2714E7E7FDBC056F8EF8E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B9D5A1C6EBCEEC7865AE2806 /* aes_128.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 7FC3DB6822B2021AB1D7E1A8;
+			remoteInfo = libaes_128.a;
+		};
+		281D743357AF432532BC8273 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 19906EC2E7B3C2746EC21502 /* xenia-vfs.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C9C58540C32B86B2B6C6E380;
+			remoteInfo = "libxenia-vfs.a";
+		};
+		288CA712581E7604332BB552 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 735E5E8E4181B240C89004CE /* xenia-hid.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = E8DE45ECFFF0E11EF00CDC2C;
+			remoteInfo = "libxenia-hid.a";
+		};
+		2B17BD835AA98C7535B6CBC3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 97B9115065DC6502ECEAB790 /* xenia-apu.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 55F86B1D6D0B064F5D27015D;
+			remoteInfo = "libxenia-apu.a";
+		};
+		2FBF42895F51117B3A5E50C9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0C52F29CDA76464E618498DC /* xenia-gpu.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 7B16D0A392296BD5824566E3;
+			remoteInfo = "libxenia-gpu.a";
+		};
+		396FBF0F81E0A341C67F754F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3CD171E88A34681A00536828 /* xxhash.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = E01FA10951AAB97B00ABDF49;
+			remoteInfo = libxxhash.a;
+		};
+		424D8E1B8FB0844D05CF845B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B81B8E009738A83273420440 /* xenia-ui-metal.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 63389815B9C60287923F1655;
+			remoteInfo = "libxenia-ui-metal.a";
+		};
+		454B3399D7D8FD8B40B1A1D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AFF4394E62EA4300B40C9F8E /* xenia-cpu-backend-a64.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 6CE2046666A3C0D8A0A2C2A6;
+			remoteInfo = "libxenia-cpu-backend-a64.a";
+		};
+		4B6FA65873AA5F0A5B45EC98 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AD75F03A42ECAF6CB189067A /* capstone.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 9681EAD29734E7C40B16B912;
+			remoteInfo = libcapstone.a;
+		};
+		563001A27E6ABA54660647E2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0F8A5740A5011672139D6D80 /* xenia-ui.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 57BBBAEF6ECE56215EEA512F;
+			remoteInfo = "libxenia-ui.a";
+		};
+		59FBE1BD8ADFD9AF9DF80FFD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C3900D845BDCF3368A23F3C4 /* xenia-apu-nop.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 22DF62576B504689AFEF1897;
+			remoteInfo = "libxenia-apu-nop.a";
+		};
+		5A8D9276A2FE76A8E79D48B6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 801FFD36CD82F36843A1F376 /* snappy.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 362FB7B0A7BAD02256BBF5F0;
+			remoteInfo = libsnappy.a;
+		};
+		69C0D3C1B231B7F3F6D08A01 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 37AB12FE850E0930FB2D093E /* mspack.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0BA97C6EAE97A3203DBD82AE;
+			remoteInfo = libmspack.a;
+		};
+		70C63E696A2C3FDB5DC79CA9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3612C02E5E4D78E045E9066E /* fmt.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A4498576D2EFD9682C3133B6;
+			remoteInfo = libfmt.a;
+		};
+		73D8FACCA4BCF2BEB7D5290C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3B650942D3B1EEF401F8EF82 /* xenia-hid-nop.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 17C40CA66034F0D8A4D3C2E6;
+			remoteInfo = "libxenia-hid-nop.a";
+		};
+		76CF812D989B2E5FD550576D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9DBF875682068F8805F3BD96 /* xenia-core.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 36CA63DA5CF0938CC3F78A1A;
+			remoteInfo = "libxenia-core.a";
+		};
+		7735070EA6C6D60081D4154E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 522DD518205128CAA75F7B58 /* libavutil.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 7B565DBB74BC5F2D6857BBFB;
+			remoteInfo = liblibavutil.a;
+		};
+		7788EC50714AA8C2AB49AA90 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A88BCCDCC3583B8EC728D31C /* xenia-gpu-metal.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = FC2CF5FD2BBEC4EF06CC043D;
+			remoteInfo = "libxenia-gpu-metal.a";
+		};
+		7A57E6CCA9E9B5BE84F6F50C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 19906EC2E7B3C2746EC21502 /* xenia-vfs.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 6551B5267C6450586C804B66;
+			remoteInfo = "libxenia-vfs.a";
+		};
+		80145925AFA628178AB36765 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FF398266CD5CD618546B28A6 /* metal-cpp.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F091CBACF4029DDE756F41EC;
+			remoteInfo = "metal-cpp";
+		};
+		851521ECB4A6F0DE8FB4302C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BE9707148CBA5AC613C8AD54 /* xenia-cpu.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 679156D960F7584B5492B519;
+			remoteInfo = "libxenia-cpu.a";
+		};
+		9785A6322A13702492EC1472 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AFF4394E62EA4300B40C9F8E /* xenia-cpu-backend-a64.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = FDA7E78C4B0ADDBEC129DDCC;
+			remoteInfo = "libxenia-cpu-backend-a64.a";
+		};
+		9E130FA5617ED157A02275E5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 587F02069C92D33890645846 /* xenia-kernel.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 79FBE512C26CC944070B9B52;
+			remoteInfo = "libxenia-kernel.a";
+		};
+		A86A743BD0A52CEDB840BA7B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0F8A5740A5011672139D6D80 /* xenia-ui.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = AF7070F5B0236DE724053F35;
+			remoteInfo = "libxenia-ui.a";
+		};
+		AA4B43DFCC16F11108CC1A1F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2D378CBA117E94EC956BC2FA /* xenia-base.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 6C73464C929975FEF9A06C8C;
+			remoteInfo = "libxenia-base.a";
+		};
+		B4A4CCDD9F90F2CFE776BB1D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EE4BFB56B1B7BD08F05B6196 /* imgui.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8CE2B32AFE6DCB9CAD6EF16A;
+			remoteInfo = libimgui.a;
+		};
+		BB3F68EBEC2360DDFF3B972B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 713D2FB2098A156437D115F2 /* xenia-patcher.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 6E5C3E78C4E9A8EA9D62BCB8;
+			remoteInfo = "libxenia-patcher.a";
+		};
+		BBFB465A046C2A8C490AFC9A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 37AB12FE850E0930FB2D093E /* mspack.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 95DC7E9407679706B668BCD4;
+			remoteInfo = libmspack.a;
+		};
+		BD44CACEDF1078001BC5A10E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C74C5A98AB9362CA2F8090D8 /* libavcodec.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4D9F8C5B73C5BC0DDACCB29B;
+			remoteInfo = liblibavcodec.a;
+		};
+		C300B102BC66B274B0020F42 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3612C02E5E4D78E045E9066E /* fmt.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 169B869CBAEE244ECD266CDC;
+			remoteInfo = libfmt.a;
+		};
+		C909F3C6EAD5A0F8278ACA06 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9DBF875682068F8805F3BD96 /* xenia-core.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 0B88288004EE29F2F88986C0;
+			remoteInfo = "libxenia-core.a";
+		};
+		C96F79A7F9014899D40E87E7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 522DD518205128CAA75F7B58 /* libavutil.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 0D9BEA4124AE857314CA8081;
+			remoteInfo = liblibavutil.a;
+		};
+		C9C35EE9C3851B5BFD841D29 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A88BCCDCC3583B8EC728D31C /* xenia-gpu-metal.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 01FF82432A3A3AF511D5C883;
+			remoteInfo = "libxenia-gpu-metal.a";
+		};
+		D24ECBBE01E09AB0DCEDD9FE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FF398266CD5CD618546B28A6 /* metal-cpp.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 4F38DE127DDF3204D7208C52;
+			remoteInfo = "metal-cpp";
+		};
+		D5B7FEB52C45692704BE7CF5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B9D5A1C6EBCEEC7865AE2806 /* aes_128.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 327C73C2332F70B4A7114202;
+			remoteInfo = libaes_128.a;
+		};
+		D652347905E4036BE0F142B9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 735E5E8E4181B240C89004CE /* xenia-hid.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BEE42EC6B84A3038ABE58D06;
+			remoteInfo = "libxenia-hid.a";
+		};
+		D74F948506E16377E1EEA2C5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BE9707148CBA5AC613C8AD54 /* xenia-cpu.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = B7AD379FCEBFD2D1BEDBCDDF;
+			remoteInfo = "libxenia-cpu.a";
+		};
+		D8DD4AEA086F19DCE37C592A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 97B9115065DC6502ECEAB790 /* xenia-apu.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = CF42FA17C8A8FB89BC445857;
+			remoteInfo = "libxenia-apu.a";
+		};
+		DD84CFF00D169EE2E823DE30 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0C52F29CDA76464E618498DC /* xenia-gpu.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 982E105D919411CF852F6E9D;
+			remoteInfo = "libxenia-gpu.a";
+		};
+		E7354C762FA630A8744502B6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3CD171E88A34681A00536828 /* xxhash.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9E50ED83413F1435D064F3C3;
+			remoteInfo = libxxhash.a;
+		};
+		F0131B823D7611B4B39511C2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B81B8E009738A83273420440 /* xenia-ui-metal.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8488C60FACC37EC1945F0C4F;
+			remoteInfo = "libxenia-ui-metal.a";
+		};
+		F04D823EB3B943F0F25CE87E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 587F02069C92D33890645846 /* xenia-kernel.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 917262B87C5E88AAC44450F8;
+			remoteInfo = "libxenia-kernel.a";
+		};
+		F93533BF216FEC71090B79FF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AD75F03A42ECAF6CB189067A /* capstone.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 20FC706C380F0B9E282B06AC;
+			remoteInfo = libcapstone.a;
+		};
+		FC85B6781E5163AA5B068CB8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2D378CBA117E94EC956BC2FA /* xenia-base.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 818584B27AEB86246E86E2F2;
+			remoteInfo = "libxenia-base.a";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0C52F29CDA76464E618498DC /* libxenia-gpu.a */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = xenia-gpu.xcodeproj; path = "xenia-gpu.xcodeproj"; sourceTree = SOURCE_ROOT; };
+		0F8A5740A5011672139D6D80 /* libxenia-ui.a */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = xenia-ui.xcodeproj; path = "xenia-ui.xcodeproj"; sourceTree = SOURCE_ROOT; };
+		144D15D2AC99FB84DAE0FC12 /* console_app_main_ios.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = console_app_main_ios.cc; path = ../src/xenia/base/console_app_main_ios.cc; sourceTree = "<group>"; };
+		19906EC2E7B3C2746EC21502 /* libxenia-vfs.a */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = xenia-vfs.xcodeproj; path = "xenia-vfs.xcodeproj"; sourceTree = SOURCE_ROOT; };
+		2D378CBA117E94EC956BC2FA /* libxenia-base.a */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = xenia-base.xcodeproj; path = "xenia-base.xcodeproj"; sourceTree = SOURCE_ROOT; };
+		33460C162D07C8886706CA56 /* xenia-gpu-metal-trace-dump */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; name = "xenia-gpu-metal-trace-dump"; path = "xenia-gpu-metal-trace-dump"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3612C02E5E4D78E045E9066E /* libfmt.a */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "fmt.xcodeproj"; path = fmt.xcodeproj; sourceTree = SOURCE_ROOT; };
+		37AB12FE850E0930FB2D093E /* libmspack.a */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "mspack.xcodeproj"; path = mspack.xcodeproj; sourceTree = SOURCE_ROOT; };
+		3B650942D3B1EEF401F8EF82 /* libxenia-hid-nop.a */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = xenia-hid-nop.xcodeproj; path = "xenia-hid-nop.xcodeproj"; sourceTree = SOURCE_ROOT; };
+		3CD171E88A34681A00536828 /* libxxhash.a */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "xxhash.xcodeproj"; path = xxhash.xcodeproj; sourceTree = SOURCE_ROOT; };
+		522DD518205128CAA75F7B58 /* liblibavutil.a */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "libavutil.xcodeproj"; path = libavutil.xcodeproj; sourceTree = SOURCE_ROOT; };
+		587F02069C92D33890645846 /* libxenia-kernel.a */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = xenia-kernel.xcodeproj; path = "xenia-kernel.xcodeproj"; sourceTree = SOURCE_ROOT; };
+		713D2FB2098A156437D115F2 /* libxenia-patcher.a */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = xenia-patcher.xcodeproj; path = "xenia-patcher.xcodeproj"; sourceTree = SOURCE_ROOT; };
+		735E5E8E4181B240C89004CE /* libxenia-hid.a */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = xenia-hid.xcodeproj; path = "xenia-hid.xcodeproj"; sourceTree = SOURCE_ROOT; };
+		801FFD36CD82F36843A1F376 /* libsnappy.a */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "snappy.xcodeproj"; path = snappy.xcodeproj; sourceTree = SOURCE_ROOT; };
+		97B9115065DC6502ECEAB790 /* libxenia-apu.a */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = xenia-apu.xcodeproj; path = "xenia-apu.xcodeproj"; sourceTree = SOURCE_ROOT; };
+		9DBF875682068F8805F3BD96 /* libxenia-core.a */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = xenia-core.xcodeproj; path = "xenia-core.xcodeproj"; sourceTree = SOURCE_ROOT; };
+		A88BCCDCC3583B8EC728D31C /* libxenia-gpu-metal.a */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = xenia-gpu-metal.xcodeproj; path = "xenia-gpu-metal.xcodeproj"; sourceTree = SOURCE_ROOT; };
+		AD75F03A42ECAF6CB189067A /* libcapstone.a */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "capstone.xcodeproj"; path = capstone.xcodeproj; sourceTree = SOURCE_ROOT; };
+		AFF4394E62EA4300B40C9F8E /* libxenia-cpu-backend-a64.a */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = xenia-cpu-backend-a64.xcodeproj; path = "xenia-cpu-backend-a64.xcodeproj"; sourceTree = SOURCE_ROOT; };
+		B81B8E009738A83273420440 /* libxenia-ui-metal.a */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = xenia-ui-metal.xcodeproj; path = "xenia-ui-metal.xcodeproj"; sourceTree = SOURCE_ROOT; };
+		B9D5A1C6EBCEEC7865AE2806 /* libaes_128.a */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "aes_128.xcodeproj"; path = aes_128.xcodeproj; sourceTree = SOURCE_ROOT; };
+		BE9707148CBA5AC613C8AD54 /* libxenia-cpu.a */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = xenia-cpu.xcodeproj; path = "xenia-cpu.xcodeproj"; sourceTree = SOURCE_ROOT; };
+		C3900D845BDCF3368A23F3C4 /* libxenia-apu-nop.a */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = xenia-apu-nop.xcodeproj; path = "xenia-apu-nop.xcodeproj"; sourceTree = SOURCE_ROOT; };
+		C74C5A98AB9362CA2F8090D8 /* liblibavcodec.a */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "libavcodec.xcodeproj"; path = libavcodec.xcodeproj; sourceTree = SOURCE_ROOT; };
+		EE4BFB56B1B7BD08F05B6196 /* libimgui.a */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "imgui.xcodeproj"; path = imgui.xcodeproj; sourceTree = SOURCE_ROOT; };
+		FF398266CD5CD618546B28A6 /* metal-cpp */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = metal-cpp.xcodeproj; path = "metal-cpp.xcodeproj"; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E599668640DAB9F8143504C6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CAE1538B24E26A7DEC2961CB /* libxenia-apu.a in Frameworks */,
+				783717BF129100B14EC965FF /* libxenia-apu-nop.a in Frameworks */,
+				9F6839157E0AD48732ECD755 /* libxenia-base.a in Frameworks */,
+				4AFB6D31299E08A3DE800B71 /* libxenia-core.a in Frameworks */,
+				8E9823CFE8993AC1AFE0320F /* libxenia-cpu.a in Frameworks */,
+				1605C4577006DB49374DD297 /* libxenia-gpu.a in Frameworks */,
+				02DC39D799054BC95A6BA817 /* libxenia-gpu-metal.a in Frameworks */,
+				6AE14789C4E25E7B8C2955C9 /* libxenia-hid.a in Frameworks */,
+				7CF8FA3D1752E32F538B487D /* libxenia-hid-nop.a in Frameworks */,
+				5579D1A1B200D6133AA38FE1 /* libxenia-kernel.a in Frameworks */,
+				30C1A6ADCB1B8F9F0753F4ED /* libxenia-patcher.a in Frameworks */,
+				99C3BF9BA64E720D21333DDB /* libxenia-ui.a in Frameworks */,
+				5440199BECB8070D189EF7DB /* libxenia-ui-metal.a in Frameworks */,
+				7837B83DD238CF2F997FC67D /* libxenia-vfs.a in Frameworks */,
+				90306A018127D7F3ED2B5841 /* libaes_128.a in Frameworks */,
+				345EB0D540E96347BBCE2F15 /* libcapstone.a in Frameworks */,
+				1214D1E9B3FE6DDBAB258029 /* libfmt.a in Frameworks */,
+				DD9A69D151F4AEC3CFD83811 /* libimgui.a in Frameworks */,
+				5F389DB33DDB3925F2BD3BF3 /* liblibavcodec.a in Frameworks */,
+				1942F45373440B453A8B0293 /* liblibavutil.a in Frameworks */,
+				69E6CA595DE613CBE2D12899 /* libmspack.a in Frameworks */,
+				35B6879129B5D103AEA0E5D1 /* libsnappy.a in Frameworks */,
+				A9FD4F839DFC98F522E7ADC3 /* libxxhash.a in Frameworks */,
+				8CA080C9FFC20DBB60874F09 /* libxenia-cpu-backend-a64.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		87587072B83C6864CB549EB2 /* Embed Libraries */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Libraries";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXGroup section */
+		00CD88AD26F3B85F8DFAAEED /* xenia-gpu-metal-trace-dump */ = {
+			isa = PBXGroup;
+			children = (
+				144D15D2AC99FB84DAE0FC12 /* console_app_main_ios.cc */,
+				A6C936B49B3FADE6EA134CF4 /* Products */,
+				9D968EAA920D05DCE0E0A4EA /* Projects */,
+			);
+			name = "xenia-gpu-metal-trace-dump";
+			sourceTree = "<group>";
+		};
+		041A22EA2C54DB9C13F0692A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				02A414F31D7083A521411B33 /* libxenia-apu.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		095221AC318CDA5E192867EC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F1D042F70C9CB1A9106D4937 /* libxenia-cpu.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		13C21F303BFCD7E223986570 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D0289EFFEAF50DB1EEC5A53F /* libxenia-gpu.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1D945B13E1001CC51FA3C153 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A625DD854406DE371B8523C5 /* libxenia-hid-nop.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		248DA7E4E7F96996269D0E24 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				75F73BE713D83C99EB568227 /* libxenia-apu-nop.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2FAD1CCD5F3EEBBF3A4C2B0D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2590883925336B6B5F881E79 /* libxenia-core.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		31C004CBF52BC67D33CF6B0B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E1BD3AF57F9E3BA7571C8135 /* libxenia-patcher.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		473AD5C56F758E7757111C05 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2FDFE71D1426EF4F98141D5D /* metal-cpp */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4882513F7814203153215F7F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E9AE83DDE951670F23A61A1D /* libxenia-base.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5ADFA57D45CBCB6F8DB193BD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BBC90899FFDCD9CBF3AE5ED9 /* libsnappy.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6FDF364E9F7105407A7E448E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FACBDF9BFA6EC2CD34C375DB /* liblibavcodec.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		75842F90C2E725C2390625D0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E9669E7F9C5CA831ED7F04BF /* libxenia-gpu-metal.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		930631B96129856BE837D7F9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				22F719517E573E03C09ADF91 /* libxenia-cpu-backend-a64.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		99E5C713C2207FC5A9BC0D53 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5C64A785773116377B01ADC5 /* libxenia-vfs.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9D968EAA920D05DCE0E0A4EA /* Projects */ = {
+			isa = PBXGroup;
+			children = (
+				97B9115065DC6502ECEAB790 /* xenia-apu.xcodeproj */,
+				C3900D845BDCF3368A23F3C4 /* xenia-apu-nop.xcodeproj */,
+				2D378CBA117E94EC956BC2FA /* xenia-base.xcodeproj */,
+				9DBF875682068F8805F3BD96 /* xenia-core.xcodeproj */,
+				BE9707148CBA5AC613C8AD54 /* xenia-cpu.xcodeproj */,
+				0C52F29CDA76464E618498DC /* xenia-gpu.xcodeproj */,
+				A88BCCDCC3583B8EC728D31C /* xenia-gpu-metal.xcodeproj */,
+				735E5E8E4181B240C89004CE /* xenia-hid.xcodeproj */,
+				3B650942D3B1EEF401F8EF82 /* xenia-hid-nop.xcodeproj */,
+				587F02069C92D33890645846 /* xenia-kernel.xcodeproj */,
+				713D2FB2098A156437D115F2 /* xenia-patcher.xcodeproj */,
+				0F8A5740A5011672139D6D80 /* xenia-ui.xcodeproj */,
+				B81B8E009738A83273420440 /* xenia-ui-metal.xcodeproj */,
+				19906EC2E7B3C2746EC21502 /* xenia-vfs.xcodeproj */,
+				B9D5A1C6EBCEEC7865AE2806 /* aes_128.xcodeproj */,
+				AD75F03A42ECAF6CB189067A /* capstone.xcodeproj */,
+				3612C02E5E4D78E045E9066E /* fmt.xcodeproj */,
+				EE4BFB56B1B7BD08F05B6196 /* imgui.xcodeproj */,
+				C74C5A98AB9362CA2F8090D8 /* libavcodec.xcodeproj */,
+				522DD518205128CAA75F7B58 /* libavutil.xcodeproj */,
+				37AB12FE850E0930FB2D093E /* mspack.xcodeproj */,
+				801FFD36CD82F36843A1F376 /* snappy.xcodeproj */,
+				3CD171E88A34681A00536828 /* xxhash.xcodeproj */,
+				FF398266CD5CD618546B28A6 /* metal-cpp.xcodeproj */,
+				AFF4394E62EA4300B40C9F8E /* xenia-cpu-backend-a64.xcodeproj */,
+			);
+			name = Projects;
+			sourceTree = "<group>";
+		};
+		A6C936B49B3FADE6EA134CF4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				33460C162D07C8886706CA56 /* xenia-gpu-metal-trace-dump */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A77222F6925E48E8DA441136 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AF89D06BF39DA19DE76F26AB /* libxxhash.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A7FDC51FFE8B2F91D704435F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				06C4459DE5E15FCFC1EABBDD /* libcapstone.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		ACFCBC45083E0FB7DB985A85 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F974EFA9095A1BDBF5CDA5E9 /* libxenia-kernel.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BD2FB27DE355E22F4A5CD8BD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D4DD05D9E706E28B1AF7CC19 /* libimgui.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C214E2A218A24D14F11B60E2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6B7301034A901B3526997743 /* libxenia-ui.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C2E32289D9F5BDBBCA11B8C9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FD2DA671CB50FA23525F4CB1 /* libfmt.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D298EA8EFAD3A340E26F30CE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				44148D3B5EE0FBED62B1937B /* liblibavutil.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DD38095525A8ED876A47BF95 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0626DD099E73C2BBCCBAC349 /* libaes_128.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E1B46CE1CCA092D314865B21 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F3D19AE137E56C132BB6F121 /* libmspack.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		ECC0969914FB4F4BFC96DCD9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B553A811D02016C3D3F0AE51 /* libxenia-hid.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FD0C40822DF0387441086EC2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4D554503E7793A35979F1B43 /* libxenia-ui-metal.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9ED1B93CEC34AF6E6253AF7C /* xenia-gpu-metal-trace-dump */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D3D4AEE52F16025702704D25 /* Build configuration list for PBXNativeTarget "xenia-gpu-metal-trace-dump" */;
+			buildPhases = (
+				5580E726B0C23A98841C8566 /* Resources */,
+				BF2E007D1A6F53EFEDC99EBD /* Sources */,
+				E599668640DAB9F8143504C6 /* Frameworks */,
+				87587072B83C6864CB549EB2 /* Embed Libraries */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F1D25FF31A0D18A501A8A633 /* PBXTargetDependency */,
+				1245E4EDD5B1A69F14554B2D /* PBXTargetDependency */,
+				363A8E4865CC5D3A40D99C88 /* PBXTargetDependency */,
+				1D6559D64CF728C828046816 /* PBXTargetDependency */,
+				F70A5EB51F45176706E0A4F5 /* PBXTargetDependency */,
+				017A5C3929B514EB1150A279 /* PBXTargetDependency */,
+				633C6C99B09F62CB26BE62D9 /* PBXTargetDependency */,
+				DA78D3A202B38C54EA4F19E2 /* PBXTargetDependency */,
+				0B4C981CCEB859CE0D5BFE5C /* PBXTargetDependency */,
+				9AB4F94EF5F64CC0C950978E /* PBXTargetDependency */,
+				1F7841D4E2E403862187A814 /* PBXTargetDependency */,
+				AFCD1FAB065A8A1DDED39DEB /* PBXTargetDependency */,
+				EAC47D8B1BA8757D2EC0ABCB /* PBXTargetDependency */,
+				879E041CAFD8BCCE97744A5C /* PBXTargetDependency */,
+				CAF0465E13612A9057FFFC9E /* PBXTargetDependency */,
+				95B60228EC436C9AC4BC8068 /* PBXTargetDependency */,
+				B09B5F92C7ADFAC4B7C9F5D2 /* PBXTargetDependency */,
+				AAE7EF86D10E1F38381515C6 /* PBXTargetDependency */,
+				5D9773578D29424968368197 /* PBXTargetDependency */,
+				C0512797E88BE049D0276DD7 /* PBXTargetDependency */,
+				CF6CA9EABA58CFDC023E982A /* PBXTargetDependency */,
+				4897E286338408787B69D0C6 /* PBXTargetDependency */,
+				952A5FFF801685F1C7FC4E3F /* PBXTargetDependency */,
+				34F312CE5D2DCB8044C9590E /* PBXTargetDependency */,
+				80BE6EC24EE1C274D5F01502 /* PBXTargetDependency */,
+			);
+			name = "xenia-gpu-metal-trace-dump";
+			productInstallPath = "$(HOME)/bin";
+			productName = "xenia-gpu-metal-trace-dump";
+			productReference = 33460C162D07C8886706CA56 /* xenia-gpu-metal-trace-dump */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		08FB7793FE84155DC02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 1DEB928908733DD80010E9CD /* Build configuration list for PBXProject "xenia-gpu-metal-trace-dump" */;
+			compatibilityVersion = "Xcode 3.2";
+			hasScannedForEncodings = 1;
+			mainGroup = 00CD88AD26F3B85F8DFAAEED /* xenia-gpu-metal-trace-dump */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 041A22EA2C54DB9C13F0692A /* Products */;
+					ProjectRef = 97B9115065DC6502ECEAB790 /* xenia-apu.xcodeproj */;
+				},
+				{
+					ProductGroup = 248DA7E4E7F96996269D0E24 /* Products */;
+					ProjectRef = C3900D845BDCF3368A23F3C4 /* xenia-apu-nop.xcodeproj */;
+				},
+				{
+					ProductGroup = 4882513F7814203153215F7F /* Products */;
+					ProjectRef = 2D378CBA117E94EC956BC2FA /* xenia-base.xcodeproj */;
+				},
+				{
+					ProductGroup = 2FAD1CCD5F3EEBBF3A4C2B0D /* Products */;
+					ProjectRef = 9DBF875682068F8805F3BD96 /* xenia-core.xcodeproj */;
+				},
+				{
+					ProductGroup = 095221AC318CDA5E192867EC /* Products */;
+					ProjectRef = BE9707148CBA5AC613C8AD54 /* xenia-cpu.xcodeproj */;
+				},
+				{
+					ProductGroup = 13C21F303BFCD7E223986570 /* Products */;
+					ProjectRef = 0C52F29CDA76464E618498DC /* xenia-gpu.xcodeproj */;
+				},
+				{
+					ProductGroup = 75842F90C2E725C2390625D0 /* Products */;
+					ProjectRef = A88BCCDCC3583B8EC728D31C /* xenia-gpu-metal.xcodeproj */;
+				},
+				{
+					ProductGroup = ECC0969914FB4F4BFC96DCD9 /* Products */;
+					ProjectRef = 735E5E8E4181B240C89004CE /* xenia-hid.xcodeproj */;
+				},
+				{
+					ProductGroup = 1D945B13E1001CC51FA3C153 /* Products */;
+					ProjectRef = 3B650942D3B1EEF401F8EF82 /* xenia-hid-nop.xcodeproj */;
+				},
+				{
+					ProductGroup = ACFCBC45083E0FB7DB985A85 /* Products */;
+					ProjectRef = 587F02069C92D33890645846 /* xenia-kernel.xcodeproj */;
+				},
+				{
+					ProductGroup = 31C004CBF52BC67D33CF6B0B /* Products */;
+					ProjectRef = 713D2FB2098A156437D115F2 /* xenia-patcher.xcodeproj */;
+				},
+				{
+					ProductGroup = C214E2A218A24D14F11B60E2 /* Products */;
+					ProjectRef = 0F8A5740A5011672139D6D80 /* xenia-ui.xcodeproj */;
+				},
+				{
+					ProductGroup = FD0C40822DF0387441086EC2 /* Products */;
+					ProjectRef = B81B8E009738A83273420440 /* xenia-ui-metal.xcodeproj */;
+				},
+				{
+					ProductGroup = 99E5C713C2207FC5A9BC0D53 /* Products */;
+					ProjectRef = 19906EC2E7B3C2746EC21502 /* xenia-vfs.xcodeproj */;
+				},
+				{
+					ProductGroup = DD38095525A8ED876A47BF95 /* Products */;
+					ProjectRef = B9D5A1C6EBCEEC7865AE2806 /* aes_128.xcodeproj */;
+				},
+				{
+					ProductGroup = A7FDC51FFE8B2F91D704435F /* Products */;
+					ProjectRef = AD75F03A42ECAF6CB189067A /* capstone.xcodeproj */;
+				},
+				{
+					ProductGroup = C2E32289D9F5BDBBCA11B8C9 /* Products */;
+					ProjectRef = 3612C02E5E4D78E045E9066E /* fmt.xcodeproj */;
+				},
+				{
+					ProductGroup = BD2FB27DE355E22F4A5CD8BD /* Products */;
+					ProjectRef = EE4BFB56B1B7BD08F05B6196 /* imgui.xcodeproj */;
+				},
+				{
+					ProductGroup = 6FDF364E9F7105407A7E448E /* Products */;
+					ProjectRef = C74C5A98AB9362CA2F8090D8 /* libavcodec.xcodeproj */;
+				},
+				{
+					ProductGroup = D298EA8EFAD3A340E26F30CE /* Products */;
+					ProjectRef = 522DD518205128CAA75F7B58 /* libavutil.xcodeproj */;
+				},
+				{
+					ProductGroup = E1B46CE1CCA092D314865B21 /* Products */;
+					ProjectRef = 37AB12FE850E0930FB2D093E /* mspack.xcodeproj */;
+				},
+				{
+					ProductGroup = 5ADFA57D45CBCB6F8DB193BD /* Products */;
+					ProjectRef = 801FFD36CD82F36843A1F376 /* snappy.xcodeproj */;
+				},
+				{
+					ProductGroup = A77222F6925E48E8DA441136 /* Products */;
+					ProjectRef = 3CD171E88A34681A00536828 /* xxhash.xcodeproj */;
+				},
+				{
+					ProductGroup = 473AD5C56F758E7757111C05 /* Products */;
+					ProjectRef = FF398266CD5CD618546B28A6 /* metal-cpp.xcodeproj */;
+				},
+				{
+					ProductGroup = 930631B96129856BE837D7F9 /* Products */;
+					ProjectRef = AFF4394E62EA4300B40C9F8E /* xenia-cpu-backend-a64.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				9ED1B93CEC34AF6E6253AF7C /* xenia-gpu-metal-trace-dump */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		02A414F31D7083A521411B33 /* libxenia-apu.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libxenia-apu.a";
+			remoteRef = D8DD4AEA086F19DCE37C592A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0626DD099E73C2BBCCBAC349 /* libaes_128.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libaes_128.a;
+			remoteRef = D5B7FEB52C45692704BE7CF5 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		06C4459DE5E15FCFC1EABBDD /* libcapstone.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libcapstone.a;
+			remoteRef = F93533BF216FEC71090B79FF /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		22F719517E573E03C09ADF91 /* libxenia-cpu-backend-a64.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libxenia-cpu-backend-a64.a";
+			remoteRef = 454B3399D7D8FD8B40B1A1D9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		2590883925336B6B5F881E79 /* libxenia-core.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libxenia-core.a";
+			remoteRef = 76CF812D989B2E5FD550576D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		2FDFE71D1426EF4F98141D5D /* metal-cpp */ = {
+			isa = PBXReferenceProxy;
+			fileType = nil;
+			path = "metal-cpp";
+			remoteRef = 80145925AFA628178AB36765 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		44148D3B5EE0FBED62B1937B /* liblibavutil.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = liblibavutil.a;
+			remoteRef = 7735070EA6C6D60081D4154E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		4D554503E7793A35979F1B43 /* libxenia-ui-metal.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libxenia-ui-metal.a";
+			remoteRef = F0131B823D7611B4B39511C2 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		5C64A785773116377B01ADC5 /* libxenia-vfs.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libxenia-vfs.a";
+			remoteRef = 281D743357AF432532BC8273 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		6B7301034A901B3526997743 /* libxenia-ui.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libxenia-ui.a";
+			remoteRef = 563001A27E6ABA54660647E2 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		75F73BE713D83C99EB568227 /* libxenia-apu-nop.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libxenia-apu-nop.a";
+			remoteRef = 07C16F2438A567164BBD9D64 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		A625DD854406DE371B8523C5 /* libxenia-hid-nop.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libxenia-hid-nop.a";
+			remoteRef = 219E883352828025659AB673 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		AF89D06BF39DA19DE76F26AB /* libxxhash.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libxxhash.a;
+			remoteRef = E7354C762FA630A8744502B6 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		B553A811D02016C3D3F0AE51 /* libxenia-hid.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libxenia-hid.a";
+			remoteRef = D652347905E4036BE0F142B9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		BBC90899FFDCD9CBF3AE5ED9 /* libsnappy.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libsnappy.a;
+			remoteRef = 08531FDD50C4040F9562D61D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D0289EFFEAF50DB1EEC5A53F /* libxenia-gpu.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libxenia-gpu.a";
+			remoteRef = DD84CFF00D169EE2E823DE30 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D4DD05D9E706E28B1AF7CC19 /* libimgui.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libimgui.a;
+			remoteRef = B4A4CCDD9F90F2CFE776BB1D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E1BD3AF57F9E3BA7571C8135 /* libxenia-patcher.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libxenia-patcher.a";
+			remoteRef = BB3F68EBEC2360DDFF3B972B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E9669E7F9C5CA831ED7F04BF /* libxenia-gpu-metal.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libxenia-gpu-metal.a";
+			remoteRef = 7788EC50714AA8C2AB49AA90 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E9AE83DDE951670F23A61A1D /* libxenia-base.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libxenia-base.a";
+			remoteRef = AA4B43DFCC16F11108CC1A1F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F1D042F70C9CB1A9106D4937 /* libxenia-cpu.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libxenia-cpu.a";
+			remoteRef = 851521ECB4A6F0DE8FB4302C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F3D19AE137E56C132BB6F121 /* libmspack.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libmspack.a;
+			remoteRef = 69C0D3C1B231B7F3F6D08A01 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F974EFA9095A1BDBF5CDA5E9 /* libxenia-kernel.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libxenia-kernel.a";
+			remoteRef = 9E130FA5617ED157A02275E5 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		FACBDF9BFA6EC2CD34C375DB /* liblibavcodec.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = liblibavcodec.a;
+			remoteRef = BD44CACEDF1078001BC5A10E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		FD2DA671CB50FA23525F4CB1 /* libfmt.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libfmt.a;
+			remoteRef = 70C63E696A2C3FDB5DC79CA9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5580E726B0C23A98841C8566 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BF2E007D1A6F53EFEDC99EBD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0635D14AF72D3F3C6330BF8A /* console_app_main_ios.cc in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		017A5C3929B514EB1150A279 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "libxenia-gpu.a";
+			targetProxy = 2FBF42895F51117B3A5E50C9 /* PBXContainerItemProxy */;
+		};
+		0B4C981CCEB859CE0D5BFE5C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "libxenia-hid-nop.a";
+			targetProxy = 73D8FACCA4BCF2BEB7D5290C /* PBXContainerItemProxy */;
+		};
+		1245E4EDD5B1A69F14554B2D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "libxenia-apu-nop.a";
+			targetProxy = 59FBE1BD8ADFD9AF9DF80FFD /* PBXContainerItemProxy */;
+		};
+		1D6559D64CF728C828046816 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "libxenia-core.a";
+			targetProxy = C909F3C6EAD5A0F8278ACA06 /* PBXContainerItemProxy */;
+		};
+		1F7841D4E2E403862187A814 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "libxenia-patcher.a";
+			targetProxy = 0D79DB843E5DD376517609C4 /* PBXContainerItemProxy */;
+		};
+		34F312CE5D2DCB8044C9590E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "metal-cpp";
+			targetProxy = D24ECBBE01E09AB0DCEDD9FE /* PBXContainerItemProxy */;
+		};
+		363A8E4865CC5D3A40D99C88 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "libxenia-base.a";
+			targetProxy = FC85B6781E5163AA5B068CB8 /* PBXContainerItemProxy */;
+		};
+		4897E286338408787B69D0C6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = libsnappy.a;
+			targetProxy = 5A8D9276A2FE76A8E79D48B6 /* PBXContainerItemProxy */;
+		};
+		5D9773578D29424968368197 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = liblibavcodec.a;
+			targetProxy = 0F7F3D67314AEA996E0013A7 /* PBXContainerItemProxy */;
+		};
+		633C6C99B09F62CB26BE62D9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "libxenia-gpu-metal.a";
+			targetProxy = C9C35EE9C3851B5BFD841D29 /* PBXContainerItemProxy */;
+		};
+		80BE6EC24EE1C274D5F01502 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "libxenia-cpu-backend-a64.a";
+			targetProxy = 9785A6322A13702492EC1472 /* PBXContainerItemProxy */;
+		};
+		879E041CAFD8BCCE97744A5C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "libxenia-vfs.a";
+			targetProxy = 7A57E6CCA9E9B5BE84F6F50C /* PBXContainerItemProxy */;
+		};
+		952A5FFF801685F1C7FC4E3F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = libxxhash.a;
+			targetProxy = 396FBF0F81E0A341C67F754F /* PBXContainerItemProxy */;
+		};
+		95B60228EC436C9AC4BC8068 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = libcapstone.a;
+			targetProxy = 4B6FA65873AA5F0A5B45EC98 /* PBXContainerItemProxy */;
+		};
+		9AB4F94EF5F64CC0C950978E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "libxenia-kernel.a";
+			targetProxy = F04D823EB3B943F0F25CE87E /* PBXContainerItemProxy */;
+		};
+		AAE7EF86D10E1F38381515C6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = libimgui.a;
+			targetProxy = 06DF3F76F1CB656839B12DB6 /* PBXContainerItemProxy */;
+		};
+		AFCD1FAB065A8A1DDED39DEB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "libxenia-ui.a";
+			targetProxy = A86A743BD0A52CEDB840BA7B /* PBXContainerItemProxy */;
+		};
+		B09B5F92C7ADFAC4B7C9F5D2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = libfmt.a;
+			targetProxy = C300B102BC66B274B0020F42 /* PBXContainerItemProxy */;
+		};
+		C0512797E88BE049D0276DD7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = liblibavutil.a;
+			targetProxy = C96F79A7F9014899D40E87E7 /* PBXContainerItemProxy */;
+		};
+		CAF0465E13612A9057FFFC9E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = libaes_128.a;
+			targetProxy = 27F2714E7E7FDBC056F8EF8E /* PBXContainerItemProxy */;
+		};
+		CF6CA9EABA58CFDC023E982A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = libmspack.a;
+			targetProxy = BBFB465A046C2A8C490AFC9A /* PBXContainerItemProxy */;
+		};
+		DA78D3A202B38C54EA4F19E2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "libxenia-hid.a";
+			targetProxy = 288CA712581E7604332BB552 /* PBXContainerItemProxy */;
+		};
+		EAC47D8B1BA8757D2EC0ABCB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "libxenia-ui-metal.a";
+			targetProxy = 424D8E1B8FB0844D05CF845B /* PBXContainerItemProxy */;
+		};
+		F1D25FF31A0D18A501A8A633 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "libxenia-apu.a";
+			targetProxy = 2B17BD835AA98C7535B6CBC3 /* PBXContainerItemProxy */;
+		};
+		F70A5EB51F45176706E0A4F5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "libxenia-cpu.a";
+			targetProxy = D74F948506E16377E1EEA2C5 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		0D624D160724098841230B56 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					arm64,
+				);
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				GCC_C_LANGUAGE_STANDARD = c17;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					VULKAN_HPP_NO_TO_STRING,
+					IMGUI_DISABLE_OBSOLETE_FUNCTIONS,
+					IMGUI_DISABLE_DEFAULT_FONT,
+					IMGUI_USE_STB_SPRINTF,
+					USE_CPP17,
+					NDEBUG,
+					"_NO_DEBUG_HEAP=1",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				OBJROOT = "obj/iOS-ARM64/Release/iOS-ARM64/Release/xenia-gpu-metal-trace-dump";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CFLAGS = (
+					"-O3",
+					"-finline-functions",
+					"-funroll-loops",
+					"-fomit-frame-pointer",
+					"-w",
+					"-fno-modules",
+				);
+				SDKROOT = (
+					iphoneos,
+				);
+				SYMROOT = "bin/iOS-ARM64/Release";
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+				USER_HEADER_SEARCH_PATHS = (
+					..,
+					../src,
+					../third_party,
+					../third_party/glslang,
+				);
+			};
+			name = Release;
+		};
+		1211432B7F39519D80CC416B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					arm64,
+				);
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "bin/iOS-ARM64/Debug";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_DYNAMIC_NO_PIC = NO;
+				INSTALL_PATH = /usr/local/bin;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				PRODUCT_NAME = "xenia-gpu-metal-trace-dump";
+				SDKROOT = (
+					iphoneos,
+				);
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+			};
+			name = Debug;
+		};
+		18B030CC4AA97B7EC488B70C /* Valgrind */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					arm64,
+				);
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = c17;
+				GCC_OPTIMIZATION_LEVEL = g;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					VULKAN_HPP_NO_TO_STRING,
+					IMGUI_DISABLE_OBSOLETE_FUNCTIONS,
+					IMGUI_DISABLE_DEFAULT_FONT,
+					IMGUI_USE_STB_SPRINTF,
+					USE_CPP17,
+					DEBUG,
+					NDEBUG,
+					"_NO_DEBUG_HEAP=1",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				OBJROOT = "obj/iOS-ARM64/Valgrind/iOS-ARM64/Valgrind/xenia-gpu-metal-trace-dump";
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = (
+					"-fno-omit-frame-pointer",
+					"-fno-inline-functions",
+					"-w",
+					"-fno-modules",
+				);
+				SDKROOT = (
+					iphoneos,
+				);
+				SYMROOT = "bin/iOS-ARM64/Valgrind";
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+				USER_HEADER_SEARCH_PATHS = (
+					..,
+					../src,
+					../third_party,
+					../third_party/glslang,
+				);
+			};
+			name = Valgrind;
+		};
+		2231D4E5799747D72BA56325 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					arm64,
+				);
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "bin/iOS-ARM64/Release";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_DYNAMIC_NO_PIC = NO;
+				INSTALL_PATH = /usr/local/bin;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				PRODUCT_NAME = "xenia-gpu-metal-trace-dump";
+				SDKROOT = (
+					iphoneos,
+				);
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+			};
+			name = Release;
+		};
+		2234AF1C1BF66B8E55F56D5C /* Checked */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					arm64,
+				);
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = c17;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					VULKAN_HPP_NO_TO_STRING,
+					IMGUI_DISABLE_OBSOLETE_FUNCTIONS,
+					IMGUI_DISABLE_DEFAULT_FONT,
+					USE_CPP17,
+					DEBUG,
+					NDEBUG,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				OBJROOT = "obj/iOS-ARM64/Checked/iOS-ARM64/Checked/xenia-gpu-metal-trace-dump";
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = (
+					"-w",
+					"-fno-modules",
+				);
+				SDKROOT = (
+					iphoneos,
+				);
+				SYMROOT = "bin/iOS-ARM64/Checked";
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+				USER_HEADER_SEARCH_PATHS = (
+					..,
+					../src,
+					../third_party,
+					../third_party/glslang,
+				);
+			};
+			name = Checked;
+		};
+		46C80BDC77AC03CE8AC43A1C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					arm64,
+				);
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = c17;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					VULKAN_HPP_NO_TO_STRING,
+					IMGUI_DISABLE_OBSOLETE_FUNCTIONS,
+					IMGUI_DISABLE_DEFAULT_FONT,
+					IMGUI_USE_STB_SPRINTF,
+					USE_CPP17,
+					DEBUG,
+					"_NO_DEBUG_HEAP=1",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				OBJROOT = "obj/iOS-ARM64/Debug/iOS-ARM64/Debug/xenia-gpu-metal-trace-dump";
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = (
+					"-w",
+					"-fno-modules",
+				);
+				SDKROOT = (
+					iphoneos,
+				);
+				SYMROOT = "bin/iOS-ARM64/Debug";
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+				USER_HEADER_SEARCH_PATHS = (
+					..,
+					../src,
+					../third_party,
+					../third_party/glslang,
+				);
+			};
+			name = Debug;
+		};
+		7660541BBA74254DAE45AA5B /* Valgrind */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					arm64,
+				);
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "bin/iOS-ARM64/Valgrind";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_DYNAMIC_NO_PIC = NO;
+				INSTALL_PATH = /usr/local/bin;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				PRODUCT_NAME = "xenia-gpu-metal-trace-dump";
+				SDKROOT = (
+					iphoneos,
+				);
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+			};
+			name = Valgrind;
+		};
+		8312F66BDA78695D8C8684AB /* Checked */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					arm64,
+				);
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "bin/iOS-ARM64/Checked";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_DYNAMIC_NO_PIC = NO;
+				INSTALL_PATH = /usr/local/bin;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				PRODUCT_NAME = "xenia-gpu-metal-trace-dump";
+				SDKROOT = (
+					iphoneos,
+				);
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+			};
+			name = Checked;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1DEB928908733DD80010E9CD /* Build configuration list for PBXProject "xenia-gpu-metal-trace-dump" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2234AF1C1BF66B8E55F56D5C /* Checked */,
+				46C80BDC77AC03CE8AC43A1C /* Debug */,
+				0D624D160724098841230B56 /* Release */,
+				18B030CC4AA97B7EC488B70C /* Valgrind */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Checked;
+		};
+		D3D4AEE52F16025702704D25 /* Build configuration list for PBXNativeTarget "xenia-gpu-metal-trace-dump" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8312F66BDA78695D8C8684AB /* Checked */,
+				1211432B7F39519D80CC416B /* Debug */,
+				2231D4E5799747D72BA56325 /* Release */,
+				7660541BBA74254DAE45AA5B /* Valgrind */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Checked;
+		};
+/* End XCConfigurationList section */
+};
+rootObject = 08FB7793FE84155DC02AAC07 /* Project object */;
+}

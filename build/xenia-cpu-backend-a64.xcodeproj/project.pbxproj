@@ -1,0 +1,766 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0CA9AB0F1E60EB0193CED94F /* a64_backend.cc in Sources */ = {isa = PBXBuildFile; fileRef = 04531977783B91299A893FB7 /* a64_backend.cc */; };
+		1214D1E9B3FE6DDBAB258029 /* libfmt.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FD2DA671CB50FA23525F4CB1 /* libfmt.a */; };
+		2176DA17BBD0C309F8092857 /* a64_sequences.cc in Sources */ = {isa = PBXBuildFile; fileRef = 672DA9FF050EAAB1DC8CF03F /* a64_sequences.cc */; };
+		327B71274432B119B9A09F67 /* a64_tracers.cc in Sources */ = {isa = PBXBuildFile; fileRef = FFE7AA0F73D021C1961DD04F /* a64_tracers.cc */; };
+		45E78998B909168A19CE57D8 /* xbyak_aarch64_impl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8FAB70A0EB0B95522D4F36E0 /* xbyak_aarch64_impl.cpp */; };
+		4F47FB9FA65DA411D2A639DF /* a64_code_cache_posix.cc in Sources */ = {isa = PBXBuildFile; fileRef = 21BD40077D0890396B3A7647 /* a64_code_cache_posix.cc */; };
+		6FBA811508326E8734195F55 /* a64_seq_vector.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2B8B051DC5AEFA4F75D4DB5D /* a64_seq_vector.cc */; };
+		72AE467B0B2633ED370D24BB /* a64_code_cache.cc in Sources */ = {isa = PBXBuildFile; fileRef = 33B44D23CDD842557DFE2363 /* a64_code_cache.cc */; };
+		89DAA821225295934E398661 /* a64_seq_memory.cc in Sources */ = {isa = PBXBuildFile; fileRef = C4DECD695F02C29B0F28A3A9 /* a64_seq_memory.cc */; };
+		8E0F152BEA96199D7338D36B /* a64_function.cc in Sources */ = {isa = PBXBuildFile; fileRef = 6FAC72D37F919F056C052913 /* a64_function.cc */; };
+		8E9823CFE8993AC1AFE0320F /* libxenia-cpu.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F1D042F70C9CB1A9106D4937 /* libxenia-cpu.a */; };
+		8F54CBB3A10C0BA51679F9F3 /* a64_emitter.cc in Sources */ = {isa = PBXBuildFile; fileRef = 5060B1DBC449298DE696D81B /* a64_emitter.cc */; };
+		956734B12B9046A3ECF6A2F1 /* a64_seq_control.cc in Sources */ = {isa = PBXBuildFile; fileRef = 7125E5F9241BEFAB753E4C39 /* a64_seq_control.cc */; };
+		9F6839157E0AD48732ECD755 /* libxenia-base.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E9AE83DDE951670F23A61A1D /* libxenia-base.a */; };
+		C18DC03B5BE7A92D98200E7B /* a64_assembler.cc in Sources */ = {isa = PBXBuildFile; fileRef = EDB667E38B9768956315AE23 /* a64_assembler.cc */; };
+		D11DD5262DA4D998B6479366 /* util_impl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 02E3514E12C87D80FF3C078E /* util_impl.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		70C63E696A2C3FDB5DC79CA9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3612C02E5E4D78E045E9066E /* fmt.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A4498576D2EFD9682C3133B6;
+			remoteInfo = libfmt.a;
+		};
+		851521ECB4A6F0DE8FB4302C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BE9707148CBA5AC613C8AD54 /* xenia-cpu.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 679156D960F7584B5492B519;
+			remoteInfo = "libxenia-cpu.a";
+		};
+		AA4B43DFCC16F11108CC1A1F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2D378CBA117E94EC956BC2FA /* xenia-base.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 6C73464C929975FEF9A06C8C;
+			remoteInfo = "libxenia-base.a";
+		};
+		C300B102BC66B274B0020F42 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3612C02E5E4D78E045E9066E /* fmt.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 169B869CBAEE244ECD266CDC;
+			remoteInfo = libfmt.a;
+		};
+		D74F948506E16377E1EEA2C5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BE9707148CBA5AC613C8AD54 /* xenia-cpu.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = B7AD379FCEBFD2D1BEDBCDDF;
+			remoteInfo = "libxenia-cpu.a";
+		};
+		FC85B6781E5163AA5B068CB8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2D378CBA117E94EC956BC2FA /* xenia-base.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 818584B27AEB86246E86E2F2;
+			remoteInfo = "libxenia-base.a";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		02E3514E12C87D80FF3C078E /* util_impl.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = util_impl.cpp; path = ../third_party/xbyak_aarch64/src/util_impl.cpp; sourceTree = "<group>"; };
+		04531977783B91299A893FB7 /* a64_backend.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = a64_backend.cc; path = ../src/xenia/cpu/backend/a64/a64_backend.cc; sourceTree = "<group>"; };
+		11489AF7853112A9A77EC137 /* a64_function.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = a64_function.h; path = ../src/xenia/cpu/backend/a64/a64_function.h; sourceTree = "<group>"; };
+		1676E023265C0C5512CF9663 /* a64_sequences.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = a64_sequences.h; path = ../src/xenia/cpu/backend/a64/a64_sequences.h; sourceTree = "<group>"; };
+		1906023F18A8E57152FD987F /* a64_emitter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = a64_emitter.h; path = ../src/xenia/cpu/backend/a64/a64_emitter.h; sourceTree = "<group>"; };
+		21BD40077D0890396B3A7647 /* a64_code_cache_posix.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = a64_code_cache_posix.cc; path = ../src/xenia/cpu/backend/a64/a64_code_cache_posix.cc; sourceTree = "<group>"; };
+		2B8B051DC5AEFA4F75D4DB5D /* a64_seq_vector.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = a64_seq_vector.cc; path = ../src/xenia/cpu/backend/a64/a64_seq_vector.cc; sourceTree = "<group>"; };
+		2D378CBA117E94EC956BC2FA /* libxenia-base.a */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = xenia-base.xcodeproj; path = "xenia-base.xcodeproj"; sourceTree = SOURCE_ROOT; };
+		33B44D23CDD842557DFE2363 /* a64_code_cache.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = a64_code_cache.cc; path = ../src/xenia/cpu/backend/a64/a64_code_cache.cc; sourceTree = "<group>"; };
+		3612C02E5E4D78E045E9066E /* libfmt.a */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "fmt.xcodeproj"; path = fmt.xcodeproj; sourceTree = SOURCE_ROOT; };
+		45C7C06957F19D1B8BE286A9 /* a64_op.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = a64_op.h; path = ../src/xenia/cpu/backend/a64/a64_op.h; sourceTree = "<group>"; };
+		5060B1DBC449298DE696D81B /* a64_emitter.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = a64_emitter.cc; path = ../src/xenia/cpu/backend/a64/a64_emitter.cc; sourceTree = "<group>"; };
+		5F6120B35F0403E59958B6F3 /* a64_tracers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = a64_tracers.h; path = ../src/xenia/cpu/backend/a64/a64_tracers.h; sourceTree = "<group>"; };
+		672DA9FF050EAAB1DC8CF03F /* a64_sequences.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = a64_sequences.cc; path = ../src/xenia/cpu/backend/a64/a64_sequences.cc; sourceTree = "<group>"; };
+		6CE2046666A3C0D8A0A2C2A6 /* libxenia-cpu-backend-a64.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libxenia-cpu-backend-a64.a"; path = "libxenia-cpu-backend-a64.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6FAC72D37F919F056C052913 /* a64_function.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = a64_function.cc; path = ../src/xenia/cpu/backend/a64/a64_function.cc; sourceTree = "<group>"; };
+		7125E5F9241BEFAB753E4C39 /* a64_seq_control.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = a64_seq_control.cc; path = ../src/xenia/cpu/backend/a64/a64_seq_control.cc; sourceTree = "<group>"; };
+		77BCAB4787A1D77974156187 /* a64_assembler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = a64_assembler.h; path = ../src/xenia/cpu/backend/a64/a64_assembler.h; sourceTree = "<group>"; };
+		7D910C9B7D33EFCDB788A2DB /* a64_backend.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = a64_backend.h; path = ../src/xenia/cpu/backend/a64/a64_backend.h; sourceTree = "<group>"; };
+		8733A637FB1C1DE91D69CC77 /* a64_seq_util.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = a64_seq_util.h; path = ../src/xenia/cpu/backend/a64/a64_seq_util.h; sourceTree = "<group>"; };
+		8FAB70A0EB0B95522D4F36E0 /* xbyak_aarch64_impl.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = xbyak_aarch64_impl.cpp; path = ../third_party/xbyak_aarch64/src/xbyak_aarch64_impl.cpp; sourceTree = "<group>"; };
+		A599EC51588FF603A9B25291 /* a64_stack_layout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = a64_stack_layout.h; path = ../src/xenia/cpu/backend/a64/a64_stack_layout.h; sourceTree = "<group>"; };
+		BE9707148CBA5AC613C8AD54 /* libxenia-cpu.a */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = xenia-cpu.xcodeproj; path = "xenia-cpu.xcodeproj"; sourceTree = SOURCE_ROOT; };
+		C4DECD695F02C29B0F28A3A9 /* a64_seq_memory.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = a64_seq_memory.cc; path = ../src/xenia/cpu/backend/a64/a64_seq_memory.cc; sourceTree = "<group>"; };
+		E326E3D52BC622074EF1DA15 /* a64_oaknut_compat.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = a64_oaknut_compat.h; path = ../src/xenia/cpu/backend/a64/a64_oaknut_compat.h; sourceTree = "<group>"; };
+		EDB667E38B9768956315AE23 /* a64_assembler.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = a64_assembler.cc; path = ../src/xenia/cpu/backend/a64/a64_assembler.cc; sourceTree = "<group>"; };
+		F136BAC78F17BB7966960107 /* a64_code_cache.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = a64_code_cache.h; path = ../src/xenia/cpu/backend/a64/a64_code_cache.h; sourceTree = "<group>"; };
+		FFE7AA0F73D021C1961DD04F /* a64_tracers.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = a64_tracers.cc; path = ../src/xenia/cpu/backend/a64/a64_tracers.cc; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2BE5B6D687270A485A815516 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1214D1E9B3FE6DDBAB258029 /* libfmt.a in Frameworks */,
+				9F6839157E0AD48732ECD755 /* libxenia-base.a in Frameworks */,
+				8E9823CFE8993AC1AFE0320F /* libxenia-cpu.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		91FA14C2C2DE0CB4D5F64302 /* Embed Libraries */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Libraries";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXGroup section */
+		095221AC318CDA5E192867EC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F1D042F70C9CB1A9106D4937 /* libxenia-cpu.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3F56CF6F0D7A2321948875AF /* xbyak_aarch64 */ = {
+			isa = PBXGroup;
+			children = (
+				E70E410734713739AA903747 /* src */,
+			);
+			name = xbyak_aarch64;
+			sourceTree = "<group>";
+		};
+		4882513F7814203153215F7F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E9AE83DDE951670F23A61A1D /* libxenia-base.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5775D4184366DFCA959E7A58 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				91B06A29360307DB483B5069 /* xenia */,
+			);
+			name = src;
+			sourceTree = "<group>";
+		};
+		6BAFB4678D7B6199CA308AA7 /* a64 */ = {
+			isa = PBXGroup;
+			children = (
+				EDB667E38B9768956315AE23 /* a64_assembler.cc */,
+				77BCAB4787A1D77974156187 /* a64_assembler.h */,
+				04531977783B91299A893FB7 /* a64_backend.cc */,
+				7D910C9B7D33EFCDB788A2DB /* a64_backend.h */,
+				33B44D23CDD842557DFE2363 /* a64_code_cache.cc */,
+				F136BAC78F17BB7966960107 /* a64_code_cache.h */,
+				21BD40077D0890396B3A7647 /* a64_code_cache_posix.cc */,
+				5060B1DBC449298DE696D81B /* a64_emitter.cc */,
+				1906023F18A8E57152FD987F /* a64_emitter.h */,
+				6FAC72D37F919F056C052913 /* a64_function.cc */,
+				11489AF7853112A9A77EC137 /* a64_function.h */,
+				E326E3D52BC622074EF1DA15 /* a64_oaknut_compat.h */,
+				45C7C06957F19D1B8BE286A9 /* a64_op.h */,
+				7125E5F9241BEFAB753E4C39 /* a64_seq_control.cc */,
+				C4DECD695F02C29B0F28A3A9 /* a64_seq_memory.cc */,
+				8733A637FB1C1DE91D69CC77 /* a64_seq_util.h */,
+				2B8B051DC5AEFA4F75D4DB5D /* a64_seq_vector.cc */,
+				672DA9FF050EAAB1DC8CF03F /* a64_sequences.cc */,
+				1676E023265C0C5512CF9663 /* a64_sequences.h */,
+				A599EC51588FF603A9B25291 /* a64_stack_layout.h */,
+				FFE7AA0F73D021C1961DD04F /* a64_tracers.cc */,
+				5F6120B35F0403E59958B6F3 /* a64_tracers.h */,
+			);
+			name = a64;
+			sourceTree = "<group>";
+		};
+		91B06A29360307DB483B5069 /* xenia */ = {
+			isa = PBXGroup;
+			children = (
+				CF7DBB53D2EE8D85545B3193 /* cpu */,
+			);
+			name = xenia;
+			sourceTree = "<group>";
+		};
+		96FB357708864DE9B78773B7 /* xenia-cpu-backend-a64 */ = {
+			isa = PBXGroup;
+			children = (
+				5775D4184366DFCA959E7A58 /* src */,
+				A7E7279CCE0D574E35144DDC /* third_party */,
+				A6C936B49B3FADE6EA134CF4 /* Products */,
+				9D968EAA920D05DCE0E0A4EA /* Projects */,
+			);
+			name = "xenia-cpu-backend-a64";
+			sourceTree = "<group>";
+		};
+		9D968EAA920D05DCE0E0A4EA /* Projects */ = {
+			isa = PBXGroup;
+			children = (
+				3612C02E5E4D78E045E9066E /* fmt.xcodeproj */,
+				2D378CBA117E94EC956BC2FA /* xenia-base.xcodeproj */,
+				BE9707148CBA5AC613C8AD54 /* xenia-cpu.xcodeproj */,
+			);
+			name = Projects;
+			sourceTree = "<group>";
+		};
+		A6C936B49B3FADE6EA134CF4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6CE2046666A3C0D8A0A2C2A6 /* libxenia-cpu-backend-a64.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A7E7279CCE0D574E35144DDC /* third_party */ = {
+			isa = PBXGroup;
+			children = (
+				3F56CF6F0D7A2321948875AF /* xbyak_aarch64 */,
+			);
+			name = third_party;
+			sourceTree = "<group>";
+		};
+		B51F8A2AD6EB375C13A0606A /* backend */ = {
+			isa = PBXGroup;
+			children = (
+				6BAFB4678D7B6199CA308AA7 /* a64 */,
+			);
+			name = backend;
+			sourceTree = "<group>";
+		};
+		C2E32289D9F5BDBBCA11B8C9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FD2DA671CB50FA23525F4CB1 /* libfmt.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CF7DBB53D2EE8D85545B3193 /* cpu */ = {
+			isa = PBXGroup;
+			children = (
+				B51F8A2AD6EB375C13A0606A /* backend */,
+			);
+			name = cpu;
+			sourceTree = "<group>";
+		};
+		E70E410734713739AA903747 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				02E3514E12C87D80FF3C078E /* util_impl.cpp */,
+				8FAB70A0EB0B95522D4F36E0 /* xbyak_aarch64_impl.cpp */,
+			);
+			name = src;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FDA7E78C4B0ADDBEC129DDCC /* xenia-cpu-backend-a64 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1A20FF35756252A748BC9D75 /* Build configuration list for PBXNativeTarget "xenia-cpu-backend-a64" */;
+			buildPhases = (
+				9BCD3776F70E8AE8CA68D5B6 /* Resources */,
+				057A50CD60BBA43F3415EF0D /* Sources */,
+				2BE5B6D687270A485A815516 /* Frameworks */,
+				91FA14C2C2DE0CB4D5F64302 /* Embed Libraries */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B09B5F92C7ADFAC4B7C9F5D2 /* PBXTargetDependency */,
+				363A8E4865CC5D3A40D99C88 /* PBXTargetDependency */,
+				F70A5EB51F45176706E0A4F5 /* PBXTargetDependency */,
+			);
+			name = "xenia-cpu-backend-a64";
+			productName = "xenia-cpu-backend-a64";
+			productReference = 6CE2046666A3C0D8A0A2C2A6 /* libxenia-cpu-backend-a64.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		08FB7793FE84155DC02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 1DEB928908733DD80010E9CD /* Build configuration list for PBXProject "xenia-cpu-backend-a64" */;
+			compatibilityVersion = "Xcode 3.2";
+			hasScannedForEncodings = 1;
+			mainGroup = 96FB357708864DE9B78773B7 /* xenia-cpu-backend-a64 */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = C2E32289D9F5BDBBCA11B8C9 /* Products */;
+					ProjectRef = 3612C02E5E4D78E045E9066E /* fmt.xcodeproj */;
+				},
+				{
+					ProductGroup = 4882513F7814203153215F7F /* Products */;
+					ProjectRef = 2D378CBA117E94EC956BC2FA /* xenia-base.xcodeproj */;
+				},
+				{
+					ProductGroup = 095221AC318CDA5E192867EC /* Products */;
+					ProjectRef = BE9707148CBA5AC613C8AD54 /* xenia-cpu.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				FDA7E78C4B0ADDBEC129DDCC /* libxenia-cpu-backend-a64.a */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		E9AE83DDE951670F23A61A1D /* libxenia-base.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libxenia-base.a";
+			remoteRef = AA4B43DFCC16F11108CC1A1F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F1D042F70C9CB1A9106D4937 /* libxenia-cpu.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libxenia-cpu.a";
+			remoteRef = 851521ECB4A6F0DE8FB4302C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		FD2DA671CB50FA23525F4CB1 /* libfmt.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libfmt.a;
+			remoteRef = 70C63E696A2C3FDB5DC79CA9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9BCD3776F70E8AE8CA68D5B6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		057A50CD60BBA43F3415EF0D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C18DC03B5BE7A92D98200E7B /* a64_assembler.cc in Sources */,
+				0CA9AB0F1E60EB0193CED94F /* a64_backend.cc in Sources */,
+				72AE467B0B2633ED370D24BB /* a64_code_cache.cc in Sources */,
+				4F47FB9FA65DA411D2A639DF /* a64_code_cache_posix.cc in Sources */,
+				8F54CBB3A10C0BA51679F9F3 /* a64_emitter.cc in Sources */,
+				8E0F152BEA96199D7338D36B /* a64_function.cc in Sources */,
+				956734B12B9046A3ECF6A2F1 /* a64_seq_control.cc in Sources */,
+				89DAA821225295934E398661 /* a64_seq_memory.cc in Sources */,
+				6FBA811508326E8734195F55 /* a64_seq_vector.cc in Sources */,
+				2176DA17BBD0C309F8092857 /* a64_sequences.cc in Sources */,
+				327B71274432B119B9A09F67 /* a64_tracers.cc in Sources */,
+				D11DD5262DA4D998B6479366 /* util_impl.cpp in Sources */,
+				45E78998B909168A19CE57D8 /* xbyak_aarch64_impl.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		363A8E4865CC5D3A40D99C88 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "libxenia-base.a";
+			targetProxy = FC85B6781E5163AA5B068CB8 /* PBXContainerItemProxy */;
+		};
+		B09B5F92C7ADFAC4B7C9F5D2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = libfmt.a;
+			targetProxy = C300B102BC66B274B0020F42 /* PBXContainerItemProxy */;
+		};
+		F70A5EB51F45176706E0A4F5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "libxenia-cpu.a";
+			targetProxy = D74F948506E16377E1EEA2C5 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		36FD92BB8E6305AD407120FB /* Checked */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					arm64,
+				);
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "bin/iOS-ARM64/Checked";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_DYNAMIC_NO_PIC = NO;
+				INSTALL_PATH = /usr/local/lib;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				PRODUCT_NAME = "xenia-cpu-backend-a64";
+				SDKROOT = (
+					iphoneos,
+				);
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+			};
+			name = Checked;
+		};
+		696DBBE691A8749879440226 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					arm64,
+				);
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = c17;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					VULKAN_HPP_NO_TO_STRING,
+					IMGUI_DISABLE_OBSOLETE_FUNCTIONS,
+					IMGUI_DISABLE_DEFAULT_FONT,
+					IMGUI_USE_STB_SPRINTF,
+					USE_CPP17,
+					_LIB,
+					DEBUG,
+					"_NO_DEBUG_HEAP=1",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				OBJROOT = "obj/iOS-ARM64/Debug/iOS-ARM64/Debug/xenia-cpu-backend-a64";
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = (
+					"-w",
+					"-fno-modules",
+					"-Wno-shorten-64-to-32",
+				);
+				SDKROOT = (
+					iphoneos,
+				);
+				SYMROOT = "bin/iOS-ARM64/Debug";
+				SYSTEM_HEADER_SEARCH_PATHS = (
+					../third_party/oaknut/include,
+					../third_party/xbyak_aarch64,
+					../third_party/xbyak_aarch64/src,
+					../third_party/xbyak_aarch64/xbyak_aarch64,
+					"$(inherited)",
+				);
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+				USER_HEADER_SEARCH_PATHS = (
+					..,
+					../src,
+					../third_party,
+				);
+			};
+			name = Debug;
+		};
+		703427A091FFD4D2CEB4FDE0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					arm64,
+				);
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				GCC_C_LANGUAGE_STANDARD = c17;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					VULKAN_HPP_NO_TO_STRING,
+					IMGUI_DISABLE_OBSOLETE_FUNCTIONS,
+					IMGUI_DISABLE_DEFAULT_FONT,
+					IMGUI_USE_STB_SPRINTF,
+					USE_CPP17,
+					_LIB,
+					NDEBUG,
+					"_NO_DEBUG_HEAP=1",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				OBJROOT = "obj/iOS-ARM64/Release/iOS-ARM64/Release/xenia-cpu-backend-a64";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CFLAGS = (
+					"-O3",
+					"-finline-functions",
+					"-funroll-loops",
+					"-fomit-frame-pointer",
+					"-w",
+					"-fno-modules",
+					"-Wno-shorten-64-to-32",
+				);
+				SDKROOT = (
+					iphoneos,
+				);
+				SYMROOT = "bin/iOS-ARM64/Release";
+				SYSTEM_HEADER_SEARCH_PATHS = (
+					../third_party/oaknut/include,
+					../third_party/xbyak_aarch64,
+					../third_party/xbyak_aarch64/src,
+					../third_party/xbyak_aarch64/xbyak_aarch64,
+					"$(inherited)",
+				);
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+				USER_HEADER_SEARCH_PATHS = (
+					..,
+					../src,
+					../third_party,
+				);
+			};
+			name = Release;
+		};
+		850689A6A6D236D8E3875FE6 /* Checked */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					arm64,
+				);
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = c17;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					VULKAN_HPP_NO_TO_STRING,
+					IMGUI_DISABLE_OBSOLETE_FUNCTIONS,
+					IMGUI_DISABLE_DEFAULT_FONT,
+					USE_CPP17,
+					_LIB,
+					DEBUG,
+					NDEBUG,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				OBJROOT = "obj/iOS-ARM64/Checked/iOS-ARM64/Checked/xenia-cpu-backend-a64";
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = (
+					"-w",
+					"-fno-modules",
+					"-Wno-shorten-64-to-32",
+				);
+				SDKROOT = (
+					iphoneos,
+				);
+				SYMROOT = "bin/iOS-ARM64/Checked";
+				SYSTEM_HEADER_SEARCH_PATHS = (
+					../third_party/oaknut/include,
+					../third_party/xbyak_aarch64,
+					../third_party/xbyak_aarch64/src,
+					../third_party/xbyak_aarch64/xbyak_aarch64,
+					"$(inherited)",
+				);
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+				USER_HEADER_SEARCH_PATHS = (
+					..,
+					../src,
+					../third_party,
+				);
+			};
+			name = Checked;
+		};
+		A79E7A6BEBB24B9DDF83D0AB /* Valgrind */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					arm64,
+				);
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "bin/iOS-ARM64/Valgrind";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_DYNAMIC_NO_PIC = NO;
+				INSTALL_PATH = /usr/local/lib;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				PRODUCT_NAME = "xenia-cpu-backend-a64";
+				SDKROOT = (
+					iphoneos,
+				);
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+			};
+			name = Valgrind;
+		};
+		AB088B7B183099ED19C389BB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					arm64,
+				);
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "bin/iOS-ARM64/Debug";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_DYNAMIC_NO_PIC = NO;
+				INSTALL_PATH = /usr/local/lib;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				PRODUCT_NAME = "xenia-cpu-backend-a64";
+				SDKROOT = (
+					iphoneos,
+				);
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+			};
+			name = Debug;
+		};
+		D5BD5C9630FEB0080458FAD6 /* Valgrind */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					arm64,
+				);
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = c17;
+				GCC_OPTIMIZATION_LEVEL = g;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					VULKAN_HPP_NO_TO_STRING,
+					IMGUI_DISABLE_OBSOLETE_FUNCTIONS,
+					IMGUI_DISABLE_DEFAULT_FONT,
+					IMGUI_USE_STB_SPRINTF,
+					USE_CPP17,
+					_LIB,
+					DEBUG,
+					NDEBUG,
+					"_NO_DEBUG_HEAP=1",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				OBJROOT = "obj/iOS-ARM64/Valgrind/iOS-ARM64/Valgrind/xenia-cpu-backend-a64";
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = (
+					"-fno-omit-frame-pointer",
+					"-fno-inline-functions",
+					"-w",
+					"-fno-modules",
+					"-Wno-shorten-64-to-32",
+				);
+				SDKROOT = (
+					iphoneos,
+				);
+				SYMROOT = "bin/iOS-ARM64/Valgrind";
+				SYSTEM_HEADER_SEARCH_PATHS = (
+					../third_party/oaknut/include,
+					../third_party/xbyak_aarch64,
+					../third_party/xbyak_aarch64/src,
+					../third_party/xbyak_aarch64/xbyak_aarch64,
+					"$(inherited)",
+				);
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+				USER_HEADER_SEARCH_PATHS = (
+					..,
+					../src,
+					../third_party,
+				);
+			};
+			name = Valgrind;
+		};
+		D61C71352D81E427DF8FFF75 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					arm64,
+				);
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "bin/iOS-ARM64/Release";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_DYNAMIC_NO_PIC = NO;
+				INSTALL_PATH = /usr/local/lib;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				PRODUCT_NAME = "xenia-cpu-backend-a64";
+				SDKROOT = (
+					iphoneos,
+				);
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1A20FF35756252A748BC9D75 /* Build configuration list for PBXNativeTarget "libxenia-cpu-backend-a64.a" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				36FD92BB8E6305AD407120FB /* Checked */,
+				AB088B7B183099ED19C389BB /* Debug */,
+				D61C71352D81E427DF8FFF75 /* Release */,
+				A79E7A6BEBB24B9DDF83D0AB /* Valgrind */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Checked;
+		};
+		1DEB928908733DD80010E9CD /* Build configuration list for PBXProject "xenia-cpu-backend-a64" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				850689A6A6D236D8E3875FE6 /* Checked */,
+				696DBBE691A8749879440226 /* Debug */,
+				703427A091FFD4D2CEB4FDE0 /* Release */,
+				D5BD5C9630FEB0080458FAD6 /* Valgrind */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Checked;
+		};
+/* End XCConfigurationList section */
+};
+rootObject = 08FB7793FE84155DC02AAC07 /* Project object */;
+}

@@ -1,0 +1,1582 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		009B382F10806461FCF3EE6F /* xboxkrnl_modules.cc in Sources */ = {isa = PBXBuildFile; fileRef = 3B49E4D7DD3380C9D45A9317 /* xboxkrnl_modules.cc */; };
+		0599980EE9E0A0406DCDCE4E /* spa_info.cc in Sources */ = {isa = PBXBuildFile; fileRef = B42DCDD6E511C5C8F829FC16 /* spa_info.cc */; };
+		09DBE2074E2A87799051C047 /* xam_media.cc in Sources */ = {isa = PBXBuildFile; fileRef = D652270FF81DD44134D2FD4F /* xam_media.cc */; };
+		1214D1E9B3FE6DDBAB258029 /* libfmt.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FD2DA671CB50FA23525F4CB1 /* libfmt.a */; };
+		13672EF4F7AE37267B9B6534 /* signin_ui.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2C4E02FC5D31FAEE704A313C /* signin_ui.cc */; };
+		16DE7AD704460D89A1400117 /* presence_string_builder.cc in Sources */ = {isa = PBXBuildFile; fileRef = C8CCE55FD55797D1503C639F /* presence_string_builder.cc */; };
+		1A8482275ED32799A0FA6067 /* xam_party.cc in Sources */ = {isa = PBXBuildFile; fileRef = 8911552FAADD0261E7922B6F /* xam_party.cc */; };
+		1A89080D5ED7AD7FA0FEE64D /* user_data.cc in Sources */ = {isa = PBXBuildFile; fileRef = DD6F07B5FF3AB4E73BEFDDF5 /* user_data.cc */; };
+		1F9990BC4F2B5FAE2A389EFC /* xevent.cc in Sources */ = {isa = PBXBuildFile; fileRef = D0B2132473A039D602C61964 /* xevent.cc */; };
+		25558DC124F870F35F4D2401 /* xboxkrnl_crypt.cc in Sources */ = {isa = PBXBuildFile; fileRef = 92588849E9BDFB3B9BCC1689 /* xboxkrnl_crypt.cc */; };
+		255C32F124FF16235F53C931 /* xboxkrnl_error.cc in Sources */ = {isa = PBXBuildFile; fileRef = 775B5279CEC0C56B80CEE0B9 /* xboxkrnl_error.cc */; };
+		26447014936C7E8694FF6E54 /* kernel_module.cc in Sources */ = {isa = PBXBuildFile; fileRef = 6860A7FCB5C39E2E2BE29E3C /* kernel_module.cc */; };
+		26EF2B1D9417398F95AA295D /* xam_content.cc in Sources */ = {isa = PBXBuildFile; fileRef = 4142CFC58EA5C5F704C4C605 /* xam_content.cc */; };
+		35523822C7E0021430B8A662 /* kernel_flags.cc in Sources */ = {isa = PBXBuildFile; fileRef = C4081B2A8773DCDCC617816A /* kernel_flags.cc */; };
+		37AB17033075D6B5BAEA3D43 /* gpd_achievement_backend.cc in Sources */ = {isa = PBXBuildFile; fileRef = F044296B23C368DD3BBD47AB /* gpd_achievement_backend.cc */; };
+		381C4E09A5445C7BA6D74C49 /* xam_profile.cc in Sources */ = {isa = PBXBuildFile; fileRef = A9C4D1F1F727C8236D46C831 /* xam_profile.cc */; };
+		38661FEA0689739C8D97C62A /* xmp_app.cc in Sources */ = {isa = PBXBuildFile; fileRef = 607C3DF2BBBD91648F17DC32 /* xmp_app.cc */; };
+		388DC1EBD2B1B71D82D7982B /* xboxkrnl_audio_xma.cc in Sources */ = {isa = PBXBuildFile; fileRef = 5DF5EED3D25033C55033BD13 /* xboxkrnl_audio_xma.cc */; };
+		391121B948F64DEB3569D7F9 /* xboxkrnl_xconfig.cc in Sources */ = {isa = PBXBuildFile; fileRef = 8F356AC1311F06B328461901 /* xboxkrnl_xconfig.cc */; };
+		3AE71A0496286D766982B844 /* xmodule.cc in Sources */ = {isa = PBXBuildFile; fileRef = 4957C4EC606A601E50865B2C /* xmodule.cc */; };
+		3D413700AE63D7F2642A8540 /* xsemaphore.cc in Sources */ = {isa = PBXBuildFile; fileRef = 962B5728BE660FDAA6019D68 /* xsemaphore.cc */; };
+		3EE399AB3E867CDD78DB2FEB /* xboxkrnl_video.cc in Sources */ = {isa = PBXBuildFile; fileRef = 6F6EEE93C6D4618578E27CD3 /* xboxkrnl_video.cc */; };
+		417FC32E3AE5C4A02E81216E /* smc.cc in Sources */ = {isa = PBXBuildFile; fileRef = FED6D876A22261A8BCF32EB6 /* smc.cc */; };
+		428E6B6DB3B10C5F6977B9AD /* xam_task.cc in Sources */ = {isa = PBXBuildFile; fileRef = AFD4DE15D80F96C7BFAB2455 /* xam_task.cc */; };
+		447DE5119BE358034DF17351 /* user_tracker.cc in Sources */ = {isa = PBXBuildFile; fileRef = 4F9AEF7981943A2BFB7375B9 /* user_tracker.cc */; };
+		45A3883C5588B46E41FC3E7C /* gpd_info_profile.cc in Sources */ = {isa = PBXBuildFile; fileRef = A11E1A244307B6163A2EC864 /* gpd_info_profile.cc */; };
+		4942379EE18F1D500FD61DDE /* disc_swap_ui.cc in Sources */ = {isa = PBXBuildFile; fileRef = 9D7CD706E1CB7C7823F2B546 /* disc_swap_ui.cc */; };
+		4B2995978F3D66C9830EEBD7 /* crypto_utils.cc in Sources */ = {isa = PBXBuildFile; fileRef = 3F658D1FB0882E11664EDB5F /* crypto_utils.cc */; };
+		4B622E0311F025757FF24C43 /* user_property.cc in Sources */ = {isa = PBXBuildFile; fileRef = 85CC654B1B43247D89DF7B8B /* user_property.cc */; };
+		4E01FBA72D1F15D9092871E7 /* xboxkrnl_hid.cc in Sources */ = {isa = PBXBuildFile; fileRef = 1E6120CFB0EEEAC119C78F0F /* xboxkrnl_hid.cc */; };
+		4EC555B8A552C02A7DCBD3F8 /* xfile.cc in Sources */ = {isa = PBXBuildFile; fileRef = 3F80AD6042F17F92C45E23A0 /* xfile.cc */; };
+		4F685591937C26C3874DABD1 /* object_table.cc in Sources */ = {isa = PBXBuildFile; fileRef = 93658A7904882B6BBA4ED8B9 /* object_table.cc */; };
+		5110F869C4F9701BE7471EA9 /* xboxkrnl_module.cc in Sources */ = {isa = PBXBuildFile; fileRef = D7905D719E1E54E30C207BB1 /* xboxkrnl_module.cc */; };
+		52187F926CE4EE4470B585D2 /* messenger_app.cc in Sources */ = {isa = PBXBuildFile; fileRef = 34DA811AA2028F8CA3957F5A /* messenger_app.cc */; };
+		5596C375706332277433C9B5 /* xboxkrnl_misc.cc in Sources */ = {isa = PBXBuildFile; fileRef = 35AC5FBDA2D46E2FA4675DFD /* xboxkrnl_misc.cc */; };
+		56523D961CE035088AE25BD6 /* xnotifylistener.cc in Sources */ = {isa = PBXBuildFile; fileRef = BF04C45E547B8390C317DA9E /* xnotifylistener.cc */; };
+		58711E5CC5992CCEC72C1C9C /* xiocompletion.cc in Sources */ = {isa = PBXBuildFile; fileRef = 90E6B5C4DE49ABF65468AC04 /* xiocompletion.cc */; };
+		59D81618C700248AC8931458 /* xsymboliclink.cc in Sources */ = {isa = PBXBuildFile; fileRef = D6DEFFC02441F5F29A60F600 /* xsymboliclink.cc */; };
+		5A41A8509E904DC2E0B78690 /* user_module.cc in Sources */ = {isa = PBXBuildFile; fileRef = B995E078DB618DAA1816B6B8 /* user_module.cc */; };
+		601C4ED3D404C685F6527513 /* xboxkrnl_usbcam.cc in Sources */ = {isa = PBXBuildFile; fileRef = 110DCC3BD79BC3AD459DEA7B /* xboxkrnl_usbcam.cc */; };
+		685EEA7E6801CDB0A25680BE /* gpd_info_title.cc in Sources */ = {isa = PBXBuildFile; fileRef = CA93EB4621F95E38D4077986 /* gpd_info_title.cc */; };
+		6885354B8351A3FD87223B8B /* debug_monitor.cc in Sources */ = {isa = PBXBuildFile; fileRef = 127561337F9D6FA581305F73 /* debug_monitor.cc */; };
+		6AE14789C4E25E7B8C2955C9 /* libxenia-hid.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B553A811D02016C3D3F0AE51 /* libxenia-hid.a */; };
+		6B11AB10035E90C231A59150 /* gamercard_ui.cc in Sources */ = {isa = PBXBuildFile; fileRef = F70BC8583B5A6DCA7D81A698 /* gamercard_ui.cc */; };
+		6CDB2D816C7E10B3A6D2C3C1 /* xboxkrnl_audio.cc in Sources */ = {isa = PBXBuildFile; fileRef = 65118C09BC76FEFB6E851A49 /* xboxkrnl_audio.cc */; };
+		6F9FED3F7F8519716BF8A37F /* guest_object_table.cc in Sources */ = {isa = PBXBuildFile; fileRef = CB766C476D60083964871A87 /* guest_object_table.cc */; };
+		750E40076605ADF9D2092E47 /* libpugixml.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EE9E1AFA736C761D57DC7EF /* libpugixml.a */; };
+		75A642A8D0E7961AA441E0E8 /* xthread.cc in Sources */ = {isa = PBXBuildFile; fileRef = E7375D50FE49F882EE65F390 /* xthread.cc */; };
+		76F381F3BB422765FD696033 /* xam_voice.cc in Sources */ = {isa = PBXBuildFile; fileRef = 649D6E3B86691B6DC31E447B /* xam_voice.cc */; };
+		7837B83DD238CF2F997FC67D /* libxenia-vfs.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C64A785773116377B01ADC5 /* libxenia-vfs.a */; };
+		783A8F6E465DE320CD6C35AE /* xbdm_misc.cc in Sources */ = {isa = PBXBuildFile; fileRef = C256D6561D9829C8F0F27496 /* xbdm_misc.cc */; };
+		7C0069CD3F6C2B7F7E0FD00D /* xlast.cc in Sources */ = {isa = PBXBuildFile; fileRef = 7471AFF56DD7B16761730E35 /* xlast.cc */; };
+		859D5E5B7694CC4DE2984C9B /* xam_content_device.cc in Sources */ = {isa = PBXBuildFile; fileRef = F3D109238C1DEED5BA64EF63 /* xam_content_device.cc */; };
+		85D8219FF6FAC291ACC16FDF /* xam_info.cc in Sources */ = {isa = PBXBuildFile; fileRef = E1E474270A1F2CD9F1BABA67 /* xam_info.cc */; };
+		85EEFA29CA3D9F9B0C64D869 /* xam_state.cc in Sources */ = {isa = PBXBuildFile; fileRef = 434D561165190343A1CE2C51 /* xam_state.cc */; };
+		874CFFEAE28E535CB5E89E2A /* xsocket.cc in Sources */ = {isa = PBXBuildFile; fileRef = 12809B72299336A419AF31B2 /* xsocket.cc */; };
+		877F2ABF1FCC10714E1310FF /* xboxkrnl_ob.cc in Sources */ = {isa = PBXBuildFile; fileRef = 124C9F67569B44D998C27DA7 /* xboxkrnl_ob.cc */; };
+		891B3C27CD69E1990F911A67 /* xam_input.cc in Sources */ = {isa = PBXBuildFile; fileRef = 7D816F2F9F4D1C61DC02456F /* xam_input.cc */; };
+		899DA87CCDEC4DEE101386BC /* xenumerator.cc in Sources */ = {isa = PBXBuildFile; fileRef = 53FB3BE475C6E916B27C1224 /* xenumerator.cc */; };
+		89FF992799E4C55986584F67 /* game_info_database.cc in Sources */ = {isa = PBXBuildFile; fileRef = 8F985DAF3181F9A128A90BEF /* game_info_database.cc */; };
+		8AE21046E62363B8B97DAE86 /* xobject.cc in Sources */ = {isa = PBXBuildFile; fileRef = 95182C0EAC2AC7409C46C24E /* xobject.cc */; };
+		8E9823CFE8993AC1AFE0320F /* libxenia-cpu.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F1D042F70C9CB1A9106D4937 /* libxenia-cpu.a */; };
+		90306A018127D7F3ED2B5841 /* libaes_128.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0626DD099E73C2BBCCBAC349 /* libaes_128.a */; };
+		90AB028AEBEC55FCBF46A0CA /* xmutant.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2F74041246869F4436A29A52 /* xmutant.cc */; };
+		91F467597111818B4D1ADD99 /* cert_monitor.cc in Sources */ = {isa = PBXBuildFile; fileRef = 37F76261CA852C53335DD0A1 /* cert_monitor.cc */; };
+		9226CF8A24B4997C8D8D3DCA /* kernel_state.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2E17B812F18379C430271E52 /* kernel_state.cc */; };
+		9351DC1459DFD386C7E1FA54 /* guest_scheduler.cc in Sources */ = {isa = PBXBuildFile; fileRef = C5F515FC5B6BD52ECA082C3C /* guest_scheduler.cc */; };
+		976EFF3AC700CE2CA20E0D7A /* xtimer.cc in Sources */ = {isa = PBXBuildFile; fileRef = 43C672C2E6B4997475DA7902 /* xtimer.cc */; };
+		9AD72C2B9A7A0F5DD4CEC26B /* xmp_volume_patch.cc in Sources */ = {isa = PBXBuildFile; fileRef = 08DE48736043BB651251D6B3 /* xmp_volume_patch.cc */; };
+		9F6839157E0AD48732ECD755 /* libxenia-base.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E9AE83DDE951670F23A61A1D /* libxenia-base.a */; };
+		A0DED967639F39D9C0D417A7 /* content_manager.cc in Sources */ = {isa = PBXBuildFile; fileRef = 9126266F756D2EA1F95A5CAF /* content_manager.cc */; };
+		A1E689B113092AA3C8CFD7F1 /* xam_enum.cc in Sources */ = {isa = PBXBuildFile; fileRef = E104EE19093FA6CBF0DB3459 /* xam_enum.cc */; };
+		A5ADC7C5383B91B7A1143605 /* xam_avatar.cc in Sources */ = {isa = PBXBuildFile; fileRef = 275796EDEAC3589F2966FD2D /* xam_avatar.cc */; };
+		A610A75F9FD263D1D9D1659F /* xam_nui.cc in Sources */ = {isa = PBXBuildFile; fileRef = B3D8F8E7FC49DD1940E8AF27 /* xam_nui.cc */; };
+		A71CF61B6DAAED8DDBAD145B /* user_settings.cc in Sources */ = {isa = PBXBuildFile; fileRef = C309B7E358807715C71CCE23 /* user_settings.cc */; };
+		A9E87CB5A3AA3927DDA93AF5 /* xam_msg.cc in Sources */ = {isa = PBXBuildFile; fileRef = E67E47DD2EEF2C0F738DFE1D /* xam_msg.cc */; };
+		AF5F99A78E7CB3D96A860FE7 /* xboxkrnl_hal.cc in Sources */ = {isa = PBXBuildFile; fileRef = 8ABBDECF1D49A8C186224D0F /* xboxkrnl_hal.cc */; };
+		B0E40F8C7F07633E0615B5CC /* xam_app.cc in Sources */ = {isa = PBXBuildFile; fileRef = 1AAD967475EEE9E6494934B4 /* xam_app.cc */; };
+		B34D8106CE19EFB8D1EA8746 /* xlivebase_app.cc in Sources */ = {isa = PBXBuildFile; fileRef = 08DA014E76020FC07794FF8E /* xlivebase_app.cc */; };
+		B649BBFE9566D6307170323E /* title_info_ui.cc in Sources */ = {isa = PBXBuildFile; fileRef = 93BEF266264CBC588F2560A6 /* title_info_ui.cc */; };
+		B65B7CD5FAAA22473CD15B15 /* xam_video.cc in Sources */ = {isa = PBXBuildFile; fileRef = 4D7BB3FD6F47612FABFC8A3D /* xam_video.cc */; };
+		BAF3CAA74D819499B65A38E7 /* xam_locale.cc in Sources */ = {isa = PBXBuildFile; fileRef = 3D91D2AF00FD94613FA138EF /* xam_locale.cc */; };
+		BE5CF1468C8044F8138E9786 /* xdbf_io.cc in Sources */ = {isa = PBXBuildFile; fileRef = BC23C88E17651C00EABF66CE /* xdbf_io.cc */; };
+		BF78C203CF5DEE35BBD17843 /* xboxkrnl_io_info.cc in Sources */ = {isa = PBXBuildFile; fileRef = CEA49B6B708E375D67B549AB /* xboxkrnl_io_info.cc */; };
+		C17A7FD3540849C5BCE0EE13 /* xam_module.cc in Sources */ = {isa = PBXBuildFile; fileRef = 00102F1BC37BF0CD021F955B /* xam_module.cc */; };
+		C20EEC81A12C06B37D3562C1 /* xboxkrnl_rtl.cc in Sources */ = {isa = PBXBuildFile; fileRef = AA0D89093C9B52FBA573F749 /* xboxkrnl_rtl.cc */; };
+		C7B940C538DBE1B7EEA28F05 /* xam_user.cc in Sources */ = {isa = PBXBuildFile; fileRef = A04601EDC880BA9FB01C482D /* xam_user.cc */; };
+		CA5B1E90987E72421F8CC4D0 /* xgi_app.cc in Sources */ = {isa = PBXBuildFile; fileRef = 5A221B38B5636EAA88BDB978 /* xgi_app.cc */; };
+		CAE1538B24E26A7DEC2961CB /* libxenia-apu.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 02A414F31D7083A521411B33 /* libxenia-apu.a */; };
+		CB920069AA349BDB5F169EA9 /* xam_content_aggregate.cc in Sources */ = {isa = PBXBuildFile; fileRef = 8F32DC518ED5BF83C92A7291 /* xam_content_aggregate.cc */; };
+		D3ED6681C4E4D47330E854C1 /* libzlib-ng.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D2B5189C578373BF3BF37C9 /* libzlib-ng.a */; };
+		D60D7B0306F172F51A09A943 /* xam_ui.cc in Sources */ = {isa = PBXBuildFile; fileRef = 918EDB4BB7B50AFD1EBC018B /* xam_ui.cc */; };
+		D9278E881D3B5FBA110CE4C8 /* passcode_ui.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2F57ED50A07A8E4256413B90 /* passcode_ui.cc */; };
+		DC7151B5D6330E2710320FF5 /* xam_net.cc in Sources */ = {isa = PBXBuildFile; fileRef = 61D24CDDAA43310FEEE2031D /* xam_net.cc */; };
+		E085A639F2AF82EB26A06C79 /* native_list.cc in Sources */ = {isa = PBXBuildFile; fileRef = ADF421A1A7B5DE13E1B4DFE1 /* native_list.cc */; };
+		E56489ECF549B61EE1BD402C /* create_profile_ui.cc in Sources */ = {isa = PBXBuildFile; fileRef = 06A25A74A88BF6669FB308B4 /* create_profile_ui.cc */; };
+		E736AD8BE6D990BD212E43CB /* xboxkrnl_debug.cc in Sources */ = {isa = PBXBuildFile; fileRef = F72174734E86E765009502B3 /* xboxkrnl_debug.cc */; };
+		E77A5AF354A2696556355933 /* app_manager.cc in Sources */ = {isa = PBXBuildFile; fileRef = E5E8793B334B6F6DA96A6F7B /* app_manager.cc */; };
+		E7AC11DCCBF31A0E4FE0481C /* gpd_info.cc in Sources */ = {isa = PBXBuildFile; fileRef = F21951C422FD49B636158004 /* gpd_info.cc */; };
+		E7D622397A63EC2BE33C9079 /* xam_notify.cc in Sources */ = {isa = PBXBuildFile; fileRef = 446F002107DAC1D3467E6661 /* xam_notify.cc */; };
+		E94D5C0F5D35D3C17F83824F /* xboxkrnl_memory.cc in Sources */ = {isa = PBXBuildFile; fileRef = 24A91FB7EB37172959393DF7 /* xboxkrnl_memory.cc */; };
+		EFC12CDB47269FCDF934BB1B /* user_profile.cc in Sources */ = {isa = PBXBuildFile; fileRef = 569F19A38898645502779FE3 /* user_profile.cc */; };
+		F02A138EA3201D40F44279CE /* game_achievements_ui.cc in Sources */ = {isa = PBXBuildFile; fileRef = E7B673F6DBB5BD6860A0D236 /* game_achievements_ui.cc */; };
+		F2BD4353B57DA3C512B28193 /* profile_manager.cc in Sources */ = {isa = PBXBuildFile; fileRef = 79624F9B5DA957CDE19685DB /* profile_manager.cc */; };
+		F63C1489906009BB4085EAC9 /* xboxkrnl_threading.cc in Sources */ = {isa = PBXBuildFile; fileRef = B8F6DA912D511F83AB34A8D1 /* xboxkrnl_threading.cc */; };
+		F79842C30422F5357F07C103 /* achievement_manager.cc in Sources */ = {isa = PBXBuildFile; fileRef = F56BF40BD4890E3DB0926A4B /* achievement_manager.cc */; };
+		F8D8F5620B02D2143EF3BBA2 /* xbdm_module.cc in Sources */ = {isa = PBXBuildFile; fileRef = C2BA950ABC7C517CF67B534A /* xbdm_module.cc */; };
+		F918F6A4545A4A1627B494E4 /* xconfig.cc in Sources */ = {isa = PBXBuildFile; fileRef = 06F2678C1E0502BE0E20FDCC /* xconfig.cc */; };
+		FA6FB50D92BC9ABFC1039B4D /* xboxkrnl_io.cc in Sources */ = {isa = PBXBuildFile; fileRef = 5FB111D5A3FFB747E626F015 /* xboxkrnl_io.cc */; };
+		FBEBAAF10BD0D723F8446131 /* xboxkrnl_strings.cc in Sources */ = {isa = PBXBuildFile; fileRef = 18F73C79BAE0D86BB207EAB9 /* xboxkrnl_strings.cc */; };
+		FF3E8C37E38594696772C277 /* shim_utils.cc in Sources */ = {isa = PBXBuildFile; fileRef = AB7C1FBFDC6017B1EF784DFF /* shim_utils.cc */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		04F7B5685B851FDA33FE33A8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 108B640C4284AEBEBC63EA4C /* pugixml.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5DA4FD155E57FA07D239CB55;
+			remoteInfo = libpugixml.a;
+		};
+		27F2714E7E7FDBC056F8EF8E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B9D5A1C6EBCEEC7865AE2806 /* aes_128.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 7FC3DB6822B2021AB1D7E1A8;
+			remoteInfo = libaes_128.a;
+		};
+		281D743357AF432532BC8273 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 19906EC2E7B3C2746EC21502 /* xenia-vfs.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C9C58540C32B86B2B6C6E380;
+			remoteInfo = "libxenia-vfs.a";
+		};
+		288CA712581E7604332BB552 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 735E5E8E4181B240C89004CE /* xenia-hid.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = E8DE45ECFFF0E11EF00CDC2C;
+			remoteInfo = "libxenia-hid.a";
+		};
+		2B17BD835AA98C7535B6CBC3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 97B9115065DC6502ECEAB790 /* xenia-apu.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 55F86B1D6D0B064F5D27015D;
+			remoteInfo = "libxenia-apu.a";
+		};
+		4073738E9700DE006F79F1CE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F778CE46297218F8A3515486 /* zlib-ng.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 69710DA80C5F345A9B8513E8;
+			remoteInfo = "libzlib-ng.a";
+		};
+		57322801ADBF92738638A641 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 108B640C4284AEBEBC63EA4C /* pugixml.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 5287065BF5752D0D849B0C9B;
+			remoteInfo = libpugixml.a;
+		};
+		70C63E696A2C3FDB5DC79CA9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3612C02E5E4D78E045E9066E /* fmt.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A4498576D2EFD9682C3133B6;
+			remoteInfo = libfmt.a;
+		};
+		7A57E6CCA9E9B5BE84F6F50C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 19906EC2E7B3C2746EC21502 /* xenia-vfs.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 6551B5267C6450586C804B66;
+			remoteInfo = "libxenia-vfs.a";
+		};
+		851521ECB4A6F0DE8FB4302C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BE9707148CBA5AC613C8AD54 /* xenia-cpu.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 679156D960F7584B5492B519;
+			remoteInfo = "libxenia-cpu.a";
+		};
+		AA4B43DFCC16F11108CC1A1F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2D378CBA117E94EC956BC2FA /* xenia-base.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 6C73464C929975FEF9A06C8C;
+			remoteInfo = "libxenia-base.a";
+		};
+		C300B102BC66B274B0020F42 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3612C02E5E4D78E045E9066E /* fmt.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 169B869CBAEE244ECD266CDC;
+			remoteInfo = libfmt.a;
+		};
+		D5B7FEB52C45692704BE7CF5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B9D5A1C6EBCEEC7865AE2806 /* aes_128.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 327C73C2332F70B4A7114202;
+			remoteInfo = libaes_128.a;
+		};
+		D652347905E4036BE0F142B9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 735E5E8E4181B240C89004CE /* xenia-hid.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BEE42EC6B84A3038ABE58D06;
+			remoteInfo = "libxenia-hid.a";
+		};
+		D74F948506E16377E1EEA2C5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BE9707148CBA5AC613C8AD54 /* xenia-cpu.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = B7AD379FCEBFD2D1BEDBCDDF;
+			remoteInfo = "libxenia-cpu.a";
+		};
+		D8DD4AEA086F19DCE37C592A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 97B9115065DC6502ECEAB790 /* xenia-apu.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = CF42FA17C8A8FB89BC445857;
+			remoteInfo = "libxenia-apu.a";
+		};
+		EE3900F544C66B671D3F7F35 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F778CE46297218F8A3515486 /* zlib-ng.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 51CFEE025282EAF4C664BC42;
+			remoteInfo = "libzlib-ng.a";
+		};
+		FC85B6781E5163AA5B068CB8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2D378CBA117E94EC956BC2FA /* xenia-base.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 818584B27AEB86246E86E2F2;
+			remoteInfo = "libxenia-base.a";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		00102F1BC37BF0CD021F955B /* xam_module.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = xam_module.cc; path = ../src/xenia/kernel/xam/xam_module.cc; sourceTree = "<group>"; };
+		06A25A74A88BF6669FB308B4 /* create_profile_ui.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = create_profile_ui.cc; path = ../src/xenia/kernel/xam/ui/create_profile_ui.cc; sourceTree = "<group>"; };
+		06F2678C1E0502BE0E20FDCC /* xconfig.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = xconfig.cc; path = ../src/xenia/kernel/xconfig.cc; sourceTree = "<group>"; };
+		075C07674B6FD8993F415DA7 /* xam_content_device.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = xam_content_device.h; path = ../src/xenia/kernel/xam/xam_content_device.h; sourceTree = "<group>"; };
+		08DA014E76020FC07794FF8E /* xlivebase_app.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = xlivebase_app.cc; path = ../src/xenia/kernel/xam/apps/xlivebase_app.cc; sourceTree = "<group>"; };
+		08DE48736043BB651251D6B3 /* xmp_volume_patch.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = xmp_volume_patch.cc; path = ../src/xenia/kernel/util/xmp_volume_patch.cc; sourceTree = "<group>"; };
+		0A7E2C803C777732B656B2C0 /* guest_scheduler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = guest_scheduler.h; path = ../src/xenia/kernel/guest_scheduler.h; sourceTree = "<group>"; };
+		0CD813C93C69E2BB17772209 /* xex2_util.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = xex2_util.h; path = ../src/xenia/kernel/util/xex2_util.h; sourceTree = "<group>"; };
+		0D5CE46A51AB89DC93D2C2AA /* title_info_ui.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = title_info_ui.h; path = ../src/xenia/kernel/xam/ui/title_info_ui.h; sourceTree = "<group>"; };
+		0D68E6BC35A39F6E1D3F2CFC /* user_module.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = user_module.h; path = ../src/xenia/kernel/user_module.h; sourceTree = "<group>"; };
+		0E9B0C8240945734BA7392C2 /* xnotifylistener.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = xnotifylistener.h; path = ../src/xenia/kernel/xnotifylistener.h; sourceTree = "<group>"; };
+		0F678ACA808A2BBC3650D90A /* disc_swap_ui.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = disc_swap_ui.h; path = ../src/xenia/kernel/xam/ui/disc_swap_ui.h; sourceTree = "<group>"; };
+		108B640C4284AEBEBC63EA4C /* libpugixml.a */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "pugixml.xcodeproj"; path = pugixml.xcodeproj; sourceTree = SOURCE_ROOT; };
+		110DCC3BD79BC3AD459DEA7B /* xboxkrnl_usbcam.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = xboxkrnl_usbcam.cc; path = ../src/xenia/kernel/xboxkrnl/xboxkrnl_usbcam.cc; sourceTree = "<group>"; };
+		124C9F67569B44D998C27DA7 /* xboxkrnl_ob.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = xboxkrnl_ob.cc; path = ../src/xenia/kernel/xboxkrnl/xboxkrnl_ob.cc; sourceTree = "<group>"; };
+		127561337F9D6FA581305F73 /* debug_monitor.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = debug_monitor.cc; path = ../src/xenia/kernel/xboxkrnl/debug_monitor.cc; sourceTree = "<group>"; };
+		12809B72299336A419AF31B2 /* xsocket.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = xsocket.cc; path = ../src/xenia/kernel/xsocket.cc; sourceTree = "<group>"; };
+		14FE6973DB8C60E5498E87B3 /* game_info_database.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = game_info_database.h; path = ../src/xenia/kernel/util/game_info_database.h; sourceTree = "<group>"; };
+		1555F132B84417E44769F772 /* xobject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = xobject.h; path = ../src/xenia/kernel/xobject.h; sourceTree = "<group>"; };
+		178702724718D164222610B2 /* xdbf_io.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = xdbf_io.h; path = ../src/xenia/kernel/xam/xdbf/xdbf_io.h; sourceTree = "<group>"; };
+		18EAD56F8A75EDE1397713AF /* file.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = file.h; path = ../src/xenia/kernel/info/file.h; sourceTree = "<group>"; };
+		18F73C79BAE0D86BB207EAB9 /* xboxkrnl_strings.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = xboxkrnl_strings.cc; path = ../src/xenia/kernel/xboxkrnl/xboxkrnl_strings.cc; sourceTree = "<group>"; };
+		18F8348F488A0381239742CF /* xfiletime.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = xfiletime.h; path = ../src/xenia/kernel/util/xfiletime.h; sourceTree = "<group>"; };
+		19906EC2E7B3C2746EC21502 /* libxenia-vfs.a */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = xenia-vfs.xcodeproj; path = "xenia-vfs.xcodeproj"; sourceTree = SOURCE_ROOT; };
+		1AAD967475EEE9E6494934B4 /* xam_app.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = xam_app.cc; path = ../src/xenia/kernel/xam/apps/xam_app.cc; sourceTree = "<group>"; };
+		1E6120CFB0EEEAC119C78F0F /* xboxkrnl_hid.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = xboxkrnl_hid.cc; path = ../src/xenia/kernel/xboxkrnl/xboxkrnl_hid.cc; sourceTree = "<group>"; };
+		1EF365E8472E1E9A2EC9AC28 /* xenumerator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = xenumerator.h; path = ../src/xenia/kernel/xenumerator.h; sourceTree = "<group>"; };
+		200E821D6D71784FE390785D /* user_tracker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = user_tracker.h; path = ../src/xenia/kernel/xam/user_tracker.h; sourceTree = "<group>"; };
+		20E5A5D6C3D3CC8852F9AC16 /* xsocket.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = xsocket.h; path = ../src/xenia/kernel/xsocket.h; sourceTree = "<group>"; };
+		21A3BBB6436F68E8802491F6 /* kernel_state.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = kernel_state.h; path = ../src/xenia/kernel/kernel_state.h; sourceTree = "<group>"; };
+		235FDE03BD83D3356DA9B443 /* xam_module_export_groups.inc */ = {isa = PBXFileReference; lastKnownFileType = text; name = xam_module_export_groups.inc; path = ../src/xenia/kernel/xam/xam_module_export_groups.inc; sourceTree = "<group>"; };
+		24A91FB7EB37172959393DF7 /* xboxkrnl_memory.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = xboxkrnl_memory.cc; path = ../src/xenia/kernel/xboxkrnl/xboxkrnl_memory.cc; sourceTree = "<group>"; };
+		261874DF47E4221184994B1F /* xam_module.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = xam_module.h; path = ../src/xenia/kernel/xam/xam_module.h; sourceTree = "<group>"; };
+		275796EDEAC3589F2966FD2D /* xam_avatar.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = xam_avatar.cc; path = ../src/xenia/kernel/xam/xam_avatar.cc; sourceTree = "<group>"; };
+		2A7FBA7DF10DB1EF5F0FD8BD /* xboxkrnl_strings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = xboxkrnl_strings.h; path = ../src/xenia/kernel/xboxkrnl/xboxkrnl_strings.h; sourceTree = "<group>"; };
+		2C4E02FC5D31FAEE704A313C /* signin_ui.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = signin_ui.cc; path = ../src/xenia/kernel/xam/ui/signin_ui.cc; sourceTree = "<group>"; };
+		2C9F2495EF5F85074C9462D5 /* xboxkrnl_threading.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = xboxkrnl_threading.h; path = ../src/xenia/kernel/xboxkrnl/xboxkrnl_threading.h; sourceTree = "<group>"; };
+		2D378CBA117E94EC956BC2FA /* libxenia-base.a */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = xenia-base.xcodeproj; path = "xenia-base.xcodeproj"; sourceTree = SOURCE_ROOT; };
+		2E17B812F18379C430271E52 /* kernel_state.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = kernel_state.cc; path = ../src/xenia/kernel/kernel_state.cc; sourceTree = "<group>"; };
+		2F57ED50A07A8E4256413B90 /* passcode_ui.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = passcode_ui.cc; path = ../src/xenia/kernel/xam/ui/passcode_ui.cc; sourceTree = "<group>"; };
+		2F74041246869F4436A29A52 /* xmutant.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = xmutant.cc; path = ../src/xenia/kernel/xmutant.cc; sourceTree = "<group>"; };
+		3317A18BA43A427D5A00EFCB /* xboxkrnl_ob.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = xboxkrnl_ob.h; path = ../src/xenia/kernel/xboxkrnl/xboxkrnl_ob.h; sourceTree = "<group>"; };
+		347B811A848F15CC070D475A /* smc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = smc.h; path = ../src/xenia/kernel/smc.h; sourceTree = "<group>"; };
+		34DA811AA2028F8CA3957F5A /* messenger_app.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = messenger_app.cc; path = ../src/xenia/kernel/xam/apps/messenger_app.cc; sourceTree = "<group>"; };
+		34F50E386486DD2A3F941C78 /* xam_app.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = xam_app.h; path = ../src/xenia/kernel/xam/apps/xam_app.h; sourceTree = "<group>"; };
+		35AC5FBDA2D46E2FA4675DFD /* xboxkrnl_misc.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = xboxkrnl_misc.cc; path = ../src/xenia/kernel/xboxkrnl/xboxkrnl_misc.cc; sourceTree = "<group>"; };
+		3612C02E5E4D78E045E9066E /* libfmt.a */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "fmt.xcodeproj"; path = fmt.xcodeproj; sourceTree = SOURCE_ROOT; };
+		37F76261CA852C53335DD0A1 /* cert_monitor.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = cert_monitor.cc; path = ../src/xenia/kernel/xboxkrnl/cert_monitor.cc; sourceTree = "<group>"; };
+		3859A2724A10E264BF7ED0B2 /* xbdm_module_export_groups.inc */ = {isa = PBXFileReference; lastKnownFileType = text; name = xbdm_module_export_groups.inc; path = ../src/xenia/kernel/xbdm/xbdm_module_export_groups.inc; sourceTree = "<group>"; };
+		3B49E4D7DD3380C9D45A9317 /* xboxkrnl_modules.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = xboxkrnl_modules.cc; path = ../src/xenia/kernel/xboxkrnl/xboxkrnl_modules.cc; sourceTree = "<group>"; };
+		3CC87E75E11B1C27F35364B5 /* xam.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = xam.h; path = ../src/xenia/kernel/xam/xam.h; sourceTree = "<group>"; };
+		3D1D07B6408DD9E8C1FA7DF6 /* kernel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = kernel.h; path = ../src/xenia/kernel/kernel.h; sourceTree = "<group>"; };
+		3D91D2AF00FD94613FA138EF /* xam_locale.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = xam_locale.cc; path = ../src/xenia/kernel/xam/xam_locale.cc; sourceTree = "<group>"; };
+		3F658D1FB0882E11664EDB5F /* crypto_utils.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = crypto_utils.cc; path = ../src/xenia/kernel/util/crypto_utils.cc; sourceTree = "<group>"; };
+		3F80AD6042F17F92C45E23A0 /* xfile.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = xfile.cc; path = ../src/xenia/kernel/xfile.cc; sourceTree = "<group>"; };
+		4142CFC58EA5C5F704C4C605 /* xam_content.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = xam_content.cc; path = ../src/xenia/kernel/xam/xam_content.cc; sourceTree = "<group>"; };
+		41A9D110E497F7C273BDD750 /* xconfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = xconfig.h; path = ../src/xenia/kernel/xconfig.h; sourceTree = "<group>"; };
+		434D561165190343A1CE2C51 /* xam_state.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = xam_state.cc; path = ../src/xenia/kernel/xam/xam_state.cc; sourceTree = "<group>"; };
+		43C672C2E6B4997475DA7902 /* xtimer.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = xtimer.cc; path = ../src/xenia/kernel/xtimer.cc; sourceTree = "<group>"; };
+		44423CBAB89C81AC36800AFA /* game_achievements_ui.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = game_achievements_ui.h; path = ../src/xenia/kernel/xam/ui/game_achievements_ui.h; sourceTree = "<group>"; };
+		446F002107DAC1D3467E6661 /* xam_notify.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = xam_notify.cc; path = ../src/xenia/kernel/xam/xam_notify.cc; sourceTree = "<group>"; };
+		44D88FB2D76659A4403EFDF2 /* xlivebase_app.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = xlivebase_app.h; path = ../src/xenia/kernel/xam/apps/xlivebase_app.h; sourceTree = "<group>"; };
+		4560813B0BEE78AD79F09F7B /* xboxkrnl_modules.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = xboxkrnl_modules.h; path = ../src/xenia/kernel/xboxkrnl/xboxkrnl_modules.h; sourceTree = "<group>"; };
+		4957C4EC606A601E50865B2C /* xmodule.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = xmodule.cc; path = ../src/xenia/kernel/xmodule.cc; sourceTree = "<group>"; };
+		4B584683A69999F579F3E4C3 /* shim_utils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = shim_utils.h; path = ../src/xenia/kernel/util/shim_utils.h; sourceTree = "<group>"; };
+		4BA6D4E1ED9070D3E4B78321 /* xboxkrnl_ordinals.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = xboxkrnl_ordinals.h; path = ../src/xenia/kernel/xboxkrnl/xboxkrnl_ordinals.h; sourceTree = "<group>"; };
+		4D7BB3FD6F47612FABFC8A3D /* xam_video.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = xam_video.cc; path = ../src/xenia/kernel/xam/xam_video.cc; sourceTree = "<group>"; };
+		4E51DE9C2D6EF8CE097854DC /* debug_visualizers.natvis */ = {isa = PBXFileReference; lastKnownFileType = text; name = debug_visualizers.natvis; path = ../src/xenia/kernel/debug_visualizers.natvis; sourceTree = "<group>"; };
+		4F64A2EC66773E1E5693392C /* xsession.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = xsession.h; path = ../src/xenia/kernel/xsession.h; sourceTree = "<group>"; };
+		4F9AEF7981943A2BFB7375B9 /* user_tracker.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = user_tracker.cc; path = ../src/xenia/kernel/xam/user_tracker.cc; sourceTree = "<group>"; };
+		5178F23C810AC12E5C18007C /* xgi_app.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = xgi_app.h; path = ../src/xenia/kernel/xam/apps/xgi_app.h; sourceTree = "<group>"; };
+		53FB3BE475C6E916B27C1224 /* xenumerator.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = xenumerator.cc; path = ../src/xenia/kernel/xenumerator.cc; sourceTree = "<group>"; };
+		569F19A38898645502779FE3 /* user_profile.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = user_profile.cc; path = ../src/xenia/kernel/xam/user_profile.cc; sourceTree = "<group>"; };
+		57F85B5179C40883B6793191 /* xam_avatar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = xam_avatar.h; path = ../src/xenia/kernel/xam/xam_avatar.h; sourceTree = "<group>"; };
+		5A221B38B5636EAA88BDB978 /* xgi_app.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = xgi_app.cc; path = ../src/xenia/kernel/xam/apps/xgi_app.cc; sourceTree = "<group>"; };
+		5AE71823CC09B91581D06663 /* xecrypt_rsa.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = xecrypt_rsa.h; path = ../src/xenia/kernel/xboxkrnl/xecrypt_rsa.h; sourceTree = "<group>"; };
+		5B28D43F21B6CBB18FB8F27F /* xboxkrnl_private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = xboxkrnl_private.h; path = ../src/xenia/kernel/xboxkrnl/xboxkrnl_private.h; sourceTree = "<group>"; };
+		5CF481B32B17D565B22627F3 /* content_manager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = content_manager.h; path = ../src/xenia/kernel/xam/content_manager.h; sourceTree = "<group>"; };
+		5CF5070F7407A24164239D4F /* xam_ui.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = xam_ui.h; path = ../src/xenia/kernel/xam/xam_ui.h; sourceTree = "<group>"; };
+		5D23C4E78F1D0F9908FC4B27 /* user_settings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = user_settings.h; path = ../src/xenia/kernel/xam/user_settings.h; sourceTree = "<group>"; };
+		5DF5EED3D25033C55033BD13 /* xboxkrnl_audio_xma.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = xboxkrnl_audio_xma.cc; path = ../src/xenia/kernel/xboxkrnl/xboxkrnl_audio_xma.cc; sourceTree = "<group>"; };
+		5E853C7AB9C68FEC8D20DABA /* spa_info.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = spa_info.h; path = ../src/xenia/kernel/xam/xdbf/spa_info.h; sourceTree = "<group>"; };
+		5FB111D5A3FFB747E626F015 /* xboxkrnl_io.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = xboxkrnl_io.cc; path = ../src/xenia/kernel/xboxkrnl/xboxkrnl_io.cc; sourceTree = "<group>"; };
+		607C3DF2BBBD91648F17DC32 /* xmp_app.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = xmp_app.cc; path = ../src/xenia/kernel/xam/apps/xmp_app.cc; sourceTree = "<group>"; };
+		6115E330AE78D9622497D970 /* title_id_utils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = title_id_utils.h; path = ../src/xenia/kernel/title_id_utils.h; sourceTree = "<group>"; };
+		61D24CDDAA43310FEEE2031D /* xam_net.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = xam_net.cc; path = ../src/xenia/kernel/xam/xam_net.cc; sourceTree = "<group>"; };
+		63B6594F2676B9C183AB978F /* ordinal_table_post.inc */ = {isa = PBXFileReference; lastKnownFileType = text; name = ordinal_table_post.inc; path = ../src/xenia/kernel/util/ordinal_table_post.inc; sourceTree = "<group>"; };
+		649D6E3B86691B6DC31E447B /* xam_voice.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = xam_voice.cc; path = ../src/xenia/kernel/xam/xam_voice.cc; sourceTree = "<group>"; };
+		65118C09BC76FEFB6E851A49 /* xboxkrnl_audio.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = xboxkrnl_audio.cc; path = ../src/xenia/kernel/xboxkrnl/xboxkrnl_audio.cc; sourceTree = "<group>"; };
+		65E75A6AD30F68DCD4A258AA /* gpd_info_title.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = gpd_info_title.h; path = ../src/xenia/kernel/xam/xdbf/gpd_info_title.h; sourceTree = "<group>"; };
+		6860A7FCB5C39E2E2BE29E3C /* kernel_module.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = kernel_module.cc; path = ../src/xenia/kernel/kernel_module.cc; sourceTree = "<group>"; };
+		6AD65DE0C617B1529971FC20 /* signin_ui.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = signin_ui.h; path = ../src/xenia/kernel/xam/ui/signin_ui.h; sourceTree = "<group>"; };
+		6F6EEE93C6D4618578E27CD3 /* xboxkrnl_video.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = xboxkrnl_video.cc; path = ../src/xenia/kernel/xboxkrnl/xboxkrnl_video.cc; sourceTree = "<group>"; };
+		6FEFCB0F083CB0C13683B14F /* achievement_manager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = achievement_manager.h; path = ../src/xenia/kernel/xam/achievement_manager.h; sourceTree = "<group>"; };
+		71B59F83CCF6F2F5A0513DC3 /* kernel_fwd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = kernel_fwd.h; path = ../src/xenia/kernel/util/kernel_fwd.h; sourceTree = "<group>"; };
+		735E5E8E4181B240C89004CE /* libxenia-hid.a */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = xenia-hid.xcodeproj; path = "xenia-hid.xcodeproj"; sourceTree = SOURCE_ROOT; };
+		745FCDFAE5826EEC9B491C3A /* xbdm_ordinals.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = xbdm_ordinals.h; path = ../src/xenia/kernel/xbdm/xbdm_ordinals.h; sourceTree = "<group>"; };
+		7471AFF56DD7B16761730E35 /* xlast.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = xlast.cc; path = ../src/xenia/kernel/util/xlast.cc; sourceTree = "<group>"; };
+		76BD86483A2947FA78CCEC88 /* xiocompletion.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = xiocompletion.h; path = ../src/xenia/kernel/xiocompletion.h; sourceTree = "<group>"; };
+		775B5279CEC0C56B80CEE0B9 /* xboxkrnl_error.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = xboxkrnl_error.cc; path = ../src/xenia/kernel/xboxkrnl/xboxkrnl_error.cc; sourceTree = "<group>"; };
+		780C8E5119F62A43111D3C91 /* ordinal_table_pre.inc */ = {isa = PBXFileReference; lastKnownFileType = text; name = ordinal_table_pre.inc; path = ../src/xenia/kernel/util/ordinal_table_pre.inc; sourceTree = "<group>"; };
+		79624F9B5DA957CDE19685DB /* profile_manager.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = profile_manager.cc; path = ../src/xenia/kernel/xam/profile_manager.cc; sourceTree = "<group>"; };
+		79D2F5CF4137B0C1CBEF840F /* gpd_achievement_backend.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = gpd_achievement_backend.h; path = ../src/xenia/kernel/xam/achievement_backends/gpd_achievement_backend.h; sourceTree = "<group>"; };
+		79FBE512C26CC944070B9B52 /* libxenia-kernel.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libxenia-kernel.a"; path = "libxenia-kernel.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7C23AB5AABB57A4C86C2B99A /* xbdm_misc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = xbdm_misc.h; path = ../src/xenia/kernel/xbdm/xbdm_misc.h; sourceTree = "<group>"; };
+		7D816F2F9F4D1C61DC02456F /* xam_input.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = xam_input.cc; path = ../src/xenia/kernel/xam/xam_input.cc; sourceTree = "<group>"; };
+		7DAEDC28443CD39AB23EFA68 /* gpd_info_profile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = gpd_info_profile.h; path = ../src/xenia/kernel/xam/xdbf/gpd_info_profile.h; sourceTree = "<group>"; };
+		802B997679ED55E8B3EC57B6 /* xbdm_table.inc */ = {isa = PBXFileReference; lastKnownFileType = text; name = xbdm_table.inc; path = ../src/xenia/kernel/xbdm/xbdm_table.inc; sourceTree = "<group>"; };
+		81464B37EE6E59A9F0014977 /* xboxkrnl_video.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = xboxkrnl_video.h; path = ../src/xenia/kernel/xboxkrnl/xboxkrnl_video.h; sourceTree = "<group>"; };
+		8238024EA403AF80E0B8D88E /* kernel_flags.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = kernel_flags.h; path = ../src/xenia/kernel/kernel_flags.h; sourceTree = "<group>"; };
+		85CC654B1B43247D89DF7B8B /* user_property.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = user_property.cc; path = ../src/xenia/kernel/xam/user_property.cc; sourceTree = "<group>"; };
+		8709D1DF806FD351740B301F /* volume.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = volume.h; path = ../src/xenia/kernel/info/volume.h; sourceTree = "<group>"; };
+		8911552FAADD0261E7922B6F /* xam_party.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = xam_party.cc; path = ../src/xenia/kernel/xam/xam_party.cc; sourceTree = "<group>"; };
+		8ABBDECF1D49A8C186224D0F /* xboxkrnl_hal.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = xboxkrnl_hal.cc; path = ../src/xenia/kernel/xboxkrnl/xboxkrnl_hal.cc; sourceTree = "<group>"; };
+		8AD25A9F58F5AE51E00400DF /* profile_manager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = profile_manager.h; path = ../src/xenia/kernel/xam/profile_manager.h; sourceTree = "<group>"; };
+		8C237845BD077037D01FA685 /* native_list.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = native_list.h; path = ../src/xenia/kernel/util/native_list.h; sourceTree = "<group>"; };
+		8C9DC607500987B98EAD2C47 /* xam_table.inc */ = {isa = PBXFileReference; lastKnownFileType = text; name = xam_table.inc; path = ../src/xenia/kernel/xam/xam_table.inc; sourceTree = "<group>"; };
+		8DE27529514E36DB8FF1DB69 /* xam_private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = xam_private.h; path = ../src/xenia/kernel/xam/xam_private.h; sourceTree = "<group>"; };
+		8EB0ABE892217E1A138E2228 /* xevent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = xevent.h; path = ../src/xenia/kernel/xevent.h; sourceTree = "<group>"; };
+		8F32DC518ED5BF83C92A7291 /* xam_content_aggregate.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = xam_content_aggregate.cc; path = ../src/xenia/kernel/xam/xam_content_aggregate.cc; sourceTree = "<group>"; };
+		8F356AC1311F06B328461901 /* xboxkrnl_xconfig.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = xboxkrnl_xconfig.cc; path = ../src/xenia/kernel/xboxkrnl/xboxkrnl_xconfig.cc; sourceTree = "<group>"; };
+		8F985DAF3181F9A128A90BEF /* game_info_database.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = game_info_database.cc; path = ../src/xenia/kernel/util/game_info_database.cc; sourceTree = "<group>"; };
+		906726F7FD8F3569FF222537 /* xmp_volume_patch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = xmp_volume_patch.h; path = ../src/xenia/kernel/util/xmp_volume_patch.h; sourceTree = "<group>"; };
+		90E6B5C4DE49ABF65468AC04 /* xiocompletion.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = xiocompletion.cc; path = ../src/xenia/kernel/xiocompletion.cc; sourceTree = "<group>"; };
+		9126266F756D2EA1F95A5CAF /* content_manager.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = content_manager.cc; path = ../src/xenia/kernel/xam/content_manager.cc; sourceTree = "<group>"; };
+		918EDB4BB7B50AFD1EBC018B /* xam_ui.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = xam_ui.cc; path = ../src/xenia/kernel/xam/xam_ui.cc; sourceTree = "<group>"; };
+		92588849E9BDFB3B9BCC1689 /* xboxkrnl_crypt.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = xboxkrnl_crypt.cc; path = ../src/xenia/kernel/xboxkrnl/xboxkrnl_crypt.cc; sourceTree = "<group>"; };
+		93658A7904882B6BBA4ED8B9 /* object_table.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = object_table.cc; path = ../src/xenia/kernel/util/object_table.cc; sourceTree = "<group>"; };
+		93BEF266264CBC588F2560A6 /* title_info_ui.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = title_info_ui.cc; path = ../src/xenia/kernel/xam/ui/title_info_ui.cc; sourceTree = "<group>"; };
+		95182C0EAC2AC7409C46C24E /* xobject.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = xobject.cc; path = ../src/xenia/kernel/xobject.cc; sourceTree = "<group>"; };
+		962B5728BE660FDAA6019D68 /* xsemaphore.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = xsemaphore.cc; path = ../src/xenia/kernel/xsemaphore.cc; sourceTree = "<group>"; };
+		976CEBDBEED25ECDA0E07A1B /* xboxkrnl_memory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = xboxkrnl_memory.h; path = ../src/xenia/kernel/xboxkrnl/xboxkrnl_memory.h; sourceTree = "<group>"; };
+		97B9115065DC6502ECEAB790 /* libxenia-apu.a */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = xenia-apu.xcodeproj; path = "xenia-apu.xcodeproj"; sourceTree = SOURCE_ROOT; };
+		98E2596389D9C755F5DD47A3 /* presence_string_builder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = presence_string_builder.h; path = ../src/xenia/kernel/util/presence_string_builder.h; sourceTree = "<group>"; };
+		9A0004D893C1C14ACDC0C318 /* xbdm_private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = xbdm_private.h; path = ../src/xenia/kernel/xbdm/xbdm_private.h; sourceTree = "<group>"; };
+		9CB5B0763FA3D728CEC9B6B6 /* xmutant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = xmutant.h; path = ../src/xenia/kernel/xmutant.h; sourceTree = "<group>"; };
+		9D7CD706E1CB7C7823F2B546 /* disc_swap_ui.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = disc_swap_ui.cc; path = ../src/xenia/kernel/xam/ui/disc_swap_ui.cc; sourceTree = "<group>"; };
+		9D9C21046107E2B69FAB8744 /* xsymboliclink.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = xsymboliclink.h; path = ../src/xenia/kernel/xsymboliclink.h; sourceTree = "<group>"; };
+		A01840B5F77DB3A7A98BCEF5 /* xboxkrnl_module.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = xboxkrnl_module.h; path = ../src/xenia/kernel/xboxkrnl/xboxkrnl_module.h; sourceTree = "<group>"; };
+		A04601EDC880BA9FB01C482D /* xam_user.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = xam_user.cc; path = ../src/xenia/kernel/xam/xam_user.cc; sourceTree = "<group>"; };
+		A11E1A244307B6163A2EC864 /* gpd_info_profile.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = gpd_info_profile.cc; path = ../src/xenia/kernel/xam/xdbf/gpd_info_profile.cc; sourceTree = "<group>"; };
+		A6D96ECFD8D2B98152B1F50F /* user_property.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = user_property.h; path = ../src/xenia/kernel/xam/user_property.h; sourceTree = "<group>"; };
+		A8B985973B474F89A41FF3D7 /* debug_monitor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = debug_monitor.h; path = ../src/xenia/kernel/xboxkrnl/debug_monitor.h; sourceTree = "<group>"; };
+		A9C4D1F1F727C8236D46C831 /* xam_profile.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = xam_profile.cc; path = ../src/xenia/kernel/xam/xam_profile.cc; sourceTree = "<group>"; };
+		AA0D89093C9B52FBA573F749 /* xboxkrnl_rtl.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = xboxkrnl_rtl.cc; path = ../src/xenia/kernel/xboxkrnl/xboxkrnl_rtl.cc; sourceTree = "<group>"; };
+		AA78A3C805B9F73AD9144208 /* gpd_info.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = gpd_info.h; path = ../src/xenia/kernel/xam/xdbf/gpd_info.h; sourceTree = "<group>"; };
+		AB7C1FBFDC6017B1EF784DFF /* shim_utils.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = shim_utils.cc; path = ../src/xenia/kernel/util/shim_utils.cc; sourceTree = "<group>"; };
+		ABA90B0DEFF7B07F321EE94D /* xboxkrnl_rtl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = xboxkrnl_rtl.h; path = ../src/xenia/kernel/xboxkrnl/xboxkrnl_rtl.h; sourceTree = "<group>"; };
+		ADF421A1A7B5DE13E1B4DFE1 /* native_list.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = native_list.cc; path = ../src/xenia/kernel/util/native_list.cc; sourceTree = "<group>"; };
+		AFD4DE15D80F96C7BFAB2455 /* xam_task.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = xam_task.cc; path = ../src/xenia/kernel/xam/xam_task.cc; sourceTree = "<group>"; };
+		B2A4B559B357B24B27398399 /* xlast.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = xlast.h; path = ../src/xenia/kernel/util/xlast.h; sourceTree = "<group>"; };
+		B3D8F8E7FC49DD1940E8AF27 /* xam_nui.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = xam_nui.cc; path = ../src/xenia/kernel/xam/xam_nui.cc; sourceTree = "<group>"; };
+		B42DCDD6E511C5C8F829FC16 /* spa_info.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = spa_info.cc; path = ../src/xenia/kernel/xam/xdbf/spa_info.cc; sourceTree = "<group>"; };
+		B57B0C415764A8334E8BBA81 /* export_table_post.inc */ = {isa = PBXFileReference; lastKnownFileType = text; name = export_table_post.inc; path = ../src/xenia/kernel/util/export_table_post.inc; sourceTree = "<group>"; };
+		B5829A145870C0C6E796A054 /* xthread.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = xthread.h; path = ../src/xenia/kernel/xthread.h; sourceTree = "<group>"; };
+		B8F6DA912D511F83AB34A8D1 /* xboxkrnl_threading.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = xboxkrnl_threading.cc; path = ../src/xenia/kernel/xboxkrnl/xboxkrnl_threading.cc; sourceTree = "<group>"; };
+		B995E078DB618DAA1816B6B8 /* user_module.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = user_module.cc; path = ../src/xenia/kernel/user_module.cc; sourceTree = "<group>"; };
+		B9D5A1C6EBCEEC7865AE2806 /* libaes_128.a */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "aes_128.xcodeproj"; path = aes_128.xcodeproj; sourceTree = SOURCE_ROOT; };
+		BA0BAB8B8099A2FDEE9BC9CB /* guest_object_table.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = guest_object_table.h; path = ../src/xenia/kernel/util/guest_object_table.h; sourceTree = "<group>"; };
+		BC23C88E17651C00EABF66CE /* xdbf_io.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = xdbf_io.cc; path = ../src/xenia/kernel/xam/xdbf/xdbf_io.cc; sourceTree = "<group>"; };
+		BD176E0080832FB2BF26D440 /* kernel_module.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = kernel_module.h; path = ../src/xenia/kernel/kernel_module.h; sourceTree = "<group>"; };
+		BDF484CEEED87CC001F0B30E /* xbdm_module.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = xbdm_module.h; path = ../src/xenia/kernel/xbdm/xbdm_module.h; sourceTree = "<group>"; };
+		BE105EA46262FC56749B44E4 /* xfile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = xfile.h; path = ../src/xenia/kernel/xfile.h; sourceTree = "<group>"; };
+		BE574EE5EDE91DD7C8F65D25 /* xex2_info.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = xex2_info.h; path = ../src/xenia/kernel/util/xex2_info.h; sourceTree = "<group>"; };
+		BE9707148CBA5AC613C8AD54 /* libxenia-cpu.a */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = xenia-cpu.xcodeproj; path = "xenia-cpu.xcodeproj"; sourceTree = SOURCE_ROOT; };
+		BF04C45E547B8390C317DA9E /* xnotifylistener.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = xnotifylistener.cc; path = ../src/xenia/kernel/xnotifylistener.cc; sourceTree = "<group>"; };
+		C065AE670DC8A49983E7A4A7 /* user_profile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = user_profile.h; path = ../src/xenia/kernel/xam/user_profile.h; sourceTree = "<group>"; };
+		C256D6561D9829C8F0F27496 /* xbdm_misc.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = xbdm_misc.cc; path = ../src/xenia/kernel/xbdm/xbdm_misc.cc; sourceTree = "<group>"; };
+		C2BA950ABC7C517CF67B534A /* xbdm_module.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = xbdm_module.cc; path = ../src/xenia/kernel/xbdm/xbdm_module.cc; sourceTree = "<group>"; };
+		C309B7E358807715C71CCE23 /* user_settings.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = user_settings.cc; path = ../src/xenia/kernel/xam/user_settings.cc; sourceTree = "<group>"; };
+		C4081B2A8773DCDCC617816A /* kernel_flags.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = kernel_flags.cc; path = ../src/xenia/kernel/kernel_flags.cc; sourceTree = "<group>"; };
+		C5F515FC5B6BD52ECA082C3C /* guest_scheduler.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = guest_scheduler.cc; path = ../src/xenia/kernel/guest_scheduler.cc; sourceTree = "<group>"; };
+		C7EB67E6CB5C3A184CC8DE26 /* xtimer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = xtimer.h; path = ../src/xenia/kernel/xtimer.h; sourceTree = "<group>"; };
+		C8CCE55FD55797D1503C639F /* presence_string_builder.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = presence_string_builder.cc; path = ../src/xenia/kernel/util/presence_string_builder.cc; sourceTree = "<group>"; };
+		C95BF85990C0B34B1B788699 /* xboxkrnl_module_export_groups.inc */ = {isa = PBXFileReference; lastKnownFileType = text; name = xboxkrnl_module_export_groups.inc; path = ../src/xenia/kernel/xboxkrnl/xboxkrnl_module_export_groups.inc; sourceTree = "<group>"; };
+		CA93EB4621F95E38D4077986 /* gpd_info_title.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = gpd_info_title.cc; path = ../src/xenia/kernel/xam/xdbf/gpd_info_title.cc; sourceTree = "<group>"; };
+		CB766C476D60083964871A87 /* guest_object_table.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = guest_object_table.cc; path = ../src/xenia/kernel/util/guest_object_table.cc; sourceTree = "<group>"; };
+		CC56EFFD397EFE6F3B11EE3D /* xboxkrnl_error.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = xboxkrnl_error.h; path = ../src/xenia/kernel/xboxkrnl/xboxkrnl_error.h; sourceTree = "<group>"; };
+		CEA49B6B708E375D67B549AB /* xboxkrnl_io_info.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = xboxkrnl_io_info.cc; path = ../src/xenia/kernel/xboxkrnl/xboxkrnl_io_info.cc; sourceTree = "<group>"; };
+		D0B2132473A039D602C61964 /* xevent.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = xevent.cc; path = ../src/xenia/kernel/xevent.cc; sourceTree = "<group>"; };
+		D380353F96EBF6F1D58F9B7F /* app_manager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = app_manager.h; path = ../src/xenia/kernel/xam/app_manager.h; sourceTree = "<group>"; };
+		D652270FF81DD44134D2FD4F /* xam_media.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = xam_media.cc; path = ../src/xenia/kernel/xam/xam_media.cc; sourceTree = "<group>"; };
+		D66538BC4787D9AEFD4E86FC /* gamercard_ui.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = gamercard_ui.h; path = ../src/xenia/kernel/xam/ui/gamercard_ui.h; sourceTree = "<group>"; };
+		D6D278D89D60704A0B629718 /* create_profile_ui.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = create_profile_ui.h; path = ../src/xenia/kernel/xam/ui/create_profile_ui.h; sourceTree = "<group>"; };
+		D6DEFFC02441F5F29A60F600 /* xsymboliclink.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = xsymboliclink.cc; path = ../src/xenia/kernel/xsymboliclink.cc; sourceTree = "<group>"; };
+		D7905D719E1E54E30C207BB1 /* xboxkrnl_module.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = xboxkrnl_module.cc; path = ../src/xenia/kernel/xboxkrnl/xboxkrnl_module.cc; sourceTree = "<group>"; };
+		D7D343E51C21E9575E492225 /* cert_monitor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = cert_monitor.h; path = ../src/xenia/kernel/xboxkrnl/cert_monitor.h; sourceTree = "<group>"; };
+		D7E1CC2C2052B05E64F1826C /* xsemaphore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = xsemaphore.h; path = ../src/xenia/kernel/xsemaphore.h; sourceTree = "<group>"; };
+		DD6F07B5FF3AB4E73BEFDDF5 /* user_data.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = user_data.cc; path = ../src/xenia/kernel/xam/user_data.cc; sourceTree = "<group>"; };
+		DF25B0F4D8E76D6612E66F34 /* passcode_ui.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = passcode_ui.h; path = ../src/xenia/kernel/xam/ui/passcode_ui.h; sourceTree = "<group>"; };
+		E104EE19093FA6CBF0DB3459 /* xam_enum.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = xam_enum.cc; path = ../src/xenia/kernel/xam/xam_enum.cc; sourceTree = "<group>"; };
+		E1E474270A1F2CD9F1BABA67 /* xam_info.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = xam_info.cc; path = ../src/xenia/kernel/xam/xam_info.cc; sourceTree = "<group>"; };
+		E36B0B8B30CE01BDA6ED01CB /* xam_ordinals.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = xam_ordinals.h; path = ../src/xenia/kernel/xam/xam_ordinals.h; sourceTree = "<group>"; };
+		E5E8793B334B6F6DA96A6F7B /* app_manager.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = app_manager.cc; path = ../src/xenia/kernel/xam/app_manager.cc; sourceTree = "<group>"; };
+		E65E0C1615EFDB08F0FD1A56 /* xmp_app.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = xmp_app.h; path = ../src/xenia/kernel/xam/apps/xmp_app.h; sourceTree = "<group>"; };
+		E67E47DD2EEF2C0F738DFE1D /* xam_msg.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = xam_msg.cc; path = ../src/xenia/kernel/xam/xam_msg.cc; sourceTree = "<group>"; };
+		E7375D50FE49F882EE65F390 /* xthread.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = xthread.cc; path = ../src/xenia/kernel/xthread.cc; sourceTree = "<group>"; };
+		E7B673F6DBB5BD6860A0D236 /* game_achievements_ui.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = game_achievements_ui.cc; path = ../src/xenia/kernel/xam/ui/game_achievements_ui.cc; sourceTree = "<group>"; };
+		EAACD7DDB13ACF4F1F3CF61D /* xboxkrnl_table.inc */ = {isa = PBXFileReference; lastKnownFileType = text; name = xboxkrnl_table.inc; path = ../src/xenia/kernel/xboxkrnl/xboxkrnl_table.inc; sourceTree = "<group>"; };
+		EB9317C3B2210F3520233603 /* export_table_pre.inc */ = {isa = PBXFileReference; lastKnownFileType = text; name = export_table_pre.inc; path = ../src/xenia/kernel/util/export_table_pre.inc; sourceTree = "<group>"; };
+		F044296B23C368DD3BBD47AB /* gpd_achievement_backend.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = gpd_achievement_backend.cc; path = ../src/xenia/kernel/xam/achievement_backends/gpd_achievement_backend.cc; sourceTree = "<group>"; };
+		F21951C422FD49B636158004 /* gpd_info.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = gpd_info.cc; path = ../src/xenia/kernel/xam/xdbf/gpd_info.cc; sourceTree = "<group>"; };
+		F3D109238C1DEED5BA64EF63 /* xam_content_device.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = xam_content_device.cc; path = ../src/xenia/kernel/xam/xam_content_device.cc; sourceTree = "<group>"; };
+		F50E8A63EED046D528CF48A3 /* crypto_utils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = crypto_utils.h; path = ../src/xenia/kernel/util/crypto_utils.h; sourceTree = "<group>"; };
+		F56BF40BD4890E3DB0926A4B /* achievement_manager.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = achievement_manager.cc; path = ../src/xenia/kernel/xam/achievement_manager.cc; sourceTree = "<group>"; };
+		F5731D3E8800E730F0D98B7E /* messenger_app.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = messenger_app.h; path = ../src/xenia/kernel/xam/apps/messenger_app.h; sourceTree = "<group>"; };
+		F6BBE4591EF69D0B06922A99 /* user_data.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = user_data.h; path = ../src/xenia/kernel/xam/user_data.h; sourceTree = "<group>"; };
+		F70BC8583B5A6DCA7D81A698 /* gamercard_ui.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = gamercard_ui.cc; path = ../src/xenia/kernel/xam/ui/gamercard_ui.cc; sourceTree = "<group>"; };
+		F72174734E86E765009502B3 /* xboxkrnl_debug.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = xboxkrnl_debug.cc; path = ../src/xenia/kernel/xboxkrnl/xboxkrnl_debug.cc; sourceTree = "<group>"; };
+		F74BE6DDF10DA34F2B0CA51D /* object_table.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = object_table.h; path = ../src/xenia/kernel/util/object_table.h; sourceTree = "<group>"; };
+		F778CE46297218F8A3515486 /* libzlib-ng.a */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = zlib-ng.xcodeproj; path = "zlib-ng.xcodeproj"; sourceTree = SOURCE_ROOT; };
+		F80B31752045EA2707E177B5 /* xam_state.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = xam_state.h; path = ../src/xenia/kernel/xam/xam_state.h; sourceTree = "<group>"; };
+		FAA96C709D9793222CBD72B0 /* xmodule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = xmodule.h; path = ../src/xenia/kernel/xmodule.h; sourceTree = "<group>"; };
+		FED6D876A22261A8BCF32EB6 /* smc.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = smc.cc; path = ../src/xenia/kernel/smc.cc; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		28B221823FC4BCB42FE0B7C2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				90306A018127D7F3ED2B5841 /* libaes_128.a in Frameworks */,
+				1214D1E9B3FE6DDBAB258029 /* libfmt.a in Frameworks */,
+				D3ED6681C4E4D47330E854C1 /* libzlib-ng.a in Frameworks */,
+				750E40076605ADF9D2092E47 /* libpugixml.a in Frameworks */,
+				CAE1538B24E26A7DEC2961CB /* libxenia-apu.a in Frameworks */,
+				9F6839157E0AD48732ECD755 /* libxenia-base.a in Frameworks */,
+				8E9823CFE8993AC1AFE0320F /* libxenia-cpu.a in Frameworks */,
+				6AE14789C4E25E7B8C2955C9 /* libxenia-hid.a in Frameworks */,
+				7837B83DD238CF2F997FC67D /* libxenia-vfs.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		F38BDA6E19B20A2080B900AE /* Embed Libraries */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Libraries";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXGroup section */
+		041A22EA2C54DB9C13F0692A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				02A414F31D7083A521411B33 /* libxenia-apu.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		095221AC318CDA5E192867EC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F1D042F70C9CB1A9106D4937 /* libxenia-cpu.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0C81C39554F2A7C7999179D5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2D2B5189C578373BF3BF37C9 /* libzlib-ng.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0D3235A855A319DA9A41EBE8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0EE9E1AFA736C761D57DC7EF /* libpugixml.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4882513F7814203153215F7F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E9AE83DDE951670F23A61A1D /* libxenia-base.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		51CAF2F8553BC52AD6A86938 /* xboxkrnl */ = {
+			isa = PBXGroup;
+			children = (
+				37F76261CA852C53335DD0A1 /* cert_monitor.cc */,
+				D7D343E51C21E9575E492225 /* cert_monitor.h */,
+				127561337F9D6FA581305F73 /* debug_monitor.cc */,
+				A8B985973B474F89A41FF3D7 /* debug_monitor.h */,
+				65118C09BC76FEFB6E851A49 /* xboxkrnl_audio.cc */,
+				5DF5EED3D25033C55033BD13 /* xboxkrnl_audio_xma.cc */,
+				92588849E9BDFB3B9BCC1689 /* xboxkrnl_crypt.cc */,
+				F72174734E86E765009502B3 /* xboxkrnl_debug.cc */,
+				775B5279CEC0C56B80CEE0B9 /* xboxkrnl_error.cc */,
+				CC56EFFD397EFE6F3B11EE3D /* xboxkrnl_error.h */,
+				8ABBDECF1D49A8C186224D0F /* xboxkrnl_hal.cc */,
+				1E6120CFB0EEEAC119C78F0F /* xboxkrnl_hid.cc */,
+				5FB111D5A3FFB747E626F015 /* xboxkrnl_io.cc */,
+				CEA49B6B708E375D67B549AB /* xboxkrnl_io_info.cc */,
+				24A91FB7EB37172959393DF7 /* xboxkrnl_memory.cc */,
+				976CEBDBEED25ECDA0E07A1B /* xboxkrnl_memory.h */,
+				35AC5FBDA2D46E2FA4675DFD /* xboxkrnl_misc.cc */,
+				D7905D719E1E54E30C207BB1 /* xboxkrnl_module.cc */,
+				A01840B5F77DB3A7A98BCEF5 /* xboxkrnl_module.h */,
+				C95BF85990C0B34B1B788699 /* xboxkrnl_module_export_groups.inc */,
+				3B49E4D7DD3380C9D45A9317 /* xboxkrnl_modules.cc */,
+				4560813B0BEE78AD79F09F7B /* xboxkrnl_modules.h */,
+				124C9F67569B44D998C27DA7 /* xboxkrnl_ob.cc */,
+				3317A18BA43A427D5A00EFCB /* xboxkrnl_ob.h */,
+				4BA6D4E1ED9070D3E4B78321 /* xboxkrnl_ordinals.h */,
+				5B28D43F21B6CBB18FB8F27F /* xboxkrnl_private.h */,
+				AA0D89093C9B52FBA573F749 /* xboxkrnl_rtl.cc */,
+				ABA90B0DEFF7B07F321EE94D /* xboxkrnl_rtl.h */,
+				18F73C79BAE0D86BB207EAB9 /* xboxkrnl_strings.cc */,
+				2A7FBA7DF10DB1EF5F0FD8BD /* xboxkrnl_strings.h */,
+				EAACD7DDB13ACF4F1F3CF61D /* xboxkrnl_table.inc */,
+				B8F6DA912D511F83AB34A8D1 /* xboxkrnl_threading.cc */,
+				2C9F2495EF5F85074C9462D5 /* xboxkrnl_threading.h */,
+				110DCC3BD79BC3AD459DEA7B /* xboxkrnl_usbcam.cc */,
+				6F6EEE93C6D4618578E27CD3 /* xboxkrnl_video.cc */,
+				81464B37EE6E59A9F0014977 /* xboxkrnl_video.h */,
+				8F356AC1311F06B328461901 /* xboxkrnl_xconfig.cc */,
+				5AE71823CC09B91581D06663 /* xecrypt_rsa.h */,
+			);
+			name = xboxkrnl;
+			sourceTree = "<group>";
+		};
+		7532522021951252E01D8860 /* info */ = {
+			isa = PBXGroup;
+			children = (
+				18EAD56F8A75EDE1397713AF /* file.h */,
+				8709D1DF806FD351740B301F /* volume.h */,
+			);
+			name = info;
+			sourceTree = "<group>";
+		};
+		7DD96A9469CA7646BC0210D4 /* xam */ = {
+			isa = PBXGroup;
+			children = (
+				E098472324AC1855187D9D63 /* achievement_backends */,
+				F56BF40BD4890E3DB0926A4B /* achievement_manager.cc */,
+				6FEFCB0F083CB0C13683B14F /* achievement_manager.h */,
+				E5E8793B334B6F6DA96A6F7B /* app_manager.cc */,
+				D380353F96EBF6F1D58F9B7F /* app_manager.h */,
+				B1E4C7055530503770011D45 /* apps */,
+				9126266F756D2EA1F95A5CAF /* content_manager.cc */,
+				5CF481B32B17D565B22627F3 /* content_manager.h */,
+				79624F9B5DA957CDE19685DB /* profile_manager.cc */,
+				8AD25A9F58F5AE51E00400DF /* profile_manager.h */,
+				B39790195FFA504B1E82C659 /* ui */,
+				DD6F07B5FF3AB4E73BEFDDF5 /* user_data.cc */,
+				F6BBE4591EF69D0B06922A99 /* user_data.h */,
+				569F19A38898645502779FE3 /* user_profile.cc */,
+				C065AE670DC8A49983E7A4A7 /* user_profile.h */,
+				85CC654B1B43247D89DF7B8B /* user_property.cc */,
+				A6D96ECFD8D2B98152B1F50F /* user_property.h */,
+				C309B7E358807715C71CCE23 /* user_settings.cc */,
+				5D23C4E78F1D0F9908FC4B27 /* user_settings.h */,
+				4F9AEF7981943A2BFB7375B9 /* user_tracker.cc */,
+				200E821D6D71784FE390785D /* user_tracker.h */,
+				3CC87E75E11B1C27F35364B5 /* xam.h */,
+				275796EDEAC3589F2966FD2D /* xam_avatar.cc */,
+				57F85B5179C40883B6793191 /* xam_avatar.h */,
+				4142CFC58EA5C5F704C4C605 /* xam_content.cc */,
+				8F32DC518ED5BF83C92A7291 /* xam_content_aggregate.cc */,
+				F3D109238C1DEED5BA64EF63 /* xam_content_device.cc */,
+				075C07674B6FD8993F415DA7 /* xam_content_device.h */,
+				E104EE19093FA6CBF0DB3459 /* xam_enum.cc */,
+				E1E474270A1F2CD9F1BABA67 /* xam_info.cc */,
+				7D816F2F9F4D1C61DC02456F /* xam_input.cc */,
+				3D91D2AF00FD94613FA138EF /* xam_locale.cc */,
+				D652270FF81DD44134D2FD4F /* xam_media.cc */,
+				00102F1BC37BF0CD021F955B /* xam_module.cc */,
+				261874DF47E4221184994B1F /* xam_module.h */,
+				235FDE03BD83D3356DA9B443 /* xam_module_export_groups.inc */,
+				E67E47DD2EEF2C0F738DFE1D /* xam_msg.cc */,
+				61D24CDDAA43310FEEE2031D /* xam_net.cc */,
+				446F002107DAC1D3467E6661 /* xam_notify.cc */,
+				B3D8F8E7FC49DD1940E8AF27 /* xam_nui.cc */,
+				E36B0B8B30CE01BDA6ED01CB /* xam_ordinals.h */,
+				8911552FAADD0261E7922B6F /* xam_party.cc */,
+				8DE27529514E36DB8FF1DB69 /* xam_private.h */,
+				A9C4D1F1F727C8236D46C831 /* xam_profile.cc */,
+				434D561165190343A1CE2C51 /* xam_state.cc */,
+				F80B31752045EA2707E177B5 /* xam_state.h */,
+				8C9DC607500987B98EAD2C47 /* xam_table.inc */,
+				AFD4DE15D80F96C7BFAB2455 /* xam_task.cc */,
+				918EDB4BB7B50AFD1EBC018B /* xam_ui.cc */,
+				5CF5070F7407A24164239D4F /* xam_ui.h */,
+				A04601EDC880BA9FB01C482D /* xam_user.cc */,
+				4D7BB3FD6F47612FABFC8A3D /* xam_video.cc */,
+				649D6E3B86691B6DC31E447B /* xam_voice.cc */,
+				C1829EA564CE27D77F9EF4E5 /* xdbf */,
+			);
+			name = xam;
+			sourceTree = "<group>";
+		};
+		86BCD304331F9336F1A80944 /* util */ = {
+			isa = PBXGroup;
+			children = (
+				3F658D1FB0882E11664EDB5F /* crypto_utils.cc */,
+				F50E8A63EED046D528CF48A3 /* crypto_utils.h */,
+				B57B0C415764A8334E8BBA81 /* export_table_post.inc */,
+				EB9317C3B2210F3520233603 /* export_table_pre.inc */,
+				8F985DAF3181F9A128A90BEF /* game_info_database.cc */,
+				14FE6973DB8C60E5498E87B3 /* game_info_database.h */,
+				CB766C476D60083964871A87 /* guest_object_table.cc */,
+				BA0BAB8B8099A2FDEE9BC9CB /* guest_object_table.h */,
+				71B59F83CCF6F2F5A0513DC3 /* kernel_fwd.h */,
+				ADF421A1A7B5DE13E1B4DFE1 /* native_list.cc */,
+				8C237845BD077037D01FA685 /* native_list.h */,
+				93658A7904882B6BBA4ED8B9 /* object_table.cc */,
+				F74BE6DDF10DA34F2B0CA51D /* object_table.h */,
+				63B6594F2676B9C183AB978F /* ordinal_table_post.inc */,
+				780C8E5119F62A43111D3C91 /* ordinal_table_pre.inc */,
+				C8CCE55FD55797D1503C639F /* presence_string_builder.cc */,
+				98E2596389D9C755F5DD47A3 /* presence_string_builder.h */,
+				AB7C1FBFDC6017B1EF784DFF /* shim_utils.cc */,
+				4B584683A69999F579F3E4C3 /* shim_utils.h */,
+				BE574EE5EDE91DD7C8F65D25 /* xex2_info.h */,
+				0CD813C93C69E2BB17772209 /* xex2_util.h */,
+				18F8348F488A0381239742CF /* xfiletime.h */,
+				7471AFF56DD7B16761730E35 /* xlast.cc */,
+				B2A4B559B357B24B27398399 /* xlast.h */,
+				08DE48736043BB651251D6B3 /* xmp_volume_patch.cc */,
+				906726F7FD8F3569FF222537 /* xmp_volume_patch.h */,
+			);
+			name = util;
+			sourceTree = "<group>";
+		};
+		99E5C713C2207FC5A9BC0D53 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5C64A785773116377B01ADC5 /* libxenia-vfs.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9D968EAA920D05DCE0E0A4EA /* Projects */ = {
+			isa = PBXGroup;
+			children = (
+				B9D5A1C6EBCEEC7865AE2806 /* aes_128.xcodeproj */,
+				3612C02E5E4D78E045E9066E /* fmt.xcodeproj */,
+				F778CE46297218F8A3515486 /* zlib-ng.xcodeproj */,
+				108B640C4284AEBEBC63EA4C /* pugixml.xcodeproj */,
+				97B9115065DC6502ECEAB790 /* xenia-apu.xcodeproj */,
+				2D378CBA117E94EC956BC2FA /* xenia-base.xcodeproj */,
+				BE9707148CBA5AC613C8AD54 /* xenia-cpu.xcodeproj */,
+				735E5E8E4181B240C89004CE /* xenia-hid.xcodeproj */,
+				19906EC2E7B3C2746EC21502 /* xenia-vfs.xcodeproj */,
+			);
+			name = Projects;
+			sourceTree = "<group>";
+		};
+		A6C936B49B3FADE6EA134CF4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				79FBE512C26CC944070B9B52 /* libxenia-kernel.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A709FCDE536CBD1011F5331E /* xbdm */ = {
+			isa = PBXGroup;
+			children = (
+				C256D6561D9829C8F0F27496 /* xbdm_misc.cc */,
+				7C23AB5AABB57A4C86C2B99A /* xbdm_misc.h */,
+				C2BA950ABC7C517CF67B534A /* xbdm_module.cc */,
+				BDF484CEEED87CC001F0B30E /* xbdm_module.h */,
+				3859A2724A10E264BF7ED0B2 /* xbdm_module_export_groups.inc */,
+				745FCDFAE5826EEC9B491C3A /* xbdm_ordinals.h */,
+				9A0004D893C1C14ACDC0C318 /* xbdm_private.h */,
+				802B997679ED55E8B3EC57B6 /* xbdm_table.inc */,
+			);
+			name = xbdm;
+			sourceTree = "<group>";
+		};
+		AC156083587820B5170096C3 /* xenia-kernel */ = {
+			isa = PBXGroup;
+			children = (
+				4E51DE9C2D6EF8CE097854DC /* debug_visualizers.natvis */,
+				C5F515FC5B6BD52ECA082C3C /* guest_scheduler.cc */,
+				0A7E2C803C777732B656B2C0 /* guest_scheduler.h */,
+				7532522021951252E01D8860 /* info */,
+				3D1D07B6408DD9E8C1FA7DF6 /* kernel.h */,
+				C4081B2A8773DCDCC617816A /* kernel_flags.cc */,
+				8238024EA403AF80E0B8D88E /* kernel_flags.h */,
+				6860A7FCB5C39E2E2BE29E3C /* kernel_module.cc */,
+				BD176E0080832FB2BF26D440 /* kernel_module.h */,
+				2E17B812F18379C430271E52 /* kernel_state.cc */,
+				21A3BBB6436F68E8802491F6 /* kernel_state.h */,
+				FED6D876A22261A8BCF32EB6 /* smc.cc */,
+				347B811A848F15CC070D475A /* smc.h */,
+				6115E330AE78D9622497D970 /* title_id_utils.h */,
+				B995E078DB618DAA1816B6B8 /* user_module.cc */,
+				0D68E6BC35A39F6E1D3F2CFC /* user_module.h */,
+				86BCD304331F9336F1A80944 /* util */,
+				7DD96A9469CA7646BC0210D4 /* xam */,
+				A709FCDE536CBD1011F5331E /* xbdm */,
+				51CAF2F8553BC52AD6A86938 /* xboxkrnl */,
+				06F2678C1E0502BE0E20FDCC /* xconfig.cc */,
+				41A9D110E497F7C273BDD750 /* xconfig.h */,
+				53FB3BE475C6E916B27C1224 /* xenumerator.cc */,
+				1EF365E8472E1E9A2EC9AC28 /* xenumerator.h */,
+				D0B2132473A039D602C61964 /* xevent.cc */,
+				8EB0ABE892217E1A138E2228 /* xevent.h */,
+				3F80AD6042F17F92C45E23A0 /* xfile.cc */,
+				BE105EA46262FC56749B44E4 /* xfile.h */,
+				90E6B5C4DE49ABF65468AC04 /* xiocompletion.cc */,
+				76BD86483A2947FA78CCEC88 /* xiocompletion.h */,
+				4957C4EC606A601E50865B2C /* xmodule.cc */,
+				FAA96C709D9793222CBD72B0 /* xmodule.h */,
+				2F74041246869F4436A29A52 /* xmutant.cc */,
+				9CB5B0763FA3D728CEC9B6B6 /* xmutant.h */,
+				BF04C45E547B8390C317DA9E /* xnotifylistener.cc */,
+				0E9B0C8240945734BA7392C2 /* xnotifylistener.h */,
+				95182C0EAC2AC7409C46C24E /* xobject.cc */,
+				1555F132B84417E44769F772 /* xobject.h */,
+				962B5728BE660FDAA6019D68 /* xsemaphore.cc */,
+				D7E1CC2C2052B05E64F1826C /* xsemaphore.h */,
+				4F64A2EC66773E1E5693392C /* xsession.h */,
+				12809B72299336A419AF31B2 /* xsocket.cc */,
+				20E5A5D6C3D3CC8852F9AC16 /* xsocket.h */,
+				D6DEFFC02441F5F29A60F600 /* xsymboliclink.cc */,
+				9D9C21046107E2B69FAB8744 /* xsymboliclink.h */,
+				E7375D50FE49F882EE65F390 /* xthread.cc */,
+				B5829A145870C0C6E796A054 /* xthread.h */,
+				43C672C2E6B4997475DA7902 /* xtimer.cc */,
+				C7EB67E6CB5C3A184CC8DE26 /* xtimer.h */,
+				A6C936B49B3FADE6EA134CF4 /* Products */,
+				9D968EAA920D05DCE0E0A4EA /* Projects */,
+			);
+			name = "xenia-kernel";
+			sourceTree = "<group>";
+		};
+		B1E4C7055530503770011D45 /* apps */ = {
+			isa = PBXGroup;
+			children = (
+				34DA811AA2028F8CA3957F5A /* messenger_app.cc */,
+				F5731D3E8800E730F0D98B7E /* messenger_app.h */,
+				1AAD967475EEE9E6494934B4 /* xam_app.cc */,
+				34F50E386486DD2A3F941C78 /* xam_app.h */,
+				5A221B38B5636EAA88BDB978 /* xgi_app.cc */,
+				5178F23C810AC12E5C18007C /* xgi_app.h */,
+				08DA014E76020FC07794FF8E /* xlivebase_app.cc */,
+				44D88FB2D76659A4403EFDF2 /* xlivebase_app.h */,
+				607C3DF2BBBD91648F17DC32 /* xmp_app.cc */,
+				E65E0C1615EFDB08F0FD1A56 /* xmp_app.h */,
+			);
+			name = apps;
+			sourceTree = "<group>";
+		};
+		B39790195FFA504B1E82C659 /* ui */ = {
+			isa = PBXGroup;
+			children = (
+				06A25A74A88BF6669FB308B4 /* create_profile_ui.cc */,
+				D6D278D89D60704A0B629718 /* create_profile_ui.h */,
+				9D7CD706E1CB7C7823F2B546 /* disc_swap_ui.cc */,
+				0F678ACA808A2BBC3650D90A /* disc_swap_ui.h */,
+				E7B673F6DBB5BD6860A0D236 /* game_achievements_ui.cc */,
+				44423CBAB89C81AC36800AFA /* game_achievements_ui.h */,
+				F70BC8583B5A6DCA7D81A698 /* gamercard_ui.cc */,
+				D66538BC4787D9AEFD4E86FC /* gamercard_ui.h */,
+				2F57ED50A07A8E4256413B90 /* passcode_ui.cc */,
+				DF25B0F4D8E76D6612E66F34 /* passcode_ui.h */,
+				2C4E02FC5D31FAEE704A313C /* signin_ui.cc */,
+				6AD65DE0C617B1529971FC20 /* signin_ui.h */,
+				93BEF266264CBC588F2560A6 /* title_info_ui.cc */,
+				0D5CE46A51AB89DC93D2C2AA /* title_info_ui.h */,
+			);
+			name = ui;
+			sourceTree = "<group>";
+		};
+		C1829EA564CE27D77F9EF4E5 /* xdbf */ = {
+			isa = PBXGroup;
+			children = (
+				F21951C422FD49B636158004 /* gpd_info.cc */,
+				AA78A3C805B9F73AD9144208 /* gpd_info.h */,
+				A11E1A244307B6163A2EC864 /* gpd_info_profile.cc */,
+				7DAEDC28443CD39AB23EFA68 /* gpd_info_profile.h */,
+				CA93EB4621F95E38D4077986 /* gpd_info_title.cc */,
+				65E75A6AD30F68DCD4A258AA /* gpd_info_title.h */,
+				B42DCDD6E511C5C8F829FC16 /* spa_info.cc */,
+				5E853C7AB9C68FEC8D20DABA /* spa_info.h */,
+				BC23C88E17651C00EABF66CE /* xdbf_io.cc */,
+				178702724718D164222610B2 /* xdbf_io.h */,
+			);
+			name = xdbf;
+			sourceTree = "<group>";
+		};
+		C2E32289D9F5BDBBCA11B8C9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FD2DA671CB50FA23525F4CB1 /* libfmt.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DD38095525A8ED876A47BF95 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0626DD099E73C2BBCCBAC349 /* libaes_128.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E098472324AC1855187D9D63 /* achievement_backends */ = {
+			isa = PBXGroup;
+			children = (
+				F044296B23C368DD3BBD47AB /* gpd_achievement_backend.cc */,
+				79D2F5CF4137B0C1CBEF840F /* gpd_achievement_backend.h */,
+			);
+			name = achievement_backends;
+			sourceTree = "<group>";
+		};
+		ECC0969914FB4F4BFC96DCD9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B553A811D02016C3D3F0AE51 /* libxenia-hid.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		917262B87C5E88AAC44450F8 /* xenia-kernel */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 16ED69E12E0005131E1C0021 /* Build configuration list for PBXNativeTarget "xenia-kernel" */;
+			buildPhases = (
+				9899A222AFAC3D549FC83862 /* Resources */,
+				0246BB79195956AB097551B9 /* Sources */,
+				28B221823FC4BCB42FE0B7C2 /* Frameworks */,
+				F38BDA6E19B20A2080B900AE /* Embed Libraries */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CAF0465E13612A9057FFFC9E /* PBXTargetDependency */,
+				B09B5F92C7ADFAC4B7C9F5D2 /* PBXTargetDependency */,
+				FA3A009E42AAE4D08749B6DE /* PBXTargetDependency */,
+				FAEA72B1435B56E387FA28F1 /* PBXTargetDependency */,
+				F1D25FF31A0D18A501A8A633 /* PBXTargetDependency */,
+				363A8E4865CC5D3A40D99C88 /* PBXTargetDependency */,
+				F70A5EB51F45176706E0A4F5 /* PBXTargetDependency */,
+				DA78D3A202B38C54EA4F19E2 /* PBXTargetDependency */,
+				879E041CAFD8BCCE97744A5C /* PBXTargetDependency */,
+			);
+			name = "xenia-kernel";
+			productName = "xenia-kernel";
+			productReference = 79FBE512C26CC944070B9B52 /* libxenia-kernel.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		08FB7793FE84155DC02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 1DEB928908733DD80010E9CD /* Build configuration list for PBXProject "xenia-kernel" */;
+			compatibilityVersion = "Xcode 3.2";
+			hasScannedForEncodings = 1;
+			mainGroup = AC156083587820B5170096C3 /* xenia-kernel */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = DD38095525A8ED876A47BF95 /* Products */;
+					ProjectRef = B9D5A1C6EBCEEC7865AE2806 /* aes_128.xcodeproj */;
+				},
+				{
+					ProductGroup = C2E32289D9F5BDBBCA11B8C9 /* Products */;
+					ProjectRef = 3612C02E5E4D78E045E9066E /* fmt.xcodeproj */;
+				},
+				{
+					ProductGroup = 0C81C39554F2A7C7999179D5 /* Products */;
+					ProjectRef = F778CE46297218F8A3515486 /* zlib-ng.xcodeproj */;
+				},
+				{
+					ProductGroup = 0D3235A855A319DA9A41EBE8 /* Products */;
+					ProjectRef = 108B640C4284AEBEBC63EA4C /* pugixml.xcodeproj */;
+				},
+				{
+					ProductGroup = 041A22EA2C54DB9C13F0692A /* Products */;
+					ProjectRef = 97B9115065DC6502ECEAB790 /* xenia-apu.xcodeproj */;
+				},
+				{
+					ProductGroup = 4882513F7814203153215F7F /* Products */;
+					ProjectRef = 2D378CBA117E94EC956BC2FA /* xenia-base.xcodeproj */;
+				},
+				{
+					ProductGroup = 095221AC318CDA5E192867EC /* Products */;
+					ProjectRef = BE9707148CBA5AC613C8AD54 /* xenia-cpu.xcodeproj */;
+				},
+				{
+					ProductGroup = ECC0969914FB4F4BFC96DCD9 /* Products */;
+					ProjectRef = 735E5E8E4181B240C89004CE /* xenia-hid.xcodeproj */;
+				},
+				{
+					ProductGroup = 99E5C713C2207FC5A9BC0D53 /* Products */;
+					ProjectRef = 19906EC2E7B3C2746EC21502 /* xenia-vfs.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				917262B87C5E88AAC44450F8 /* libxenia-kernel.a */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		02A414F31D7083A521411B33 /* libxenia-apu.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libxenia-apu.a";
+			remoteRef = D8DD4AEA086F19DCE37C592A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0626DD099E73C2BBCCBAC349 /* libaes_128.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libaes_128.a;
+			remoteRef = D5B7FEB52C45692704BE7CF5 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0EE9E1AFA736C761D57DC7EF /* libpugixml.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libpugixml.a;
+			remoteRef = 04F7B5685B851FDA33FE33A8 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		2D2B5189C578373BF3BF37C9 /* libzlib-ng.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libzlib-ng.a";
+			remoteRef = EE3900F544C66B671D3F7F35 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		5C64A785773116377B01ADC5 /* libxenia-vfs.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libxenia-vfs.a";
+			remoteRef = 281D743357AF432532BC8273 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		B553A811D02016C3D3F0AE51 /* libxenia-hid.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libxenia-hid.a";
+			remoteRef = D652347905E4036BE0F142B9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E9AE83DDE951670F23A61A1D /* libxenia-base.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libxenia-base.a";
+			remoteRef = AA4B43DFCC16F11108CC1A1F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F1D042F70C9CB1A9106D4937 /* libxenia-cpu.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libxenia-cpu.a";
+			remoteRef = 851521ECB4A6F0DE8FB4302C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		FD2DA671CB50FA23525F4CB1 /* libfmt.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libfmt.a;
+			remoteRef = 70C63E696A2C3FDB5DC79CA9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9899A222AFAC3D549FC83862 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0246BB79195956AB097551B9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9351DC1459DFD386C7E1FA54 /* guest_scheduler.cc in Sources */,
+				35523822C7E0021430B8A662 /* kernel_flags.cc in Sources */,
+				26447014936C7E8694FF6E54 /* kernel_module.cc in Sources */,
+				9226CF8A24B4997C8D8D3DCA /* kernel_state.cc in Sources */,
+				417FC32E3AE5C4A02E81216E /* smc.cc in Sources */,
+				5A41A8509E904DC2E0B78690 /* user_module.cc in Sources */,
+				4B2995978F3D66C9830EEBD7 /* crypto_utils.cc in Sources */,
+				89FF992799E4C55986584F67 /* game_info_database.cc in Sources */,
+				6F9FED3F7F8519716BF8A37F /* guest_object_table.cc in Sources */,
+				E085A639F2AF82EB26A06C79 /* native_list.cc in Sources */,
+				4F685591937C26C3874DABD1 /* object_table.cc in Sources */,
+				16DE7AD704460D89A1400117 /* presence_string_builder.cc in Sources */,
+				FF3E8C37E38594696772C277 /* shim_utils.cc in Sources */,
+				7C0069CD3F6C2B7F7E0FD00D /* xlast.cc in Sources */,
+				9AD72C2B9A7A0F5DD4CEC26B /* xmp_volume_patch.cc in Sources */,
+				37AB17033075D6B5BAEA3D43 /* gpd_achievement_backend.cc in Sources */,
+				F79842C30422F5357F07C103 /* achievement_manager.cc in Sources */,
+				E77A5AF354A2696556355933 /* app_manager.cc in Sources */,
+				52187F926CE4EE4470B585D2 /* messenger_app.cc in Sources */,
+				B0E40F8C7F07633E0615B5CC /* xam_app.cc in Sources */,
+				CA5B1E90987E72421F8CC4D0 /* xgi_app.cc in Sources */,
+				B34D8106CE19EFB8D1EA8746 /* xlivebase_app.cc in Sources */,
+				38661FEA0689739C8D97C62A /* xmp_app.cc in Sources */,
+				A0DED967639F39D9C0D417A7 /* content_manager.cc in Sources */,
+				F2BD4353B57DA3C512B28193 /* profile_manager.cc in Sources */,
+				E56489ECF549B61EE1BD402C /* create_profile_ui.cc in Sources */,
+				4942379EE18F1D500FD61DDE /* disc_swap_ui.cc in Sources */,
+				F02A138EA3201D40F44279CE /* game_achievements_ui.cc in Sources */,
+				6B11AB10035E90C231A59150 /* gamercard_ui.cc in Sources */,
+				D9278E881D3B5FBA110CE4C8 /* passcode_ui.cc in Sources */,
+				13672EF4F7AE37267B9B6534 /* signin_ui.cc in Sources */,
+				B649BBFE9566D6307170323E /* title_info_ui.cc in Sources */,
+				1A89080D5ED7AD7FA0FEE64D /* user_data.cc in Sources */,
+				EFC12CDB47269FCDF934BB1B /* user_profile.cc in Sources */,
+				4B622E0311F025757FF24C43 /* user_property.cc in Sources */,
+				A71CF61B6DAAED8DDBAD145B /* user_settings.cc in Sources */,
+				447DE5119BE358034DF17351 /* user_tracker.cc in Sources */,
+				A5ADC7C5383B91B7A1143605 /* xam_avatar.cc in Sources */,
+				26EF2B1D9417398F95AA295D /* xam_content.cc in Sources */,
+				CB920069AA349BDB5F169EA9 /* xam_content_aggregate.cc in Sources */,
+				859D5E5B7694CC4DE2984C9B /* xam_content_device.cc in Sources */,
+				A1E689B113092AA3C8CFD7F1 /* xam_enum.cc in Sources */,
+				85D8219FF6FAC291ACC16FDF /* xam_info.cc in Sources */,
+				891B3C27CD69E1990F911A67 /* xam_input.cc in Sources */,
+				BAF3CAA74D819499B65A38E7 /* xam_locale.cc in Sources */,
+				09DBE2074E2A87799051C047 /* xam_media.cc in Sources */,
+				C17A7FD3540849C5BCE0EE13 /* xam_module.cc in Sources */,
+				A9E87CB5A3AA3927DDA93AF5 /* xam_msg.cc in Sources */,
+				DC7151B5D6330E2710320FF5 /* xam_net.cc in Sources */,
+				E7D622397A63EC2BE33C9079 /* xam_notify.cc in Sources */,
+				A610A75F9FD263D1D9D1659F /* xam_nui.cc in Sources */,
+				1A8482275ED32799A0FA6067 /* xam_party.cc in Sources */,
+				381C4E09A5445C7BA6D74C49 /* xam_profile.cc in Sources */,
+				85EEFA29CA3D9F9B0C64D869 /* xam_state.cc in Sources */,
+				428E6B6DB3B10C5F6977B9AD /* xam_task.cc in Sources */,
+				D60D7B0306F172F51A09A943 /* xam_ui.cc in Sources */,
+				C7B940C538DBE1B7EEA28F05 /* xam_user.cc in Sources */,
+				B65B7CD5FAAA22473CD15B15 /* xam_video.cc in Sources */,
+				76F381F3BB422765FD696033 /* xam_voice.cc in Sources */,
+				E7AC11DCCBF31A0E4FE0481C /* gpd_info.cc in Sources */,
+				45A3883C5588B46E41FC3E7C /* gpd_info_profile.cc in Sources */,
+				685EEA7E6801CDB0A25680BE /* gpd_info_title.cc in Sources */,
+				0599980EE9E0A0406DCDCE4E /* spa_info.cc in Sources */,
+				BE5CF1468C8044F8138E9786 /* xdbf_io.cc in Sources */,
+				783A8F6E465DE320CD6C35AE /* xbdm_misc.cc in Sources */,
+				F8D8F5620B02D2143EF3BBA2 /* xbdm_module.cc in Sources */,
+				91F467597111818B4D1ADD99 /* cert_monitor.cc in Sources */,
+				6885354B8351A3FD87223B8B /* debug_monitor.cc in Sources */,
+				6CDB2D816C7E10B3A6D2C3C1 /* xboxkrnl_audio.cc in Sources */,
+				388DC1EBD2B1B71D82D7982B /* xboxkrnl_audio_xma.cc in Sources */,
+				25558DC124F870F35F4D2401 /* xboxkrnl_crypt.cc in Sources */,
+				E736AD8BE6D990BD212E43CB /* xboxkrnl_debug.cc in Sources */,
+				255C32F124FF16235F53C931 /* xboxkrnl_error.cc in Sources */,
+				AF5F99A78E7CB3D96A860FE7 /* xboxkrnl_hal.cc in Sources */,
+				4E01FBA72D1F15D9092871E7 /* xboxkrnl_hid.cc in Sources */,
+				FA6FB50D92BC9ABFC1039B4D /* xboxkrnl_io.cc in Sources */,
+				BF78C203CF5DEE35BBD17843 /* xboxkrnl_io_info.cc in Sources */,
+				E94D5C0F5D35D3C17F83824F /* xboxkrnl_memory.cc in Sources */,
+				5596C375706332277433C9B5 /* xboxkrnl_misc.cc in Sources */,
+				5110F869C4F9701BE7471EA9 /* xboxkrnl_module.cc in Sources */,
+				009B382F10806461FCF3EE6F /* xboxkrnl_modules.cc in Sources */,
+				877F2ABF1FCC10714E1310FF /* xboxkrnl_ob.cc in Sources */,
+				C20EEC81A12C06B37D3562C1 /* xboxkrnl_rtl.cc in Sources */,
+				FBEBAAF10BD0D723F8446131 /* xboxkrnl_strings.cc in Sources */,
+				F63C1489906009BB4085EAC9 /* xboxkrnl_threading.cc in Sources */,
+				601C4ED3D404C685F6527513 /* xboxkrnl_usbcam.cc in Sources */,
+				3EE399AB3E867CDD78DB2FEB /* xboxkrnl_video.cc in Sources */,
+				391121B948F64DEB3569D7F9 /* xboxkrnl_xconfig.cc in Sources */,
+				F918F6A4545A4A1627B494E4 /* xconfig.cc in Sources */,
+				899DA87CCDEC4DEE101386BC /* xenumerator.cc in Sources */,
+				1F9990BC4F2B5FAE2A389EFC /* xevent.cc in Sources */,
+				4EC555B8A552C02A7DCBD3F8 /* xfile.cc in Sources */,
+				58711E5CC5992CCEC72C1C9C /* xiocompletion.cc in Sources */,
+				3AE71A0496286D766982B844 /* xmodule.cc in Sources */,
+				90AB028AEBEC55FCBF46A0CA /* xmutant.cc in Sources */,
+				56523D961CE035088AE25BD6 /* xnotifylistener.cc in Sources */,
+				8AE21046E62363B8B97DAE86 /* xobject.cc in Sources */,
+				3D413700AE63D7F2642A8540 /* xsemaphore.cc in Sources */,
+				874CFFEAE28E535CB5E89E2A /* xsocket.cc in Sources */,
+				59D81618C700248AC8931458 /* xsymboliclink.cc in Sources */,
+				75A642A8D0E7961AA441E0E8 /* xthread.cc in Sources */,
+				976EFF3AC700CE2CA20E0D7A /* xtimer.cc in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		363A8E4865CC5D3A40D99C88 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "libxenia-base.a";
+			targetProxy = FC85B6781E5163AA5B068CB8 /* PBXContainerItemProxy */;
+		};
+		879E041CAFD8BCCE97744A5C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "libxenia-vfs.a";
+			targetProxy = 7A57E6CCA9E9B5BE84F6F50C /* PBXContainerItemProxy */;
+		};
+		B09B5F92C7ADFAC4B7C9F5D2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = libfmt.a;
+			targetProxy = C300B102BC66B274B0020F42 /* PBXContainerItemProxy */;
+		};
+		CAF0465E13612A9057FFFC9E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = libaes_128.a;
+			targetProxy = 27F2714E7E7FDBC056F8EF8E /* PBXContainerItemProxy */;
+		};
+		DA78D3A202B38C54EA4F19E2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "libxenia-hid.a";
+			targetProxy = 288CA712581E7604332BB552 /* PBXContainerItemProxy */;
+		};
+		F1D25FF31A0D18A501A8A633 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "libxenia-apu.a";
+			targetProxy = 2B17BD835AA98C7535B6CBC3 /* PBXContainerItemProxy */;
+		};
+		F70A5EB51F45176706E0A4F5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "libxenia-cpu.a";
+			targetProxy = D74F948506E16377E1EEA2C5 /* PBXContainerItemProxy */;
+		};
+		FA3A009E42AAE4D08749B6DE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "libzlib-ng.a";
+			targetProxy = 4073738E9700DE006F79F1CE /* PBXContainerItemProxy */;
+		};
+		FAEA72B1435B56E387FA28F1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = libpugixml.a;
+			targetProxy = 57322801ADBF92738638A641 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		0D25D32C0DD8D01E81BAA16C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					arm64,
+				);
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				GCC_C_LANGUAGE_STANDARD = c17;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					VULKAN_HPP_NO_TO_STRING,
+					IMGUI_DISABLE_OBSOLETE_FUNCTIONS,
+					IMGUI_DISABLE_DEFAULT_FONT,
+					IMGUI_USE_STB_SPRINTF,
+					USE_CPP17,
+					_LIB,
+					NDEBUG,
+					"_NO_DEBUG_HEAP=1",
+					ASIO_STANDALONE,
+					ASIO_NO_DEPRECATED,
+					X86_FEATURES,
+					X86_HAVE_XSAVE_INTRIN,
+					X86_SSSE3,
+					X86_SSE42,
+					WITH_GZFILEOP,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				OBJROOT = "obj/iOS-ARM64/Release/iOS-ARM64/Release/xenia-kernel";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CFLAGS = (
+					"-O3",
+					"-finline-functions",
+					"-funroll-loops",
+					"-fomit-frame-pointer",
+					"-w",
+					"-fno-modules",
+				);
+				SDKROOT = (
+					iphoneos,
+				);
+				SYMROOT = "bin/iOS-ARM64/Release";
+				SYSTEM_HEADER_SEARCH_PATHS = (
+					../third_party/asio/include,
+					"$(inherited)",
+				);
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+				USER_HEADER_SEARCH_PATHS = (
+					..,
+					../src,
+					../third_party,
+				);
+			};
+			name = Release;
+		};
+		10E479A227F714D418130FE2 /* Valgrind */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					arm64,
+				);
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = c17;
+				GCC_OPTIMIZATION_LEVEL = g;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					VULKAN_HPP_NO_TO_STRING,
+					IMGUI_DISABLE_OBSOLETE_FUNCTIONS,
+					IMGUI_DISABLE_DEFAULT_FONT,
+					IMGUI_USE_STB_SPRINTF,
+					USE_CPP17,
+					_LIB,
+					DEBUG,
+					NDEBUG,
+					"_NO_DEBUG_HEAP=1",
+					ASIO_STANDALONE,
+					ASIO_NO_DEPRECATED,
+					X86_FEATURES,
+					X86_HAVE_XSAVE_INTRIN,
+					X86_SSSE3,
+					X86_SSE42,
+					WITH_GZFILEOP,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				OBJROOT = "obj/iOS-ARM64/Valgrind/iOS-ARM64/Valgrind/xenia-kernel";
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = (
+					"-fno-omit-frame-pointer",
+					"-fno-inline-functions",
+					"-w",
+					"-fno-modules",
+				);
+				SDKROOT = (
+					iphoneos,
+				);
+				SYMROOT = "bin/iOS-ARM64/Valgrind";
+				SYSTEM_HEADER_SEARCH_PATHS = (
+					../third_party/asio/include,
+					"$(inherited)",
+				);
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+				USER_HEADER_SEARCH_PATHS = (
+					..,
+					../src,
+					../third_party,
+				);
+			};
+			name = Valgrind;
+		};
+		21F8353222AB3224968D0372 /* Checked */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					arm64,
+				);
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = c17;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					VULKAN_HPP_NO_TO_STRING,
+					IMGUI_DISABLE_OBSOLETE_FUNCTIONS,
+					IMGUI_DISABLE_DEFAULT_FONT,
+					USE_CPP17,
+					_LIB,
+					DEBUG,
+					NDEBUG,
+					ASIO_STANDALONE,
+					ASIO_NO_DEPRECATED,
+					X86_FEATURES,
+					X86_HAVE_XSAVE_INTRIN,
+					X86_SSSE3,
+					X86_SSE42,
+					WITH_GZFILEOP,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				OBJROOT = "obj/iOS-ARM64/Checked/iOS-ARM64/Checked/xenia-kernel";
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = (
+					"-w",
+					"-fno-modules",
+				);
+				SDKROOT = (
+					iphoneos,
+				);
+				SYMROOT = "bin/iOS-ARM64/Checked";
+				SYSTEM_HEADER_SEARCH_PATHS = (
+					../third_party/asio/include,
+					"$(inherited)",
+				);
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+				USER_HEADER_SEARCH_PATHS = (
+					..,
+					../src,
+					../third_party,
+				);
+			};
+			name = Checked;
+		};
+		884F1797F971B889AF3865D7 /* Valgrind */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					arm64,
+				);
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "bin/iOS-ARM64/Valgrind";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_DYNAMIC_NO_PIC = NO;
+				INSTALL_PATH = /usr/local/lib;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				PRODUCT_NAME = "xenia-kernel";
+				SDKROOT = (
+					iphoneos,
+				);
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+			};
+			name = Valgrind;
+		};
+		8F5818E1C15163933B309F21 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					arm64,
+				);
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "bin/iOS-ARM64/Release";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_DYNAMIC_NO_PIC = NO;
+				INSTALL_PATH = /usr/local/lib;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				PRODUCT_NAME = "xenia-kernel";
+				SDKROOT = (
+					iphoneos,
+				);
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+			};
+			name = Release;
+		};
+		D2A7147244322CE4F33352B2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					arm64,
+				);
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = c17;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					VULKAN_HPP_NO_TO_STRING,
+					IMGUI_DISABLE_OBSOLETE_FUNCTIONS,
+					IMGUI_DISABLE_DEFAULT_FONT,
+					IMGUI_USE_STB_SPRINTF,
+					USE_CPP17,
+					_LIB,
+					DEBUG,
+					"_NO_DEBUG_HEAP=1",
+					ASIO_STANDALONE,
+					ASIO_NO_DEPRECATED,
+					X86_FEATURES,
+					X86_HAVE_XSAVE_INTRIN,
+					X86_SSSE3,
+					X86_SSE42,
+					WITH_GZFILEOP,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				OBJROOT = "obj/iOS-ARM64/Debug/iOS-ARM64/Debug/xenia-kernel";
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = (
+					"-w",
+					"-fno-modules",
+				);
+				SDKROOT = (
+					iphoneos,
+				);
+				SYMROOT = "bin/iOS-ARM64/Debug";
+				SYSTEM_HEADER_SEARCH_PATHS = (
+					../third_party/asio/include,
+					"$(inherited)",
+				);
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+				USER_HEADER_SEARCH_PATHS = (
+					..,
+					../src,
+					../third_party,
+				);
+			};
+			name = Debug;
+		};
+		E79E582735014E59AB204E67 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					arm64,
+				);
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "bin/iOS-ARM64/Debug";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_DYNAMIC_NO_PIC = NO;
+				INSTALL_PATH = /usr/local/lib;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				PRODUCT_NAME = "xenia-kernel";
+				SDKROOT = (
+					iphoneos,
+				);
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+			};
+			name = Debug;
+		};
+		F0393A67223285199C11C0A7 /* Checked */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					arm64,
+				);
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "bin/iOS-ARM64/Checked";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_DYNAMIC_NO_PIC = NO;
+				INSTALL_PATH = /usr/local/lib;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				PRODUCT_NAME = "xenia-kernel";
+				SDKROOT = (
+					iphoneos,
+				);
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+			};
+			name = Checked;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		16ED69E12E0005131E1C0021 /* Build configuration list for PBXNativeTarget "libxenia-kernel.a" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F0393A67223285199C11C0A7 /* Checked */,
+				E79E582735014E59AB204E67 /* Debug */,
+				8F5818E1C15163933B309F21 /* Release */,
+				884F1797F971B889AF3865D7 /* Valgrind */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Checked;
+		};
+		1DEB928908733DD80010E9CD /* Build configuration list for PBXProject "xenia-kernel" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				21F8353222AB3224968D0372 /* Checked */,
+				D2A7147244322CE4F33352B2 /* Debug */,
+				0D25D32C0DD8D01E81BAA16C /* Release */,
+				10E479A227F714D418130FE2 /* Valgrind */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Checked;
+		};
+/* End XCConfigurationList section */
+};
+rootObject = 08FB7793FE84155DC02AAC07 /* Project object */;
+}

@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+	version = "1.0">
+	<Group
+		location = "container:"
+		name = "src">
+		<FileRef
+			location = "group:xenia-app.xcodeproj">
+		</FileRef>
+		<FileRef
+			location = "group:xenia-apu.xcodeproj">
+		</FileRef>
+		<FileRef
+			location = "group:xenia-apu-nop.xcodeproj">
+		</FileRef>
+		<FileRef
+			location = "group:xenia-apu-sdl.xcodeproj">
+		</FileRef>
+		<FileRef
+			location = "group:xenia-base.xcodeproj">
+		</FileRef>
+		<FileRef
+			location = "group:xenia-core.xcodeproj">
+		</FileRef>
+		<FileRef
+			location = "group:xenia-cpu.xcodeproj">
+		</FileRef>
+		<FileRef
+			location = "group:xenia-cpu-backend-a64.xcodeproj">
+		</FileRef>
+		<FileRef
+			location = "group:xenia-debug-ui.xcodeproj">
+		</FileRef>
+		<FileRef
+			location = "group:xenia-gpu.xcodeproj">
+		</FileRef>
+		<FileRef
+			location = "group:xenia-gpu-metal.xcodeproj">
+		</FileRef>
+		<FileRef
+			location = "group:xenia-gpu-metal-trace-dump.xcodeproj">
+		</FileRef>
+		<FileRef
+			location = "group:xenia-gpu-metal-trace-viewer.xcodeproj">
+		</FileRef>
+		<FileRef
+			location = "group:xenia-gpu-null.xcodeproj">
+		</FileRef>
+		<FileRef
+			location = "group:xenia-helper-sdl.xcodeproj">
+		</FileRef>
+		<FileRef
+			location = "group:xenia-hid.xcodeproj">
+		</FileRef>
+		<FileRef
+			location = "group:xenia-hid-nop.xcodeproj">
+		</FileRef>
+		<FileRef
+			location = "group:xenia-hid-sdl.xcodeproj">
+		</FileRef>
+		<FileRef
+			location = "group:xenia-hid-skylander.xcodeproj">
+		</FileRef>
+		<FileRef
+			location = "group:xenia-kernel.xcodeproj">
+		</FileRef>
+		<FileRef
+			location = "group:xenia-patcher.xcodeproj">
+		</FileRef>
+		<FileRef
+			location = "group:xenia-ui.xcodeproj">
+		</FileRef>
+		<FileRef
+			location = "group:xenia-ui-metal.xcodeproj">
+		</FileRef>
+		<FileRef
+			location = "group:xenia-vfs.xcodeproj">
+		</FileRef>
+	</Group>
+	<Group
+		location = "container:"
+		name = "third_party">
+		<FileRef
+			location = "group:SDL2.xcodeproj">
+		</FileRef>
+		<FileRef
+			location = "group:aes_128.xcodeproj">
+		</FileRef>
+		<FileRef
+			location = "group:asio.xcodeproj">
+		</FileRef>
+		<FileRef
+			location = "group:capstone.xcodeproj">
+		</FileRef>
+		<FileRef
+			location = "group:cxxopts.xcodeproj">
+		</FileRef>
+		<FileRef
+			location = "group:discord-rpc.xcodeproj">
+		</FileRef>
+		<FileRef
+			location = "group:dxbc.xcodeproj">
+		</FileRef>
+		<FileRef
+			location = "group:fmt.xcodeproj">
+		</FileRef>
+		<FileRef
+			location = "group:glslang-spirv.xcodeproj">
+		</FileRef>
+		<FileRef
+			location = "group:imgui.xcodeproj">
+		</FileRef>
+		<FileRef
+			location = "group:libavcodec.xcodeproj">
+		</FileRef>
+		<FileRef
+			location = "group:libavformat.xcodeproj">
+		</FileRef>
+		<FileRef
+			location = "group:libavutil.xcodeproj">
+		</FileRef>
+		<FileRef
+			location = "group:metal-cpp.xcodeproj">
+		</FileRef>
+		<FileRef
+			location = "group:miniaudio.xcodeproj">
+		</FileRef>
+		<FileRef
+			location = "group:mspack.xcodeproj">
+		</FileRef>
+		<FileRef
+			location = "group:pugixml.xcodeproj">
+		</FileRef>
+		<FileRef
+			location = "group:snappy.xcodeproj">
+		</FileRef>
+		<FileRef
+			location = "group:spirv-cross.xcodeproj">
+		</FileRef>
+		<FileRef
+			location = "group:tomlplusplus.xcodeproj">
+		</FileRef>
+		<FileRef
+			location = "group:xxhash.xcodeproj">
+		</FileRef>
+		<FileRef
+			location = "group:zarchive.xcodeproj">
+		</FileRef>
+		<FileRef
+			location = "group:zlib-ng.xcodeproj">
+		</FileRef>
+		<FileRef
+			location = "group:zstd.xcodeproj">
+		</FileRef>
+	</Group>
+</Workspace>

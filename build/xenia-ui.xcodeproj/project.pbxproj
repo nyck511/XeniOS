@@ -1,0 +1,804 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		02DB5E32C59BBEA422D09C72 /* patches_dialog_wx.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2E1F873A12668F6C9653BD7A /* patches_dialog_wx.cc */; };
+		03C4281C9651F20EFF2A965C /* imgui_dialog.cc in Sources */ = {isa = PBXBuildFile; fileRef = 602EDA84239A9C36623E40C4 /* imgui_dialog.cc */; };
+		093DE5F6A1B5D368CD9CC436 /* graphics_upload_buffer_pool.cc in Sources */ = {isa = PBXBuildFile; fileRef = A8750ABE4298FFF0F2BEE0FE /* graphics_upload_buffer_pool.cc */; };
+		0C38E3B6FD3051A86933D1F6 /* imgui_confirm_dialog.cc in Sources */ = {isa = PBXBuildFile; fileRef = F211137E8A5DF930B8A4F9BE /* imgui_confirm_dialog.cc */; };
+		123B8FE6A864A1D869CAFE26 /* game_scan_progress_dialog_wx.cc in Sources */ = {isa = PBXBuildFile; fileRef = 82DFFCAE35D6066086F862EE /* game_scan_progress_dialog_wx.cc */; };
+		143F76A020CA29129BAEF4E0 /* game_config_dialog_wx.cc in Sources */ = {isa = PBXBuildFile; fileRef = BCDF63C89BFC7DFA7805DA08 /* game_config_dialog_wx.cc */; };
+		2AB5F2461EB53BB8A3A05086 /* microprofile_drawer.cc in Sources */ = {isa = PBXBuildFile; fileRef = F8E5620E3CF9334030CAB84E /* microprofile_drawer.cc */; };
+		4AAC41D43EAB8B46C396A014 /* redist_installer_wx.cc in Sources */ = {isa = PBXBuildFile; fileRef = 8C6B83BCD07F54EEC450D9FC /* redist_installer_wx.cc */; };
+		4C154A5E12A341D080A5689E /* file_picker_ios.mm in Sources */ = {isa = PBXBuildFile; fileRef = 413978A6D6B037D8454C8EE6 /* file_picker_ios.mm */; };
+		4C2697EEE49E85601085762E /* advanced_settings_dialog_wx.cc in Sources */ = {isa = PBXBuildFile; fileRef = D18269366BA65E681BCC3F76 /* advanced_settings_dialog_wx.cc */; };
+		4E06E0861494D7F88296FEC6 /* windowed_app_wx.cc in Sources */ = {isa = PBXBuildFile; fileRef = 6029904EF5A04F80643CA68E /* windowed_app_wx.cc */; };
+		5102C6A4BE2AD516BFBDC4E4 /* graphics_util.cc in Sources */ = {isa = PBXBuildFile; fileRef = 48E71D8C964A13BE0C6913CC /* graphics_util.cc */; };
+		511CBB5862D3FB4AD841E998 /* imgui_guest_notification.cc in Sources */ = {isa = PBXBuildFile; fileRef = 1F758000935DF7B2B5ABA640 /* imgui_guest_notification.cc */; };
+		54A73BF0C90180E246E50A30 /* touch_controls_ios.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2DB0BD183FDA99CA73CB8358 /* touch_controls_ios.mm */; };
+		613C146E0325B060FA4CC2AE /* immediate_drawer.cc in Sources */ = {isa = PBXBuildFile; fileRef = 7B4C50B6496FA468D07DF6F6 /* immediate_drawer.cc */; };
+		6BDB237EE03568705E18F1BE /* imgui_audio_dialog.cc in Sources */ = {isa = PBXBuildFile; fileRef = E38A54C6F5B4317829A51B06 /* imgui_audio_dialog.cc */; };
+		778EE4A4563180160B1382E4 /* apple_ui_navigation_mac.cc in Sources */ = {isa = PBXBuildFile; fileRef = BE53858CBDF668BEF84B1BCC /* apple_ui_navigation_mac.cc */; };
+		7935282011AD15923D940660 /* imgui_postprocessing_dialog.cc in Sources */ = {isa = PBXBuildFile; fileRef = 8A947B4824B8707AD4DE5188 /* imgui_postprocessing_dialog.cc */; };
+		7B4289FE8CF9C9F00267B83E /* imgui_performance_dialog.cc in Sources */ = {isa = PBXBuildFile; fileRef = A9117D461CF9F4F83F47A386 /* imgui_performance_dialog.cc */; };
+		7E1D5A8477DF16F6B1DE18C4 /* wx_locale.cc in Sources */ = {isa = PBXBuildFile; fileRef = 502D9F6C989E839EDD3D55AC /* wx_locale.cc */; };
+		8769B6B4F88C57A6AE5304F4 /* window_ios.mm in Sources */ = {isa = PBXBuildFile; fileRef = 93A3419CBBDDFA4EA37987DC /* window_ios.mm */; };
+		8B950B9825EEF48A622759D8 /* install_progress_dialog_wx.cc in Sources */ = {isa = PBXBuildFile; fileRef = 3E80E640DC61E6F2B3E02C80 /* install_progress_dialog_wx.cc */; };
+		8BCF08046A71A3761F53A644 /* imgui_host_notification.cc in Sources */ = {isa = PBXBuildFile; fileRef = 9D44E2EC9CE7C61ED73C792C /* imgui_host_notification.cc */; };
+		8EFC3CB888BDF92AC2BCFAF8 /* presenter.cc in Sources */ = {isa = PBXBuildFile; fileRef = 8F629860D7D37C921C724EA0 /* presenter.cc */; };
+		93ADFD360808422885EBCB76 /* apple_theme_tokens.cc in Sources */ = {isa = PBXBuildFile; fileRef = 4ADE76FE5D0853B090F93D3E /* apple_theme_tokens.cc */; };
+		9DAAB02C1204F51E8FE87E6C /* game_list_panel_wx.cc in Sources */ = {isa = PBXBuildFile; fileRef = 4F63AF94618D8C46957E75D4 /* game_list_panel_wx.cc */; };
+		9F6839157E0AD48732ECD755 /* libxenia-base.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E9AE83DDE951670F23A61A1D /* libxenia-base.a */; };
+		A4A9C0E0E8F866522B1F9F20 /* icon_decode.cc in Sources */ = {isa = PBXBuildFile; fileRef = 6FB718089182C53ACE37EE48 /* icon_decode.cc */; };
+		AC97209E03FC9390B60AAEDE /* file_picker_wx.cc in Sources */ = {isa = PBXBuildFile; fileRef = 974853E6C9419E984320DA26 /* file_picker_wx.cc */; };
+		B15E2F0E77EC2680E5EE4D4E /* profile_dialogs.cc in Sources */ = {isa = PBXBuildFile; fileRef = C9BECA565F358988CDD1E096 /* profile_dialogs.cc */; };
+		B5325112A629BF04122D3F52 /* windowed_app_context.cc in Sources */ = {isa = PBXBuildFile; fileRef = E940E51A818DCACCAFD4CB5A /* windowed_app_context.cc */; };
+		B6CA638EC881A3803DEF91CE /* windowed_app_context_ios.mm in Sources */ = {isa = PBXBuildFile; fileRef = EB7D15D65F658D8881B33C16 /* windowed_app_context_ios.mm */; };
+		B8AF2B36FCFDD0A83F250976 /* surface_ios.mm in Sources */ = {isa = PBXBuildFile; fileRef = B3E92BFED5B4D930126A023E /* surface_ios.mm */; };
+		BA695BAEB42B1820EE2A19EE /* menu_item.cc in Sources */ = {isa = PBXBuildFile; fileRef = 774232F6BFB317280451E936 /* menu_item.cc */; };
+		BE49981CD000D80E456EC65C /* quick_settings_dialog_wx.cc in Sources */ = {isa = PBXBuildFile; fileRef = 37187684AB00EE36CD4E9CC4 /* quick_settings_dialog_wx.cc */; };
+		C3AA10D4BD6BCD46F76ACF14 /* window_wx.cc in Sources */ = {isa = PBXBuildFile; fileRef = E15298BC29C37CEE6E624EFC /* window_wx.cc */; };
+		C8BCDD78B9B44B6A25B7CBB8 /* imgui_gamepad_dialog.cc in Sources */ = {isa = PBXBuildFile; fileRef = DC383C20748521D2A2CC2260 /* imgui_gamepad_dialog.cc */; };
+		CD33A0CEABD63C4060B83F0E /* windowed_app_context_wx.cc in Sources */ = {isa = PBXBuildFile; fileRef = 5BD038165B731B4895C7CE56 /* windowed_app_context_wx.cc */; };
+		D25B4A8664E91478CDC1B8C6 /* imgui_drawer.cc in Sources */ = {isa = PBXBuildFile; fileRef = 01638D4EC4CF4F000372F38E /* imgui_drawer.cc */; };
+		D7DAFDEA6A68C7DCD3416C2A /* menu_item_wx.cc in Sources */ = {isa = PBXBuildFile; fileRef = B69910727A04D224B8A876B2 /* menu_item_wx.cc */; };
+		EA6BAB4A5EC5F03CDCA9798A /* imgui_notification.cc in Sources */ = {isa = PBXBuildFile; fileRef = 732FD9D28559B684B94AA012 /* imgui_notification.cc */; };
+		EB55F4381AE7C32AF5F50278 /* window.cc in Sources */ = {isa = PBXBuildFile; fileRef = F702B0E099F0D7922916B720 /* window.cc */; };
+		EED285BE4637F8B0F84613FE /* apple_ui_flags.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2B6C57065D65A1B8D744DD46 /* apple_ui_flags.cc */; };
+		EEFB167000B25662762044B0 /* profile_editor_dialog_wx.cc in Sources */ = {isa = PBXBuildFile; fileRef = 62034D98D5EBC54AF83973D8 /* profile_editor_dialog_wx.cc */; };
+		F4E52328693F681AE722F168 /* imgui_debug_dialog.cc in Sources */ = {isa = PBXBuildFile; fileRef = 430454D0552E3182891F1B10 /* imgui_debug_dialog.cc */; };
+		F9A0EA2E6DFB2F20EBDEB86E /* imgui_context_menu.cc in Sources */ = {isa = PBXBuildFile; fileRef = 80B1D87692DBB528C6CC9EB6 /* imgui_context_menu.cc */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AA4B43DFCC16F11108CC1A1F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2D378CBA117E94EC956BC2FA /* xenia-base.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 6C73464C929975FEF9A06C8C;
+			remoteInfo = "libxenia-base.a";
+		};
+		FC85B6781E5163AA5B068CB8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2D378CBA117E94EC956BC2FA /* xenia-base.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 818584B27AEB86246E86E2F2;
+			remoteInfo = "libxenia-base.a";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		01638D4EC4CF4F000372F38E /* imgui_drawer.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = imgui_drawer.cc; path = ../src/xenia/ui/imgui_drawer.cc; sourceTree = "<group>"; };
+		054C03DAA32D048C7AAB4A1A /* advanced_settings_dialog_wx.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = advanced_settings_dialog_wx.h; path = ../src/xenia/ui/advanced_settings_dialog_wx.h; sourceTree = "<group>"; };
+		113363FA432CAEACBD0BEA3A /* profile_dialogs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = profile_dialogs.h; path = ../src/xenia/ui/profile_dialogs.h; sourceTree = "<group>"; };
+		16DC7FE2FB2388147F10B622 /* apple_theme_tokens.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = apple_theme_tokens.h; path = ../src/xenia/ui/apple_theme_tokens.h; sourceTree = "<group>"; };
+		18E51312B3090844632EE952 /* game_scan_progress_dialog_wx.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = game_scan_progress_dialog_wx.h; path = ../src/xenia/ui/game_scan_progress_dialog_wx.h; sourceTree = "<group>"; };
+		1C1257121BB53A445609ED52 /* windowed_app_context_ios.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = windowed_app_context_ios.h; path = ../src/xenia/ui/windowed_app_context_ios.h; sourceTree = "<group>"; };
+		1F758000935DF7B2B5ABA640 /* imgui_guest_notification.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = imgui_guest_notification.cc; path = ../src/xenia/ui/imgui_guest_notification.cc; sourceTree = "<group>"; };
+		1FC4DEB236D779E426F374F2 /* ui_event.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ui_event.h; path = ../src/xenia/ui/ui_event.h; sourceTree = "<group>"; };
+		213AEF4A3C075DFC3FD7F58A /* gpu_completion_timeline.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = gpu_completion_timeline.h; path = ../src/xenia/ui/gpu_completion_timeline.h; sourceTree = "<group>"; };
+		248E362A2431195C5E85CC6A /* imgui_performance_dialog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = imgui_performance_dialog.h; path = ../src/xenia/ui/imgui_performance_dialog.h; sourceTree = "<group>"; };
+		24CA048AF2ED583C79FBAACA /* graphics_provider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = graphics_provider.h; path = ../src/xenia/ui/graphics_provider.h; sourceTree = "<group>"; };
+		265BDD6A73BED39CE9DDD3AA /* apple_ui_flags.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = apple_ui_flags.h; path = ../src/xenia/ui/apple_ui_flags.h; sourceTree = "<group>"; };
+		26AE3A6C4EE8F31E368480AC /* window_demo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = window_demo.h; path = ../src/xenia/ui/window_demo.h; sourceTree = "<group>"; };
+		27E8F2323A12CEE46E03B872 /* microprofile_drawer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = microprofile_drawer.h; path = ../src/xenia/ui/microprofile_drawer.h; sourceTree = "<group>"; };
+		2B6C57065D65A1B8D744DD46 /* apple_ui_flags.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = apple_ui_flags.cc; path = ../src/xenia/ui/apple_ui_flags.cc; sourceTree = "<group>"; };
+		2BAD858CC3FA6B3EF2416BCC /* game_config_dialog_wx.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = game_config_dialog_wx.h; path = ../src/xenia/ui/game_config_dialog_wx.h; sourceTree = "<group>"; };
+		2C4341B24E0EEEE48AC417F2 /* imgui_drawer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = imgui_drawer.h; path = ../src/xenia/ui/imgui_drawer.h; sourceTree = "<group>"; };
+		2C7DE8FA54B8A1AC3C542F3A /* surface_ios.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = surface_ios.h; path = ../src/xenia/ui/surface_ios.h; sourceTree = "<group>"; };
+		2D378CBA117E94EC956BC2FA /* libxenia-base.a */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = xenia-base.xcodeproj; path = "xenia-base.xcodeproj"; sourceTree = SOURCE_ROOT; };
+		2DB0BD183FDA99CA73CB8358 /* touch_controls_ios.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objc; name = touch_controls_ios.mm; path = ../src/xenia/ui/touch_controls_ios.mm; sourceTree = "<group>"; };
+		2E1F873A12668F6C9653BD7A /* patches_dialog_wx.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = patches_dialog_wx.cc; path = ../src/xenia/ui/patches_dialog_wx.cc; sourceTree = "<group>"; };
+		321483F0443E60A2782F4A30 /* apple_ui_navigation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = apple_ui_navigation.h; path = ../src/xenia/ui/apple_ui_navigation.h; sourceTree = "<group>"; };
+		37187684AB00EE36CD4E9CC4 /* quick_settings_dialog_wx.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = quick_settings_dialog_wx.cc; path = ../src/xenia/ui/quick_settings_dialog_wx.cc; sourceTree = "<group>"; };
+		385B3C8A5E816C3CC58862CA /* resources.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = resources.h; path = ../src/xenia/ui/resources.h; sourceTree = "<group>"; };
+		3A60B9C06086E972C78DE000 /* window_wx.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = window_wx.h; path = ../src/xenia/ui/window_wx.h; sourceTree = "<group>"; };
+		3B5DF4541FA4FC86A3922A94 /* imgui_debug_dialog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = imgui_debug_dialog.h; path = ../src/xenia/ui/imgui_debug_dialog.h; sourceTree = "<group>"; };
+		3E80E640DC61E6F2B3E02C80 /* install_progress_dialog_wx.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = install_progress_dialog_wx.cc; path = ../src/xenia/ui/install_progress_dialog_wx.cc; sourceTree = "<group>"; };
+		413978A6D6B037D8454C8EE6 /* file_picker_ios.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objc; name = file_picker_ios.mm; path = ../src/xenia/ui/file_picker_ios.mm; sourceTree = "<group>"; };
+		430454D0552E3182891F1B10 /* imgui_debug_dialog.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = imgui_debug_dialog.cc; path = ../src/xenia/ui/imgui_debug_dialog.cc; sourceTree = "<group>"; };
+		48E71D8C964A13BE0C6913CC /* graphics_util.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = graphics_util.cc; path = ../src/xenia/ui/graphics_util.cc; sourceTree = "<group>"; };
+		4A6DC0E28E81921482531722 /* imgui_confirm_dialog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = imgui_confirm_dialog.h; path = ../src/xenia/ui/imgui_confirm_dialog.h; sourceTree = "<group>"; };
+		4ADE76FE5D0853B090F93D3E /* apple_theme_tokens.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = apple_theme_tokens.cc; path = ../src/xenia/ui/apple_theme_tokens.cc; sourceTree = "<group>"; };
+		4BA5EE7066725D226A42F4B0 /* imgui_host_notification.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = imgui_host_notification.h; path = ../src/xenia/ui/imgui_host_notification.h; sourceTree = "<group>"; };
+		4F63AF94618D8C46957E75D4 /* game_list_panel_wx.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = game_list_panel_wx.cc; path = ../src/xenia/ui/game_list_panel_wx.cc; sourceTree = "<group>"; };
+		502D9F6C989E839EDD3D55AC /* wx_locale.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = wx_locale.cc; path = ../src/xenia/ui/wx_locale.cc; sourceTree = "<group>"; };
+		530F72C462F49EF64F682904 /* install_progress_dialog_wx.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = install_progress_dialog_wx.h; path = ../src/xenia/ui/install_progress_dialog_wx.h; sourceTree = "<group>"; };
+		543686F6387D8F28BC6ABD36 /* imgui_notification.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = imgui_notification.h; path = ../src/xenia/ui/imgui_notification.h; sourceTree = "<group>"; };
+		57BBBAEF6ECE56215EEA512F /* libxenia-ui.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libxenia-ui.a"; path = "libxenia-ui.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5832129E26556650AD63B8DE /* patches_dialog_wx.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = patches_dialog_wx.h; path = ../src/xenia/ui/patches_dialog_wx.h; sourceTree = "<group>"; };
+		595786583D9E8E8AC18BBC98 /* game_list_panel_wx.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = game_list_panel_wx.h; path = ../src/xenia/ui/game_list_panel_wx.h; sourceTree = "<group>"; };
+		59BFA5249DD3765691A4FB64 /* imgui_gamepad_dialog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = imgui_gamepad_dialog.h; path = ../src/xenia/ui/imgui_gamepad_dialog.h; sourceTree = "<group>"; };
+		5BD038165B731B4895C7CE56 /* windowed_app_context_wx.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = windowed_app_context_wx.cc; path = ../src/xenia/ui/windowed_app_context_wx.cc; sourceTree = "<group>"; };
+		5EB518902220DA4260C47ED0 /* graphics_util.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = graphics_util.h; path = ../src/xenia/ui/graphics_util.h; sourceTree = "<group>"; };
+		6029904EF5A04F80643CA68E /* windowed_app_wx.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = windowed_app_wx.cc; path = ../src/xenia/ui/windowed_app_wx.cc; sourceTree = "<group>"; };
+		602EDA84239A9C36623E40C4 /* imgui_dialog.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = imgui_dialog.cc; path = ../src/xenia/ui/imgui_dialog.cc; sourceTree = "<group>"; };
+		62034D98D5EBC54AF83973D8 /* profile_editor_dialog_wx.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = profile_editor_dialog_wx.cc; path = ../src/xenia/ui/profile_editor_dialog_wx.cc; sourceTree = "<group>"; };
+		6F14F13EB328C270A6FA477E /* windowed_app_context.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = windowed_app_context.h; path = ../src/xenia/ui/windowed_app_context.h; sourceTree = "<group>"; };
+		6FB718089182C53ACE37EE48 /* icon_decode.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = icon_decode.cc; path = ../src/xenia/ui/icon_decode.cc; sourceTree = "<group>"; };
+		732FD9D28559B684B94AA012 /* imgui_notification.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = imgui_notification.cc; path = ../src/xenia/ui/imgui_notification.cc; sourceTree = "<group>"; };
+		774232F6BFB317280451E936 /* menu_item.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = menu_item.cc; path = ../src/xenia/ui/menu_item.cc; sourceTree = "<group>"; };
+		7B3A62169D060F48D9BB3856 /* menu_item_wx.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = menu_item_wx.h; path = ../src/xenia/ui/menu_item_wx.h; sourceTree = "<group>"; };
+		7B4C50B6496FA468D07DF6F6 /* immediate_drawer.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = immediate_drawer.cc; path = ../src/xenia/ui/immediate_drawer.cc; sourceTree = "<group>"; };
+		7B99E2C89D658FFADA1AB908 /* imgui_dialog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = imgui_dialog.h; path = ../src/xenia/ui/imgui_dialog.h; sourceTree = "<group>"; };
+		7C30E9746077F1A6E4651FB4 /* touch_controls_ios.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = touch_controls_ios.h; path = ../src/xenia/ui/touch_controls_ios.h; sourceTree = "<group>"; };
+		7D729EC4CAD594F640F49504 /* config_helpers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = config_helpers.h; path = ../src/xenia/ui/config_helpers.h; sourceTree = "<group>"; };
+		7F911A8EA7CBD3408F6760CE /* file_picker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = file_picker.h; path = ../src/xenia/ui/file_picker.h; sourceTree = "<group>"; };
+		80B1D87692DBB528C6CC9EB6 /* imgui_context_menu.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = imgui_context_menu.cc; path = ../src/xenia/ui/imgui_context_menu.cc; sourceTree = "<group>"; };
+		82DFFCAE35D6066086F862EE /* game_scan_progress_dialog_wx.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = game_scan_progress_dialog_wx.cc; path = ../src/xenia/ui/game_scan_progress_dialog_wx.cc; sourceTree = "<group>"; };
+		8A947B4824B8707AD4DE5188 /* imgui_postprocessing_dialog.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = imgui_postprocessing_dialog.cc; path = ../src/xenia/ui/imgui_postprocessing_dialog.cc; sourceTree = "<group>"; };
+		8B18166470AF1D9633F42CA4 /* achievement_notification_payload.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = achievement_notification_payload.h; path = ../src/xenia/ui/achievement_notification_payload.h; sourceTree = "<group>"; };
+		8C6B83BCD07F54EEC450D9FC /* redist_installer_wx.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = redist_installer_wx.cc; path = ../src/xenia/ui/redist_installer_wx.cc; sourceTree = "<group>"; };
+		8F629860D7D37C921C724EA0 /* presenter.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = presenter.cc; path = ../src/xenia/ui/presenter.cc; sourceTree = "<group>"; };
+		90A8AF78B6CEDF2A1DD5D5B8 /* ui_drawer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ui_drawer.h; path = ../src/xenia/ui/ui_drawer.h; sourceTree = "<group>"; };
+		93A3419CBBDDFA4EA37987DC /* window_ios.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objc; name = window_ios.mm; path = ../src/xenia/ui/window_ios.mm; sourceTree = "<group>"; };
+		96DEE338DF4FC76A23EE9978 /* window_ios.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = window_ios.h; path = ../src/xenia/ui/window_ios.h; sourceTree = "<group>"; };
+		974853E6C9419E984320DA26 /* file_picker_wx.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = file_picker_wx.cc; path = ../src/xenia/ui/file_picker_wx.cc; sourceTree = "<group>"; };
+		9D44E2EC9CE7C61ED73C792C /* imgui_host_notification.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = imgui_host_notification.cc; path = ../src/xenia/ui/imgui_host_notification.cc; sourceTree = "<group>"; };
+		A07D002A84C4085C08B1366A /* imgui_audio_dialog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = imgui_audio_dialog.h; path = ../src/xenia/ui/imgui_audio_dialog.h; sourceTree = "<group>"; };
+		A6CE6004A6714336E0C5F644 /* imgui_guest_notification.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = imgui_guest_notification.h; path = ../src/xenia/ui/imgui_guest_notification.h; sourceTree = "<group>"; };
+		A754EFBAC2215E6CC5F1F5FA /* windowed_app_context_wx.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = windowed_app_context_wx.h; path = ../src/xenia/ui/windowed_app_context_wx.h; sourceTree = "<group>"; };
+		A7D11106D00BC9B8B7A75746 /* surface_mac.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = surface_mac.h; path = ../src/xenia/ui/surface_mac.h; sourceTree = "<group>"; };
+		A8750ABE4298FFF0F2BEE0FE /* graphics_upload_buffer_pool.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = graphics_upload_buffer_pool.cc; path = ../src/xenia/ui/graphics_upload_buffer_pool.cc; sourceTree = "<group>"; };
+		A9117D461CF9F4F83F47A386 /* imgui_performance_dialog.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = imgui_performance_dialog.cc; path = ../src/xenia/ui/imgui_performance_dialog.cc; sourceTree = "<group>"; };
+		A93A134CD174CBFEB910598C /* icon_decode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = icon_decode.h; path = ../src/xenia/ui/icon_decode.h; sourceTree = "<group>"; };
+		B28022DA96C72B0C1AB4591A /* imgui_context_menu.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = imgui_context_menu.h; path = ../src/xenia/ui/imgui_context_menu.h; sourceTree = "<group>"; };
+		B3E92BFED5B4D930126A023E /* surface_ios.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objc; name = surface_ios.mm; path = ../src/xenia/ui/surface_ios.mm; sourceTree = "<group>"; };
+		B69910727A04D224B8A876B2 /* menu_item_wx.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = menu_item_wx.cc; path = ../src/xenia/ui/menu_item_wx.cc; sourceTree = "<group>"; };
+		BCDF63C89BFC7DFA7805DA08 /* game_config_dialog_wx.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = game_config_dialog_wx.cc; path = ../src/xenia/ui/game_config_dialog_wx.cc; sourceTree = "<group>"; };
+		BE53858CBDF668BEF84B1BCC /* apple_ui_navigation_mac.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = apple_ui_navigation_mac.cc; path = ../src/xenia/ui/apple_ui_navigation_mac.cc; sourceTree = "<group>"; };
+		C3D94F8EF5D29A406FB1D5CE /* window_listener.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = window_listener.h; path = ../src/xenia/ui/window_listener.h; sourceTree = "<group>"; };
+		C8DD31666BCB5818FAF137A6 /* surface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = surface.h; path = ../src/xenia/ui/surface.h; sourceTree = "<group>"; };
+		C9BECA565F358988CDD1E096 /* profile_dialogs.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = profile_dialogs.cc; path = ../src/xenia/ui/profile_dialogs.cc; sourceTree = "<group>"; };
+		C9CBAB76EB9758A8284C81B6 /* windowed_app.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = windowed_app.h; path = ../src/xenia/ui/windowed_app.h; sourceTree = "<group>"; };
+		CA2D9E8C680E9F3E3F8CE4CC /* imgui_postprocessing_dialog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = imgui_postprocessing_dialog.h; path = ../src/xenia/ui/imgui_postprocessing_dialog.h; sourceTree = "<group>"; };
+		D04B191AF67148CC5D783F5A /* menu_item.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = menu_item.h; path = ../src/xenia/ui/menu_item.h; sourceTree = "<group>"; };
+		D17B01C8D11DE4FA0B729808 /* quick_settings_dialog_wx.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = quick_settings_dialog_wx.h; path = ../src/xenia/ui/quick_settings_dialog_wx.h; sourceTree = "<group>"; };
+		D18269366BA65E681BCC3F76 /* advanced_settings_dialog_wx.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = advanced_settings_dialog_wx.cc; path = ../src/xenia/ui/advanced_settings_dialog_wx.cc; sourceTree = "<group>"; };
+		D917791CD8BA5C4E130F0F5C /* profile_editor_dialog_wx.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = profile_editor_dialog_wx.h; path = ../src/xenia/ui/profile_editor_dialog_wx.h; sourceTree = "<group>"; };
+		DC383C20748521D2A2CC2260 /* imgui_gamepad_dialog.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = imgui_gamepad_dialog.cc; path = ../src/xenia/ui/imgui_gamepad_dialog.cc; sourceTree = "<group>"; };
+		DE08FF70042F2F226B3625B0 /* wx_locale.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = wx_locale.h; path = ../src/xenia/ui/wx_locale.h; sourceTree = "<group>"; };
+		E15298BC29C37CEE6E624EFC /* window_wx.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = window_wx.cc; path = ../src/xenia/ui/window_wx.cc; sourceTree = "<group>"; };
+		E38A54C6F5B4317829A51B06 /* imgui_audio_dialog.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = imgui_audio_dialog.cc; path = ../src/xenia/ui/imgui_audio_dialog.cc; sourceTree = "<group>"; };
+		E7338BE285148C945C92D222 /* graphics_upload_buffer_pool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = graphics_upload_buffer_pool.h; path = ../src/xenia/ui/graphics_upload_buffer_pool.h; sourceTree = "<group>"; };
+		E796E29A7D0DA1CCEBA9F8DA /* immediate_drawer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = immediate_drawer.h; path = ../src/xenia/ui/immediate_drawer.h; sourceTree = "<group>"; };
+		E7DAAAA40E00DA567507D0E4 /* presenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = presenter.h; path = ../src/xenia/ui/presenter.h; sourceTree = "<group>"; };
+		E940E51A818DCACCAFD4CB5A /* windowed_app_context.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = windowed_app_context.cc; path = ../src/xenia/ui/windowed_app_context.cc; sourceTree = "<group>"; };
+		EB7D15D65F658D8881B33C16 /* windowed_app_context_ios.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objc; name = windowed_app_context_ios.mm; path = ../src/xenia/ui/windowed_app_context_ios.mm; sourceTree = "<group>"; };
+		F156C7400380A3F237718D80 /* redist_installer_wx.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = redist_installer_wx.h; path = ../src/xenia/ui/redist_installer_wx.h; sourceTree = "<group>"; };
+		F211137E8A5DF930B8A4F9BE /* imgui_confirm_dialog.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = imgui_confirm_dialog.cc; path = ../src/xenia/ui/imgui_confirm_dialog.cc; sourceTree = "<group>"; };
+		F4ED1CB21D27D56404C362F2 /* virtual_key.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = virtual_key.h; path = ../src/xenia/ui/virtual_key.h; sourceTree = "<group>"; };
+		F702B0E099F0D7922916B720 /* window.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = window.cc; path = ../src/xenia/ui/window.cc; sourceTree = "<group>"; };
+		F8E5620E3CF9334030CAB84E /* microprofile_drawer.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = microprofile_drawer.cc; path = ../src/xenia/ui/microprofile_drawer.cc; sourceTree = "<group>"; };
+		FBC3CA64FF349C9680A140A4 /* window.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = window.h; path = ../src/xenia/ui/window.h; sourceTree = "<group>"; };
+		FBD87B722DD1C624A7B101B2 /* windowed_app_wx.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = windowed_app_wx.h; path = ../src/xenia/ui/windowed_app_wx.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E8BF90DFEC3063116D9D071F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9F6839157E0AD48732ECD755 /* libxenia-base.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		ECB2950B8FA0BBBD1EC69B4B /* Embed Libraries */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Libraries";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXGroup section */
+		1930FEC00DA775F25C7B1500 /* xenia-ui */ = {
+			isa = PBXGroup;
+			children = (
+				8B18166470AF1D9633F42CA4 /* achievement_notification_payload.h */,
+				D18269366BA65E681BCC3F76 /* advanced_settings_dialog_wx.cc */,
+				054C03DAA32D048C7AAB4A1A /* advanced_settings_dialog_wx.h */,
+				4ADE76FE5D0853B090F93D3E /* apple_theme_tokens.cc */,
+				16DC7FE2FB2388147F10B622 /* apple_theme_tokens.h */,
+				2B6C57065D65A1B8D744DD46 /* apple_ui_flags.cc */,
+				265BDD6A73BED39CE9DDD3AA /* apple_ui_flags.h */,
+				321483F0443E60A2782F4A30 /* apple_ui_navigation.h */,
+				BE53858CBDF668BEF84B1BCC /* apple_ui_navigation_mac.cc */,
+				7D729EC4CAD594F640F49504 /* config_helpers.h */,
+				7F911A8EA7CBD3408F6760CE /* file_picker.h */,
+				413978A6D6B037D8454C8EE6 /* file_picker_ios.mm */,
+				974853E6C9419E984320DA26 /* file_picker_wx.cc */,
+				BCDF63C89BFC7DFA7805DA08 /* game_config_dialog_wx.cc */,
+				2BAD858CC3FA6B3EF2416BCC /* game_config_dialog_wx.h */,
+				4F63AF94618D8C46957E75D4 /* game_list_panel_wx.cc */,
+				595786583D9E8E8AC18BBC98 /* game_list_panel_wx.h */,
+				82DFFCAE35D6066086F862EE /* game_scan_progress_dialog_wx.cc */,
+				18E51312B3090844632EE952 /* game_scan_progress_dialog_wx.h */,
+				213AEF4A3C075DFC3FD7F58A /* gpu_completion_timeline.h */,
+				24CA048AF2ED583C79FBAACA /* graphics_provider.h */,
+				A8750ABE4298FFF0F2BEE0FE /* graphics_upload_buffer_pool.cc */,
+				E7338BE285148C945C92D222 /* graphics_upload_buffer_pool.h */,
+				48E71D8C964A13BE0C6913CC /* graphics_util.cc */,
+				5EB518902220DA4260C47ED0 /* graphics_util.h */,
+				6FB718089182C53ACE37EE48 /* icon_decode.cc */,
+				A93A134CD174CBFEB910598C /* icon_decode.h */,
+				E38A54C6F5B4317829A51B06 /* imgui_audio_dialog.cc */,
+				A07D002A84C4085C08B1366A /* imgui_audio_dialog.h */,
+				F211137E8A5DF930B8A4F9BE /* imgui_confirm_dialog.cc */,
+				4A6DC0E28E81921482531722 /* imgui_confirm_dialog.h */,
+				80B1D87692DBB528C6CC9EB6 /* imgui_context_menu.cc */,
+				B28022DA96C72B0C1AB4591A /* imgui_context_menu.h */,
+				430454D0552E3182891F1B10 /* imgui_debug_dialog.cc */,
+				3B5DF4541FA4FC86A3922A94 /* imgui_debug_dialog.h */,
+				602EDA84239A9C36623E40C4 /* imgui_dialog.cc */,
+				7B99E2C89D658FFADA1AB908 /* imgui_dialog.h */,
+				01638D4EC4CF4F000372F38E /* imgui_drawer.cc */,
+				2C4341B24E0EEEE48AC417F2 /* imgui_drawer.h */,
+				DC383C20748521D2A2CC2260 /* imgui_gamepad_dialog.cc */,
+				59BFA5249DD3765691A4FB64 /* imgui_gamepad_dialog.h */,
+				1F758000935DF7B2B5ABA640 /* imgui_guest_notification.cc */,
+				A6CE6004A6714336E0C5F644 /* imgui_guest_notification.h */,
+				9D44E2EC9CE7C61ED73C792C /* imgui_host_notification.cc */,
+				4BA5EE7066725D226A42F4B0 /* imgui_host_notification.h */,
+				732FD9D28559B684B94AA012 /* imgui_notification.cc */,
+				543686F6387D8F28BC6ABD36 /* imgui_notification.h */,
+				A9117D461CF9F4F83F47A386 /* imgui_performance_dialog.cc */,
+				248E362A2431195C5E85CC6A /* imgui_performance_dialog.h */,
+				8A947B4824B8707AD4DE5188 /* imgui_postprocessing_dialog.cc */,
+				CA2D9E8C680E9F3E3F8CE4CC /* imgui_postprocessing_dialog.h */,
+				7B4C50B6496FA468D07DF6F6 /* immediate_drawer.cc */,
+				E796E29A7D0DA1CCEBA9F8DA /* immediate_drawer.h */,
+				3E80E640DC61E6F2B3E02C80 /* install_progress_dialog_wx.cc */,
+				530F72C462F49EF64F682904 /* install_progress_dialog_wx.h */,
+				774232F6BFB317280451E936 /* menu_item.cc */,
+				D04B191AF67148CC5D783F5A /* menu_item.h */,
+				B69910727A04D224B8A876B2 /* menu_item_wx.cc */,
+				7B3A62169D060F48D9BB3856 /* menu_item_wx.h */,
+				F8E5620E3CF9334030CAB84E /* microprofile_drawer.cc */,
+				27E8F2323A12CEE46E03B872 /* microprofile_drawer.h */,
+				2E1F873A12668F6C9653BD7A /* patches_dialog_wx.cc */,
+				5832129E26556650AD63B8DE /* patches_dialog_wx.h */,
+				8F629860D7D37C921C724EA0 /* presenter.cc */,
+				E7DAAAA40E00DA567507D0E4 /* presenter.h */,
+				C9BECA565F358988CDD1E096 /* profile_dialogs.cc */,
+				113363FA432CAEACBD0BEA3A /* profile_dialogs.h */,
+				62034D98D5EBC54AF83973D8 /* profile_editor_dialog_wx.cc */,
+				D917791CD8BA5C4E130F0F5C /* profile_editor_dialog_wx.h */,
+				37187684AB00EE36CD4E9CC4 /* quick_settings_dialog_wx.cc */,
+				D17B01C8D11DE4FA0B729808 /* quick_settings_dialog_wx.h */,
+				8C6B83BCD07F54EEC450D9FC /* redist_installer_wx.cc */,
+				F156C7400380A3F237718D80 /* redist_installer_wx.h */,
+				385B3C8A5E816C3CC58862CA /* resources.h */,
+				C8DD31666BCB5818FAF137A6 /* surface.h */,
+				2C7DE8FA54B8A1AC3C542F3A /* surface_ios.h */,
+				B3E92BFED5B4D930126A023E /* surface_ios.mm */,
+				A7D11106D00BC9B8B7A75746 /* surface_mac.h */,
+				7C30E9746077F1A6E4651FB4 /* touch_controls_ios.h */,
+				2DB0BD183FDA99CA73CB8358 /* touch_controls_ios.mm */,
+				90A8AF78B6CEDF2A1DD5D5B8 /* ui_drawer.h */,
+				1FC4DEB236D779E426F374F2 /* ui_event.h */,
+				F4ED1CB21D27D56404C362F2 /* virtual_key.h */,
+				F702B0E099F0D7922916B720 /* window.cc */,
+				FBC3CA64FF349C9680A140A4 /* window.h */,
+				26AE3A6C4EE8F31E368480AC /* window_demo.h */,
+				96DEE338DF4FC76A23EE9978 /* window_ios.h */,
+				93A3419CBBDDFA4EA37987DC /* window_ios.mm */,
+				C3D94F8EF5D29A406FB1D5CE /* window_listener.h */,
+				E15298BC29C37CEE6E624EFC /* window_wx.cc */,
+				3A60B9C06086E972C78DE000 /* window_wx.h */,
+				C9CBAB76EB9758A8284C81B6 /* windowed_app.h */,
+				E940E51A818DCACCAFD4CB5A /* windowed_app_context.cc */,
+				6F14F13EB328C270A6FA477E /* windowed_app_context.h */,
+				1C1257121BB53A445609ED52 /* windowed_app_context_ios.h */,
+				EB7D15D65F658D8881B33C16 /* windowed_app_context_ios.mm */,
+				5BD038165B731B4895C7CE56 /* windowed_app_context_wx.cc */,
+				A754EFBAC2215E6CC5F1F5FA /* windowed_app_context_wx.h */,
+				6029904EF5A04F80643CA68E /* windowed_app_wx.cc */,
+				FBD87B722DD1C624A7B101B2 /* windowed_app_wx.h */,
+				502D9F6C989E839EDD3D55AC /* wx_locale.cc */,
+				DE08FF70042F2F226B3625B0 /* wx_locale.h */,
+				A6C936B49B3FADE6EA134CF4 /* Products */,
+				9D968EAA920D05DCE0E0A4EA /* Projects */,
+			);
+			name = "xenia-ui";
+			sourceTree = "<group>";
+		};
+		4882513F7814203153215F7F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E9AE83DDE951670F23A61A1D /* libxenia-base.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9D968EAA920D05DCE0E0A4EA /* Projects */ = {
+			isa = PBXGroup;
+			children = (
+				2D378CBA117E94EC956BC2FA /* xenia-base.xcodeproj */,
+			);
+			name = Projects;
+			sourceTree = "<group>";
+		};
+		A6C936B49B3FADE6EA134CF4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				57BBBAEF6ECE56215EEA512F /* libxenia-ui.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AF7070F5B0236DE724053F35 /* xenia-ui */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D6FAD93EDA6BAB705BD84F7E /* Build configuration list for PBXNativeTarget "xenia-ui" */;
+			buildPhases = (
+				58A7117F5C17E3B1DD8487BF /* Resources */,
+				C2542AD6C5C4FD084731A116 /* Sources */,
+				E8BF90DFEC3063116D9D071F /* Frameworks */,
+				ECB2950B8FA0BBBD1EC69B4B /* Embed Libraries */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				363A8E4865CC5D3A40D99C88 /* PBXTargetDependency */,
+			);
+			name = "xenia-ui";
+			productName = "xenia-ui";
+			productReference = 57BBBAEF6ECE56215EEA512F /* libxenia-ui.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		08FB7793FE84155DC02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 1DEB928908733DD80010E9CD /* Build configuration list for PBXProject "xenia-ui" */;
+			compatibilityVersion = "Xcode 3.2";
+			hasScannedForEncodings = 1;
+			mainGroup = 1930FEC00DA775F25C7B1500 /* xenia-ui */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 4882513F7814203153215F7F /* Products */;
+					ProjectRef = 2D378CBA117E94EC956BC2FA /* xenia-base.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				AF7070F5B0236DE724053F35 /* libxenia-ui.a */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		E9AE83DDE951670F23A61A1D /* libxenia-base.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libxenia-base.a";
+			remoteRef = AA4B43DFCC16F11108CC1A1F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		58A7117F5C17E3B1DD8487BF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C2542AD6C5C4FD084731A116 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4C2697EEE49E85601085762E /* advanced_settings_dialog_wx.cc in Sources */,
+				93ADFD360808422885EBCB76 /* apple_theme_tokens.cc in Sources */,
+				EED285BE4637F8B0F84613FE /* apple_ui_flags.cc in Sources */,
+				778EE4A4563180160B1382E4 /* apple_ui_navigation_mac.cc in Sources */,
+				4C154A5E12A341D080A5689E /* file_picker_ios.mm in Sources */,
+				AC97209E03FC9390B60AAEDE /* file_picker_wx.cc in Sources */,
+				143F76A020CA29129BAEF4E0 /* game_config_dialog_wx.cc in Sources */,
+				9DAAB02C1204F51E8FE87E6C /* game_list_panel_wx.cc in Sources */,
+				123B8FE6A864A1D869CAFE26 /* game_scan_progress_dialog_wx.cc in Sources */,
+				093DE5F6A1B5D368CD9CC436 /* graphics_upload_buffer_pool.cc in Sources */,
+				5102C6A4BE2AD516BFBDC4E4 /* graphics_util.cc in Sources */,
+				A4A9C0E0E8F866522B1F9F20 /* icon_decode.cc in Sources */,
+				6BDB237EE03568705E18F1BE /* imgui_audio_dialog.cc in Sources */,
+				0C38E3B6FD3051A86933D1F6 /* imgui_confirm_dialog.cc in Sources */,
+				F9A0EA2E6DFB2F20EBDEB86E /* imgui_context_menu.cc in Sources */,
+				F4E52328693F681AE722F168 /* imgui_debug_dialog.cc in Sources */,
+				03C4281C9651F20EFF2A965C /* imgui_dialog.cc in Sources */,
+				D25B4A8664E91478CDC1B8C6 /* imgui_drawer.cc in Sources */,
+				C8BCDD78B9B44B6A25B7CBB8 /* imgui_gamepad_dialog.cc in Sources */,
+				511CBB5862D3FB4AD841E998 /* imgui_guest_notification.cc in Sources */,
+				8BCF08046A71A3761F53A644 /* imgui_host_notification.cc in Sources */,
+				EA6BAB4A5EC5F03CDCA9798A /* imgui_notification.cc in Sources */,
+				7B4289FE8CF9C9F00267B83E /* imgui_performance_dialog.cc in Sources */,
+				7935282011AD15923D940660 /* imgui_postprocessing_dialog.cc in Sources */,
+				613C146E0325B060FA4CC2AE /* immediate_drawer.cc in Sources */,
+				8B950B9825EEF48A622759D8 /* install_progress_dialog_wx.cc in Sources */,
+				BA695BAEB42B1820EE2A19EE /* menu_item.cc in Sources */,
+				D7DAFDEA6A68C7DCD3416C2A /* menu_item_wx.cc in Sources */,
+				2AB5F2461EB53BB8A3A05086 /* microprofile_drawer.cc in Sources */,
+				02DB5E32C59BBEA422D09C72 /* patches_dialog_wx.cc in Sources */,
+				8EFC3CB888BDF92AC2BCFAF8 /* presenter.cc in Sources */,
+				B15E2F0E77EC2680E5EE4D4E /* profile_dialogs.cc in Sources */,
+				EEFB167000B25662762044B0 /* profile_editor_dialog_wx.cc in Sources */,
+				BE49981CD000D80E456EC65C /* quick_settings_dialog_wx.cc in Sources */,
+				4AAC41D43EAB8B46C396A014 /* redist_installer_wx.cc in Sources */,
+				B8AF2B36FCFDD0A83F250976 /* surface_ios.mm in Sources */,
+				54A73BF0C90180E246E50A30 /* touch_controls_ios.mm in Sources */,
+				EB55F4381AE7C32AF5F50278 /* window.cc in Sources */,
+				8769B6B4F88C57A6AE5304F4 /* window_ios.mm in Sources */,
+				C3AA10D4BD6BCD46F76ACF14 /* window_wx.cc in Sources */,
+				B5325112A629BF04122D3F52 /* windowed_app_context.cc in Sources */,
+				B6CA638EC881A3803DEF91CE /* windowed_app_context_ios.mm in Sources */,
+				CD33A0CEABD63C4060B83F0E /* windowed_app_context_wx.cc in Sources */,
+				4E06E0861494D7F88296FEC6 /* windowed_app_wx.cc in Sources */,
+				7E1D5A8477DF16F6B1DE18C4 /* wx_locale.cc in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		363A8E4865CC5D3A40D99C88 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "libxenia-base.a";
+			targetProxy = FC85B6781E5163AA5B068CB8 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		10FFF1493FA6453B98E79F89 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					arm64,
+				);
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				GCC_C_LANGUAGE_STANDARD = c17;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					VULKAN_HPP_NO_TO_STRING,
+					IMGUI_DISABLE_OBSOLETE_FUNCTIONS,
+					IMGUI_DISABLE_DEFAULT_FONT,
+					IMGUI_USE_STB_SPRINTF,
+					USE_CPP17,
+					_LIB,
+					NDEBUG,
+					"_NO_DEBUG_HEAP=1",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				OBJROOT = "obj/iOS-ARM64/Release/iOS-ARM64/Release/xenia-ui";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CFLAGS = (
+					"-O3",
+					"-finline-functions",
+					"-funroll-loops",
+					"-fomit-frame-pointer",
+					"-w",
+					"-fno-modules",
+				);
+				SDKROOT = (
+					iphoneos,
+				);
+				SYMROOT = "bin/iOS-ARM64/Release";
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+				USER_HEADER_SEARCH_PATHS = (
+					..,
+					../src,
+					../third_party,
+				);
+			};
+			name = Release;
+		};
+		25D2534F5478A741ADBA018F /* Checked */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					arm64,
+				);
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = c17;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					VULKAN_HPP_NO_TO_STRING,
+					IMGUI_DISABLE_OBSOLETE_FUNCTIONS,
+					IMGUI_DISABLE_DEFAULT_FONT,
+					USE_CPP17,
+					_LIB,
+					DEBUG,
+					NDEBUG,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				OBJROOT = "obj/iOS-ARM64/Checked/iOS-ARM64/Checked/xenia-ui";
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = (
+					"-w",
+					"-fno-modules",
+				);
+				SDKROOT = (
+					iphoneos,
+				);
+				SYMROOT = "bin/iOS-ARM64/Checked";
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+				USER_HEADER_SEARCH_PATHS = (
+					..,
+					../src,
+					../third_party,
+				);
+			};
+			name = Checked;
+		};
+		2BAEA6FEEF1A68B02DBE0D3E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					arm64,
+				);
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "bin/iOS-ARM64/Release";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_DYNAMIC_NO_PIC = NO;
+				INSTALL_PATH = /usr/local/lib;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				PRODUCT_NAME = "xenia-ui";
+				SDKROOT = (
+					iphoneos,
+				);
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+			};
+			name = Release;
+		};
+		2DD0BB044F9C68368C519144 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					arm64,
+				);
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "bin/iOS-ARM64/Debug";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_DYNAMIC_NO_PIC = NO;
+				INSTALL_PATH = /usr/local/lib;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				PRODUCT_NAME = "xenia-ui";
+				SDKROOT = (
+					iphoneos,
+				);
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+			};
+			name = Debug;
+		};
+		8C8FC8844FFB8A368E9F2EC4 /* Checked */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					arm64,
+				);
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "bin/iOS-ARM64/Checked";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_DYNAMIC_NO_PIC = NO;
+				INSTALL_PATH = /usr/local/lib;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				PRODUCT_NAME = "xenia-ui";
+				SDKROOT = (
+					iphoneos,
+				);
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+			};
+			name = Checked;
+		};
+		90025B5F93732D9114DFD19F /* Valgrind */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					arm64,
+				);
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = c17;
+				GCC_OPTIMIZATION_LEVEL = g;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					VULKAN_HPP_NO_TO_STRING,
+					IMGUI_DISABLE_OBSOLETE_FUNCTIONS,
+					IMGUI_DISABLE_DEFAULT_FONT,
+					IMGUI_USE_STB_SPRINTF,
+					USE_CPP17,
+					_LIB,
+					DEBUG,
+					NDEBUG,
+					"_NO_DEBUG_HEAP=1",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				OBJROOT = "obj/iOS-ARM64/Valgrind/iOS-ARM64/Valgrind/xenia-ui";
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = (
+					"-fno-omit-frame-pointer",
+					"-fno-inline-functions",
+					"-w",
+					"-fno-modules",
+				);
+				SDKROOT = (
+					iphoneos,
+				);
+				SYMROOT = "bin/iOS-ARM64/Valgrind";
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+				USER_HEADER_SEARCH_PATHS = (
+					..,
+					../src,
+					../third_party,
+				);
+			};
+			name = Valgrind;
+		};
+		AA39074FB6F5B6C12BE0258F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					arm64,
+				);
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = c17;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					VULKAN_HPP_NO_TO_STRING,
+					IMGUI_DISABLE_OBSOLETE_FUNCTIONS,
+					IMGUI_DISABLE_DEFAULT_FONT,
+					IMGUI_USE_STB_SPRINTF,
+					USE_CPP17,
+					_LIB,
+					DEBUG,
+					"_NO_DEBUG_HEAP=1",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				OBJROOT = "obj/iOS-ARM64/Debug/iOS-ARM64/Debug/xenia-ui";
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = (
+					"-w",
+					"-fno-modules",
+				);
+				SDKROOT = (
+					iphoneos,
+				);
+				SYMROOT = "bin/iOS-ARM64/Debug";
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+				USER_HEADER_SEARCH_PATHS = (
+					..,
+					../src,
+					../third_party,
+				);
+			};
+			name = Debug;
+		};
+		AF776954E05B6146F3739794 /* Valgrind */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					arm64,
+				);
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "bin/iOS-ARM64/Valgrind";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_DYNAMIC_NO_PIC = NO;
+				INSTALL_PATH = /usr/local/lib;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				PRODUCT_NAME = "xenia-ui";
+				SDKROOT = (
+					iphoneos,
+				);
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+			};
+			name = Valgrind;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1DEB928908733DD80010E9CD /* Build configuration list for PBXProject "xenia-ui" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				25D2534F5478A741ADBA018F /* Checked */,
+				AA39074FB6F5B6C12BE0258F /* Debug */,
+				10FFF1493FA6453B98E79F89 /* Release */,
+				90025B5F93732D9114DFD19F /* Valgrind */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Checked;
+		};
+		D6FAD93EDA6BAB705BD84F7E /* Build configuration list for PBXNativeTarget "libxenia-ui.a" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8C8FC8844FFB8A368E9F2EC4 /* Checked */,
+				2DD0BB044F9C68368C519144 /* Debug */,
+				2BAEA6FEEF1A68B02DBE0D3E /* Release */,
+				AF776954E05B6146F3739794 /* Valgrind */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Checked;
+		};
+/* End XCConfigurationList section */
+};
+rootObject = 08FB7793FE84155DC02AAC07 /* Project object */;
+}

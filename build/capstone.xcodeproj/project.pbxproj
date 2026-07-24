@@ -1,0 +1,622 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2D3A2A4E9EC542C04DC6688E /* cs.c in Sources */ = {isa = PBXBuildFile; fileRef = 21B5AF96CE186FC88CA0E5D6 /* cs.c */; };
+		3D95ACF1B17E24A3D3CBD331 /* AArch64Mapping.c in Sources */ = {isa = PBXBuildFile; fileRef = 1213F859D8A1EFCB46A41699 /* AArch64Mapping.c */; };
+		4A3389DDFD29938F4E4BF01D /* AArch64InstPrinter.c in Sources */ = {isa = PBXBuildFile; fileRef = 48C86C853CC7B5F7C1B2CAC5 /* AArch64InstPrinter.c */; };
+		51BB88643CA7AE56848D76A4 /* utils.c in Sources */ = {isa = PBXBuildFile; fileRef = 7ABFFA4C1F1297FE314AE08C /* utils.c */; };
+		534E368082E005725DED44C0 /* SStream.c in Sources */ = {isa = PBXBuildFile; fileRef = 1CEE4AA8BFDC715A4F0250E8 /* SStream.c */; };
+		5A1A8526ECA84F185580F366 /* MCInstPrinter.c in Sources */ = {isa = PBXBuildFile; fileRef = B0F88DEE74644FA0B307F42E /* MCInstPrinter.c */; };
+		8C7D40E79C626D1988D5F727 /* AArch64BaseInfo.c in Sources */ = {isa = PBXBuildFile; fileRef = BCD95EEF5EC2FAE155EA0D2F /* AArch64BaseInfo.c */; };
+		932F121AC2C0E10C9DCE205A /* Mapping.c in Sources */ = {isa = PBXBuildFile; fileRef = 75C967A218B78E54A7DD6DE2 /* Mapping.c */; };
+		AE891A4FE853D1019DAF208F /* AArch64DisassemblerExtension.c in Sources */ = {isa = PBXBuildFile; fileRef = 0B47C6D7CFFD1D49846BC517 /* AArch64DisassemblerExtension.c */; };
+		CFCD7D35186CBB673B987375 /* AArch64Disassembler.c in Sources */ = {isa = PBXBuildFile; fileRef = 36518D5D2748FB4F934C7B9D /* AArch64Disassembler.c */; };
+		D3BCEDC5D35FD0F70DB48405 /* AArch64Module.c in Sources */ = {isa = PBXBuildFile; fileRef = 70B402EDC81975DF7A27912D /* AArch64Module.c */; };
+		F6473744636F45B665023584 /* MCRegisterInfo.c in Sources */ = {isa = PBXBuildFile; fileRef = E2EF542C30524A5EA6714A6C /* MCRegisterInfo.c */; };
+		FA095C406B2BFD3220F2AA80 /* MCInstrDesc.c in Sources */ = {isa = PBXBuildFile; fileRef = C4728868ECAD411AD448CEA8 /* MCInstrDesc.c */; };
+		FCA5D87E533342F02BAC56BE /* MCInst.c in Sources */ = {isa = PBXBuildFile; fileRef = 164B2EC619BC00F89B28A506 /* MCInst.c */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		022A78122A6530C41200BE52 /* MCInstrDesc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MCInstrDesc.h; path = ../third_party/capstone/MCInstrDesc.h; sourceTree = "<group>"; };
+		0B47C6D7CFFD1D49846BC517 /* AArch64DisassemblerExtension.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = AArch64DisassemblerExtension.c; path = ../third_party/capstone/arch/AArch64/AArch64DisassemblerExtension.c; sourceTree = "<group>"; };
+		0D247D41D1D9D3B386487B81 /* AArch64DisassemblerExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AArch64DisassemblerExtension.h; path = ../third_party/capstone/arch/AArch64/AArch64DisassemblerExtension.h; sourceTree = "<group>"; };
+		1213F859D8A1EFCB46A41699 /* AArch64Mapping.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = AArch64Mapping.c; path = ../third_party/capstone/arch/AArch64/AArch64Mapping.c; sourceTree = "<group>"; };
+		164B2EC619BC00F89B28A506 /* MCInst.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = MCInst.c; path = ../third_party/capstone/MCInst.c; sourceTree = "<group>"; };
+		1CEE4AA8BFDC715A4F0250E8 /* SStream.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = SStream.c; path = ../third_party/capstone/SStream.c; sourceTree = "<group>"; };
+		20FC706C380F0B9E282B06AC /* libcapstone.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libcapstone.a; path = libcapstone.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		21B5AF96CE186FC88CA0E5D6 /* cs.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = cs.c; path = ../third_party/capstone/cs.c; sourceTree = "<group>"; };
+		36518D5D2748FB4F934C7B9D /* AArch64Disassembler.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = AArch64Disassembler.c; path = ../third_party/capstone/arch/AArch64/AArch64Disassembler.c; sourceTree = "<group>"; };
+		37939203FE2189756C23B043 /* AArch64Mapping.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AArch64Mapping.h; path = ../third_party/capstone/arch/AArch64/AArch64Mapping.h; sourceTree = "<group>"; };
+		3EEE50F7D94839E915809F37 /* AArch64GenCSMappingInsn.inc */ = {isa = PBXFileReference; lastKnownFileType = text; name = AArch64GenCSMappingInsn.inc; path = ../third_party/capstone/arch/AArch64/AArch64GenCSMappingInsn.inc; sourceTree = "<group>"; };
+		3FC36DB68D2663E8034563F6 /* MCRegisterInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MCRegisterInfo.h; path = ../third_party/capstone/MCRegisterInfo.h; sourceTree = "<group>"; };
+		42B074F9DB28626B070F5339 /* AArch64GenCSAliasMnemMap.inc */ = {isa = PBXFileReference; lastKnownFileType = text; name = AArch64GenCSAliasMnemMap.inc; path = ../third_party/capstone/arch/AArch64/AArch64GenCSAliasMnemMap.inc; sourceTree = "<group>"; };
+		462136768E921AA8D330ECB6 /* MathExtras.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MathExtras.h; path = ../third_party/capstone/MathExtras.h; sourceTree = "<group>"; };
+		4625B047A026C739676DBE87 /* AArch64GenCSOpGroup.inc */ = {isa = PBXFileReference; lastKnownFileType = text; name = AArch64GenCSOpGroup.inc; path = ../third_party/capstone/arch/AArch64/AArch64GenCSOpGroup.inc; sourceTree = "<group>"; };
+		48C86C853CC7B5F7C1B2CAC5 /* AArch64InstPrinter.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = AArch64InstPrinter.c; path = ../third_party/capstone/arch/AArch64/AArch64InstPrinter.c; sourceTree = "<group>"; };
+		4F77ED0FABFEF18134A1AB4F /* AArch64GenRegisterName.inc */ = {isa = PBXFileReference; lastKnownFileType = text; name = AArch64GenRegisterName.inc; path = ../third_party/capstone/arch/AArch64/AArch64GenRegisterName.inc; sourceTree = "<group>"; };
+		54BC0E20F7AA34D286D01460 /* cs_priv.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = cs_priv.h; path = ../third_party/capstone/cs_priv.h; sourceTree = "<group>"; };
+		64A1B8392C06732BB6BE4679 /* AArch64GenCSMappingInsnName.inc */ = {isa = PBXFileReference; lastKnownFileType = text; name = AArch64GenCSMappingInsnName.inc; path = ../third_party/capstone/arch/AArch64/AArch64GenCSMappingInsnName.inc; sourceTree = "<group>"; };
+		66375345C2BE57B74B611185 /* AArch64GenRegisterInfo.inc */ = {isa = PBXFileReference; lastKnownFileType = text; name = AArch64GenRegisterInfo.inc; path = ../third_party/capstone/arch/AArch64/AArch64GenRegisterInfo.inc; sourceTree = "<group>"; };
+		67715F412DFF56B39C017D81 /* AArch64Linkage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AArch64Linkage.h; path = ../third_party/capstone/arch/AArch64/AArch64Linkage.h; sourceTree = "<group>"; };
+		6FDD63E34E7FFF5503620223 /* AArch64AddressingModes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AArch64AddressingModes.h; path = ../third_party/capstone/arch/AArch64/AArch64AddressingModes.h; sourceTree = "<group>"; };
+		70B402EDC81975DF7A27912D /* AArch64Module.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = AArch64Module.c; path = ../third_party/capstone/arch/AArch64/AArch64Module.c; sourceTree = "<group>"; };
+		71219AAE503EB4E02C4810EE /* MCFixedLenDisassembler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MCFixedLenDisassembler.h; path = ../third_party/capstone/MCFixedLenDisassembler.h; sourceTree = "<group>"; };
+		75C967A218B78E54A7DD6DE2 /* Mapping.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = Mapping.c; path = ../third_party/capstone/Mapping.c; sourceTree = "<group>"; };
+		7958B9750F81CB67D0E827B5 /* AArch64GenCSMappingInsnOp.inc */ = {isa = PBXFileReference; lastKnownFileType = text; name = AArch64GenCSMappingInsnOp.inc; path = ../third_party/capstone/arch/AArch64/AArch64GenCSMappingInsnOp.inc; sourceTree = "<group>"; };
+		7ABFFA4C1F1297FE314AE08C /* utils.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = utils.c; path = ../third_party/capstone/utils.c; sourceTree = "<group>"; };
+		86FCDD3928E6792B200D8B79 /* AArch64BaseInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AArch64BaseInfo.h; path = ../third_party/capstone/arch/AArch64/AArch64BaseInfo.h; sourceTree = "<group>"; };
+		8B79193FE57A3031ACC1277F /* AArch64GenAsmWriter.inc */ = {isa = PBXFileReference; lastKnownFileType = text; name = AArch64GenAsmWriter.inc; path = ../third_party/capstone/arch/AArch64/AArch64GenAsmWriter.inc; sourceTree = "<group>"; };
+		965EF595C9DE3507E1D813D5 /* AArch64GenDisassemblerTables.inc */ = {isa = PBXFileReference; lastKnownFileType = text; name = AArch64GenDisassemblerTables.inc; path = ../third_party/capstone/arch/AArch64/AArch64GenDisassemblerTables.inc; sourceTree = "<group>"; };
+		A55865893FB24E7B7BEAB3C9 /* AArch64GenCSFeatureName.inc */ = {isa = PBXFileReference; lastKnownFileType = text; name = AArch64GenCSFeatureName.inc; path = ../third_party/capstone/arch/AArch64/AArch64GenCSFeatureName.inc; sourceTree = "<group>"; };
+		AC5D10AFA05C5A2125476EEF /* AArch64InstPrinter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AArch64InstPrinter.h; path = ../third_party/capstone/arch/AArch64/AArch64InstPrinter.h; sourceTree = "<group>"; };
+		B0F88DEE74644FA0B307F42E /* MCInstPrinter.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = MCInstPrinter.c; path = ../third_party/capstone/MCInstPrinter.c; sourceTree = "<group>"; };
+		B82432365C76CFE86EAF1876 /* utils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = utils.h; path = ../third_party/capstone/utils.h; sourceTree = "<group>"; };
+		BBE25AD87F4E1C8ABDF1C118 /* MCInstPrinter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MCInstPrinter.h; path = ../third_party/capstone/MCInstPrinter.h; sourceTree = "<group>"; };
+		BCD95EEF5EC2FAE155EA0D2F /* AArch64BaseInfo.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = AArch64BaseInfo.c; path = ../third_party/capstone/arch/AArch64/AArch64BaseInfo.c; sourceTree = "<group>"; };
+		C31D9B5010809182869F9190 /* MCDisassembler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MCDisassembler.h; path = ../third_party/capstone/MCDisassembler.h; sourceTree = "<group>"; };
+		C3B76FD266A59684F5CB7612 /* SStream.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SStream.h; path = ../third_party/capstone/SStream.h; sourceTree = "<group>"; };
+		C4728868ECAD411AD448CEA8 /* MCInstrDesc.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = MCInstrDesc.c; path = ../third_party/capstone/MCInstrDesc.c; sourceTree = "<group>"; };
+		D3B455BD6E0E3EAFAA46A3FD /* AArch64GenSubtargetInfo.inc */ = {isa = PBXFileReference; lastKnownFileType = text; name = AArch64GenSubtargetInfo.inc; path = ../third_party/capstone/arch/AArch64/AArch64GenSubtargetInfo.inc; sourceTree = "<group>"; };
+		DEC9CBF7362F3EE9E83D5A37 /* AArch64Module.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AArch64Module.h; path = ../third_party/capstone/arch/AArch64/AArch64Module.h; sourceTree = "<group>"; };
+		E2EF542C30524A5EA6714A6C /* MCRegisterInfo.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = MCRegisterInfo.c; path = ../third_party/capstone/MCRegisterInfo.c; sourceTree = "<group>"; };
+		EEF03E90F26110C273CDB4D0 /* LEB128.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LEB128.h; path = ../third_party/capstone/LEB128.h; sourceTree = "<group>"; };
+		F4E71350F857E58279C48990 /* MCInst.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MCInst.h; path = ../third_party/capstone/MCInst.h; sourceTree = "<group>"; };
+		FBAF0FE59426FD57C00DEE25 /* AArch64GenSystemOperands.inc */ = {isa = PBXFileReference; lastKnownFileType = text; name = AArch64GenSystemOperands.inc; path = ../third_party/capstone/arch/AArch64/AArch64GenSystemOperands.inc; sourceTree = "<group>"; };
+		FDF88CFB57F9A3ED1F409B3B /* AArch64GenInstrInfo.inc */ = {isa = PBXFileReference; lastKnownFileType = text; name = AArch64GenInstrInfo.inc; path = ../third_party/capstone/arch/AArch64/AArch64GenInstrInfo.inc; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		688F0FDC6BFFE20EED6C861C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		9E5DC748414BEDFAD071CD88 /* Embed Libraries */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Libraries";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXGroup section */
+		0F11B9070FC4B5F983A68747 /* AArch64 */ = {
+			isa = PBXGroup;
+			children = (
+				6FDD63E34E7FFF5503620223 /* AArch64AddressingModes.h */,
+				BCD95EEF5EC2FAE155EA0D2F /* AArch64BaseInfo.c */,
+				86FCDD3928E6792B200D8B79 /* AArch64BaseInfo.h */,
+				36518D5D2748FB4F934C7B9D /* AArch64Disassembler.c */,
+				0B47C6D7CFFD1D49846BC517 /* AArch64DisassemblerExtension.c */,
+				0D247D41D1D9D3B386487B81 /* AArch64DisassemblerExtension.h */,
+				8B79193FE57A3031ACC1277F /* AArch64GenAsmWriter.inc */,
+				42B074F9DB28626B070F5339 /* AArch64GenCSAliasMnemMap.inc */,
+				A55865893FB24E7B7BEAB3C9 /* AArch64GenCSFeatureName.inc */,
+				3EEE50F7D94839E915809F37 /* AArch64GenCSMappingInsn.inc */,
+				64A1B8392C06732BB6BE4679 /* AArch64GenCSMappingInsnName.inc */,
+				7958B9750F81CB67D0E827B5 /* AArch64GenCSMappingInsnOp.inc */,
+				4625B047A026C739676DBE87 /* AArch64GenCSOpGroup.inc */,
+				965EF595C9DE3507E1D813D5 /* AArch64GenDisassemblerTables.inc */,
+				FDF88CFB57F9A3ED1F409B3B /* AArch64GenInstrInfo.inc */,
+				66375345C2BE57B74B611185 /* AArch64GenRegisterInfo.inc */,
+				4F77ED0FABFEF18134A1AB4F /* AArch64GenRegisterName.inc */,
+				D3B455BD6E0E3EAFAA46A3FD /* AArch64GenSubtargetInfo.inc */,
+				FBAF0FE59426FD57C00DEE25 /* AArch64GenSystemOperands.inc */,
+				48C86C853CC7B5F7C1B2CAC5 /* AArch64InstPrinter.c */,
+				AC5D10AFA05C5A2125476EEF /* AArch64InstPrinter.h */,
+				67715F412DFF56B39C017D81 /* AArch64Linkage.h */,
+				1213F859D8A1EFCB46A41699 /* AArch64Mapping.c */,
+				37939203FE2189756C23B043 /* AArch64Mapping.h */,
+				70B402EDC81975DF7A27912D /* AArch64Module.c */,
+				DEC9CBF7362F3EE9E83D5A37 /* AArch64Module.h */,
+			);
+			name = AArch64;
+			sourceTree = "<group>";
+		};
+		8DA911443A0BD176F8944784 /* arch */ = {
+			isa = PBXGroup;
+			children = (
+				0F11B9070FC4B5F983A68747 /* AArch64 */,
+			);
+			name = arch;
+			sourceTree = "<group>";
+		};
+		A6C936B49B3FADE6EA134CF4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				20FC706C380F0B9E282B06AC /* libcapstone.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E583051DD9F97C4F28CD1B5D /* capstone */ = {
+			isa = PBXGroup;
+			children = (
+				EEF03E90F26110C273CDB4D0 /* LEB128.h */,
+				C31D9B5010809182869F9190 /* MCDisassembler.h */,
+				71219AAE503EB4E02C4810EE /* MCFixedLenDisassembler.h */,
+				164B2EC619BC00F89B28A506 /* MCInst.c */,
+				F4E71350F857E58279C48990 /* MCInst.h */,
+				B0F88DEE74644FA0B307F42E /* MCInstPrinter.c */,
+				BBE25AD87F4E1C8ABDF1C118 /* MCInstPrinter.h */,
+				C4728868ECAD411AD448CEA8 /* MCInstrDesc.c */,
+				022A78122A6530C41200BE52 /* MCInstrDesc.h */,
+				E2EF542C30524A5EA6714A6C /* MCRegisterInfo.c */,
+				3FC36DB68D2663E8034563F6 /* MCRegisterInfo.h */,
+				75C967A218B78E54A7DD6DE2 /* Mapping.c */,
+				462136768E921AA8D330ECB6 /* MathExtras.h */,
+				1CEE4AA8BFDC715A4F0250E8 /* SStream.c */,
+				C3B76FD266A59684F5CB7612 /* SStream.h */,
+				8DA911443A0BD176F8944784 /* arch */,
+				21B5AF96CE186FC88CA0E5D6 /* cs.c */,
+				54BC0E20F7AA34D286D01460 /* cs_priv.h */,
+				7ABFFA4C1F1297FE314AE08C /* utils.c */,
+				B82432365C76CFE86EAF1876 /* utils.h */,
+				A6C936B49B3FADE6EA134CF4 /* Products */,
+			);
+			name = capstone;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9681EAD29734E7C40B16B912 /* capstone */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 56CA583B5A3B2A6DDBA7CE7B /* Build configuration list for PBXNativeTarget "capstone" */;
+			buildPhases = (
+				D876907CDBE762AE5D5406BC /* Resources */,
+				4223A9D345947C05C7012013 /* Sources */,
+				688F0FDC6BFFE20EED6C861C /* Frameworks */,
+				9E5DC748414BEDFAD071CD88 /* Embed Libraries */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = capstone;
+			productName = capstone;
+			productReference = 20FC706C380F0B9E282B06AC /* libcapstone.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		08FB7793FE84155DC02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 1DEB928908733DD80010E9CD /* Build configuration list for PBXProject "capstone" */;
+			compatibilityVersion = "Xcode 3.2";
+			hasScannedForEncodings = 1;
+			mainGroup = E583051DD9F97C4F28CD1B5D /* capstone */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9681EAD29734E7C40B16B912 /* libcapstone.a */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D876907CDBE762AE5D5406BC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4223A9D345947C05C7012013 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FCA5D87E533342F02BAC56BE /* MCInst.c in Sources */,
+				5A1A8526ECA84F185580F366 /* MCInstPrinter.c in Sources */,
+				FA095C406B2BFD3220F2AA80 /* MCInstrDesc.c in Sources */,
+				F6473744636F45B665023584 /* MCRegisterInfo.c in Sources */,
+				932F121AC2C0E10C9DCE205A /* Mapping.c in Sources */,
+				534E368082E005725DED44C0 /* SStream.c in Sources */,
+				8C7D40E79C626D1988D5F727 /* AArch64BaseInfo.c in Sources */,
+				CFCD7D35186CBB673B987375 /* AArch64Disassembler.c in Sources */,
+				AE891A4FE853D1019DAF208F /* AArch64DisassemblerExtension.c in Sources */,
+				4A3389DDFD29938F4E4BF01D /* AArch64InstPrinter.c in Sources */,
+				3D95ACF1B17E24A3D3CBD331 /* AArch64Mapping.c in Sources */,
+				D3BCEDC5D35FD0F70DB48405 /* AArch64Module.c in Sources */,
+				2D3A2A4E9EC542C04DC6688E /* cs.c in Sources */,
+				51BB88643CA7AE56848D76A4 /* utils.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		13B99D8135854AB3723A73C1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					arm64,
+				);
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "bin/iOS-ARM64/Debug";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_DYNAMIC_NO_PIC = NO;
+				INSTALL_PATH = /usr/local/lib;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				PRODUCT_NAME = capstone;
+				SDKROOT = (
+					iphoneos,
+				);
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+			};
+			name = Debug;
+		};
+		289196B159758EA36C8DC4F1 /* Valgrind */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					arm64,
+				);
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "bin/iOS-ARM64/Valgrind";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_DYNAMIC_NO_PIC = NO;
+				INSTALL_PATH = /usr/local/lib;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				PRODUCT_NAME = capstone;
+				SDKROOT = (
+					iphoneos,
+				);
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+			};
+			name = Valgrind;
+		};
+		2A08864C36C535BEABAFA48C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					arm64,
+				);
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = c17;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					VULKAN_HPP_NO_TO_STRING,
+					IMGUI_DISABLE_OBSOLETE_FUNCTIONS,
+					IMGUI_DISABLE_DEFAULT_FONT,
+					IMGUI_USE_STB_SPRINTF,
+					USE_CPP17,
+					DEBUG,
+					"_NO_DEBUG_HEAP=1",
+					CAPSTONE_DIET_NO,
+					CAPSTONE_USE_SYS_DYN_MEM,
+					_LIB,
+					CAPSTONE_HAS_AARCH64,
+					CAPSTONE_HAS_ARM64,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				OBJROOT = "obj/iOS-ARM64/Debug/iOS-ARM64/Debug/capstone";
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = (
+					"-w",
+					"-fno-modules",
+				);
+				SDKROOT = (
+					iphoneos,
+				);
+				SYMROOT = "bin/iOS-ARM64/Debug";
+				SYSTEM_HEADER_SEARCH_PATHS = (
+					../third_party/capstone/include,
+					"$(inherited)",
+				);
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+				USER_HEADER_SEARCH_PATHS = (
+					..,
+					../src,
+					../third_party,
+					../third_party/capstone,
+					../third_party/capstone/include,
+				);
+			};
+			name = Debug;
+		};
+		2F5A1CBBF2C5DE6D316982FB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					arm64,
+				);
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "bin/iOS-ARM64/Release";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_DYNAMIC_NO_PIC = NO;
+				INSTALL_PATH = /usr/local/lib;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				PRODUCT_NAME = capstone;
+				SDKROOT = (
+					iphoneos,
+				);
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+			};
+			name = Release;
+		};
+		7713D53C7A84A76EFBF14B7C /* Valgrind */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					arm64,
+				);
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = c17;
+				GCC_OPTIMIZATION_LEVEL = g;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					VULKAN_HPP_NO_TO_STRING,
+					IMGUI_DISABLE_OBSOLETE_FUNCTIONS,
+					IMGUI_DISABLE_DEFAULT_FONT,
+					IMGUI_USE_STB_SPRINTF,
+					USE_CPP17,
+					DEBUG,
+					NDEBUG,
+					"_NO_DEBUG_HEAP=1",
+					CAPSTONE_DIET_NO,
+					CAPSTONE_USE_SYS_DYN_MEM,
+					_LIB,
+					CAPSTONE_HAS_AARCH64,
+					CAPSTONE_HAS_ARM64,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				OBJROOT = "obj/iOS-ARM64/Valgrind/iOS-ARM64/Valgrind/capstone";
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = (
+					"-fno-omit-frame-pointer",
+					"-fno-inline-functions",
+					"-w",
+					"-fno-modules",
+				);
+				SDKROOT = (
+					iphoneos,
+				);
+				SYMROOT = "bin/iOS-ARM64/Valgrind";
+				SYSTEM_HEADER_SEARCH_PATHS = (
+					../third_party/capstone/include,
+					"$(inherited)",
+				);
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+				USER_HEADER_SEARCH_PATHS = (
+					..,
+					../src,
+					../third_party,
+					../third_party/capstone,
+					../third_party/capstone/include,
+				);
+			};
+			name = Valgrind;
+		};
+		903B3E4153A6FFF3924AA481 /* Checked */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					arm64,
+				);
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "bin/iOS-ARM64/Checked";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_DYNAMIC_NO_PIC = NO;
+				INSTALL_PATH = /usr/local/lib;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				PRODUCT_NAME = capstone;
+				SDKROOT = (
+					iphoneos,
+				);
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+			};
+			name = Checked;
+		};
+		C2AB2386F15177784A92D1C6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					arm64,
+				);
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				GCC_C_LANGUAGE_STANDARD = c17;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					VULKAN_HPP_NO_TO_STRING,
+					IMGUI_DISABLE_OBSOLETE_FUNCTIONS,
+					IMGUI_DISABLE_DEFAULT_FONT,
+					IMGUI_USE_STB_SPRINTF,
+					USE_CPP17,
+					NDEBUG,
+					"_NO_DEBUG_HEAP=1",
+					CAPSTONE_DIET_NO,
+					CAPSTONE_USE_SYS_DYN_MEM,
+					_LIB,
+					CAPSTONE_HAS_AARCH64,
+					CAPSTONE_HAS_ARM64,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				OBJROOT = "obj/iOS-ARM64/Release/iOS-ARM64/Release/capstone";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CFLAGS = (
+					"-O3",
+					"-finline-functions",
+					"-funroll-loops",
+					"-fomit-frame-pointer",
+					"-w",
+					"-fno-modules",
+				);
+				SDKROOT = (
+					iphoneos,
+				);
+				SYMROOT = "bin/iOS-ARM64/Release";
+				SYSTEM_HEADER_SEARCH_PATHS = (
+					../third_party/capstone/include,
+					"$(inherited)",
+				);
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+				USER_HEADER_SEARCH_PATHS = (
+					..,
+					../src,
+					../third_party,
+					../third_party/capstone,
+					../third_party/capstone/include,
+				);
+			};
+			name = Release;
+		};
+		D77D858C0623D97E5F6533CC /* Checked */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					arm64,
+				);
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = c17;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					VULKAN_HPP_NO_TO_STRING,
+					IMGUI_DISABLE_OBSOLETE_FUNCTIONS,
+					IMGUI_DISABLE_DEFAULT_FONT,
+					USE_CPP17,
+					DEBUG,
+					NDEBUG,
+					CAPSTONE_DIET_NO,
+					CAPSTONE_USE_SYS_DYN_MEM,
+					_LIB,
+					CAPSTONE_HAS_AARCH64,
+					CAPSTONE_HAS_ARM64,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				OBJROOT = "obj/iOS-ARM64/Checked/iOS-ARM64/Checked/capstone";
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = (
+					"-w",
+					"-fno-modules",
+				);
+				SDKROOT = (
+					iphoneos,
+				);
+				SYMROOT = "bin/iOS-ARM64/Checked";
+				SYSTEM_HEADER_SEARCH_PATHS = (
+					../third_party/capstone/include,
+					"$(inherited)",
+				);
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+				USER_HEADER_SEARCH_PATHS = (
+					..,
+					../src,
+					../third_party,
+					../third_party/capstone,
+					../third_party/capstone/include,
+				);
+			};
+			name = Checked;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1DEB928908733DD80010E9CD /* Build configuration list for PBXProject "capstone" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D77D858C0623D97E5F6533CC /* Checked */,
+				2A08864C36C535BEABAFA48C /* Debug */,
+				C2AB2386F15177784A92D1C6 /* Release */,
+				7713D53C7A84A76EFBF14B7C /* Valgrind */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Checked;
+		};
+		56CA583B5A3B2A6DDBA7CE7B /* Build configuration list for PBXNativeTarget "libcapstone.a" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				903B3E4153A6FFF3924AA481 /* Checked */,
+				13B99D8135854AB3723A73C1 /* Debug */,
+				2F5A1CBBF2C5DE6D316982FB /* Release */,
+				289196B159758EA36C8DC4F1 /* Valgrind */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Checked;
+		};
+/* End XCConfigurationList section */
+};
+rootObject = 08FB7793FE84155DC02AAC07 /* Project object */;
+}

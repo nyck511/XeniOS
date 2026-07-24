@@ -1,0 +1,596 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		06EDFADA367FC9CC118D091A /* gzwrite.c in Sources */ = {isa = PBXBuildFile; fileRef = 091C6462AC0A8B143B306AA2 /* gzwrite.c */; };
+		0A8076AC77A8851E793B74EC /* deflate_medium.c in Sources */ = {isa = PBXBuildFile; fileRef = 0195F1144EF8E746C517E754 /* deflate_medium.c */; };
+		1EC77C0C8BEF8A7E8D827A4C /* deflate_stored.c in Sources */ = {isa = PBXBuildFile; fileRef = 6AF4D074B857C6A62E76C6B4 /* deflate_stored.c */; };
+		2ACE64DC5A6033CE356D731C /* adler32.c in Sources */ = {isa = PBXBuildFile; fileRef = A28E1544457C3BF6D4A21B84 /* adler32.c */; };
+		2FC4FBA74A916A594E6201E7 /* compare256_c.c in Sources */ = {isa = PBXBuildFile; fileRef = E32A75EF5052846151E5742F /* compare256_c.c */; };
+		349E33DEFB2C2B50692E521E /* crc32_braid_comb.c in Sources */ = {isa = PBXBuildFile; fileRef = 43338A26D8AA49584746A066 /* crc32_braid_comb.c */; };
+		3BDC1C6C6B6DEB5E467B2AAC /* deflate.c in Sources */ = {isa = PBXBuildFile; fileRef = D031CBD4731FF2860245D214 /* deflate.c */; };
+		3FF4B0A684435618C66A8EE6 /* deflate_fast.c in Sources */ = {isa = PBXBuildFile; fileRef = 0ABEB26E2C8A5FA0693F88AE /* deflate_fast.c */; };
+		573E7D07720AEBB975DB8347 /* slide_hash_c.c in Sources */ = {isa = PBXBuildFile; fileRef = FA6FF14F6797FFC1692AEF8F /* slide_hash_c.c */; };
+		63D9927C4EC5B86E96AB80BC /* crc32.c in Sources */ = {isa = PBXBuildFile; fileRef = E1A7E6E485FA84969832CD24 /* crc32.c */; };
+		706F0608332F667A90644448 /* insert_string_roll.c in Sources */ = {isa = PBXBuildFile; fileRef = FF695CB0E3B064E2679D92F0 /* insert_string_roll.c */; };
+		800A1F34C458C4A6067FFD74 /* deflate_slow.c in Sources */ = {isa = PBXBuildFile; fileRef = 3666731C5832204E94E7495C /* deflate_slow.c */; };
+		822AE459C63EB58BBA103A99 /* adler32_c.c in Sources */ = {isa = PBXBuildFile; fileRef = F87429816996CA731F5D77C1 /* adler32_c.c */; };
+		82ED219EB27EF0908D8C2FDE /* infback.c in Sources */ = {isa = PBXBuildFile; fileRef = 982E8CE63B1CB398CA429326 /* infback.c */; };
+		8A3929E922860F9B50CD1029 /* chunkset_c.c in Sources */ = {isa = PBXBuildFile; fileRef = DB9C75111FEB1A8362125351 /* chunkset_c.c */; };
+		8D72A98ABD04787C9811B7CA /* uncompr.c in Sources */ = {isa = PBXBuildFile; fileRef = 8B8690122E74B6C4BD9A9652 /* uncompr.c */; };
+		9198147002BAB562B88162B0 /* deflate_rle.c in Sources */ = {isa = PBXBuildFile; fileRef = E3CCA5980C075E4AF3A2EBD8 /* deflate_rle.c */; };
+		91DFEA087CCC0FFAC4B1D848 /* trees.c in Sources */ = {isa = PBXBuildFile; fileRef = 8A33C7B02E86656240BEADF0 /* trees.c */; };
+		99842721B45095D3B8212D61 /* crc32_fold_c.c in Sources */ = {isa = PBXBuildFile; fileRef = 1E2100C98B490F3B8CDBFF09 /* crc32_fold_c.c */; };
+		9DE8D94111D150F3341EFF81 /* adler32_fold_c.c in Sources */ = {isa = PBXBuildFile; fileRef = 9B881EE96216165BD0183D29 /* adler32_fold_c.c */; };
+		A5CA0A983857D48AA13078D8 /* insert_string.c in Sources */ = {isa = PBXBuildFile; fileRef = FA02DF40BD6EA0F2FC124580 /* insert_string.c */; };
+		B144D3729C30F964E416C1B2 /* gzlib.c in Sources */ = {isa = PBXBuildFile; fileRef = E74F217A8BA1BF2C9DDA07BA /* gzlib.c */; };
+		B1FFA85BB1A28B8DEBF73E9B /* crc32_braid_c.c in Sources */ = {isa = PBXBuildFile; fileRef = 8999BA63E0FF2D55930D48A3 /* crc32_braid_c.c */; };
+		B206B22444947C16AD6D2064 /* deflate_quick.c in Sources */ = {isa = PBXBuildFile; fileRef = 20CAB00CE43671BE22DA164C /* deflate_quick.c */; };
+		B213E2C8E1A5B1BABCB2F108 /* inflate.c in Sources */ = {isa = PBXBuildFile; fileRef = 0E23AE70B111D5224037B4B0 /* inflate.c */; };
+		BAB1A07CFF0045EE41277EBC /* deflate_huff.c in Sources */ = {isa = PBXBuildFile; fileRef = B41BB3E4D5E76116129C8A24 /* deflate_huff.c */; };
+		BC0C736E005B18E0428251AE /* cpu_features.c in Sources */ = {isa = PBXBuildFile; fileRef = 30D1DCB6529D89E88F52B2F6 /* cpu_features.c */; };
+		CED23EF2B9BE64E401A42D32 /* zutil.c in Sources */ = {isa = PBXBuildFile; fileRef = FA4514FA9E97B2ACB0CFFB3A /* zutil.c */; };
+		D4F5C8AA05D9C09C18F1F6EA /* functable.c in Sources */ = {isa = PBXBuildFile; fileRef = F16B6332179192E47E988972 /* functable.c */; };
+		DF7E45223ABF98940E19E362 /* inftrees.c in Sources */ = {isa = PBXBuildFile; fileRef = F94BD92A105E745C007A6F6A /* inftrees.c */; };
+		E5C4BCFA4106106C14605B3A /* compress.c in Sources */ = {isa = PBXBuildFile; fileRef = F4C6AF820BD94AB4FBF545C2 /* compress.c */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0195F1144EF8E746C517E754 /* deflate_medium.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = deflate_medium.c; path = "../third_party/zlib-ng/deflate_medium.c"; sourceTree = "<group>"; };
+		091C6462AC0A8B143B306AA2 /* gzwrite.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = gzwrite.c; path = "../third_party/zlib-ng/gzwrite.c"; sourceTree = "<group>"; };
+		0ABEB26E2C8A5FA0693F88AE /* deflate_fast.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = deflate_fast.c; path = "../third_party/zlib-ng/deflate_fast.c"; sourceTree = "<group>"; };
+		0E23AE70B111D5224037B4B0 /* inflate.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = inflate.c; path = "../third_party/zlib-ng/inflate.c"; sourceTree = "<group>"; };
+		1E2100C98B490F3B8CDBFF09 /* crc32_fold_c.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = crc32_fold_c.c; path = "../third_party/zlib-ng/arch/generic/crc32_fold_c.c"; sourceTree = "<group>"; };
+		20CAB00CE43671BE22DA164C /* deflate_quick.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = deflate_quick.c; path = "../third_party/zlib-ng/deflate_quick.c"; sourceTree = "<group>"; };
+		30D1DCB6529D89E88F52B2F6 /* cpu_features.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = cpu_features.c; path = "../third_party/zlib-ng/cpu_features.c"; sourceTree = "<group>"; };
+		3666731C5832204E94E7495C /* deflate_slow.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = deflate_slow.c; path = "../third_party/zlib-ng/deflate_slow.c"; sourceTree = "<group>"; };
+		43338A26D8AA49584746A066 /* crc32_braid_comb.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = crc32_braid_comb.c; path = "../third_party/zlib-ng/crc32_braid_comb.c"; sourceTree = "<group>"; };
+		51CFEE025282EAF4C664BC42 /* libzlib-ng.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libzlib-ng.a"; path = "libzlib-ng.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6AF4D074B857C6A62E76C6B4 /* deflate_stored.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = deflate_stored.c; path = "../third_party/zlib-ng/deflate_stored.c"; sourceTree = "<group>"; };
+		8999BA63E0FF2D55930D48A3 /* crc32_braid_c.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = crc32_braid_c.c; path = "../third_party/zlib-ng/arch/generic/crc32_braid_c.c"; sourceTree = "<group>"; };
+		8A33C7B02E86656240BEADF0 /* trees.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = trees.c; path = "../third_party/zlib-ng/trees.c"; sourceTree = "<group>"; };
+		8B8690122E74B6C4BD9A9652 /* uncompr.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = uncompr.c; path = "../third_party/zlib-ng/uncompr.c"; sourceTree = "<group>"; };
+		982E8CE63B1CB398CA429326 /* infback.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = infback.c; path = "../third_party/zlib-ng/infback.c"; sourceTree = "<group>"; };
+		9B881EE96216165BD0183D29 /* adler32_fold_c.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = adler32_fold_c.c; path = "../third_party/zlib-ng/arch/generic/adler32_fold_c.c"; sourceTree = "<group>"; };
+		A28E1544457C3BF6D4A21B84 /* adler32.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = adler32.c; path = "../third_party/zlib-ng/adler32.c"; sourceTree = "<group>"; };
+		B41BB3E4D5E76116129C8A24 /* deflate_huff.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = deflate_huff.c; path = "../third_party/zlib-ng/deflate_huff.c"; sourceTree = "<group>"; };
+		D031CBD4731FF2860245D214 /* deflate.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = deflate.c; path = "../third_party/zlib-ng/deflate.c"; sourceTree = "<group>"; };
+		DB9C75111FEB1A8362125351 /* chunkset_c.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = chunkset_c.c; path = "../third_party/zlib-ng/arch/generic/chunkset_c.c"; sourceTree = "<group>"; };
+		E1A7E6E485FA84969832CD24 /* crc32.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = crc32.c; path = "../third_party/zlib-ng/crc32.c"; sourceTree = "<group>"; };
+		E32A75EF5052846151E5742F /* compare256_c.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = compare256_c.c; path = "../third_party/zlib-ng/arch/generic/compare256_c.c"; sourceTree = "<group>"; };
+		E3CCA5980C075E4AF3A2EBD8 /* deflate_rle.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = deflate_rle.c; path = "../third_party/zlib-ng/deflate_rle.c"; sourceTree = "<group>"; };
+		E74F217A8BA1BF2C9DDA07BA /* gzlib.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = gzlib.c; path = "../third_party/zlib-ng/gzlib.c"; sourceTree = "<group>"; };
+		F16B6332179192E47E988972 /* functable.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = functable.c; path = "../third_party/zlib-ng/functable.c"; sourceTree = "<group>"; };
+		F4C6AF820BD94AB4FBF545C2 /* compress.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = compress.c; path = "../third_party/zlib-ng/compress.c"; sourceTree = "<group>"; };
+		F87429816996CA731F5D77C1 /* adler32_c.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = adler32_c.c; path = "../third_party/zlib-ng/arch/generic/adler32_c.c"; sourceTree = "<group>"; };
+		F94BD92A105E745C007A6F6A /* inftrees.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = inftrees.c; path = "../third_party/zlib-ng/inftrees.c"; sourceTree = "<group>"; };
+		FA02DF40BD6EA0F2FC124580 /* insert_string.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = insert_string.c; path = "../third_party/zlib-ng/insert_string.c"; sourceTree = "<group>"; };
+		FA4514FA9E97B2ACB0CFFB3A /* zutil.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = zutil.c; path = "../third_party/zlib-ng/zutil.c"; sourceTree = "<group>"; };
+		FA6FF14F6797FFC1692AEF8F /* slide_hash_c.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = slide_hash_c.c; path = "../third_party/zlib-ng/arch/generic/slide_hash_c.c"; sourceTree = "<group>"; };
+		FF695CB0E3B064E2679D92F0 /* insert_string_roll.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = insert_string_roll.c; path = "../third_party/zlib-ng/insert_string_roll.c"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6B8732729A2D8664F36EE0B2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		3FE8E75EB173FFD06075259E /* Embed Libraries */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Libraries";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXGroup section */
+		8DA911443A0BD176F8944784 /* arch */ = {
+			isa = PBXGroup;
+			children = (
+				ED0C3BAFEDBF38A161A109EF /* generic */,
+			);
+			name = arch;
+			sourceTree = "<group>";
+		};
+		A6C936B49B3FADE6EA134CF4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				51CFEE025282EAF4C664BC42 /* libzlib-ng.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D393F5D3669F4EC5AED44413 /* zlib-ng */ = {
+			isa = PBXGroup;
+			children = (
+				A28E1544457C3BF6D4A21B84 /* adler32.c */,
+				8DA911443A0BD176F8944784 /* arch */,
+				F4C6AF820BD94AB4FBF545C2 /* compress.c */,
+				30D1DCB6529D89E88F52B2F6 /* cpu_features.c */,
+				E1A7E6E485FA84969832CD24 /* crc32.c */,
+				43338A26D8AA49584746A066 /* crc32_braid_comb.c */,
+				D031CBD4731FF2860245D214 /* deflate.c */,
+				0ABEB26E2C8A5FA0693F88AE /* deflate_fast.c */,
+				B41BB3E4D5E76116129C8A24 /* deflate_huff.c */,
+				0195F1144EF8E746C517E754 /* deflate_medium.c */,
+				20CAB00CE43671BE22DA164C /* deflate_quick.c */,
+				E3CCA5980C075E4AF3A2EBD8 /* deflate_rle.c */,
+				3666731C5832204E94E7495C /* deflate_slow.c */,
+				6AF4D074B857C6A62E76C6B4 /* deflate_stored.c */,
+				F16B6332179192E47E988972 /* functable.c */,
+				E74F217A8BA1BF2C9DDA07BA /* gzlib.c */,
+				091C6462AC0A8B143B306AA2 /* gzwrite.c */,
+				982E8CE63B1CB398CA429326 /* infback.c */,
+				0E23AE70B111D5224037B4B0 /* inflate.c */,
+				F94BD92A105E745C007A6F6A /* inftrees.c */,
+				FA02DF40BD6EA0F2FC124580 /* insert_string.c */,
+				FF695CB0E3B064E2679D92F0 /* insert_string_roll.c */,
+				8A33C7B02E86656240BEADF0 /* trees.c */,
+				8B8690122E74B6C4BD9A9652 /* uncompr.c */,
+				FA4514FA9E97B2ACB0CFFB3A /* zutil.c */,
+				A6C936B49B3FADE6EA134CF4 /* Products */,
+			);
+			name = "zlib-ng";
+			sourceTree = "<group>";
+		};
+		ED0C3BAFEDBF38A161A109EF /* generic */ = {
+			isa = PBXGroup;
+			children = (
+				F87429816996CA731F5D77C1 /* adler32_c.c */,
+				9B881EE96216165BD0183D29 /* adler32_fold_c.c */,
+				DB9C75111FEB1A8362125351 /* chunkset_c.c */,
+				E32A75EF5052846151E5742F /* compare256_c.c */,
+				8999BA63E0FF2D55930D48A3 /* crc32_braid_c.c */,
+				1E2100C98B490F3B8CDBFF09 /* crc32_fold_c.c */,
+				FA6FF14F6797FFC1692AEF8F /* slide_hash_c.c */,
+			);
+			name = generic;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		69710DA80C5F345A9B8513E8 /* zlib-ng */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 59C27AD18868CEC3E1AA2911 /* Build configuration list for PBXNativeTarget "zlib-ng" */;
+			buildPhases = (
+				DB6EB3120A15070463566152 /* Resources */,
+				451BCC6973C2205BCD037AA9 /* Sources */,
+				6B8732729A2D8664F36EE0B2 /* Frameworks */,
+				3FE8E75EB173FFD06075259E /* Embed Libraries */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "zlib-ng";
+			productName = "zlib-ng";
+			productReference = 51CFEE025282EAF4C664BC42 /* libzlib-ng.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		08FB7793FE84155DC02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 1DEB928908733DD80010E9CD /* Build configuration list for PBXProject "zlib-ng" */;
+			compatibilityVersion = "Xcode 3.2";
+			hasScannedForEncodings = 1;
+			mainGroup = D393F5D3669F4EC5AED44413 /* zlib-ng */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				69710DA80C5F345A9B8513E8 /* libzlib-ng.a */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		DB6EB3120A15070463566152 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		451BCC6973C2205BCD037AA9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2ACE64DC5A6033CE356D731C /* adler32.c in Sources */,
+				822AE459C63EB58BBA103A99 /* adler32_c.c in Sources */,
+				9DE8D94111D150F3341EFF81 /* adler32_fold_c.c in Sources */,
+				8A3929E922860F9B50CD1029 /* chunkset_c.c in Sources */,
+				2FC4FBA74A916A594E6201E7 /* compare256_c.c in Sources */,
+				B1FFA85BB1A28B8DEBF73E9B /* crc32_braid_c.c in Sources */,
+				99842721B45095D3B8212D61 /* crc32_fold_c.c in Sources */,
+				573E7D07720AEBB975DB8347 /* slide_hash_c.c in Sources */,
+				E5C4BCFA4106106C14605B3A /* compress.c in Sources */,
+				BC0C736E005B18E0428251AE /* cpu_features.c in Sources */,
+				63D9927C4EC5B86E96AB80BC /* crc32.c in Sources */,
+				349E33DEFB2C2B50692E521E /* crc32_braid_comb.c in Sources */,
+				3BDC1C6C6B6DEB5E467B2AAC /* deflate.c in Sources */,
+				3FF4B0A684435618C66A8EE6 /* deflate_fast.c in Sources */,
+				BAB1A07CFF0045EE41277EBC /* deflate_huff.c in Sources */,
+				0A8076AC77A8851E793B74EC /* deflate_medium.c in Sources */,
+				B206B22444947C16AD6D2064 /* deflate_quick.c in Sources */,
+				9198147002BAB562B88162B0 /* deflate_rle.c in Sources */,
+				800A1F34C458C4A6067FFD74 /* deflate_slow.c in Sources */,
+				1EC77C0C8BEF8A7E8D827A4C /* deflate_stored.c in Sources */,
+				D4F5C8AA05D9C09C18F1F6EA /* functable.c in Sources */,
+				B144D3729C30F964E416C1B2 /* gzlib.c in Sources */,
+				06EDFADA367FC9CC118D091A /* gzwrite.c in Sources */,
+				82ED219EB27EF0908D8C2FDE /* infback.c in Sources */,
+				B213E2C8E1A5B1BABCB2F108 /* inflate.c in Sources */,
+				DF7E45223ABF98940E19E362 /* inftrees.c in Sources */,
+				A5CA0A983857D48AA13078D8 /* insert_string.c in Sources */,
+				706F0608332F667A90644448 /* insert_string_roll.c in Sources */,
+				91DFEA087CCC0FFAC4B1D848 /* trees.c in Sources */,
+				8D72A98ABD04787C9811B7CA /* uncompr.c in Sources */,
+				CED23EF2B9BE64E401A42D32 /* zutil.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		2CC00DD1880161435B5BAC11 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					arm64,
+				);
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "bin/iOS-ARM64/Release";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_DYNAMIC_NO_PIC = NO;
+				INSTALL_PATH = /usr/local/lib;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				PRODUCT_NAME = "zlib-ng";
+				SDKROOT = (
+					iphoneos,
+				);
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+			};
+			name = Release;
+		};
+		6BA451179B36200976435F57 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					arm64,
+				);
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "bin/iOS-ARM64/Debug";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_DYNAMIC_NO_PIC = NO;
+				INSTALL_PATH = /usr/local/lib;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				PRODUCT_NAME = "zlib-ng";
+				SDKROOT = (
+					iphoneos,
+				);
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+			};
+			name = Debug;
+		};
+		839D86F2B243DAE40B853532 /* Valgrind */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					arm64,
+				);
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = c17;
+				GCC_OPTIMIZATION_LEVEL = g;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					VULKAN_HPP_NO_TO_STRING,
+					IMGUI_DISABLE_OBSOLETE_FUNCTIONS,
+					IMGUI_DISABLE_DEFAULT_FONT,
+					IMGUI_USE_STB_SPRINTF,
+					USE_CPP17,
+					_LIB,
+					DEBUG,
+					NDEBUG,
+					"_NO_DEBUG_HEAP=1",
+					WITH_GZFILEOP,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				OBJROOT = "obj/iOS-ARM64/Valgrind/iOS-ARM64/Valgrind/zlib-ng";
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = (
+					"-fno-omit-frame-pointer",
+					"-fno-inline-functions",
+					"-w",
+					"-fno-modules",
+				);
+				SDKROOT = (
+					iphoneos,
+				);
+				SYMROOT = "bin/iOS-ARM64/Valgrind";
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+				USER_HEADER_SEARCH_PATHS = (
+					..,
+					../src,
+					../third_party,
+					"../third_party/zlib-ng",
+				);
+			};
+			name = Valgrind;
+		};
+		8DA12F57E8E282C9BC3CCD97 /* Checked */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					arm64,
+				);
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "bin/iOS-ARM64/Checked";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_DYNAMIC_NO_PIC = NO;
+				INSTALL_PATH = /usr/local/lib;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				PRODUCT_NAME = "zlib-ng";
+				SDKROOT = (
+					iphoneos,
+				);
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+			};
+			name = Checked;
+		};
+		B1AAA3C254F62CF46FC6FA02 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					arm64,
+				);
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = c17;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					VULKAN_HPP_NO_TO_STRING,
+					IMGUI_DISABLE_OBSOLETE_FUNCTIONS,
+					IMGUI_DISABLE_DEFAULT_FONT,
+					IMGUI_USE_STB_SPRINTF,
+					USE_CPP17,
+					_LIB,
+					DEBUG,
+					"_NO_DEBUG_HEAP=1",
+					WITH_GZFILEOP,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				OBJROOT = "obj/iOS-ARM64/Debug/iOS-ARM64/Debug/zlib-ng";
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = (
+					"-w",
+					"-fno-modules",
+				);
+				SDKROOT = (
+					iphoneos,
+				);
+				SYMROOT = "bin/iOS-ARM64/Debug";
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+				USER_HEADER_SEARCH_PATHS = (
+					..,
+					../src,
+					../third_party,
+					"../third_party/zlib-ng",
+				);
+			};
+			name = Debug;
+		};
+		BB4A767C5F9D142E71D55CBC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					arm64,
+				);
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				GCC_C_LANGUAGE_STANDARD = c17;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					VULKAN_HPP_NO_TO_STRING,
+					IMGUI_DISABLE_OBSOLETE_FUNCTIONS,
+					IMGUI_DISABLE_DEFAULT_FONT,
+					IMGUI_USE_STB_SPRINTF,
+					USE_CPP17,
+					_LIB,
+					NDEBUG,
+					"_NO_DEBUG_HEAP=1",
+					WITH_GZFILEOP,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				OBJROOT = "obj/iOS-ARM64/Release/iOS-ARM64/Release/zlib-ng";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CFLAGS = (
+					"-O3",
+					"-finline-functions",
+					"-funroll-loops",
+					"-fomit-frame-pointer",
+					"-w",
+					"-fno-modules",
+				);
+				SDKROOT = (
+					iphoneos,
+				);
+				SYMROOT = "bin/iOS-ARM64/Release";
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+				USER_HEADER_SEARCH_PATHS = (
+					..,
+					../src,
+					../third_party,
+					"../third_party/zlib-ng",
+				);
+			};
+			name = Release;
+		};
+		D01CD882746F763486A7BEC2 /* Checked */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					arm64,
+				);
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = c17;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					VULKAN_HPP_NO_TO_STRING,
+					IMGUI_DISABLE_OBSOLETE_FUNCTIONS,
+					IMGUI_DISABLE_DEFAULT_FONT,
+					USE_CPP17,
+					_LIB,
+					DEBUG,
+					NDEBUG,
+					WITH_GZFILEOP,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				OBJROOT = "obj/iOS-ARM64/Checked/iOS-ARM64/Checked/zlib-ng";
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = (
+					"-w",
+					"-fno-modules",
+				);
+				SDKROOT = (
+					iphoneos,
+				);
+				SYMROOT = "bin/iOS-ARM64/Checked";
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+				USER_HEADER_SEARCH_PATHS = (
+					..,
+					../src,
+					../third_party,
+					"../third_party/zlib-ng",
+				);
+			};
+			name = Checked;
+		};
+		D2B5AA8796216C39D4C510C7 /* Valgrind */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					arm64,
+				);
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "bin/iOS-ARM64/Valgrind";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_DYNAMIC_NO_PIC = NO;
+				INSTALL_PATH = /usr/local/lib;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				PRODUCT_NAME = "zlib-ng";
+				SDKROOT = (
+					iphoneos,
+				);
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+			};
+			name = Valgrind;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1DEB928908733DD80010E9CD /* Build configuration list for PBXProject "zlib-ng" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D01CD882746F763486A7BEC2 /* Checked */,
+				B1AAA3C254F62CF46FC6FA02 /* Debug */,
+				BB4A767C5F9D142E71D55CBC /* Release */,
+				839D86F2B243DAE40B853532 /* Valgrind */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Checked;
+		};
+		59C27AD18868CEC3E1AA2911 /* Build configuration list for PBXNativeTarget "libzlib-ng.a" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8DA12F57E8E282C9BC3CCD97 /* Checked */,
+				6BA451179B36200976435F57 /* Debug */,
+				2CC00DD1880161435B5BAC11 /* Release */,
+				D2B5AA8796216C39D4C510C7 /* Valgrind */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Checked;
+		};
+/* End XCConfigurationList section */
+};
+rootObject = 08FB7793FE84155DC02AAC07 /* Project object */;
+}

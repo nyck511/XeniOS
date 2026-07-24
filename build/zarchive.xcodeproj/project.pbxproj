@@ -1,0 +1,574 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		30608E97F320EF095055CCD7 /* zarchivereader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C39CBDBFA7E3C5F12BD0F3FF /* zarchivereader.cpp */; };
+		57166FEB19D6D05D770BAE2B /* zarchivewriter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AE6B4BD392B25405169F8213 /* zarchivewriter.cpp */; };
+		9F8DF389D071EB7BE38A21C9 /* sha_256.c in Sources */ = {isa = PBXBuildFile; fileRef = 925EFF91B8852F431F8C25D1 /* sha_256.c */; };
+		F16847E5B428A857115D8625 /* libzstd.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CCA8FADF11197DF74FEC5ED /* libzstd.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		27BDAD474DE3DCF9B4EAD387 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7AAA94CA9C7641FCD92B6B0A /* zstd.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 19174D741C881FA69DF4C3B4;
+			remoteInfo = libzstd.a;
+		};
+		79F81FE0A01E4F9207254620 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7AAA94CA9C7641FCD92B6B0A /* zstd.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 48B146DA77579ACCD098F51A;
+			remoteInfo = libzstd.a;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		11BD0BF0D47D6C6231B24A30 /* zarchivereader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = zarchivereader.h; path = ../third_party/zarchive/include/zarchive/zarchivereader.h; sourceTree = "<group>"; };
+		4D89B2C4104A13366D7EF104 /* zarchivewriter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = zarchivewriter.h; path = ../third_party/zarchive/include/zarchive/zarchivewriter.h; sourceTree = "<group>"; };
+		670F761C29CFD68E8704B45C /* zarchivecommon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = zarchivecommon.h; path = ../third_party/zarchive/include/zarchive/zarchivecommon.h; sourceTree = "<group>"; };
+		7AAA94CA9C7641FCD92B6B0A /* libzstd.a */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "zstd.xcodeproj"; path = zstd.xcodeproj; sourceTree = SOURCE_ROOT; };
+		925EFF91B8852F431F8C25D1 /* sha_256.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = sha_256.c; path = ../third_party/zarchive/src/sha_256.c; sourceTree = "<group>"; };
+		AE6B4BD392B25405169F8213 /* zarchivewriter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = zarchivewriter.cpp; path = ../third_party/zarchive/src/zarchivewriter.cpp; sourceTree = "<group>"; };
+		C39CBDBFA7E3C5F12BD0F3FF /* zarchivereader.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = zarchivereader.cpp; path = ../third_party/zarchive/src/zarchivereader.cpp; sourceTree = "<group>"; };
+		D016EF3BF63D1EED5D44157B /* sha_256.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = sha_256.h; path = ../third_party/zarchive/src/sha_256.h; sourceTree = "<group>"; };
+		EE1ED6AB053171DDF54D6CEB /* libzarchive.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libzarchive.a; path = libzarchive.a; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1FD22E9B234300CDA4AFA4DB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F16847E5B428A857115D8625 /* libzstd.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		32E391C7D5D1B87964F79807 /* Embed Libraries */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Libraries";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXGroup section */
+		3D6458FC31DAD02E80AE6F3C /* zarchive */ = {
+			isa = PBXGroup;
+			children = (
+				5E8C725002DF100215175890 /* include */,
+				5775D4184366DFCA959E7A58 /* src */,
+				A6C936B49B3FADE6EA134CF4 /* Products */,
+				9D968EAA920D05DCE0E0A4EA /* Projects */,
+			);
+			name = zarchive;
+			sourceTree = "<group>";
+		};
+		427328138AE40C45CF82DE53 /* zarchive */ = {
+			isa = PBXGroup;
+			children = (
+				670F761C29CFD68E8704B45C /* zarchivecommon.h */,
+				11BD0BF0D47D6C6231B24A30 /* zarchivereader.h */,
+				4D89B2C4104A13366D7EF104 /* zarchivewriter.h */,
+			);
+			name = zarchive;
+			sourceTree = "<group>";
+		};
+		5775D4184366DFCA959E7A58 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				925EFF91B8852F431F8C25D1 /* sha_256.c */,
+				D016EF3BF63D1EED5D44157B /* sha_256.h */,
+				C39CBDBFA7E3C5F12BD0F3FF /* zarchivereader.cpp */,
+				AE6B4BD392B25405169F8213 /* zarchivewriter.cpp */,
+			);
+			name = src;
+			sourceTree = "<group>";
+		};
+		5E8C725002DF100215175890 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				427328138AE40C45CF82DE53 /* zarchive */,
+			);
+			name = include;
+			sourceTree = "<group>";
+		};
+		73192DA76C7F2F19601A8BE7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0CCA8FADF11197DF74FEC5ED /* libzstd.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9D968EAA920D05DCE0E0A4EA /* Projects */ = {
+			isa = PBXGroup;
+			children = (
+				7AAA94CA9C7641FCD92B6B0A /* zstd.xcodeproj */,
+			);
+			name = Projects;
+			sourceTree = "<group>";
+		};
+		A6C936B49B3FADE6EA134CF4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EE1ED6AB053171DDF54D6CEB /* libzarchive.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BBC10531BC7402233055D371 /* zarchive */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0E0D76FA117E492C92EAED3A /* Build configuration list for PBXNativeTarget "zarchive" */;
+			buildPhases = (
+				8FB9AF3B932A816D1497257B /* Resources */,
+				F966C892FCD79AC47E443ED2 /* Sources */,
+				1FD22E9B234300CDA4AFA4DB /* Frameworks */,
+				32E391C7D5D1B87964F79807 /* Embed Libraries */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				60D16AB05A376C224DD2C8F0 /* PBXTargetDependency */,
+			);
+			name = zarchive;
+			productName = zarchive;
+			productReference = EE1ED6AB053171DDF54D6CEB /* libzarchive.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		08FB7793FE84155DC02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 1DEB928908733DD80010E9CD /* Build configuration list for PBXProject "zarchive" */;
+			compatibilityVersion = "Xcode 3.2";
+			hasScannedForEncodings = 1;
+			mainGroup = 3D6458FC31DAD02E80AE6F3C /* zarchive */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 73192DA76C7F2F19601A8BE7 /* Products */;
+					ProjectRef = 7AAA94CA9C7641FCD92B6B0A /* zstd.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				BBC10531BC7402233055D371 /* libzarchive.a */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		0CCA8FADF11197DF74FEC5ED /* libzstd.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libzstd.a;
+			remoteRef = 27BDAD474DE3DCF9B4EAD387 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8FB9AF3B932A816D1497257B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F966C892FCD79AC47E443ED2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9F8DF389D071EB7BE38A21C9 /* sha_256.c in Sources */,
+				30608E97F320EF095055CCD7 /* zarchivereader.cpp in Sources */,
+				57166FEB19D6D05D770BAE2B /* zarchivewriter.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		60D16AB05A376C224DD2C8F0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = libzstd.a;
+			targetProxy = 79F81FE0A01E4F9207254620 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		11049DBAD4705F6C131403FA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					arm64,
+				);
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "bin/iOS-ARM64/Release";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_DYNAMIC_NO_PIC = NO;
+				INSTALL_PATH = /usr/local/lib;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				PRODUCT_NAME = zarchive;
+				SDKROOT = (
+					iphoneos,
+				);
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+			};
+			name = Release;
+		};
+		2281D2C0444D7FF28102A900 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					arm64,
+				);
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "bin/iOS-ARM64/Debug";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_DYNAMIC_NO_PIC = NO;
+				INSTALL_PATH = /usr/local/lib;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				PRODUCT_NAME = zarchive;
+				SDKROOT = (
+					iphoneos,
+				);
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+			};
+			name = Debug;
+		};
+		3F8C379070702F82838865D0 /* Valgrind */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					arm64,
+				);
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "bin/iOS-ARM64/Valgrind";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_DYNAMIC_NO_PIC = NO;
+				INSTALL_PATH = /usr/local/lib;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				PRODUCT_NAME = zarchive;
+				SDKROOT = (
+					iphoneos,
+				);
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+			};
+			name = Valgrind;
+		};
+		5730EE0585D741F7DF189C45 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					arm64,
+				);
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				GCC_C_LANGUAGE_STANDARD = c17;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					VULKAN_HPP_NO_TO_STRING,
+					IMGUI_DISABLE_OBSOLETE_FUNCTIONS,
+					IMGUI_DISABLE_DEFAULT_FONT,
+					IMGUI_USE_STB_SPRINTF,
+					USE_CPP17,
+					_LIB,
+					NDEBUG,
+					"_NO_DEBUG_HEAP=1",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				OBJROOT = "obj/iOS-ARM64/Release/iOS-ARM64/Release/zarchive";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CFLAGS = (
+					"-O3",
+					"-finline-functions",
+					"-funroll-loops",
+					"-fomit-frame-pointer",
+					"-w",
+					"-fno-modules",
+				);
+				SDKROOT = (
+					iphoneos,
+				);
+				SYMROOT = "bin/iOS-ARM64/Release";
+				SYSTEM_HEADER_SEARCH_PATHS = (
+					../third_party/zstd/lib,
+					"$(inherited)",
+				);
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+				USER_HEADER_SEARCH_PATHS = (
+					..,
+					../src,
+					../third_party,
+					../third_party/zarchive/include,
+				);
+			};
+			name = Release;
+		};
+		6C03500B9AA9A3FDF3EAFE4B /* Checked */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					arm64,
+				);
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = c17;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					VULKAN_HPP_NO_TO_STRING,
+					IMGUI_DISABLE_OBSOLETE_FUNCTIONS,
+					IMGUI_DISABLE_DEFAULT_FONT,
+					USE_CPP17,
+					_LIB,
+					DEBUG,
+					NDEBUG,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				OBJROOT = "obj/iOS-ARM64/Checked/iOS-ARM64/Checked/zarchive";
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = (
+					"-w",
+					"-fno-modules",
+				);
+				SDKROOT = (
+					iphoneos,
+				);
+				SYMROOT = "bin/iOS-ARM64/Checked";
+				SYSTEM_HEADER_SEARCH_PATHS = (
+					../third_party/zstd/lib,
+					"$(inherited)",
+				);
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+				USER_HEADER_SEARCH_PATHS = (
+					..,
+					../src,
+					../third_party,
+					../third_party/zarchive/include,
+				);
+			};
+			name = Checked;
+		};
+		71E5BF40355180F273F52580 /* Checked */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					arm64,
+				);
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "bin/iOS-ARM64/Checked";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_DYNAMIC_NO_PIC = NO;
+				INSTALL_PATH = /usr/local/lib;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				PRODUCT_NAME = zarchive;
+				SDKROOT = (
+					iphoneos,
+				);
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+			};
+			name = Checked;
+		};
+		9C52EF9B9FC3C1CD213065DB /* Valgrind */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					arm64,
+				);
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = c17;
+				GCC_OPTIMIZATION_LEVEL = g;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					VULKAN_HPP_NO_TO_STRING,
+					IMGUI_DISABLE_OBSOLETE_FUNCTIONS,
+					IMGUI_DISABLE_DEFAULT_FONT,
+					IMGUI_USE_STB_SPRINTF,
+					USE_CPP17,
+					_LIB,
+					DEBUG,
+					NDEBUG,
+					"_NO_DEBUG_HEAP=1",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				OBJROOT = "obj/iOS-ARM64/Valgrind/iOS-ARM64/Valgrind/zarchive";
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = (
+					"-fno-omit-frame-pointer",
+					"-fno-inline-functions",
+					"-w",
+					"-fno-modules",
+				);
+				SDKROOT = (
+					iphoneos,
+				);
+				SYMROOT = "bin/iOS-ARM64/Valgrind";
+				SYSTEM_HEADER_SEARCH_PATHS = (
+					../third_party/zstd/lib,
+					"$(inherited)",
+				);
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+				USER_HEADER_SEARCH_PATHS = (
+					..,
+					../src,
+					../third_party,
+					../third_party/zarchive/include,
+				);
+			};
+			name = Valgrind;
+		};
+		E14BA50BEE08547D62F2C34B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					arm64,
+				);
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = c17;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					VULKAN_HPP_NO_TO_STRING,
+					IMGUI_DISABLE_OBSOLETE_FUNCTIONS,
+					IMGUI_DISABLE_DEFAULT_FONT,
+					IMGUI_USE_STB_SPRINTF,
+					USE_CPP17,
+					_LIB,
+					DEBUG,
+					"_NO_DEBUG_HEAP=1",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = (
+					17.0,
+				);
+				OBJROOT = "obj/iOS-ARM64/Debug/iOS-ARM64/Debug/zarchive";
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = (
+					"-w",
+					"-fno-modules",
+				);
+				SDKROOT = (
+					iphoneos,
+				);
+				SYMROOT = "bin/iOS-ARM64/Debug";
+				SYSTEM_HEADER_SEARCH_PATHS = (
+					../third_party/zstd/lib,
+					"$(inherited)",
+				);
+				TARGETED_DEVICE_FAMILY = (
+					"1,2",
+				);
+				USER_HEADER_SEARCH_PATHS = (
+					..,
+					../src,
+					../third_party,
+					../third_party/zarchive/include,
+				);
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0E0D76FA117E492C92EAED3A /* Build configuration list for PBXNativeTarget "libzarchive.a" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				71E5BF40355180F273F52580 /* Checked */,
+				2281D2C0444D7FF28102A900 /* Debug */,
+				11049DBAD4705F6C131403FA /* Release */,
+				3F8C379070702F82838865D0 /* Valgrind */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Checked;
+		};
+		1DEB928908733DD80010E9CD /* Build configuration list for PBXProject "zarchive" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6C03500B9AA9A3FDF3EAFE4B /* Checked */,
+				E14BA50BEE08547D62F2C34B /* Debug */,
+				5730EE0585D741F7DF189C45 /* Release */,
+				9C52EF9B9FC3C1CD213065DB /* Valgrind */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Checked;
+		};
+/* End XCConfigurationList section */
+};
+rootObject = 08FB7793FE84155DC02AAC07 /* Project object */;
+}
