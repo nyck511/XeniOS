@@ -51,6 +51,9 @@ project("xenia-app")
     "XBYAK_NO_OP_NAMES",
     "XBYAK_ENABLE_OMITTED_OPERAND",
   })
+  includedirs({
+    project_root.."/third_party/rapidjson/include",
+  })
   apu_transitive_deps()
   local_platform_files()
   files({

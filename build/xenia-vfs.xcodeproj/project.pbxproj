@@ -580,6 +580,8 @@
 					..,
 					../src,
 					../third_party,
+
+					../third_party/zstd/lib,
 				);
 			};
 			name = Debug;
@@ -632,6 +634,8 @@
 					..,
 					../src,
 					../third_party,
+
+					../third_party/zstd/lib,
 				);
 			};
 			name = Release;
@@ -709,6 +713,8 @@
 					..,
 					../src,
 					../third_party,
+
+					../third_party/zstd/lib,
 				);
 			};
 			name = Valgrind;
@@ -757,6 +763,8 @@
 					..,
 					../src,
 					../third_party,
+
+					../third_party/zstd/lib,
 				);
 			};
 			name = Checked;

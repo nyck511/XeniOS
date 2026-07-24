@@ -7,17 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		02DB5E32C59BBEA422D09C72 /* patches_dialog_wx.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2E1F873A12668F6C9653BD7A /* patches_dialog_wx.cc */; };
 		03C4281C9651F20EFF2A965C /* imgui_dialog.cc in Sources */ = {isa = PBXBuildFile; fileRef = 602EDA84239A9C36623E40C4 /* imgui_dialog.cc */; };
 		093DE5F6A1B5D368CD9CC436 /* graphics_upload_buffer_pool.cc in Sources */ = {isa = PBXBuildFile; fileRef = A8750ABE4298FFF0F2BEE0FE /* graphics_upload_buffer_pool.cc */; };
 		0C38E3B6FD3051A86933D1F6 /* imgui_confirm_dialog.cc in Sources */ = {isa = PBXBuildFile; fileRef = F211137E8A5DF930B8A4F9BE /* imgui_confirm_dialog.cc */; };
-		123B8FE6A864A1D869CAFE26 /* game_scan_progress_dialog_wx.cc in Sources */ = {isa = PBXBuildFile; fileRef = 82DFFCAE35D6066086F862EE /* game_scan_progress_dialog_wx.cc */; };
-		143F76A020CA29129BAEF4E0 /* game_config_dialog_wx.cc in Sources */ = {isa = PBXBuildFile; fileRef = BCDF63C89BFC7DFA7805DA08 /* game_config_dialog_wx.cc */; };
 		2AB5F2461EB53BB8A3A05086 /* microprofile_drawer.cc in Sources */ = {isa = PBXBuildFile; fileRef = F8E5620E3CF9334030CAB84E /* microprofile_drawer.cc */; };
-		4AAC41D43EAB8B46C396A014 /* redist_installer_wx.cc in Sources */ = {isa = PBXBuildFile; fileRef = 8C6B83BCD07F54EEC450D9FC /* redist_installer_wx.cc */; };
 		4C154A5E12A341D080A5689E /* file_picker_ios.mm in Sources */ = {isa = PBXBuildFile; fileRef = 413978A6D6B037D8454C8EE6 /* file_picker_ios.mm */; };
-		4C2697EEE49E85601085762E /* advanced_settings_dialog_wx.cc in Sources */ = {isa = PBXBuildFile; fileRef = D18269366BA65E681BCC3F76 /* advanced_settings_dialog_wx.cc */; };
-		4E06E0861494D7F88296FEC6 /* windowed_app_wx.cc in Sources */ = {isa = PBXBuildFile; fileRef = 6029904EF5A04F80643CA68E /* windowed_app_wx.cc */; };
 		5102C6A4BE2AD516BFBDC4E4 /* graphics_util.cc in Sources */ = {isa = PBXBuildFile; fileRef = 48E71D8C964A13BE0C6913CC /* graphics_util.cc */; };
 		511CBB5862D3FB4AD841E998 /* imgui_guest_notification.cc in Sources */ = {isa = PBXBuildFile; fileRef = 1F758000935DF7B2B5ABA640 /* imgui_guest_notification.cc */; };
 		54A73BF0C90180E246E50A30 /* touch_controls_ios.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2DB0BD183FDA99CA73CB8358 /* touch_controls_ios.mm */; };
@@ -26,31 +20,22 @@
 		778EE4A4563180160B1382E4 /* apple_ui_navigation_mac.cc in Sources */ = {isa = PBXBuildFile; fileRef = BE53858CBDF668BEF84B1BCC /* apple_ui_navigation_mac.cc */; };
 		7935282011AD15923D940660 /* imgui_postprocessing_dialog.cc in Sources */ = {isa = PBXBuildFile; fileRef = 8A947B4824B8707AD4DE5188 /* imgui_postprocessing_dialog.cc */; };
 		7B4289FE8CF9C9F00267B83E /* imgui_performance_dialog.cc in Sources */ = {isa = PBXBuildFile; fileRef = A9117D461CF9F4F83F47A386 /* imgui_performance_dialog.cc */; };
-		7E1D5A8477DF16F6B1DE18C4 /* wx_locale.cc in Sources */ = {isa = PBXBuildFile; fileRef = 502D9F6C989E839EDD3D55AC /* wx_locale.cc */; };
 		8769B6B4F88C57A6AE5304F4 /* window_ios.mm in Sources */ = {isa = PBXBuildFile; fileRef = 93A3419CBBDDFA4EA37987DC /* window_ios.mm */; };
-		8B950B9825EEF48A622759D8 /* install_progress_dialog_wx.cc in Sources */ = {isa = PBXBuildFile; fileRef = 3E80E640DC61E6F2B3E02C80 /* install_progress_dialog_wx.cc */; };
 		8BCF08046A71A3761F53A644 /* imgui_host_notification.cc in Sources */ = {isa = PBXBuildFile; fileRef = 9D44E2EC9CE7C61ED73C792C /* imgui_host_notification.cc */; };
 		8EFC3CB888BDF92AC2BCFAF8 /* presenter.cc in Sources */ = {isa = PBXBuildFile; fileRef = 8F629860D7D37C921C724EA0 /* presenter.cc */; };
 		93ADFD360808422885EBCB76 /* apple_theme_tokens.cc in Sources */ = {isa = PBXBuildFile; fileRef = 4ADE76FE5D0853B090F93D3E /* apple_theme_tokens.cc */; };
-		9DAAB02C1204F51E8FE87E6C /* game_list_panel_wx.cc in Sources */ = {isa = PBXBuildFile; fileRef = 4F63AF94618D8C46957E75D4 /* game_list_panel_wx.cc */; };
 		9F6839157E0AD48732ECD755 /* libxenia-base.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E9AE83DDE951670F23A61A1D /* libxenia-base.a */; };
 		A4A9C0E0E8F866522B1F9F20 /* icon_decode.cc in Sources */ = {isa = PBXBuildFile; fileRef = 6FB718089182C53ACE37EE48 /* icon_decode.cc */; };
-		AC97209E03FC9390B60AAEDE /* file_picker_wx.cc in Sources */ = {isa = PBXBuildFile; fileRef = 974853E6C9419E984320DA26 /* file_picker_wx.cc */; };
 		B15E2F0E77EC2680E5EE4D4E /* profile_dialogs.cc in Sources */ = {isa = PBXBuildFile; fileRef = C9BECA565F358988CDD1E096 /* profile_dialogs.cc */; };
 		B5325112A629BF04122D3F52 /* windowed_app_context.cc in Sources */ = {isa = PBXBuildFile; fileRef = E940E51A818DCACCAFD4CB5A /* windowed_app_context.cc */; };
 		B6CA638EC881A3803DEF91CE /* windowed_app_context_ios.mm in Sources */ = {isa = PBXBuildFile; fileRef = EB7D15D65F658D8881B33C16 /* windowed_app_context_ios.mm */; };
 		B8AF2B36FCFDD0A83F250976 /* surface_ios.mm in Sources */ = {isa = PBXBuildFile; fileRef = B3E92BFED5B4D930126A023E /* surface_ios.mm */; };
 		BA695BAEB42B1820EE2A19EE /* menu_item.cc in Sources */ = {isa = PBXBuildFile; fileRef = 774232F6BFB317280451E936 /* menu_item.cc */; };
-		BE49981CD000D80E456EC65C /* quick_settings_dialog_wx.cc in Sources */ = {isa = PBXBuildFile; fileRef = 37187684AB00EE36CD4E9CC4 /* quick_settings_dialog_wx.cc */; };
-		C3AA10D4BD6BCD46F76ACF14 /* window_wx.cc in Sources */ = {isa = PBXBuildFile; fileRef = E15298BC29C37CEE6E624EFC /* window_wx.cc */; };
 		C8BCDD78B9B44B6A25B7CBB8 /* imgui_gamepad_dialog.cc in Sources */ = {isa = PBXBuildFile; fileRef = DC383C20748521D2A2CC2260 /* imgui_gamepad_dialog.cc */; };
-		CD33A0CEABD63C4060B83F0E /* windowed_app_context_wx.cc in Sources */ = {isa = PBXBuildFile; fileRef = 5BD038165B731B4895C7CE56 /* windowed_app_context_wx.cc */; };
 		D25B4A8664E91478CDC1B8C6 /* imgui_drawer.cc in Sources */ = {isa = PBXBuildFile; fileRef = 01638D4EC4CF4F000372F38E /* imgui_drawer.cc */; };
-		D7DAFDEA6A68C7DCD3416C2A /* menu_item_wx.cc in Sources */ = {isa = PBXBuildFile; fileRef = B69910727A04D224B8A876B2 /* menu_item_wx.cc */; };
 		EA6BAB4A5EC5F03CDCA9798A /* imgui_notification.cc in Sources */ = {isa = PBXBuildFile; fileRef = 732FD9D28559B684B94AA012 /* imgui_notification.cc */; };
 		EB55F4381AE7C32AF5F50278 /* window.cc in Sources */ = {isa = PBXBuildFile; fileRef = F702B0E099F0D7922916B720 /* window.cc */; };
 		EED285BE4637F8B0F84613FE /* apple_ui_flags.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2B6C57065D65A1B8D744DD46 /* apple_ui_flags.cc */; };
-		EEFB167000B25662762044B0 /* profile_editor_dialog_wx.cc in Sources */ = {isa = PBXBuildFile; fileRef = 62034D98D5EBC54AF83973D8 /* profile_editor_dialog_wx.cc */; };
 		F4E52328693F681AE722F168 /* imgui_debug_dialog.cc in Sources */ = {isa = PBXBuildFile; fileRef = 430454D0552E3182891F1B10 /* imgui_debug_dialog.cc */; };
 		F9A0EA2E6DFB2F20EBDEB86E /* imgui_context_menu.cc in Sources */ = {isa = PBXBuildFile; fileRef = 80B1D87692DBB528C6CC9EB6 /* imgui_context_menu.cc */; };
 /* End PBXBuildFile section */
@@ -409,15 +394,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4C2697EEE49E85601085762E /* advanced_settings_dialog_wx.cc in Sources */,
 				93ADFD360808422885EBCB76 /* apple_theme_tokens.cc in Sources */,
 				EED285BE4637F8B0F84613FE /* apple_ui_flags.cc in Sources */,
 				778EE4A4563180160B1382E4 /* apple_ui_navigation_mac.cc in Sources */,
 				4C154A5E12A341D080A5689E /* file_picker_ios.mm in Sources */,
-				AC97209E03FC9390B60AAEDE /* file_picker_wx.cc in Sources */,
-				143F76A020CA29129BAEF4E0 /* game_config_dialog_wx.cc in Sources */,
-				9DAAB02C1204F51E8FE87E6C /* game_list_panel_wx.cc in Sources */,
-				123B8FE6A864A1D869CAFE26 /* game_scan_progress_dialog_wx.cc in Sources */,
 				093DE5F6A1B5D368CD9CC436 /* graphics_upload_buffer_pool.cc in Sources */,
 				5102C6A4BE2AD516BFBDC4E4 /* graphics_util.cc in Sources */,
 				A4A9C0E0E8F866522B1F9F20 /* icon_decode.cc in Sources */,
@@ -434,26 +414,16 @@
 				7B4289FE8CF9C9F00267B83E /* imgui_performance_dialog.cc in Sources */,
 				7935282011AD15923D940660 /* imgui_postprocessing_dialog.cc in Sources */,
 				613C146E0325B060FA4CC2AE /* immediate_drawer.cc in Sources */,
-				8B950B9825EEF48A622759D8 /* install_progress_dialog_wx.cc in Sources */,
 				BA695BAEB42B1820EE2A19EE /* menu_item.cc in Sources */,
-				D7DAFDEA6A68C7DCD3416C2A /* menu_item_wx.cc in Sources */,
 				2AB5F2461EB53BB8A3A05086 /* microprofile_drawer.cc in Sources */,
-				02DB5E32C59BBEA422D09C72 /* patches_dialog_wx.cc in Sources */,
 				8EFC3CB888BDF92AC2BCFAF8 /* presenter.cc in Sources */,
 				B15E2F0E77EC2680E5EE4D4E /* profile_dialogs.cc in Sources */,
-				EEFB167000B25662762044B0 /* profile_editor_dialog_wx.cc in Sources */,
-				BE49981CD000D80E456EC65C /* quick_settings_dialog_wx.cc in Sources */,
-				4AAC41D43EAB8B46C396A014 /* redist_installer_wx.cc in Sources */,
 				B8AF2B36FCFDD0A83F250976 /* surface_ios.mm in Sources */,
 				54A73BF0C90180E246E50A30 /* touch_controls_ios.mm in Sources */,
 				EB55F4381AE7C32AF5F50278 /* window.cc in Sources */,
 				8769B6B4F88C57A6AE5304F4 /* window_ios.mm in Sources */,
-				C3AA10D4BD6BCD46F76ACF14 /* window_wx.cc in Sources */,
 				B5325112A629BF04122D3F52 /* windowed_app_context.cc in Sources */,
 				B6CA638EC881A3803DEF91CE /* windowed_app_context_ios.mm in Sources */,
-				CD33A0CEABD63C4060B83F0E /* windowed_app_context_wx.cc in Sources */,
-				4E06E0861494D7F88296FEC6 /* windowed_app_wx.cc in Sources */,
-				7E1D5A8477DF16F6B1DE18C4 /* wx_locale.cc in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
