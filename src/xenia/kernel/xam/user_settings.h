@@ -532,9 +532,7 @@ class UserSetting : public UserData {
   }
 
   static bool is_setting_valid(uint32_t setting_id) {
-    const auto setting = static_cast<AttributeKey>(setting_id);
-
-    if (setting.id < kMaxUserSettingId) {
+    if (is_attribute_setting_key_valid(setting_id)) {
       return true;
     }
 
@@ -544,6 +542,33 @@ class UserSetting : public UserData {
   }
 
  private:
+  static bool is_attribute_setting_key_valid(uint32_t setting_id) {
+    AttributeKey setting = {};
+    setting.value = setting_id;
+
+    if (!setting.value || setting.id >= kMaxUserSettingId) {
+      return false;
+    }
+
+    switch (static_cast<X_USER_DATA_TYPE>(setting.type)) {
+      case X_USER_DATA_TYPE::CONTEXT:
+      case X_USER_DATA_TYPE::FLOAT:
+      case X_USER_DATA_TYPE::INT32:
+        return setting.size == sizeof(uint32_t);
+      case X_USER_DATA_TYPE::DATETIME:
+      case X_USER_DATA_TYPE::DOUBLE:
+      case X_USER_DATA_TYPE::INT64:
+        return setting.size == sizeof(uint64_t);
+      case X_USER_DATA_TYPE::BINARY:
+      case X_USER_DATA_TYPE::WSTRING:
+        return setting.size > 0 && setting.size <= kMaxUserDataSize;
+      case X_USER_DATA_TYPE::UNSET:
+        return false;
+    }
+
+    return false;
+  }
+
   UserSettingId setting_id_;
   X_USER_PROFILE_SETTING_SOURCE setting_source_;
 
