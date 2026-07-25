@@ -27,6 +27,8 @@ namespace xam {
 enum class X_USER_PROFILE_SETTING_SOURCE : uint32_t;
 struct X_USER_PROFILE_SETTING;
 
+constexpr uint32_t kMaxUserSettingId = 0x58;
+
 constexpr uint32_t SettingKey(X_USER_DATA_TYPE type, uint16_t size,
                               uint16_t id) {
   return static_cast<uint32_t>(type) << 28 | size << 16 | id;
@@ -530,12 +532,43 @@ class UserSetting : public UserData {
   }
 
   static bool is_setting_valid(uint32_t setting_id) {
+    if (is_attribute_setting_key_valid(setting_id)) {
+      return true;
+    }
+
     return std::find(known_settings.cbegin(), known_settings.cend(),
                      static_cast<UserSettingId>(setting_id)) !=
            known_settings.cend();
   }
 
  private:
+  static bool is_attribute_setting_key_valid(uint32_t setting_id) {
+    AttributeKey setting = {};
+    setting.value = setting_id;
+
+    if (!setting.value || setting.id >= kMaxUserSettingId) {
+      return false;
+    }
+
+    switch (static_cast<X_USER_DATA_TYPE>(setting.type)) {
+      case X_USER_DATA_TYPE::CONTEXT:
+      case X_USER_DATA_TYPE::FLOAT:
+      case X_USER_DATA_TYPE::INT32:
+        return setting.size == sizeof(uint32_t);
+      case X_USER_DATA_TYPE::DATETIME:
+      case X_USER_DATA_TYPE::DOUBLE:
+      case X_USER_DATA_TYPE::INT64:
+        return setting.size == sizeof(uint64_t);
+      case X_USER_DATA_TYPE::BINARY:
+      case X_USER_DATA_TYPE::WSTRING:
+        return setting.size > 0 && setting.size <= kMaxUserDataSize;
+      case X_USER_DATA_TYPE::UNSET:
+        return false;
+    }
+
+    return false;
+  }
+
   UserSettingId setting_id_;
   X_USER_PROFILE_SETTING_SOURCE setting_source_;
 

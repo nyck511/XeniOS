@@ -7,6 +7,7 @@
  ******************************************************************************
  */
 
+#include <bitset>
 #include <thread>
 
 #include "xenia/base/clock.h"
@@ -63,8 +64,22 @@ namespace xam {
 // https://github.com/tpn/winsdk-10/blob/master/Include/10.0.14393.0/km/wdm.h#L15539
 typedef enum _MODE { KernelMode, UserMode, MaximumMode } MODE;
 
-dword_result_t XamFeatureEnabled_entry(dword_t app_id) { return 0; }
-DECLARE_XAM_EXPORT1(XamFeatureEnabled, kNone, kStub);
+dword_result_t XamFeatureEnabled_entry(dword_t feature_bit) {
+  constexpr uint64_t kXamFeatureMask = 0x40FFFFFFFFull;
+  constexpr size_t kXamFeatureMaskBitCount = 39;
+  static_assert(kXamFeatureMask < (uint64_t{1} << kXamFeatureMaskBitCount));
+  static_assert(kXamFeatureMask >=
+                (uint64_t{1} << (kXamFeatureMaskBitCount - 1)));
+
+  const uint32_t feature_index = feature_bit;
+  if (feature_index >= kXamFeatureMaskBitCount) {
+    return 0;
+  }
+
+  const std::bitset<kXamFeatureMaskBitCount> feature(kXamFeatureMask);
+  return feature.test(static_cast<size_t>(feature_index)) ? 1 : 0;
+}
+DECLARE_XAM_EXPORT1(XamFeatureEnabled, kNone, kImplemented);
 
 dword_result_t XamGetStagingMode_entry() { return cvars::staging_mode; }
 DECLARE_XAM_EXPORT1(XamGetStagingMode, kNone, kStub);
