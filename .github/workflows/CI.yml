@@ -41,6 +41,15 @@ jobs:
           fetch-depth: 0
           submodules: recursive
 
+      - name: Build bootstrap smoke checks
+        run: |
+          python3 -m py_compile xb xenia-build.py
+          ./xb --help
+          ./xb slang --help
+          ./xenia-build.py --help
+          ./xenia-build.py slang --help
+          test -f third_party/metal-shader-converter/lib_iOS/libmetalirconverter.dylib
+
       - name: Cache premake5
         id: cache-premake5
         uses: actions/cache@v5
