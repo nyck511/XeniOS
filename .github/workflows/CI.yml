@@ -31,6 +31,29 @@ jobs:
       - name: Lint
         run: ./xenia-build.py lint --all
 
+  bootstrap-smoke:
+    name: Bootstrap smoke
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          submodules: recursive
+
+      - name: Validate build bootstrap
+        run: |
+          python3 -m py_compile \
+            xenia-build.py \
+            tools/build/embed_bundle.py
+          ./xb --help
+          ./xb slang --help
+          ./xb i18n --help
+          ./xenia-build.py --help
+          ./xenia-build.py slang --help
+          ./xenia-build.py i18n --help
+          test -f third_party/metal-shader-converter/lib_iOS/libmetalirconverter.dylib
+          test -f src/xenia/gpu/metal/CMakeLists.txt
+          test -f tools/build/embed_bundle.py
+
   build-ios-arm64:
     name: Build iOS ARM64
     needs: lint
