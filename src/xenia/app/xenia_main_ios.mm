@@ -277,7 +277,7 @@ bool EmulatorAppIOS::OnInitialize() {
       });
 
   // Create the display window from the Metal view in the app context.
-  window_ = ui::Window::Create(app_context(), "Xenia", 1280, 720, true);
+  window_ = ui::Window::Create(app_context(), "Xenia", 1280, 720);
   if (!window_ || !window_->Open()) {
     XELOGE("iOS: Failed to create or open display window");
     return false;

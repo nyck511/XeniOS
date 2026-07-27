@@ -25,10 +25,8 @@ constexpr uint32_t kForcedLogicalHeight = 720;
 }  // namespace
 
 std::unique_ptr<Window> Window::Create(WindowedAppContext& app_context,
-                                       const std::string_view title,
-                                       uint32_t desired_logical_width,
-                                       uint32_t desired_logical_height,
-                                       bool is_game_process) {
+                                       const std::string_view title, uint32_t desired_logical_width,
+                                       uint32_t desired_logical_height) {
   auto window = std::make_unique<iOSWindow>(app_context, title,
                                             desired_logical_width,
                                             desired_logical_height);

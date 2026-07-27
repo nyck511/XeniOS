@@ -13489,7 +13489,7 @@ static NSString* XeniaTouchControlEditorTitle(NSInteger control_identifier) {
     cvars::log_file = xe_get_ios_documents_path() / "xenia.log";
   }
   xe_install_ios_crash_handlers();
-  xe::InitializeLogging("xenia", true);
+  xe::InitializeLogging("xenia");
   xe_log_ios_boot_environment(source_tag, launch_url);
 
   // Create the app context.

@@ -51,6 +51,9 @@ project("xenia-app")
     "XBYAK_NO_OP_NAMES",
     "XBYAK_ENABLE_OMITTED_OPERAND",
   })
+  includedirs({
+    project_root.."/third_party/rapidjson/include",
+  })
   apu_transitive_deps()
   local_platform_files()
   files({
@@ -61,9 +64,18 @@ project("xenia-app")
       "../ui/windowed_app_main_qt.cc",
     })
   filter("system:ios")
+    local ios_embedded_dir =
+        path.getabsolute(path.join(project_root, "build/generated/xenia-app"))
     files({
       "../ui/windowed_app_main_ios.mm",
+      path.join(ios_embedded_dir, "embedded_bundle_game_compat.cc"),
+      path.join(ios_embedded_dir, "embedded_bundle_game_compat.h"),
+      path.join(ios_embedded_dir, "embedded_bundle_game_db.cc"),
+      path.join(ios_embedded_dir, "embedded_bundle_game_db.h"),
       "xenia_main_ios.mm",
+    })
+    includedirs({
+      ios_embedded_dir,
     })
     -- iOS uses native UIKit, not the Qt-based desktop emulator window.
     removefiles({

@@ -1218,6 +1218,51 @@ def run_premake(target_os, action, cc=None, enable_tests=False,
       target_os: target --os to pass to premake.
       action: action to perform.
     """
+    if target_os == "ios":
+        embedded_bundles = [
+            (
+                os.path.join(
+                    "build", "data_repos", "xenia-manager-database", "data",
+                    "game-compatibility"),
+                os.path.join("build", "generated", "xenia-app"),
+                "game_compat",
+            ),
+            (
+                os.path.join("build", "data_repos", "x360db", "games.json"),
+                os.path.join("build", "generated", "xenia-app"),
+                "game_db",
+            ),
+            (
+                os.path.join(
+                    "build", "data_repos", "game-patches", "patches"),
+                os.path.join("build", "generated", "xenia-patcher"),
+                "patches",
+            ),
+            (
+                os.path.join(
+                    "build", "data_repos", "SDL_GameControllerDB",
+                    "gamecontrollerdb.txt"),
+                os.path.join("build", "generated", "xenia-hid-sdl"),
+                "gamecontrollerdb",
+            ),
+        ]
+        embed_script = os.path.join("tools", "build", "embed_bundle.py")
+        print("- generating iOS embedded data bundles...")
+        for source, output_dir, namespace in embedded_bundles:
+            if not os.path.exists(source):
+                print(
+                    f"ERROR: bundled data source is missing: {source}\n"
+                    "Run ./xb fetchdata before generating the iOS project.")
+                return 1
+            os.makedirs(output_dir, exist_ok=True)
+            result = shell_call(
+                [sys.executable, embed_script, source, output_dir, namespace],
+                throw_on_error=False)
+            if result != 0:
+                print(
+                    f"ERROR: failed to generate embedded bundle {namespace}.")
+                return result
+
     args = [
         sys.executable,
         os.path.join("tools", "build", "premake.py"),
