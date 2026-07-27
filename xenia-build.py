@@ -1227,9 +1227,6 @@ def run_premake(target_os, action, cc=None, enable_tests=False,
         "--verbose",
         action,
     ]
-    if not cc:
-        cc = get_cc(cc=cc)
-
     if cc:
         args.insert(4, f"--cc={cc}")
     if enable_tests:
@@ -1267,8 +1264,6 @@ def run_platform_premake(target_os_override=None, cc=None, devenv=None,
             devenv = "androidndk"
         else:
             devenv = "cmake"
-    if not cc:
-        cc = get_cc(cc=cc)
     return run_premake(target_os=target_os, action=devenv, cc=cc,
                        enable_tests=enable_tests,
                        extra_premake_args=extra_premake_args)
@@ -1680,9 +1675,13 @@ class BaseBuildCommand(Command):
             print("- running premake...")
             enable_tests = any(
                 target.endswith("-tests") for target in (args["target"] or []))
-            run_platform_premake(cc=args["cc"], enable_tests=enable_tests,
-                                 extra_premake_args=premake_args,
-                                 target_os_override=target_os)
+            premake_result = run_platform_premake(
+                cc=args["cc"], enable_tests=enable_tests,
+                extra_premake_args=premake_args,
+                target_os_override=target_os)
+            if premake_result != 0:
+                print(f"{bcolors.FAIL}Premake generation failed!{bcolors.ENDC}")
+                return premake_result
             print("")
         elif git_is_repository():
             # Keep build/version.h current for Xcode and no-premake incremental builds.
