@@ -10,3 +10,14 @@ project("xenia-patcher")
     "xenia-base"
   })
   recursive_platform_files()
+  filter("system:ios")
+    local ios_embedded_dir =
+        path.getabsolute(path.join(project_root, "build/generated/xenia-patcher"))
+    files({
+      path.join(ios_embedded_dir, "embedded_bundle_patches.cc"),
+      path.join(ios_embedded_dir, "embedded_bundle_patches.h"),
+    })
+    includedirs({
+      ios_embedded_dir,
+    })
+  filter({})

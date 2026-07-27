@@ -139,15 +139,19 @@ In addition, you will need up to date Vulkan libraries and drivers for your hard
     ```sh
     python3 -m pip install cmake ninja clang-format
     ```
+  * Ninja is required for the normal `./xb` workflow, but not when generating
+    an Xcode project directly with CMake's Xcode generator.
 * wxWidgets is built from a vendored submodule (`third_party/wxWidgets`).
   No system install needed.
 * The Slang shader compiler (`slangc`) is a build-time dependency, used to
   compile the emulator's built-in (system) shaders into backend bytecode.
-  `./xb slang` downloads the pinned release into `.slang/`. Run it before
+  `./xb slang` downloads pinned Slang 2026.8 into `.slang/`. Run it before
   `./xb setup`, as the cmake configure step fails if `slangc` is missing. To
   point at an existing install instead, set the `SLANGC_PATH` environment
   variable. See `.github/workflows/build.yml` for the version CI pins and how
   it caches the download.
+* The pinned `third_party/metal-shader-converter` submodule provides the Metal
+  Shader Converter used by iOS builds.
 
 ```sh
 git clone https://github.com/has207/xenia-edge.git
@@ -161,6 +165,14 @@ cd xenia-edge
 # Build on command line (add --config=release for release):
 ./xb build
 ```
+
+#### iOS validation
+
+The currently supported iOS validation target is an unsigned generic
+physical-device build using the `iphoneos` SDK. An iPhone does not need to be
+connected for this compile. Generate an Xcode project with CMake and build the
+`xenia-app` scheme for `generic/platform=iOS` with code signing disabled. iOS
+Simulator support is not claimed.
 
 ### macOS
 

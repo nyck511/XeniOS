@@ -50,6 +50,13 @@ project("xenia-ui")
       "windowed_app_context_qt.cc",
       "windowed_app_context_qt.h",
       "windowed_app_main_qt.cc",
+      -- wxWidgets is desktop-only; iOS uses the UIKit implementations above.
+      "*_wx.cc",
+      "*_wx.h",
+      "icon_decode.cc",
+      "icon_decode.h",
+      "wx_locale.cc",
+      "wx_locale.h",
     })
   filter({})
   if os.istarget("android") then

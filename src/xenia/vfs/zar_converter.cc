@@ -29,7 +29,7 @@
 #include "third_party/zarchive/include/zarchive/zarchivereader.h"
 #include "third_party/zarchive/include/zarchive/zarchivewriter.h"
 
-#include <zstd.h>
+#include "zstd.h"
 
 namespace xe {
 namespace vfs {

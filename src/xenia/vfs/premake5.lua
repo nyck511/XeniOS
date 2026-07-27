@@ -11,6 +11,9 @@ project("xenia-vfs")
     "zstd",
     "zarchive"
   })
+  includedirs({
+    project_root.."/third_party/zstd/lib",
+  })
 
   recursive_platform_files()
   removefiles({
