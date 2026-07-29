@@ -14,6 +14,7 @@
 #include <memory>
 #include <string>
 
+#include "xenia/app/game_library.h"
 #include "xenia/base/platform.h"
 
 #if !XE_PLATFORM_IOS
