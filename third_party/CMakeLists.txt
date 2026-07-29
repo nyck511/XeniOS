@@ -203,40 +203,17 @@ if(NOT _xe_use_host_shader_cc OR (XE_PLATFORM_IOS AND XENIA_ENABLE_IOS_MOLTENVK)
   set(_xe_build_spirv_tools TRUE)
 endif()
 
+include("${PROJECT_SOURCE_DIR}/cmake/HostShaderCompiler.cmake")
+
 if(_xe_build_spirv_tools)
 
 # ==============================================================================
 # SPIRV-Headers + SPIRV-Tools (host: SPIR-V optimization + disassembly
 # support for glslang's ENABLE_OPT path; used by the xenia-shader-cc tool)
 # ==============================================================================
-# Point SPIRV-Tools at our in-tree SPIRV-Headers checkout instead of the
-# external/spirv-headers path it expects by default.
-set(SPIRV-Headers_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/SPIRV-Headers"
-    CACHE INTERNAL "")
-set(SPIRV_SKIP_TESTS ON CACHE INTERNAL "")
-set(SPIRV_SKIP_EXECUTABLES ON CACHE INTERNAL "")
-set(SKIP_SPIRV_TOOLS_INSTALL ON CACHE INTERNAL "")
-set(SPIRV_WERROR OFF CACHE INTERNAL "")
-set(SPIRV_BUILD_FUZZER OFF CACHE INTERNAL "")
-add_subdirectory(SPIRV-Tools EXCLUDE_FROM_ALL)
-
-# SPIRV-Tools unconditionally forces /W2 /WX on MSVC via its own
-# target_compile_options, which conflicts with the directory-level /W0 and
-# produces D9025 "overriding /W0 with /W2" for every translation unit. Strip
-# the /W* and /WX flags it added so only the directory-level /W0 survives.
-if(MSVC)
-  foreach(_spvt_target
-      SPIRV-Tools-static SPIRV-Tools-shared SPIRV-Tools-opt
-      SPIRV-Tools-link SPIRV-Tools-reduce SPIRV-Tools-diff)
-    if(TARGET ${_spvt_target})
-      get_target_property(_opts ${_spvt_target} COMPILE_OPTIONS)
-      if(_opts)
-        list(FILTER _opts EXCLUDE REGEX "^/[Ww]([0-9]|all|X)$")
-        set_target_properties(${_spvt_target} PROPERTIES COMPILE_OPTIONS "${_opts}")
-      endif()
-    endif()
-  endforeach()
-endif()
+xe_add_host_spirv_tools(
+  THIRD_PARTY_DIR "${CMAKE_CURRENT_SOURCE_DIR}"
+  BINARY_DIR "${CMAKE_CURRENT_BINARY_DIR}/SPIRV-Tools")
 
 endif()  # _xe_build_spirv_tools
 
@@ -246,51 +223,9 @@ if(NOT _xe_use_host_shader_cc)
 # glslang (host: full frontend + SPIR-V emission for the xenia-shader-cc
 # build-time tool; all platforms, including macOS)
 # ==============================================================================
-# Read glslang's own version file to generate build_info.h in sync with the
-# pinned submodule, matching what glslang's own CMakeLists does.
-include(${CMAKE_CURRENT_SOURCE_DIR}/glslang/parse_version.cmake)
-parse_version(${CMAKE_CURRENT_SOURCE_DIR}/glslang/CHANGES.md GLSLANG)
-set(major ${GLSLANG_VERSION_MAJOR})
-set(minor ${GLSLANG_VERSION_MINOR})
-set(patch ${GLSLANG_VERSION_PATCH})
-set(flavor ${GLSLANG_VERSION_FLAVOR})
-configure_file(
-  ${CMAKE_CURRENT_SOURCE_DIR}/glslang/build_info.h.tmpl
-  ${CMAKE_CURRENT_BINARY_DIR}/glslang-build-info/glslang/build_info.h
-  @ONLY)
-
-file(GLOB _glslang_mi
-  "glslang/glslang/MachineIndependent/*.cpp"
-  "glslang/glslang/MachineIndependent/preprocessor/*.cpp"
-  "glslang/glslang/GenericCodeGen/*.cpp")
-file(GLOB _glslang_spirv_all "glslang/SPIRV/*.cpp")
-add_library(glslang STATIC
-  ${_glslang_mi}
-  ${_glslang_spirv_all}
-  glslang/glslang/ResourceLimits/ResourceLimits.cpp
-)
-if(WIN32)
-  target_sources(glslang PRIVATE glslang/glslang/OSDependent/Windows/ossource.cpp)
-else()
-  target_sources(glslang PRIVATE glslang/glslang/OSDependent/Unix/ossource.cpp)
-endif()
-target_include_directories(glslang PUBLIC
-  ${CMAKE_CURRENT_SOURCE_DIR}/glslang
-  ${CMAKE_CURRENT_BINARY_DIR}/glslang-build-info)
-target_compile_features(glslang PUBLIC cxx_std_17)
-# Enable glslang's SpvTools.cpp optimizer/disassembler bridge to SPIRV-Tools.
-target_compile_definitions(glslang PRIVATE ENABLE_OPT=1)
-target_link_libraries(glslang PUBLIC SPIRV-Tools-opt SPIRV-Tools-static)
-# glslang relies on exceptions internally.
-if(MSVC)
-  target_compile_options(glslang PRIVATE /EHsc)
-endif()
-if(NOT WIN32)
-  find_package(Threads)
-  if(Threads_FOUND)
-    target_link_libraries(glslang PUBLIC Threads::Threads)
-  endif()
-endif()
+xe_add_host_glslang(
+  THIRD_PARTY_DIR "${CMAKE_CURRENT_SOURCE_DIR}"
+  BINARY_DIR "${CMAKE_CURRENT_BINARY_DIR}/glslang-build-info")
 
 endif()  # NOT _xe_use_host_shader_cc (glslang block)
 
@@ -585,20 +520,11 @@ endif()
 # ==============================================================================
 if(NOT _xe_use_host_shader_cc)
 
-add_executable(xenia-shader-cc ${PROJECT_SOURCE_DIR}/tools/build/shader_cc.cc)
-target_link_libraries(xenia-shader-cc PRIVATE glslang SPIRV-Tools-static)
-target_include_directories(xenia-shader-cc PRIVATE
-  ${CMAKE_CURRENT_SOURCE_DIR}/glslang/StandAlone)
-set_target_properties(xenia-shader-cc PROPERTIES
-  RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/host_tools")
-if(APPLE)
-  target_compile_definitions(xenia-shader-cc PRIVATE
-    XE_SHADER_CC_METAL=1
-    XE_METAL_MIN_OS="${CMAKE_OSX_DEPLOYMENT_TARGET}")
-endif()
-if(MSVC)
-  target_compile_options(xenia-shader-cc PRIVATE /EHsc)
-endif()
+xe_add_host_shader_compiler(
+  THIRD_PARTY_DIR "${CMAKE_CURRENT_SOURCE_DIR}"
+  SOURCE "${PROJECT_SOURCE_DIR}/tools/build/shader_cc.cc"
+  OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/host_tools"
+  METAL_MIN_OS "${CMAKE_OSX_DEPLOYMENT_TARGET}")
 
 else()  # _xe_use_host_shader_cc: use native build's binary
 

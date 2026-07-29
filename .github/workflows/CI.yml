@@ -43,9 +43,11 @@ jobs:
         run: |
           python3 -m py_compile \
             xenia-build.py \
-            tools/build/embed_bundle.py
+            tools/build/embed_bundle.py \
+            tools/build/generate_metal_shaders.py
           ./xb --help
           ./xb slang --help
+          ./xb buildshaders --help
           ./xb i18n --help
           ./xenia-build.py --help
           ./xenia-build.py slang --help
@@ -53,10 +55,108 @@ jobs:
           test -f third_party/metal-shader-converter/lib_iOS/libmetalirconverter.dylib
           test -f src/xenia/gpu/metal/CMakeLists.txt
           test -f tools/build/embed_bundle.py
+          python3 tools/build/generate_metal_shaders.py \
+            --repository "$PWD" \
+            --verify-manifest
+          for forbidden_path in \
+            src/xenia/gpu/metal/metal_backend_telemetry.cc \
+            src/xenia/gpu/metal/metal_backend_telemetry.h \
+            src/xenia/gpu/metal/metal_direct_host_resolve.cc \
+            src/xenia/gpu/metal/metal_stage_compile_cache.cc \
+            src/xenia/gpu/metal/metal_stage_compile_cache.h \
+            src/xenia/gpu/metal/metal_zpd_visibility_pool.cc \
+            src/xenia/gpu/metal/metal_zpd_visibility_pool.h; do
+            test ! -e "$forbidden_path"
+          done
+
+  shader-generation-smoke:
+    name: iPhoneOS Metal shader generation
+    runs-on: macos-26
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+          submodules: recursive
+
+      - name: Select Xcode and validate Apple shader tools
+        run: |
+          xcode_app="$(find /Applications -maxdepth 1 -type d -name 'Xcode_26*.app' ! -iname '*beta*' | sort -V | tail -n 1)"
+          if [ -z "$xcode_app" ]; then
+            xcode_app="$(find /Applications -maxdepth 1 -type d -name 'Xcode_26*.app' | sort -V | tail -n 1)"
+          fi
+          if [ -z "$xcode_app" ]; then
+            echo "::error::Xcode 26 not found on runner"
+            exit 1
+          fi
+          echo "DEVELOPER_DIR=$xcode_app/Contents/Developer" >> "$GITHUB_ENV"
+          export DEVELOPER_DIR="$xcode_app/Contents/Developer"
+          xcodebuild -version
+          xcrun --sdk iphoneos --show-sdk-path
+          if ! xcrun --find metal >/dev/null 2>&1 || \
+             ! xcrun --find metallib >/dev/null 2>&1; then
+            xcodebuild -downloadComponent MetalToolchain
+          fi
+          xcrun --find metal
+          xcrun --find metallib
+
+      - name: Cache Slang 2026.8
+        uses: actions/cache@v5
+        with:
+          path: .slang
+          key: ${{ runner.os }}-${{ runner.arch }}-slang-2026.8
+
+      - name: Provision Slang 2026.8
+        run: |
+          ./xb slang
+          slangc="$(
+            find .slang/2026.8 \
+              -type f \
+              -path '*/bin/slangc' \
+              -print |
+              head -n 1
+          )"
+          test -n "$slangc"
+          chmod u+x "$slangc"
+          test -x "$slangc"
+          echo "SLANGC_PATH=$PWD/$slangc" >> "$GITHUB_ENV"
+          "$slangc" -version || "$slangc" --version
+
+      - name: Cache native shader compiler
+        uses: actions/cache@v5
+        with:
+          path: |
+            build/host-shader-tools
+            build/host_tools/Release/xenia-shader-cc
+          key: ${{ runner.os }}-${{ runner.arch }}-xenia-shader-cc-${{ hashFiles('cmake/HostShaderCompiler.cmake', 'tools/build/shader_cc/CMakeLists.txt', 'third_party/CMakeLists.txt', 'tools/build/shader_cc.cc', 'xenia-build.py', 'third_party/glslang/CHANGES.md', 'third_party/SPIRV-Tools/CHANGES') }}
+
+      - name: Generate and validate iPhoneOS Metal headers
+        env:
+          XE_TARGET_IOS: "1"
+          IPHONEOS_DEPLOYMENT_TARGET: "16.0"
+        run: |
+          printf '[%s] Starting native host-tool build and 86-header generation\n' \
+            "$(date -u '+%Y-%m-%dT%H:%M:%SZ')"
+          ./xb buildshaders --target metal --target_os ios
+          printf '[%s] Completed native host-tool build and 86-header generation\n' \
+            "$(date -u '+%Y-%m-%dT%H:%M:%SZ')"
+          file build/host_tools/Release/xenia-shader-cc |
+            grep 'Mach-O 64-bit executable arm64'
+          header_count="$(
+            find \
+              build/generated/xenia/gpu/shaders/bytecode/metal \
+              build/generated/xenia/ui/shaders/bytecode/metal \
+              -type f -name '*.h' -print |
+              wc -l |
+              tr -d '[:space:]'
+          )"
+          test "$header_count" -eq 86
 
   build-ios-arm64:
     name: Build iOS ARM64
-    needs: lint
+    needs:
+      - bootstrap-smoke
+      - shader-generation-smoke
     runs-on: macos-26
     steps:
       - uses: actions/checkout@v5
@@ -73,6 +173,36 @@ jobs:
           ./xenia-build.py slang --help
           test -f third_party/metal-shader-converter/lib_iOS/libmetalirconverter.dylib
 
+      - name: Cache Slang 2026.8
+        uses: actions/cache@v5
+        with:
+          path: .slang
+          key: ${{ runner.os }}-${{ runner.arch }}-slang-2026.8
+
+      - name: Provision Slang 2026.8
+        run: |
+          ./xb slang
+          slangc="$(
+            find .slang/2026.8 \
+              -type f \
+              -path '*/bin/slangc' \
+              -print |
+              head -n 1
+          )"
+          test -n "$slangc"
+          chmod u+x "$slangc"
+          test -x "$slangc"
+          echo "SLANGC_PATH=$PWD/$slangc" >> "$GITHUB_ENV"
+          "$slangc" -version || "$slangc" --version
+
+      - name: Restore native shader compiler cache
+        uses: actions/cache@v5
+        with:
+          path: |
+            build/host-shader-tools
+            build/host_tools/Release/xenia-shader-cc
+          key: ${{ runner.os }}-${{ runner.arch }}-xenia-shader-cc-${{ hashFiles('cmake/HostShaderCompiler.cmake', 'tools/build/shader_cc/CMakeLists.txt', 'third_party/CMakeLists.txt', 'tools/build/shader_cc.cc', 'xenia-build.py', 'third_party/glslang/CHANGES.md', 'third_party/SPIRV-Tools/CHANGES') }}
+
       - name: Cache premake5
         id: cache-premake5
         uses: actions/cache@v5
@@ -85,7 +215,7 @@ jobs:
         uses: actions/cache@v5
         with:
           path: build/DerivedData
-          key: ${{ runner.os }}-${{ runner.arch }}-macos26-ios-deriveddata-${{ hashFiles('src/**', 'premake5.lua', 'third_party/**/*.lua', 'assets/apple/**') }}
+          key: ${{ runner.os }}-${{ runner.arch }}-macos26-ios-deriveddata-${{ hashFiles('src/**', 'premake5.lua', 'third_party/**/*.lua', 'assets/apple/**', 'xenia-build.py', 'tools/build/shader_cc.cc', 'tools/build/generate_metal_shaders.py') }}
           restore-keys: |
             ${{ runner.os }}-${{ runner.arch }}-macos26-ios-deriveddata-
 
@@ -168,6 +298,9 @@ jobs:
           git config --global http.lowSpeedLimit 1000
           git config --global http.lowSpeedTime 60
           git config --global http.postBuffer 524288000
+
+          # Premake embeds the pinned data repositories into the iOS targets.
+          ./xenia-build.py fetchdata
 
           # Remove any stale premake5 binary left in the submodule tree by
           # a previous cache run.  premake.py checks this path first and

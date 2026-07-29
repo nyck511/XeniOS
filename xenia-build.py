@@ -19,6 +19,7 @@ import subprocess
 import sys
 import stat
 import tarfile
+import time
 import urllib.request
 import zipfile
 
@@ -26,6 +27,11 @@ __author__ = "ben.vanik@gmail.com (Ben Vanik)"
 
 
 self_path = os.path.dirname(os.path.abspath(__file__))
+
+
+def print_build_timestamp(message):
+    timestamp = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
+    print(f"[{timestamp}] {message}", flush=True)
 
 
 def normalize_macos_arch(arch):
@@ -1210,6 +1216,174 @@ def download_slang():
     return slangc_path
 
 
+def build_ios_host_shader_compiler():
+    """Builds the native macOS ARM64 shader compiler used by iOS builds."""
+    if sys.platform != "darwin" or not is_macos_arm64_host():
+        print(
+            "ERROR: iOS Metal shader generation requires a native macOS "
+            "ARM64 host.")
+        return None
+
+    cmake = get_bin("cmake")
+    if not cmake:
+        print(
+            "ERROR: CMake is required to build the native "
+            "xenia-shader-cc host tool.")
+        return None
+
+    host_build_dir = os.path.join(
+        self_path, "build", "host-shader-tools")
+    host_source_dir = os.path.join(
+        self_path, "tools", "build", "shader_cc")
+    generator = "Ninja" if get_bin("ninja") else "Unix Makefiles"
+    parallel_jobs = min(4, max(1, os.cpu_count() or 1))
+    print(
+        f"- native shader compiler generator: {generator} "
+        f"({parallel_jobs} parallel jobs)",
+        flush=True)
+    configure_args = [
+        cmake,
+        "-S", host_source_dir,
+        "-B", host_build_dir,
+        "-G", generator,
+        "-DCMAKE_BUILD_TYPE=Release",
+        "-DCMAKE_OSX_SYSROOT=macosx",
+        "-DCMAKE_OSX_ARCHITECTURES=arm64",
+        "-DCMAKE_OSX_DEPLOYMENT_TARGET=15.0",
+        "-DCMAKE_VERBOSE_MAKEFILE=ON",
+    ]
+    configure_started = time.monotonic()
+    print_build_timestamp(
+        "Starting minimal native macOS ARM64 xenia-shader-cc configure")
+    result = shell_call(configure_args, throw_on_error=False)
+    configure_elapsed = time.monotonic() - configure_started
+    print_build_timestamp(
+        "Finished minimal native xenia-shader-cc configure "
+        f"(exit {result}, {configure_elapsed:.1f} seconds)")
+    if result != 0:
+        print(
+            "ERROR: native xenia-shader-cc CMake configuration failed "
+            f"with exit code {result}.")
+        return None
+
+    build_started = time.monotonic()
+    print_build_timestamp(
+        "Starting minimal native macOS ARM64 xenia-shader-cc build")
+    result = shell_call([
+        cmake,
+        "--build", host_build_dir,
+        "--target", "xenia-shader-cc",
+        "--parallel", str(parallel_jobs),
+        "--verbose",
+    ], throw_on_error=False)
+    build_elapsed = time.monotonic() - build_started
+    print_build_timestamp(
+        "Finished minimal native xenia-shader-cc build "
+        f"(exit {result}, {build_elapsed:.1f} seconds)")
+    if result != 0:
+        print(
+            "ERROR: native xenia-shader-cc build failed with exit code "
+            f"{result}.")
+        return None
+
+    built_tool = os.path.join(
+        host_build_dir, "host_tools", "xenia-shader-cc")
+    if not os.path.isfile(built_tool) or not os.access(built_tool, os.X_OK):
+        print(
+            "ERROR: native xenia-shader-cc build did not produce an "
+            f"executable at {built_tool}.")
+        return None
+
+    stable_dir = os.path.join(
+        self_path, "build", "host_tools", "Release")
+    stable_tool = os.path.join(stable_dir, "xenia-shader-cc")
+    os.makedirs(stable_dir, exist_ok=True)
+    shutil.copy2(built_tool, stable_tool)
+    os.chmod(stable_tool, os.stat(stable_tool).st_mode | stat.S_IEXEC)
+
+    file_tool = get_bin("file")
+    if not file_tool:
+        print("ERROR: the file utility is required to validate xenia-shader-cc.")
+        return None
+    try:
+        file_output = subprocess.check_output(
+            [file_tool, stable_tool], text=True,
+            stderr=subprocess.STDOUT).strip()
+    except (OSError, subprocess.CalledProcessError) as e:
+        print(f"ERROR: failed to inspect native xenia-shader-cc: {e}")
+        return None
+    print(f"- host shader compiler: {file_output}")
+    if "Mach-O 64-bit executable arm64" not in file_output:
+        print(
+            "ERROR: xenia-shader-cc is not a native macOS ARM64 "
+            "executable.")
+        return None
+    return stable_tool
+
+
+def prepare_ios_metal_shaders():
+    """Generates every directly included iPhoneOS Metal shader header."""
+    shader_compiler = build_ios_host_shader_compiler()
+    if not shader_compiler:
+        return 1
+
+    slangc = download_slang()
+    if not os.path.isfile(slangc) or not os.access(slangc, os.X_OK):
+        print(f"ERROR: Slang {SLANG_VERSION} is not executable at {slangc}.")
+        return 1
+
+    slang_version_output = ""
+    for version_arg in ("-version", "--version"):
+        try:
+            slang_version_output = subprocess.check_output(
+                [slangc, version_arg], text=True,
+                stderr=subprocess.STDOUT).strip()
+        except (OSError, subprocess.CalledProcessError):
+            continue
+        if slang_version_output:
+            break
+    if SLANG_VERSION not in slang_version_output:
+        print(
+            f"ERROR: expected Slang {SLANG_VERSION}, got: "
+            f"{slang_version_output or 'unknown version'}.")
+        return 1
+    print(f"- Slang compiler: {slangc} ({slang_version_output})")
+
+    generator = os.path.join(
+        self_path, "tools", "build", "generate_metal_shaders.py")
+    if not os.path.isfile(generator):
+        print(f"ERROR: Metal shader generator is missing: {generator}")
+        return 1
+
+    generated_root = os.path.join(self_path, "build", "generated")
+    deployment_target = os.environ.get(
+        "IPHONEOS_DEPLOYMENT_TARGET", "16.0")
+    generator_args = [
+        sys.executable,
+        generator,
+        "--repository", self_path,
+        "--generated-root", generated_root,
+        "--shader-compiler", shader_compiler,
+        "--slangc", slangc,
+        "--sdk", "iphoneos",
+        "--metal-std", "ios-metal2.3",
+        "--deployment-target", deployment_target,
+    ]
+    generation_started = time.monotonic()
+    print_build_timestamp(
+        "Starting deterministic generation of 86 iPhoneOS Metal headers")
+    result = shell_call(generator_args, throw_on_error=False)
+    generation_elapsed = time.monotonic() - generation_started
+    print_build_timestamp(
+        "Finished deterministic generation of 86 iPhoneOS Metal headers "
+        f"(exit {result}, {generation_elapsed:.1f} seconds)")
+    if result != 0:
+        print(
+            "ERROR: iPhoneOS Metal shader generation failed with exit code "
+            f"{result}.")
+    return result
+
+
 def run_premake(target_os, action, cc=None, enable_tests=False,
                 extra_premake_args=None):
     """Runs premake on the main project with the given format.
@@ -1458,6 +1632,7 @@ def discover_commands(subparsers):
         "fetchdata": FetchDataCommand(subparsers),
         "slang": SlangCommand(subparsers),
         "build": BuildCommand(subparsers),
+        "buildshaders": BuildShadersCommand(subparsers),
         "devenv": DevenvCommand(subparsers),
         "gentests": GenTestsCommand(subparsers),
         "test": TestCommand(subparsers),
@@ -1914,6 +2089,7 @@ class BuildShadersCommand(Command):
             help_short="Generates shader binaries for inclusion in C++ files.",
             help_long="""
             Generates the shader binaries under src/*/shaders/bytecode/.
+            iOS Metal headers are generated under build/generated/ instead.
             Run after modifying any .hs/vs/ds/gs/ps/cs.glsl/hlsl/xesl files.
             Direct3D shaders can be built only on a Windows host.
             """,
@@ -1945,6 +2121,15 @@ def build_shaders(targets=None, config="release", target_os=None):
     Returns:
         0 on success, non-zero on error.
     """
+    if targets is None:
+        targets = []
+    normalized_target_os = (
+        get_premake_target_os(target_os)
+        if sys.platform == "darwin" else target_os)
+    if (normalized_target_os == "ios" and
+            (not targets or "metal" in targets)):
+        return prepare_ios_metal_shaders()
+
     # Check if shaders need rebuilding by comparing source vs generated timestamps
     gpu_shaders = "src/xenia/gpu/shaders"
     ui_shaders = "src/xenia/ui/shaders"
@@ -1955,10 +2140,8 @@ def build_shaders(targets=None, config="release", target_os=None):
                      name.endswith(".hlsl") or
                      name.endswith(".xesl") or
                      name.endswith(".metal"))]
-    if targets is None:
-        targets = []
     all_targets = len(targets) == 0
-    target_os = get_premake_target_os(target_os) if sys.platform == "darwin" else target_os
+    target_os = normalized_target_os
 
     def has_generated_files(directory):
         if not os.path.isdir(directory):
