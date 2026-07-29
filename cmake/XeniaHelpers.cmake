@@ -342,6 +342,7 @@ endfunction()
 #   msl   -> bytecode/metal/<id>.h          (const uint8_t, _metallib suffix)
 function(xe_shader_rules_slang target shader_dir)
   cmake_parse_arguments(ARG "" "TARGET" "" ${ARGN})
+  set(_metal_args)
   if(NOT ARG_TARGET)
     message(FATAL_ERROR "xe_shader_rules_slang: TARGET is required")
   endif()
@@ -360,6 +361,13 @@ function(xe_shader_rules_slang target shader_dir)
     set(_subdir "metal")
     set(_flag "--slang-msl")
     set(_label "Metal")
+    if(XE_PLATFORM_IOS)
+      set(_metal_args
+        --metal-sdk iphoneos
+        --metal-std ios-metal2.3
+        --metal-min-version-flag
+        "-miphoneos-version-min=${CMAKE_OSX_DEPLOYMENT_TARGET}")
+    endif()
   else()
     message(FATAL_ERROR
             "xe_shader_rules_slang: TARGET must be dxil|spirv|msl")
@@ -438,7 +446,8 @@ function(xe_shader_rules_slang target shader_dir)
     add_custom_command(
       OUTPUT "${_out}"
       COMMAND ${CMAKE_COMMAND} -E env "SLANGC_PATH=${_slangc}"
-              $<TARGET_FILE:xenia-shader-cc> ${_flag} --depfile "${_dep}"
+              $<TARGET_FILE:xenia-shader-cc> ${_flag} ${_metal_args}
+              --depfile "${_dep}"
               "${src}" "${_out}"
       DEPENDS "${src}" xenia-shader-cc
       DEPFILE "${_dep}"
