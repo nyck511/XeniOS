@@ -72,6 +72,7 @@ jobs:
   shader-generation-smoke:
     name: iPhoneOS Metal shader generation
     runs-on: macos-26
+    timeout-minutes: 35
     steps:
       - uses: actions/checkout@v5
         with:
@@ -127,14 +128,18 @@ jobs:
           path: |
             build/host-shader-tools
             build/host_tools/Release/xenia-shader-cc
-          key: ${{ runner.os }}-${{ runner.arch }}-xenia-shader-cc-${{ hashFiles('CMakeLists.txt', 'third_party/CMakeLists.txt', 'tools/build/shader_cc.cc', 'third_party/glslang/CHANGES.md', 'third_party/SPIRV-Tools/CHANGES') }}
+          key: ${{ runner.os }}-${{ runner.arch }}-xenia-shader-cc-${{ hashFiles('cmake/HostShaderCompiler.cmake', 'tools/build/shader_cc/CMakeLists.txt', 'third_party/CMakeLists.txt', 'tools/build/shader_cc.cc', 'xenia-build.py', 'third_party/glslang/CHANGES.md', 'third_party/SPIRV-Tools/CHANGES') }}
 
       - name: Generate and validate iPhoneOS Metal headers
         env:
           XE_TARGET_IOS: "1"
           IPHONEOS_DEPLOYMENT_TARGET: "16.0"
         run: |
+          printf '[%s] Starting native host-tool build and 86-header generation\n' \
+            "$(date -u '+%Y-%m-%dT%H:%M:%SZ')"
           ./xb buildshaders --target metal --target_os ios
+          printf '[%s] Completed native host-tool build and 86-header generation\n' \
+            "$(date -u '+%Y-%m-%dT%H:%M:%SZ')"
           file build/host_tools/Release/xenia-shader-cc |
             grep 'Mach-O 64-bit executable arm64'
           header_count="$(
@@ -196,7 +201,7 @@ jobs:
           path: |
             build/host-shader-tools
             build/host_tools/Release/xenia-shader-cc
-          key: ${{ runner.os }}-${{ runner.arch }}-xenia-shader-cc-${{ hashFiles('CMakeLists.txt', 'third_party/CMakeLists.txt', 'tools/build/shader_cc.cc', 'third_party/glslang/CHANGES.md', 'third_party/SPIRV-Tools/CHANGES') }}
+          key: ${{ runner.os }}-${{ runner.arch }}-xenia-shader-cc-${{ hashFiles('cmake/HostShaderCompiler.cmake', 'tools/build/shader_cc/CMakeLists.txt', 'third_party/CMakeLists.txt', 'tools/build/shader_cc.cc', 'xenia-build.py', 'third_party/glslang/CHANGES.md', 'third_party/SPIRV-Tools/CHANGES') }}
 
       - name: Cache premake5
         id: cache-premake5

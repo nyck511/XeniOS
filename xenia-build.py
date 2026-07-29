@@ -19,6 +19,7 @@ import subprocess
 import sys
 import stat
 import tarfile
+import time
 import urllib.request
 import zipfile
 
@@ -26,6 +27,11 @@ __author__ = "ben.vanik@gmail.com (Ben Vanik)"
 
 
 self_path = os.path.dirname(os.path.abspath(__file__))
+
+
+def print_build_timestamp(message):
+    timestamp = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
+    print(f"[{timestamp}] {message}", flush=True)
 
 
 def normalize_macos_arch(arch):
@@ -1227,35 +1233,53 @@ def build_ios_host_shader_compiler():
 
     host_build_dir = os.path.join(
         self_path, "build", "host-shader-tools")
+    host_source_dir = os.path.join(
+        self_path, "tools", "build", "shader_cc")
+    generator = "Ninja" if get_bin("ninja") else "Unix Makefiles"
+    parallel_jobs = min(4, max(1, os.cpu_count() or 1))
+    print(
+        f"- native shader compiler generator: {generator} "
+        f"({parallel_jobs} parallel jobs)",
+        flush=True)
     configure_args = [
         cmake,
-        "-S", self_path,
+        "-S", host_source_dir,
         "-B", host_build_dir,
-        "-G", "Unix Makefiles",
+        "-G", generator,
         "-DCMAKE_BUILD_TYPE=Release",
         "-DCMAKE_OSX_SYSROOT=macosx",
         "-DCMAKE_OSX_ARCHITECTURES=arm64",
         "-DCMAKE_OSX_DEPLOYMENT_TARGET=15.0",
-        "-DXENIA_BUILD_HOST_TOOLS_ONLY=ON",
-        "-DXENIA_BUILD_TESTS=OFF",
-        "-DXENIA_BUILD_MISC=OFF",
-        "-DXENIA_ENABLE_LTO=OFF",
+        "-DCMAKE_VERBOSE_MAKEFILE=ON",
     ]
-    print("- configuring native macOS ARM64 xenia-shader-cc...")
+    configure_started = time.monotonic()
+    print_build_timestamp(
+        "Starting minimal native macOS ARM64 xenia-shader-cc configure")
     result = shell_call(configure_args, throw_on_error=False)
+    configure_elapsed = time.monotonic() - configure_started
+    print_build_timestamp(
+        "Finished minimal native xenia-shader-cc configure "
+        f"(exit {result}, {configure_elapsed:.1f} seconds)")
     if result != 0:
         print(
             "ERROR: native xenia-shader-cc CMake configuration failed "
             f"with exit code {result}.")
         return None
 
-    print("- building native macOS ARM64 xenia-shader-cc...")
+    build_started = time.monotonic()
+    print_build_timestamp(
+        "Starting minimal native macOS ARM64 xenia-shader-cc build")
     result = shell_call([
         cmake,
         "--build", host_build_dir,
         "--target", "xenia-shader-cc",
-        "--parallel",
+        "--parallel", str(parallel_jobs),
+        "--verbose",
     ], throw_on_error=False)
+    build_elapsed = time.monotonic() - build_started
+    print_build_timestamp(
+        "Finished minimal native xenia-shader-cc build "
+        f"(exit {result}, {build_elapsed:.1f} seconds)")
     if result != 0:
         print(
             "ERROR: native xenia-shader-cc build failed with exit code "
@@ -1345,8 +1369,14 @@ def prepare_ios_metal_shaders():
         "--metal-std", "ios-metal2.3",
         "--deployment-target", deployment_target,
     ]
-    print("- generating iPhoneOS Metal shader headers...")
+    generation_started = time.monotonic()
+    print_build_timestamp(
+        "Starting deterministic generation of 86 iPhoneOS Metal headers")
     result = shell_call(generator_args, throw_on_error=False)
+    generation_elapsed = time.monotonic() - generation_started
+    print_build_timestamp(
+        "Finished deterministic generation of 86 iPhoneOS Metal headers "
+        f"(exit {result}, {generation_elapsed:.1f} seconds)")
     if result != 0:
         print(
             "ERROR: iPhoneOS Metal shader generation failed with exit code "
