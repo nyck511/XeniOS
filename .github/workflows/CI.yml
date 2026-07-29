@@ -108,8 +108,16 @@ jobs:
       - name: Provision Slang 2026.8
         run: |
           ./xb slang
-          slangc="$(find .slang/2026.8 -type f -name slangc -perm -111 | head -n 1)"
+          slangc="$(
+            find .slang/2026.8 \
+              -type f \
+              -path '*/bin/slangc' \
+              -print |
+              head -n 1
+          )"
           test -n "$slangc"
+          chmod u+x "$slangc"
+          test -x "$slangc"
           echo "SLANGC_PATH=$PWD/$slangc" >> "$GITHUB_ENV"
           "$slangc" -version || "$slangc" --version
 
@@ -169,8 +177,16 @@ jobs:
       - name: Provision Slang 2026.8
         run: |
           ./xb slang
-          slangc="$(find .slang/2026.8 -type f -name slangc -perm -111 | head -n 1)"
+          slangc="$(
+            find .slang/2026.8 \
+              -type f \
+              -path '*/bin/slangc' \
+              -print |
+              head -n 1
+          )"
           test -n "$slangc"
+          chmod u+x "$slangc"
+          test -x "$slangc"
           echo "SLANGC_PATH=$PWD/$slangc" >> "$GITHUB_ENV"
           "$slangc" -version || "$slangc" --version
 
