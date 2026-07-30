@@ -258,13 +258,6 @@ class SharedMemory {
 
   uint64_t* system_page_flags_valid_and_gpu_written_ = nullptr;
 
-  // Set when GPU-written flags change, so an unchanged frame skips the copy.
-  bool gpu_written_data_dirty_ = false;
-
-  // Bitmap of dirty 64-entry chunks of valid_and_gpu_written, so localized GPU
-  // writes only copy the chunks that changed.
-  uint32_t dirty_blocks_ = 0;
-
   // Per-page bitmap (sized like the valid flags) of pages the write watch can't
   // cover - not writable in any physical window, so their CPU writes never
   // fault. They are re-invalidated every frame to force a fresh re-upload.
