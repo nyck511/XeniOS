@@ -1384,6 +1384,74 @@ def prepare_ios_metal_shaders():
     return result
 
 
+def prepare_ios_embedded_font():
+    """Generates and validates the embedded font sources used by xenia-ui."""
+    source_dir = os.path.join(self_path, "assets", "font")
+    required_assets = [
+        os.path.join(source_dir, "Inter-VariableFont_opsz,wght.ttf"),
+        os.path.join(source_dir, "OFL.txt"),
+    ]
+    for asset in required_assets:
+        if not os.path.isfile(asset):
+            print(f"ERROR: embedded font asset is missing: {asset}")
+            return 1
+
+    generator = os.path.join(
+        self_path, "tools", "build", "embed_binary_assets.py")
+    if not os.path.isfile(generator):
+        print(f"ERROR: embedded font generator is missing: {generator}")
+        return 1
+
+    output_dir = os.path.join(
+        self_path, "build", "generated", "xenia-ui")
+    print("- generating iOS embedded font sources...")
+    result = shell_call([
+        sys.executable,
+        generator,
+        "--source-dir", source_dir,
+        "--output-dir", output_dir,
+        "--namespace", "font",
+    ], throw_on_error=False)
+    if result != 0:
+        print(
+            "ERROR: iOS embedded font generation failed with exit code "
+            f"{result}.")
+        return result
+
+    header_path = os.path.join(output_dir, "embedded_font.h")
+    source_path = os.path.join(output_dir, "embedded_font.cc")
+    for output in (header_path, source_path):
+        if not os.path.isfile(output) or os.path.getsize(output) == 0:
+            print(
+                "ERROR: iOS embedded font generator did not produce a "
+                f"non-empty output: {output}")
+            return 1
+
+    try:
+        with open(header_path, "r", encoding="utf-8") as header_file:
+            header = header_file.read()
+    except OSError as error:
+        print(f"ERROR: failed to validate {header_path}: {error}")
+        return 1
+    required_header_text = [
+        "namespace xe::ui::embedded_font {",
+        "Inter_VariableFont_opsz_wght_ttf_data",
+        "Inter_VariableFont_opsz_wght_ttf_size",
+    ]
+    missing_header_text = [
+        text for text in required_header_text if text not in header
+    ]
+    if missing_header_text:
+        print(
+            "ERROR: generated embedded font header is missing: "
+            + ", ".join(missing_header_text))
+        return 1
+
+    print(f"- verified iOS embedded font header: {header_path}")
+    print(f"- verified iOS embedded font implementation: {source_path}")
+    return 0
+
+
 def run_premake(target_os, action, cc=None, enable_tests=False,
                 extra_premake_args=None):
     """Runs premake on the main project with the given format.
@@ -1393,6 +1461,10 @@ def run_premake(target_os, action, cc=None, enable_tests=False,
       action: action to perform.
     """
     if target_os == "ios":
+        font_result = prepare_ios_embedded_font()
+        if font_result != 0:
+            return font_result
+
         embedded_bundles = [
             (
                 os.path.join(
