@@ -44,6 +44,7 @@ jobs:
           python3 -m py_compile \
             xenia-build.py \
             tools/build/embed_bundle.py \
+            tools/build/embed_binary_assets.py \
             tools/build/generate_metal_shaders.py
           ./xb --help
           ./xb slang --help
@@ -68,6 +69,104 @@ jobs:
             src/xenia/gpu/metal/metal_zpd_visibility_pool.h; do
             test ! -e "$forbidden_path"
           done
+
+      - name: Validate embedded font generation
+        run: |
+          set -euo pipefail
+          test -f 'assets/font/Inter-VariableFont_opsz,wght.ttf'
+          test -f assets/font/OFL.txt
+          python3 tools/build/embed_binary_assets.py \
+            --source-dir assets/font \
+            --output-dir build/generated/xenia-ui \
+            --namespace font
+          test -f build/generated/xenia-ui/embedded_font.h
+          test -f build/generated/xenia-ui/embedded_font.cc
+
+          c++ \
+            -std=c++20 \
+            -Ibuild/generated/xenia-ui \
+            build/generated/xenia-ui/embedded_font.cc \
+            -x c++ - \
+            -o /tmp/xenios-embedded-font-probe <<'CPP'
+          #include "embedded_font.h"
+
+          int main() {
+            return
+                xe::ui::embedded_font::
+                        Inter_VariableFont_opsz_wght_ttf_size > 0 &&
+                    xe::ui::embedded_font::kAllCount > 0
+                ? 0
+                : 1;
+          }
+          CPP
+          /tmp/xenios-embedded-font-probe
+
+          python3 - <<'PY'
+          from pathlib import Path
+          import hashlib
+          import json
+
+          paths = [
+              Path("build/generated/xenia-ui/embedded_font.h"),
+              Path("build/generated/xenia-ui/embedded_font.cc"),
+          ]
+          state = {
+              str(path): {
+                  "sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
+                  "mtime_ns": path.stat().st_mtime_ns,
+                  "size": path.stat().st_size,
+              }
+              for path in paths
+          }
+          Path("/tmp/xenios-font-state-before.json").write_text(
+              json.dumps(state, indent=2),
+              encoding="utf-8",
+          )
+          PY
+
+          python3 tools/build/embed_binary_assets.py \
+            --source-dir assets/font \
+            --output-dir build/generated/xenia-ui \
+            --namespace font
+
+          python3 - <<'PY'
+          from pathlib import Path
+          import hashlib
+          import json
+
+          before = json.loads(
+              Path("/tmp/xenios-font-state-before.json").read_text(
+                  encoding="utf-8"
+              )
+          )
+          for name, expected in before.items():
+              path = Path(name)
+              current = {
+                  "sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
+                  "mtime_ns": path.stat().st_mtime_ns,
+                  "size": path.stat().st_size,
+              }
+              if current != expected:
+                  raise SystemExit(
+                      f"Idempotence failure for {name}:\n"
+                      f"before={expected}\nafter={current}"
+                  )
+          print("Second generation preserved hashes, sizes, and timestamps")
+          PY
+
+          test -z "$(
+            git ls-files \
+              build/generated/xenia-ui/embedded_font.h \
+              build/generated/xenia-ui/embedded_font.cc
+          )"
+          ignored_count="$(
+            git check-ignore \
+              build/generated/xenia-ui/embedded_font.h \
+              build/generated/xenia-ui/embedded_font.cc |
+              wc -l |
+              tr -d '[:space:]'
+          )"
+          test "$ignored_count" -eq 2
 
   shader-generation-smoke:
     name: iPhoneOS Metal shader generation

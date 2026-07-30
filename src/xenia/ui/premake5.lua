@@ -24,12 +24,20 @@ project("xenia-ui")
       "renderdoc_api.h",
     })
   filter("system:ios")
+    local ios_embedded_font_dir =
+        path.getabsolute(
+            path.join(project_root, "build/generated/xenia-ui"))
     files({
+      path.join(ios_embedded_font_dir, "embedded_font.cc"),
+      path.join(ios_embedded_font_dir, "embedded_font.h"),
       "file_picker_ios.mm",
       "surface_ios.mm",
       "touch_controls_ios.mm",
       "window_ios.mm",
       "windowed_app_context_ios.mm",
+    })
+    includedirs({
+      ios_embedded_font_dir,
     })
     removefiles({
       "renderdoc_api.cc",
