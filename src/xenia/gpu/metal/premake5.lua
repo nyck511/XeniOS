@@ -218,15 +218,6 @@ project("xenia-gpu-metal-trace-viewer")
       "MetalFX.framework",
       "MetalKit.framework",
       "QuartzCore.framework",
-      "SDL2",
-      -- Frameworks pulled in by the static SDL2 build on macOS.
-      "CoreAudio.framework",
-      "AudioToolbox.framework",
-      "AVFoundation.framework",
-      "CoreHaptics.framework",
-      "ForceFeedback.framework",
-      "GameController.framework",
-      "IOKit.framework",
       "metalirconverter",
       "dxilconv",
       "LLVMDxcSupport",
@@ -358,14 +349,14 @@ project("xenia-gpu-metal-trace-dump")
       ["MACOSX_DEPLOYMENT_TARGET"] = "15.0",
     })
   filter {"system:macosx", "architecture:ARM64"}
-    libdirs     { dxilconv_libdir_arm64, sdl2_libdir_arm64 }
-    runpathdirs { dxilconv_libdir_arm64, sdl2_libdir_arm64 }
+    libdirs     { dxilconv_libdir_arm64 }
+    runpathdirs { dxilconv_libdir_arm64 }
     linkoptions {
       path.getabsolute(path.join(dxilconv_libdir_arm64, "libdxilconv.dylib")),
     }
   filter {"system:macosx", "architecture:x86_64"}
-    libdirs     { dxilconv_libdir_x86_64, sdl2_libdir_x86_64 }
-    runpathdirs { dxilconv_libdir_x86_64, sdl2_libdir_x86_64 }
+    libdirs     { dxilconv_libdir_x86_64 }
+    runpathdirs { dxilconv_libdir_x86_64 }
     removelinks { "LLVMDxcSupport" }
     linkoptions {
       path.getabsolute(path.join(dxilconv_libdir_x86_64,

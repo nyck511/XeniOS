@@ -1384,6 +1384,338 @@ def prepare_ios_metal_shaders():
     return result
 
 
+def prepare_ios_sdl3():
+    """Builds and validates the pinned static SDL3 dependency for iPhoneOS."""
+    if sys.platform != "darwin":
+        print("ERROR: the iPhoneOS SDL3 dependency requires a macOS host.")
+        return 1
+
+    cmake = get_bin("cmake")
+    ninja = get_bin("ninja")
+    if not cmake or not ninja:
+        print(
+            "ERROR: CMake 3.24+ and Ninja are required to prepare the "
+            "iPhoneOS SDL3 static library.")
+        return 1
+
+    try:
+        cmake_version_output = subprocess.check_output(
+            [cmake, "--version"], text=True,
+            stderr=subprocess.STDOUT).splitlines()[0]
+        cmake_version = cmake_version_output.rsplit(" ", 1)[-1]
+        cmake_version_parts = tuple(
+            int(part) for part in cmake_version.split(".")[:2])
+    except (OSError, subprocess.CalledProcessError, ValueError, IndexError) as error:
+        print(f"ERROR: failed to determine the CMake version: {error}")
+        return 1
+    if cmake_version_parts < (3, 24):
+        print(
+            f"ERROR: CMake 3.24+ is required for SDL3, got "
+            f"{cmake_version}.")
+        return 1
+
+    source_dir = os.path.join(self_path, "third_party", "SDL3")
+    required_source_files = [
+        os.path.join(source_dir, "CMakeLists.txt"),
+        os.path.join(source_dir, "include", "SDL3", "SDL.h"),
+        os.path.join(source_dir, "include", "SDL3", "SDL_main.h"),
+    ]
+    for source_file in required_source_files:
+        if not os.path.isfile(source_file):
+            print(f"ERROR: pinned SDL3 source is missing: {source_file}")
+            return 1
+
+    try:
+        parent_tree_entry = subprocess.check_output([
+            "git", "-C", self_path, "ls-tree", "HEAD",
+            "third_party/SDL3",
+        ], text=True, stderr=subprocess.STDOUT).strip()
+        parent_gitlink = parent_tree_entry.split()[2]
+        submodule_head = subprocess.check_output([
+            "git", "-C", source_dir, "rev-parse", "HEAD",
+        ], text=True, stderr=subprocess.STDOUT).strip()
+        submodule_status = subprocess.check_output([
+            "git", "-C", source_dir, "status", "--porcelain",
+        ], text=True, stderr=subprocess.STDOUT)
+    except (OSError, subprocess.CalledProcessError, IndexError) as error:
+        print(f"ERROR: failed to validate the SDL3 submodule: {error}")
+        return 1
+    if submodule_head != parent_gitlink:
+        print(
+            "ERROR: SDL3 is not checked out at the parent repository "
+            f"gitlink ({submodule_head} != {parent_gitlink}).")
+        return 1
+    if submodule_status:
+        print(
+            "ERROR: SDL3 has tracked or untracked changes; refusing to "
+            "build an unpinned dependency:\n" + submodule_status)
+        return 1
+    print(f"- pinned SDL3 gitlink: {parent_gitlink}")
+
+    try:
+        sdk_path = subprocess.check_output([
+            "xcrun", "--sdk", "iphoneos", "--show-sdk-path",
+        ], text=True, stderr=subprocess.STDOUT).strip()
+        sdk_version = subprocess.check_output([
+            "xcrun", "--sdk", "iphoneos", "--show-sdk-version",
+        ], text=True, stderr=subprocess.STDOUT).strip()
+        clang = subprocess.check_output([
+            "xcrun", "--sdk", "iphoneos", "--find", "clang",
+        ], text=True, stderr=subprocess.STDOUT).strip()
+    except (OSError, subprocess.CalledProcessError) as error:
+        print(f"ERROR: the iPhoneOS SDK or compiler is unavailable: {error}")
+        return 1
+    if "iPhoneOS" not in sdk_path or "Simulator" in sdk_path:
+        print(f"ERROR: expected an iPhoneOS device SDK, got: {sdk_path}")
+        return 1
+
+    deployment_target = os.environ.get(
+        "IPHONEOS_DEPLOYMENT_TARGET", "16.0")
+    build_dir = os.path.join(self_path, "build", "ios-sdl3")
+    parallel_jobs = min(4, max(1, os.cpu_count() or 1))
+    configure_args = [
+        cmake,
+        "-S", source_dir,
+        "-B", build_dir,
+        "-G", "Ninja",
+        f"-DCMAKE_MAKE_PROGRAM={ninja}",
+        "-DCMAKE_BUILD_TYPE=Release",
+        "-DCMAKE_SYSTEM_NAME=iOS",
+        "-DCMAKE_SYSTEM_PROCESSOR=arm64",
+        "-DCMAKE_OSX_SYSROOT=iphoneos",
+        "-DCMAKE_OSX_ARCHITECTURES=arm64",
+        f"-DCMAKE_OSX_DEPLOYMENT_TARGET={deployment_target}",
+        "-DCMAKE_TRY_COMPILE_TARGET_TYPE=STATIC_LIBRARY",
+        "-DCMAKE_POSITION_INDEPENDENT_CODE=ON",
+        f"-DCMAKE_C_COMPILER={clang}",
+        "-DSDL_SHARED=OFF",
+        "-DSDL_STATIC=ON",
+        "-DSDL_FRAMEWORK=OFF",
+        "-DSDL_TEST_LIBRARY=OFF",
+        "-DSDL_TESTS=OFF",
+        "-DSDL_EXAMPLES=OFF",
+        "-DSDL_INSTALL=OFF",
+        "-DSDL_UNINSTALL=OFF",
+        "-DSDL_DEPS_SHARED=OFF",
+        "-DSDL_CAMERA=OFF",
+        "-DSDL_DIALOG=OFF",
+        "-DSDL_GPU=OFF",
+        "-DSDL_RENDER=OFF",
+        "-DSDL_SENSOR=OFF",
+        "-DSDL_HIDAPI_LIBUSB=OFF",
+    ]
+
+    print(
+        f"- SDL3 producer: CMake {cmake_version}, Ninja, "
+        f"iPhoneOS {sdk_version}, arm64, minimum iOS {deployment_target}")
+    configure_started = time.monotonic()
+    print_build_timestamp("Starting pinned iPhoneOS SDL3-static configure")
+    result = shell_call(configure_args, throw_on_error=False)
+    configure_elapsed = time.monotonic() - configure_started
+    print_build_timestamp(
+        "Finished pinned iPhoneOS SDL3-static configure "
+        f"(exit {result}, {configure_elapsed:.1f} seconds)")
+    if result != 0:
+        return result
+
+    build_started = time.monotonic()
+    print_build_timestamp("Starting pinned iPhoneOS SDL3-static build")
+    result = shell_call([
+        cmake,
+        "--build", build_dir,
+        "--target", "SDL3-static",
+        "--parallel", str(parallel_jobs),
+        "--verbose",
+    ], throw_on_error=False)
+    build_elapsed = time.monotonic() - build_started
+    print_build_timestamp(
+        "Finished pinned iPhoneOS SDL3-static build "
+        f"(exit {result}, {build_elapsed:.1f} seconds)")
+    if result != 0:
+        return result
+
+    archive = os.path.join(build_dir, "libSDL3.a")
+    revision_header = os.path.join(
+        build_dir, "include-revision", "SDL3", "SDL_revision.h")
+    config_header = os.path.join(
+        build_dir, "include-config-release", "build_config",
+        "SDL_build_config.h")
+    for output in (archive, revision_header, config_header):
+        if not os.path.isfile(output) or os.path.getsize(output) == 0:
+            print(f"ERROR: SDL3 build output is missing or empty: {output}")
+            return 1
+
+    cache_path = os.path.join(build_dir, "CMakeCache.txt")
+    try:
+        with open(cache_path, "r", encoding="utf-8") as cache_file:
+            cache = cache_file.read()
+    except OSError as error:
+        print(f"ERROR: failed to read the SDL3 CMake cache: {error}")
+        return 1
+    required_cache_values = [
+        "CMAKE_SYSTEM_NAME:UNINITIALIZED=iOS",
+        "CMAKE_OSX_SYSROOT:STRING=iphoneos",
+        "CMAKE_OSX_ARCHITECTURES:STRING=arm64",
+        f"CMAKE_OSX_DEPLOYMENT_TARGET:UNINITIALIZED={deployment_target}",
+        "SDL_SHARED:BOOL=OFF",
+        "SDL_STATIC:BOOL=ON",
+        "SDL_FRAMEWORK:BOOL=OFF",
+        "SDL_CAMERA:BOOL=OFF",
+        "SDL_DIALOG:BOOL=OFF",
+        "SDL_GPU:BOOL=OFF",
+        "SDL_RENDER:BOOL=OFF",
+        "SDL_SENSOR:BOOL=OFF",
+        "SDL_HIDAPI_LIBUSB:BOOL=OFF",
+    ]
+    missing_cache_values = [
+        value for value in required_cache_values if value not in cache
+    ]
+    if missing_cache_values:
+        print(
+            "ERROR: SDL3 CMake cache does not match the iPhoneOS policy: "
+            + ", ".join(missing_cache_values))
+        return 1
+
+    required_config_defines = [
+        "#define SDL_AUDIO_DRIVER_COREAUDIO 1",
+        "#define SDL_JOYSTICK_HIDAPI 1",
+        "#define SDL_JOYSTICK_MFI 1",
+        "#define SDL_HAPTIC_DUMMY 1",
+        "#define SDL_VIDEO_DRIVER_UIKIT 1",
+    ]
+    try:
+        with open(config_header, "r", encoding="utf-8") as config_file:
+            config_header_text = config_file.read()
+    except OSError as error:
+        print(f"ERROR: failed to read the SDL3 build config: {error}")
+        return 1
+    missing_config_defines = [
+        define for define in required_config_defines
+        if define not in config_header_text
+    ]
+    if missing_config_defines:
+        print(
+            "ERROR: SDL3 iPhoneOS backends are incomplete: "
+            + ", ".join(missing_config_defines))
+        return 1
+
+    file_tool = get_bin("file")
+    lipo_tool = get_bin("lipo")
+    ar_tool = get_bin("ar")
+    if not file_tool or not lipo_tool or not ar_tool:
+        print("ERROR: file, lipo and ar are required to validate SDL3.")
+        return 1
+    try:
+        file_output = subprocess.check_output(
+            [file_tool, archive], text=True,
+            stderr=subprocess.STDOUT).strip()
+        lipo_output = subprocess.check_output(
+            [lipo_tool, "-info", archive], text=True,
+            stderr=subprocess.STDOUT).strip()
+        archive_members = subprocess.check_output(
+            [ar_tool, "-t", archive], text=True,
+            stderr=subprocess.STDOUT).splitlines()
+    except (OSError, subprocess.CalledProcessError) as error:
+        print(f"ERROR: failed to inspect the SDL3 archive: {error}")
+        return 1
+    if "ar archive" not in file_output or "architecture: arm64" not in lipo_output:
+        print(
+            "ERROR: SDL3 is not an arm64 static archive:\n"
+            f"  {file_output}\n  {lipo_output}")
+        return 1
+
+    required_objc_members = {
+        "SDL_coreaudio.m.o",
+        "SDL_mfijoystick.m.o",
+        "SDL_sysfilesystem.m.o",
+        "SDL_syslocale.m.o",
+        "SDL_sysmain_callbacks.m.o",
+        "SDL_syspower.m.o",
+        "SDL_sysurl.m.o",
+        "hid.m.o",
+        "SDL_uikitappdelegate.m.o",
+        "SDL_uikitclipboard.m.o",
+        "SDL_uikitevents.m.o",
+        "SDL_uikitmessagebox.m.o",
+        "SDL_uikitmetalview.m.o",
+        "SDL_uikitmodes.m.o",
+        "SDL_uikitopengles.m.o",
+        "SDL_uikitopenglview.m.o",
+        "SDL_uikitpen.m.o",
+        "SDL_uikitvideo.m.o",
+        "SDL_uikitview.m.o",
+        "SDL_uikitviewcontroller.m.o",
+        "SDL_uikitvulkan.m.o",
+        "SDL_uikitwindow.m.o",
+    }
+    missing_objc_members = sorted(
+        required_objc_members.difference(archive_members))
+    if missing_objc_members:
+        print(
+            "ERROR: SDL3 archive is missing iPhoneOS Objective-C backends: "
+            + ", ".join(missing_objc_members))
+        return 1
+
+    representative_object = os.path.join(
+        build_dir, "CMakeFiles", "SDL3-static.dir", "src", "video",
+        "uikit", "SDL_uikitappdelegate.m.o")
+    try:
+        vtool_output = subprocess.check_output([
+            "xcrun", "vtool", "-show-build", representative_object,
+        ], text=True, stderr=subprocess.STDOUT)
+        nm_output = subprocess.check_output([
+            "xcrun", "nm", "-gU", archive,
+        ], text=True, stderr=subprocess.STDOUT)
+    except (OSError, subprocess.CalledProcessError) as error:
+        print(f"ERROR: failed to validate SDL3 object metadata: {error}")
+        return 1
+    required_vtool_text = [
+        "platform IOS",
+        f"minos {deployment_target}",
+        f"sdk {sdk_version}",
+    ]
+    if any(text not in vtool_output for text in required_vtool_text):
+        print("ERROR: SDL3 object does not target the requested iPhoneOS SDK.")
+        print(vtool_output)
+        return 1
+    required_symbols = [
+        "_SDL_GetVersion",
+        "_SDL_Init",
+        "_SDL_SetAppMetadata",
+        "_SDL_SetLogOutputFunction",
+        "_SDL_SetLogPriorities",
+    ]
+    missing_symbols = [
+        symbol for symbol in required_symbols if symbol not in nm_output
+    ]
+    if missing_symbols:
+        print(
+            "ERROR: SDL3 archive is missing required API symbols: "
+            + ", ".join(missing_symbols))
+        return 1
+
+    try:
+        final_submodule_status = subprocess.check_output([
+            "git", "-C", source_dir, "status", "--porcelain",
+        ], text=True, stderr=subprocess.STDOUT)
+    except (OSError, subprocess.CalledProcessError) as error:
+        print(f"ERROR: failed to re-check the SDL3 submodule: {error}")
+        return 1
+    if final_submodule_status:
+        print(
+            "ERROR: SDL3 preparation modified the pinned source tree:\n"
+            + final_submodule_status)
+        return 1
+
+    print(f"- verified SDL3 archive: {file_output}")
+    print(f"- verified SDL3 architecture: {lipo_output}")
+    print(
+        f"- verified {len(required_objc_members)} iPhoneOS Objective-C "
+        "archive members")
+    print(f"- verified SDL3 iPhoneOS object: {representative_object}")
+    return 0
+
+
 def prepare_ios_embedded_font():
     """Generates and validates the embedded font sources used by xenia-ui."""
     source_dir = os.path.join(self_path, "assets", "font")
@@ -1461,6 +1793,10 @@ def run_premake(target_os, action, cc=None, enable_tests=False,
       action: action to perform.
     """
     if target_os == "ios":
+        sdl3_result = prepare_ios_sdl3()
+        if sdl3_result != 0:
+            return sdl3_result
+
         font_result = prepare_ios_embedded_font()
         if font_result != 0:
             return font_result

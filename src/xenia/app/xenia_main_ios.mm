@@ -1024,7 +1024,7 @@ void EmulatorAppIOS::EmulatorThread(const std::filesystem::path& game_path,
 
 std::unique_ptr<apu::AudioSystem> EmulatorAppIOS::CreateAudioSystem(
     cpu::Processor* processor) {
-  // SDL2 uses CoreAudio on iOS for audio output.
+  // SDL3 uses CoreAudio on iOS for audio output.
   return std::make_unique<apu::sdl::SDLAudioSystem>(processor);
 }
 
@@ -1035,7 +1035,7 @@ std::unique_ptr<gpu::GraphicsSystem> EmulatorAppIOS::CreateGraphicsSystem() {
 std::vector<std::unique_ptr<hid::InputDriver>>
 EmulatorAppIOS::CreateInputDrivers(ui::Window* window) {
   std::vector<std::unique_ptr<hid::InputDriver>> drivers;
-  // SDL2 uses the GameController framework on iOS for MFi/Bluetooth gamepads.
+  // SDL3 uses the GameController framework on iOS for MFi/Bluetooth gamepads.
   auto sdl_driver = xe::hid::sdl::Create(window, kZOrderHidInput);
   if (sdl_driver && XSUCCEEDED(sdl_driver->Setup())) {
     drivers.emplace_back(std::move(sdl_driver));

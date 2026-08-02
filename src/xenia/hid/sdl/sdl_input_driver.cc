@@ -106,31 +106,9 @@ SDLInputDriver::SDLInputDriver(xe::ui::Window* window, size_t window_z_order)
       keystroke_states_() {}
 
 SDLInputDriver::~SDLInputDriver() {
-  // Make sure the CallInUIThread is executed before destroying the references.
-  if (sdl_pumpevents_queued_) {
-    window()->app_context().CallInUIThreadSynchronous([this]() {
-      window()->app_context().ExecutePendingFunctionsFromUIThread();
-    });
-  }
-  uint32_t closed_controller_count = 0;
-  for (size_t i = 0; i < controllers_.size(); i++) {
-    if (controllers_.at(i).sdl) {
-      SDL_GameControllerClose(controllers_.at(i).sdl);
-      controllers_.at(i) = {};
-      ++closed_controller_count;
-    }
-  }
-  if (closed_controller_count) {
-    physical_controller_count.fetch_sub(closed_controller_count,
-                                        std::memory_order_relaxed);
-  }
-  if (sdl_events_initialized_) {
-    SDL_QuitSubSystem(SDL_INIT_EVENTS);
-    sdl_events_initialized_ = false;
-  }
-  if (sdl_gamecontroller_initialized_) {
-    SDL_QuitSubSystem(SDL_INIT_GAMECONTROLLER);
-    sdl_gamecontroller_initialized_ = false;
+  if (sdl_thread_.joinable()) {
+    sdl_thread_should_exit_.store(true, std::memory_order_release);
+    sdl_thread_.join();
   }
 }
 
@@ -168,30 +146,37 @@ void SDLInputDriver::SDLEventThread(std::promise<X_STATUS> init_result) {
 
   // With an event watch we will always get notified, even if the event queue
   // is full, which can happen if another subsystem does not clear its events.
-  SDL_AddEventWatch(
-      [](void* userdata, SDL_Event* event) -> bool {
-        if (!userdata || !event) {
-          assert_always();
-          return false;
-        }
+  const SDL_EventFilter event_watch = [](void* userdata,
+                                         SDL_Event* event) -> bool {
+    if (!userdata || !event) {
+      assert_always();
+      return false;
+    }
 
-        const auto type = event->type;
-        if (type < SDL_EVENT_JOYSTICK_AXIS_MOTION ||
-            type >= SDL_EVENT_FINGER_DOWN) {
-          return false;
-        }
+    const auto type = event->type;
+    if (type < SDL_EVENT_JOYSTICK_AXIS_MOTION ||
+        type >= SDL_EVENT_FINGER_DOWN) {
+      return false;
+    }
 
-        // If another part of xenia uses another SDL subsystem that generates
-        // events, this may seem like a bad idea. They will however not
-        // subscribe to controller events so we get away with that.
-        const auto driver = static_cast<SDLInputDriver*>(userdata);
-        driver->HandleEvent(*event);
+    // If another part of xenia uses another SDL subsystem that generates
+    // events, this may seem like a bad idea. They will however not
+    // subscribe to controller events so we get away with that.
+    const auto driver = static_cast<SDLInputDriver*>(userdata);
+    driver->HandleEvent(*event);
 
-        return false;
-      },
-      this);
+    return false;
+  };
+  if (!SDL_AddEventWatch(event_watch, this)) {
+    XELOGE("SDL_AddEventWatch() failed: {}", SDL_GetError());
+    SDL_QuitSubSystem(SDL_INIT_EVENTS);
+    sdl_events_initialized_ = false;
+    init_result.set_value(X_STATUS_UNSUCCESSFUL);
+    return;
+  }
 
   if (!SDL_InitSubSystem(SDL_INIT_GAMEPAD)) {
+    SDL_RemoveEventWatch(event_watch, this);
     SDL_QuitSubSystem(SDL_INIT_EVENTS);
     sdl_events_initialized_ = false;
     init_result.set_value(X_STATUS_UNSUCCESSFUL);
@@ -209,11 +194,18 @@ void SDLInputDriver::SDLEventThread(std::promise<X_STATUS> init_result) {
   }
 
   // Tear down on the same thread that initialized SDL.
+  SDL_RemoveEventWatch(event_watch, this);
+  uint32_t closed_controller_count = 0;
   for (size_t i = 0; i < controllers_.size(); i++) {
     if (controllers_.at(i).sdl) {
       SDL_CloseGamepad(controllers_.at(i).sdl);
       controllers_.at(i) = {};
+      ++closed_controller_count;
     }
+  }
+  if (closed_controller_count) {
+    physical_controller_count.fetch_sub(closed_controller_count,
+                                        std::memory_order_relaxed);
   }
   SDL_QuitSubSystem(SDL_INIT_GAMEPAD);
   sdl_gamepad_initialized_ = false;
@@ -289,7 +281,7 @@ X_RESULT SDLInputDriver::GetCapabilities(uint32_t user_index, uint32_t flags,
   if (user_index >= HID_SDL_USER_COUNT || !out_caps) {
     return X_ERROR_BAD_ARGUMENTS;
   }
-  if (!sdl_events_initialized_ || !sdl_gamecontroller_initialized_) {
+  if (!sdl_events_initialized_ || !sdl_gamepad_initialized_) {
     return X_ERROR_DEVICE_NOT_CONNECTED;
   }
 
@@ -316,7 +308,7 @@ X_RESULT SDLInputDriver::GetState(uint32_t user_index,
   if (user_index >= HID_SDL_USER_COUNT || !out_state) {
     return X_ERROR_BAD_ARGUMENTS;
   }
-  if (!sdl_events_initialized_ || !sdl_gamecontroller_initialized_) {
+  if (!sdl_events_initialized_ || !sdl_gamepad_initialized_) {
     return X_ERROR_DEVICE_NOT_CONNECTED;
   }
 
@@ -340,7 +332,7 @@ X_RESULT SDLInputDriver::SetState(uint32_t user_index,
   if (user_index >= HID_SDL_USER_COUNT || !vibration) {
     return X_ERROR_BAD_ARGUMENTS;
   }
-  if (!sdl_events_initialized_ || !sdl_gamecontroller_initialized_) {
+  if (!sdl_events_initialized_ || !sdl_gamepad_initialized_) {
     return X_ERROR_DEVICE_NOT_CONNECTED;
   }
 
@@ -361,7 +353,7 @@ X_RESULT SDLInputDriver::GetKeystroke(uint32_t users, uint32_t flags,
                                       X_INPUT_KEYSTROKE* out_keystroke) {
   // TODO(JoelLinn): Figure out the flags
   // https://github.com/evilC/UCR/blob/0489929e2a8e39caa3484c67f3993d3fba39e46f/Libraries/XInput.ahk#L85-L98
-  if (!sdl_events_initialized_ || !sdl_gamecontroller_initialized_) {
+  if (!sdl_events_initialized_ || !sdl_gamepad_initialized_) {
     return X_ERROR_DEVICE_NOT_CONNECTED;
   }
   bool user_any = users == XUserIndexAny;
@@ -774,6 +766,7 @@ void SDLInputDriver::OnControllerDeviceRemoved(const SDL_Event& event) {
       physical_controller_count.fetch_sub(1, std::memory_order_relaxed);
     }
     XELOGI("SDL OnControllerDeviceRemoved: Removed at player index {}.", *idx);
+    NotifyDevicesChanged();
   } else {
     // Can happen in case all slots where full previously.
     XELOGW(

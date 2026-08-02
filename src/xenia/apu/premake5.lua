@@ -19,8 +19,7 @@ project("xenia-apu")
   filter("platforms:Linux-*")
     links({
       "xenia-helper-sdl",
-      "SDL2",
     })
-    sdl2_include()
+    sdl3_link()
   filter({})
   local_platform_files()

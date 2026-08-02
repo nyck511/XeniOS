@@ -20,10 +20,18 @@
 #if !XE_PLATFORM_IOS
 #include <alloca.h>
 
+#include <cstdint>
 #include <cstring>
+#endif  // !XE_PLATFORM_IOS
 
-// Use headers in third party to not depend on system sdl headers for building
-#include "third_party/SDL2/include/SDL.h"
+#if !XE_PLATFORM_IOS
+namespace {
+using SDL_ShowSimpleMessageBox_fn = bool (*)(uint32_t flags, const char* title,
+                                             const char* message, void* window);
+constexpr uint32_t kSDLMessageBoxError = 0x00000010u;
+constexpr uint32_t kSDLMessageBoxWarning = 0x00000020u;
+constexpr uint32_t kSDLMessageBoxInformation = 0x00000040u;
+}  // namespace
 #endif  // !XE_PLATFORM_IOS
 
 namespace xe {
@@ -55,26 +63,27 @@ void ShowSimpleMessageBox(SimpleMessageBoxType type, std::string_view message) {
   // TODO(wmarti): Implement via UIAlertController.
   XELOGW("ShowSimpleMessageBox (iOS): {}", message);
 #else
-  // Try multiple library names for cross-platform compatibility
-  void* libsdl2 = dlopen("libSDL2.dylib", RTLD_LAZY | RTLD_LOCAL);
-  if (!libsdl2) {
-    libsdl2 = dlopen("libSDL2-2.0.0.dylib", RTLD_LAZY | RTLD_LOCAL);
+  void* libsdl = dlopen("libSDL3.0.dylib", RTLD_LAZY | RTLD_LOCAL);
+  if (!libsdl) {
+    libsdl = dlopen("libSDL3.dylib", RTLD_LAZY | RTLD_LOCAL);
   }
-  if (!libsdl2) {
-    libsdl2 = dlopen("/opt/homebrew/lib/libSDL2.dylib", RTLD_LAZY | RTLD_LOCAL);
+  if (!libsdl) {
+    libsdl = dlopen("/opt/homebrew/lib/libSDL3.dylib", RTLD_LAZY | RTLD_LOCAL);
   }
-  // Fallback: just log the message if SDL2 is not available
-  if (!libsdl2) {
-    XELOGE("ShowSimpleMessageBox (SDL2 not available): {}", message);
+  if (!libsdl) {
+    libsdl = dlopen("/usr/local/lib/libSDL3.dylib", RTLD_LAZY | RTLD_LOCAL);
+  }
+  if (!libsdl) {
+    XELOGE("ShowSimpleMessageBox (SDL3 not available): {}", message);
     return;
   }
-  if (libsdl2) {
+  if (libsdl) {
     auto* pSDL_ShowSimpleMessageBox =
-        reinterpret_cast<decltype(SDL_ShowSimpleMessageBox)*>(
-            dlsym(libsdl2, "SDL_ShowSimpleMessageBox"));
+        reinterpret_cast<SDL_ShowSimpleMessageBox_fn>(
+            dlsym(libsdl, "SDL_ShowSimpleMessageBox"));
     assert_not_null(pSDL_ShowSimpleMessageBox);
     if (pSDL_ShowSimpleMessageBox) {
-      Uint32 flags;
+      uint32_t flags;
       const char* title;
       char* message_copy = reinterpret_cast<char*>(alloca(message.size() + 1));
       std::memcpy(message_copy, message.data(), message.size());
@@ -84,20 +93,20 @@ void ShowSimpleMessageBox(SimpleMessageBoxType type, std::string_view message) {
         default:
         case SimpleMessageBoxType::Help:
           title = "Xenia Help";
-          flags = SDL_MESSAGEBOX_INFORMATION;
+          flags = kSDLMessageBoxInformation;
           break;
         case SimpleMessageBoxType::Warning:
           title = "Xenia Warning";
-          flags = SDL_MESSAGEBOX_WARNING;
+          flags = kSDLMessageBoxWarning;
           break;
         case SimpleMessageBoxType::Error:
           title = "Xenia Error";
-          flags = SDL_MESSAGEBOX_ERROR;
+          flags = kSDLMessageBoxError;
           break;
       }
       pSDL_ShowSimpleMessageBox(flags, title, message_copy, NULL);
     }
-    dlclose(libsdl2);
+    dlclose(libsdl);
   }
 #endif  // XE_PLATFORM_IOS
 }
