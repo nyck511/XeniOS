@@ -19,6 +19,14 @@ local function is_ios_target()
       (_OPTIONS and _OPTIONS["os"] == "ios")
 end
 
+-- Premake loads the project script before handling version/help requests.
+-- Target dependencies are only required when an action is selected.
+if not _ACTION then
+  function sdl3_include() end
+  function sdl3_link() end
+  return
+end
+
 local include_dirs = {}
 local library_dirs = {}
 local libraries = {}
