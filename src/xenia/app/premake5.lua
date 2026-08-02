@@ -167,8 +167,8 @@ project("xenia-app")
       "X11",
       "xcb",
       "X11-xcb",
-      "SDL2",
     })
+    sdl3_link()
 
   filter("platforms:Windows-*")
     links({
@@ -182,6 +182,7 @@ project("xenia-app")
     includedirs({
       project_root.."/third_party/DirectXShaderCompiler/include",
     })
+    sdl3_link()
 
   filter("platforms:Windows-*")
 
@@ -206,17 +207,16 @@ project("xenia-app")
       "MetalFX.framework",
       "MetalKit.framework",
       "QuartzCore.framework",
-      "SDL2",
-      -- Frameworks pulled in by the static SDL2 build on macOS.
+      -- Frameworks pulled in by the static SDL3 build on macOS.
       "CoreAudio.framework",
       "AudioToolbox.framework",
       "AVFoundation.framework",
-      "CoreHaptics.framework",
       "ForceFeedback.framework",
       "GameController.framework",
       "IOKit.framework",
       "iconv",
     })
+    sdl3_link()
     linkoptions({
       "-ldxilconv",
       "-lLLVMDxcSupport",
@@ -253,7 +253,6 @@ project("xenia-app")
       "xenia-ui-metal",
       "spirv-cross",
       "metal-cpp",
-      "SDL2",
       "iconv",
       "CoreFoundation.framework",
       "Foundation.framework",
@@ -267,16 +266,22 @@ project("xenia-app")
       "CoreAudio.framework",
       "AudioToolbox.framework",
       "AVFoundation.framework",
+      "CoreMedia.framework",
+      "CoreVideo.framework",
       -- SDL input (MFi/GameController backend).
       "GameController.framework",
       "CoreMotion.framework",
-      "CoreHaptics.framework",
       "CoreGraphics.framework",
       "CoreBluetooth.framework",
+      "OpenGLES.framework",
+    })
+    sdl3_link()
+    linkoptions({
+      "-Wl,-weak_framework,CoreHaptics",
     })
     xcodebuildsettings({
       ["INFOPLIST_FILE"] = path.getabsolute("Info_ios.plist"),
-      ["IPHONEOS_DEPLOYMENT_TARGET"] = "17.0",
+      ["IPHONEOS_DEPLOYMENT_TARGET"] = "16.0",
       ["SDKROOT"] = "iphoneos",
       ["TARGETED_DEVICE_FAMILY"] = "1,2",
       ["PRODUCT_NAME"] = "XeniOS",

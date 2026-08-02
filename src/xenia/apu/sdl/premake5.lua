@@ -10,7 +10,6 @@ project("xenia-apu-sdl")
     "xenia-apu",
     "xenia-base",
     "xenia-helper-sdl",
-    "SDL2",
   })
   local_platform_files()
-  sdl2_include()
+  sdl3_link()

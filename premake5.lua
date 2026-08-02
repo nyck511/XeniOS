@@ -152,24 +152,6 @@ includedirs({
   "third_party",
 })
 
--- Add SDL2 include path for Linux cmake builds
--- premake-cmake doesn't properly handle includedirs from sdl2_include() function
-if os.istarget("linux") then
-  local sdl2_config = os.getenv("SDL2_CONFIG") or "sdl2-config"
-  local sdl2_cflags = os.outputof(sdl2_config .. " --cflags")
-  if sdl2_cflags then
-    for inc in string.gmatch(sdl2_cflags, "-I([%S]+)") do
-      includedirs({inc})
-      print("SDL2: Global include dir: " .. inc)
-    end
-  end
-  -- Fallback to common location if sdl2-config doesn't return -I flags
-  if not sdl2_cflags or not string.find(sdl2_cflags, "-I") then
-    includedirs({"/usr/include/SDL2"})
-    print("SDL2: Using fallback global include /usr/include/SDL2")
-  end
-end
-
 defines({
   "VULKAN_HPP_NO_TO_STRING",
   "IMGUI_DISABLE_OBSOLETE_FUNCTIONS",
@@ -478,7 +460,7 @@ if is_ios_target() then
   filter("platforms:iOS-*")
     system("ios")
     xcodebuildsettings({
-      ["IPHONEOS_DEPLOYMENT_TARGET"] = "17.0",
+      ["IPHONEOS_DEPLOYMENT_TARGET"] = "16.0",
       ["SDKROOT"] = "iphoneos",
       ["TARGETED_DEVICE_FAMILY"] = "1,2",  -- iPhone and iPad
     })
@@ -703,7 +685,7 @@ workspace("xenia")
         architecture("ARM64")
         xcodebuildsettings({
           ["ARCHS"] = "arm64",
-          ["IPHONEOS_DEPLOYMENT_TARGET"] = "17.0",
+          ["IPHONEOS_DEPLOYMENT_TARGET"] = "16.0",
           ["SDKROOT"] = "iphoneos",
         })
       filter({})
@@ -842,13 +824,14 @@ workspace("xenia")
   end
 
   if not os.istarget("android") then
-    -- Windows / macOS / iOS build SDL2 from source in third_party/. Linux
-    -- uses sdl2-config against the system libsdl2-dev. Android still uses
-    -- its own native paths.
-    include("third_party/SDL2.lua")
+    -- iPhoneOS consumes the pinned SDL3 static archive prepared before
+    -- Premake. Desktop Premake builds use a coherent SDL3 development
+    -- package rather than combining SDL3 headers with SDL2 binaries.
+    include("third_party/SDL3.lua")
   else
     -- Provide a no-op stub so callers don't need to guard every call.
-    function sdl2_include() end
+    function sdl3_include() end
+    function sdl3_link() end
   end
 
   -- Disable treating warnings as fatal errors for all third party projects, as
@@ -901,7 +884,7 @@ workspace("xenia")
          prj.name == "zlib-ng" or
          prj.name == "pugixml" or
          prj.name == "libusb" or
-         prj.name == "SDL2" then
+         prj.name == "SDL3" then
         buildoptions({
           "/W0",  -- Disable all warnings for third_party code
         })

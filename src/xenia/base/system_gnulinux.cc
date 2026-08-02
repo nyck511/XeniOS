@@ -21,10 +21,10 @@
 
 // Forward-declared instead of pulling in <SDL3/SDL.h> — xenia-base must not
 // drag SDL onto its include path, and only the dlsym() cast needs the type.
-// Flags and signature are stable across SDL2/3.
+// Match the pinned SDL3 ABI without adding SDL3 to xenia-base's include path.
 namespace {
-using SDL_ShowSimpleMessageBox_fn = int (*)(uint32_t flags, const char* title,
-                                            const char* message, void* window);
+using SDL_ShowSimpleMessageBox_fn = bool (*)(uint32_t flags, const char* title,
+                                             const char* message, void* window);
 constexpr uint32_t kSDL_MessageBoxError = 0x00000010;
 constexpr uint32_t kSDL_MessageBoxWarning = 0x00000020;
 constexpr uint32_t kSDL_MessageBoxInformation = 0x00000040;

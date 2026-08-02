@@ -125,7 +125,7 @@ jobs:
               src/xenia/vfs/premake5.lua
               src/xenia/vfs/testing/premake5.lua
               third_party/FFmpeg
-              third_party/SDL2-static.lua
+              third_party/SDL3.lua
               third_party/aes_128.lua
               third_party/asio.lua
               third_party/capstone.lua

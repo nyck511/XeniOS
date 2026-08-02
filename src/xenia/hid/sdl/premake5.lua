@@ -8,12 +8,12 @@ project("xenia-hid-sdl")
   language("C++")
   links({
     "xenia-base",
+    "xenia-helper-sdl",
     "xenia-hid",
     "xenia-ui",
-    "SDL2",
   })
   local_platform_files()
-  sdl2_include()
+  sdl3_link()
   filter("system:ios")
     local ios_embedded_dir =
         path.getabsolute(path.join(project_root, "build/generated/xenia-hid-sdl"))
