@@ -383,26 +383,11 @@ void XamLoaderLaunchTitle_entry(lpstring_t raw_name_ptr, dword_t flags) {
         xe::threading::NanoSleep(int64_t(1'000'000'000));
       }
     }
-#endif  // XE_PLATFORM_WIN32
-      // Convert launch_data to hex string
-      std::string launch_data_hex;
-      for (uint8_t byte : loader_data.launch_data) {
-        launch_data_hex += fmt::format("{:02X}", byte);
-      }
+#endif  // !XE_PLATFORM_MAC
 
-      // Call the callback to spawn the new process directly
-      auto on_launch_new_title =
-          kernel_state()->emulator()->on_launch_new_title();
-      if (on_launch_new_title) {
-        XELOGI("XamLoaderLaunchTitle: requesting new title launch");
-        on_launch_new_title(xe::path_to_utf8(host_path), launch_path,
-                            loader_data.launch_flags, launch_data_hex);
-      }
-
-      // Stop the current title after the callback queues or handles launch.
-      XELOGI("XamLoaderLaunchTitle: terminating to launch new title");
-      kernel_state()->TerminateTitle();
-      // This function does not return
+    std::string launch_data_hex;
+    for (uint8_t byte : loader_data.launch_data) {
+      launch_data_hex += fmt::format("{:02X}", byte);
     }
 
     auto on_launch_new_title =
