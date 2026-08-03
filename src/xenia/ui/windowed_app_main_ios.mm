@@ -56,13 +56,14 @@
 #include "xenia/base/cvar.h"
 #include "xenia/base/logging.h"
 #include "xenia/base/string.h"
+#include "xenia/base/system.h"
 #include "xenia/config.h"
 #include "xenia/hid/input.h"
 #include "xenia/hid/sdl/sdl_hid.h"
-#include "xenia/ui/touch_controls_ios.h"
 #include "xenia/ui/apple_ui_flags.h"
 #include "xenia/ui/apple_ui_navigation.h"
 #include "xenia/ui/surface_ios.h"
+#include "xenia/ui/touch_controls_ios.h"
 #include "xenia/ui/windowed_app.h"
 #include "xenia/ui/windowed_app_context_ios.h"
 #include "xenia/vfs/devices/xcontent_container_device.h"
@@ -206,13 +207,7 @@ static void xe_add_jit_ring_pulse(CALayer* layer, NSString* key, CGFloat end_sca
 // On iOS versions before 26, signature-patched sideloads can use normal W^X
 // flow without debugger attachment. iOS 26+ requires debugger/broker state.
 // ---------------------------------------------------------------------------
-static BOOL xe_check_jit_available(void) {
-  // A plain RX mmap probe can succeed on iOS 18.5 while guest JIT execution is
-  // still unavailable. Treat debugger/JIT-enabled process state as part of the
-  // runtime readiness check so the launcher and automation don't produce false
-  // positives.
-  return xe_is_cs_debugged() && xe_can_mmap_exec_page();
-}
+static BOOL xe_check_jit_available(void) { return xe::IOSJITIsAvailable(); }
 
 static uint32_t xe_ios_code_sign_flags(void) {
   int flags = 0;

@@ -31,11 +31,6 @@
 #include "xenia/base/platform.h"
 #include "xenia/base/string.h"
 #include "xenia/base/system.h"
-#if XE_PLATFORM_IOS
-#include <sys/mman.h>
-#include <sys/types.h>
-#include <unistd.h>
-#endif
 #include "xenia/cpu/backend/code_cache.h"
 #include "xenia/cpu/backend/null_backend.h"
 #include "xenia/cpu/cpu_flags.h"
@@ -77,39 +72,6 @@
 #elif XE_ARCH_ARM64
 #include "xenia/cpu/backend/a64/a64_backend.h"
 #endif  // XE_ARCH
-
-#if XE_PLATFORM_IOS
-namespace {
-
-extern "C" int csops(pid_t pid, unsigned int ops, void* useraddr,
-                     size_t usersize);
-
-#ifndef CS_OPS_STATUS
-#define CS_OPS_STATUS 0
-#endif
-#ifndef CS_DEBUGGED
-#define CS_DEBUGGED 0x10000000
-#endif
-
-bool IsIOSCsDebugged() {
-  int flags = 0;
-  return !csops(getpid(), CS_OPS_STATUS, &flags, sizeof(flags)) &&
-         (flags & CS_DEBUGGED);
-}
-
-bool CanMapIOSExecutePage() {
-  const size_t test_size = xe::memory::page_size();
-  void* test = mmap(nullptr, test_size, PROT_READ | PROT_EXEC,
-                    MAP_PRIVATE | MAP_ANONYMOUS, -1, 0);
-  if (test == MAP_FAILED) {
-    return false;
-  }
-  munmap(test, test_size);
-  return true;
-}
-
-}  // namespace
-#endif  // XE_PLATFORM_IOS
 
 DEFINE_double(time_scalar, 1.0,
               "Scalar used to speed or slow time (1x, 2x, 1/2x, etc).",
@@ -376,18 +338,16 @@ X_STATUS Emulator::Setup(
     // On iOS, probe whether JIT (executable memory) is available at runtime.
     // We use the dual-mapping (split W^X via vm_remap) approach, not MAP_JIT.
 #if XE_PLATFORM_IOS
-    const bool cs_debugged = IsIOSCsDebugged();
-    const bool can_map_exec = CanMapIOSExecutePage();
-    // Use executable-memory probing as the authoritative runtime capability
-    // signal instead of hard-coding OS-version policy.
-    const bool jit_available = can_map_exec;
+    const bool cs_debugged = xe::IOSIsCodeSignDebugged();
+    const bool can_map_exec = xe::IOSCanMapExecutablePage();
+    const bool jit_available = xe::IOSJITIsAvailable();
     if (!jit_available) {
       XELOGW(
           "JIT is not available. Games will not run.\n"
-          "CS_DEBUGGED={} mmap(PROT_EXEC)={}\n"
+          "CS_DEBUGGED={} mmap(PROT_EXEC)={} TXM_broker_required={}\n"
           "Enable JIT via StikDebug, AltJIT, or SideJITServer.\n"
           "If installed via Xcode, launch with the debugger attached.",
-          cs_debugged, can_map_exec);
+          cs_debugged, can_map_exec, xe::IOSRequiresTXMJITBroker());
     }
 #else
     constexpr bool jit_available = true;

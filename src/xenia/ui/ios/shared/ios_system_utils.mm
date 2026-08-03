@@ -20,6 +20,7 @@
 #include <vector>
 
 #include "xenia/base/logging.h"
+#include "xenia/base/system.h"
 
 extern "C" int csops(pid_t pid, unsigned int ops, void* useraddr, size_t usersize);
 
@@ -188,7 +189,7 @@ void xe_add_jit_ring_pulse(CALayer* layer, NSString* key, CGFloat end_scale, CGF
 // still unavailable. Treat debugger/JIT-enabled process state as part of the
 // runtime readiness check so the launcher and automation don't produce false
 // positives.
-BOOL xe_check_jit_available(void) { return xe_is_cs_debugged() && xe_can_mmap_exec_page(); }
+BOOL xe_check_jit_available(void) { return xe::IOSJITIsAvailable(); }
 
 uint32_t xe_ios_code_sign_flags(void) {
   int flags = 0;

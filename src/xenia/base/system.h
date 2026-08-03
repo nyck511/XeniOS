@@ -10,6 +10,8 @@
 #ifndef XENIA_BASE_SYSTEM_H_
 #define XENIA_BASE_SYSTEM_H_
 
+#include <cstddef>
+#include <cstdint>
 #include <filesystem>
 #include <string_view>
 
@@ -28,6 +30,23 @@ void LaunchWebBrowser(const std::string_view url);
 void LaunchFileExplorer(const std::filesystem::path& path);
 
 bool SetProcessPriorityClass(const uint32_t priority_class);
+
+#if XE_PLATFORM_IOS && XE_ARCH_ARM64
+// iOS 26 and newer require TXM-backed executable regions to be prepared by an
+// attached debugger broker before they can be executed. These helpers keep the
+// platform probe and the guarded breakpoint protocol shared by the launcher,
+// emulator and code-cache implementations.
+int IOSProductMajorVersion();
+bool IOSDeviceHasTXM();
+bool IOSRequiresTXMJITBroker();
+bool IOSIsCodeSignDebugged();
+bool IOSCanMapExecutablePage();
+bool IOSJITBrokerPrepareExecutableRegion(void* address, size_t length,
+                                         bool use_universal_protocol,
+                                         uint64_t* result_address);
+bool IOSJITBrokerDetach();
+bool IOSJITIsAvailable();
+#endif  // XE_PLATFORM_IOS && XE_ARCH_ARM64
 
 // Determine if the Xbox Gamebar is enabled via the Windows registry
 bool IsUseNexusForGameBarEnabled();

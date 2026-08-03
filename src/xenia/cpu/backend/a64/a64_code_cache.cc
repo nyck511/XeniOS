@@ -9,17 +9,17 @@
 
 #include "xenia/cpu/backend/a64/a64_code_cache.h"
 
-#include <dirent.h>
 #include <atomic>
 #include <cerrno>
 #include <cstdlib>
 #include <cstring>
 
+#include "xenia/base/system.h"
+
 #if XE_PLATFORM_APPLE
 #include <mach/mach.h>
 #include <mach/vm_map.h>
 #include <sys/mman.h>
-#include <sys/sysctl.h>
 #include <unistd.h>
 #endif
 #if XE_PLATFORM_APPLE && !XE_PLATFORM_IOS
@@ -51,8 +51,8 @@ DEFINE_bool(ios_jit_brk_use_universal_0xf00d, true,
             "Enabled by default for modern StikDebug scripts.",
             "CPU");
 DEFINE_int32(ios_jit_initial_external_prepare_bytes, 0,
-             "On iOS ARM64 TXM startup, issue one external prepare for "
-             "this many bytes from code cache base (0 means full code cache).",
+             "Deprecated partial iOS ARM64 TXM prepare size. Nonzero values "
+             "are ignored because the complete code cache must be prepared.",
              "CPU");
 DEFINE_bool(ios_jit_non_txm_force_mprotect_flip, false,
             "On iOS ARM64, skip dual-map JIT setup and use single-view "
@@ -76,111 +76,28 @@ std::atomic<bool> ios_force_universal_prepare_command{false};
 constexpr uint32_t kLegacyPrepareRejectedResult = 0xE0000069u;
 constexpr uint32_t kLegacyPrepareRejectedResultSwapped = 0x690000E0u;
 
-std::string FindChildWithNameLength(const std::string& directory,
-                                    size_t name_length) {
-  DIR* dir = opendir(directory.c_str());
-  if (!dir) {
-    return std::string();
-  }
+struct A64IOSPersistentGeneratedCodeMapping {
+  std::mutex mutex;
+  uint8_t* execute_base = nullptr;
+  uint8_t* write_base = nullptr;
+  bool initialized = false;
+  bool in_use = false;
+};
 
-  std::string found;
-  while (dirent* entry = readdir(dir)) {
-    const char* name = entry->d_name;
-    if (!name || name[0] == '.') {
-      continue;
-    }
-    if (std::strlen(name) == name_length) {
-      found = directory + "/" + name;
-      break;
-    }
-  }
-  closedir(dir);
-  return found;
+A64IOSPersistentGeneratedCodeMapping&
+GetA64IOSPersistentGeneratedCodeMapping() {
+  // The prepared pages intentionally live until process exit. Keeping this
+  // state non-destructing also avoids static-destruction ordering with the
+  // application-owned emulator instance.
+  static auto* state = new A64IOSPersistentGeneratedCodeMapping();
+  return *state;
 }
 
-bool IOSHasTXM() {
-  static const bool has_txm = []() -> bool {
-    if (const char* env = std::getenv("HAS_TXM")) {
-      if (env[0] == '1' && env[1] == '\0') {
-        return true;
-      }
-      if (env[0] == '0' && env[1] == '\0') {
-        return false;
-      }
-    }
+bool A64IOSHasTXM() { return xe::IOSDeviceHasTXM(); }
 
-    const std::string preboot_uuid =
-        FindChildWithNameLength("/System/Volumes/Preboot", 36);
-    if (!preboot_uuid.empty()) {
-      const std::string txm_root =
-          FindChildWithNameLength(preboot_uuid + "/boot", 96);
-      if (!txm_root.empty()) {
-        const std::string txm_path =
-            txm_root +
-            "/usr/standalone/firmware/FUD/Ap,TrustedExecutionMonitor.img4";
-        if (access(txm_path.c_str(), F_OK) == 0) {
-          return true;
-        }
-      }
-    }
+int A64IOSProductMajorVersion() { return xe::IOSProductMajorVersion(); }
 
-    const std::string private_preboot_root =
-        FindChildWithNameLength("/private/preboot", 96);
-    if (!private_preboot_root.empty()) {
-      const std::string txm_path = private_preboot_root +
-                                   "/usr/standalone/firmware/FUD/"
-                                   "Ap,TrustedExecutionMonitor.img4";
-      if (access(txm_path.c_str(), F_OK) == 0) {
-        return true;
-      }
-    }
-
-    return false;
-  }();
-  return has_txm;
-}
-
-int IOSProductMajorVersion() {
-  static const int major_version = []() -> int {
-    size_t version_size = 0;
-    if (sysctlbyname("kern.osproductversion", nullptr, &version_size, nullptr,
-                     0) != 0 ||
-        version_size == 0) {
-      return -1;
-    }
-
-    std::string version(version_size, '\0');
-    if (sysctlbyname("kern.osproductversion", version.data(), &version_size,
-                     nullptr, 0) != 0 ||
-        version_size == 0) {
-      return -1;
-    }
-    if (!version.empty() && version.back() == '\0') {
-      version.pop_back();
-    }
-    if (version.empty()) {
-      return -1;
-    }
-
-    int parsed_major = 0;
-    size_t index = 0;
-    while (index < version.size() && version[index] >= '0' &&
-           version[index] <= '9') {
-      parsed_major = parsed_major * 10 + (version[index] - '0');
-      ++index;
-    }
-    return parsed_major > 0 ? parsed_major : -1;
-  }();
-  return major_version;
-}
-
-bool IOSUseTXMBrokerPath() {
-  if (!IOSHasTXM()) {
-    return false;
-  }
-  const int ios_major_version = IOSProductMajorVersion();
-  return ios_major_version >= 26;
-}
+bool A64IOSUseTXMBrokerPath() { return xe::IOSRequiresTXMJITBroker(); }
 
 bool ShouldUseUniversalPrepareCommand() {
   return cvars::ios_jit_brk_use_universal_0xf00d ||
@@ -283,22 +200,7 @@ bool SetPageAlignedAccessWithMaxProtRetry(void* address, size_t length,
   return true;
 }
 
-#if defined(__aarch64__)
-void InvokeUniversalPrepareBreakpoint(uintptr_t aligned_start,
-                                      size_t aligned_length) {
-  register uint64_t x0 __asm("x0") = static_cast<uint64_t>(aligned_start);
-  register uint64_t x1 __asm("x1") = static_cast<uint64_t>(aligned_length);
-  register uint64_t x16 __asm("x16") = 1;
-  asm volatile("brk #0xf00d" : "+r"(x0), "+r"(x1), "+r"(x16) : : "memory");
-}
-
-void InvokeUniversalDetachBreakpoint() {
-  register uint64_t x16 __asm("x16") = 0;
-  asm volatile("brk #0xf00d" : "+r"(x16) : : "memory");
-}
-#endif
-
-bool MaybeRequestExternalJitDetach() {
+bool A64MaybeRequestExternalJitDetach() {
   if (!ShouldUseUniversalPrepareCommand()) {
     return true;
   }
@@ -307,18 +209,16 @@ bool MaybeRequestExternalJitDetach() {
           expected, true, std::memory_order_acq_rel)) {
     return true;
   }
-#if defined(__aarch64__)
   // The universal StikDebug script supports command 0 (detach). Once the JIT
   // region has been prepared, detach so the broker doesn't sit in a signal
   // loop for the rest of process lifetime.
-  InvokeUniversalDetachBreakpoint();
+  if (!xe::IOSJITBrokerDetach()) {
+    XELOGW("iOS JIT broker detach command was not handled");
+  }
   return true;
-#else
-  return false;
-#endif
 }
 
-bool RequestExternalJitPrepare(void* address, size_t length) {
+bool A64RequestExternalJitPrepare(void* address, size_t length) {
   uintptr_t aligned_start = 0;
   size_t aligned_length = 0;
   if (!GetPageAlignedRange(address, length, aligned_start, aligned_length) ||
@@ -326,24 +226,29 @@ bool RequestExternalJitPrepare(void* address, size_t length) {
     return true;
   }
 
-#if defined(__aarch64__)
   if (ShouldUseUniversalPrepareCommand()) {
     // StikDebug universal JIT script path:
     // x16=1 + brk #0xf00d => prepare region (x0=addr, x1=len).
-    InvokeUniversalPrepareBreakpoint(aligned_start, aligned_length);
-    MaybeRequestExternalJitDetach();
+    if (!xe::IOSJITBrokerPrepareExecutableRegion(
+            reinterpret_cast<void*>(aligned_start), aligned_length, true,
+            nullptr)) {
+      return false;
+    }
     return true;
   }
 
-  register uint64_t x0 __asm("x0") = static_cast<uint64_t>(aligned_start);
-  register uint64_t x1 __asm("x1") = static_cast<uint64_t>(aligned_length);
   // Legacy broker path expected by older StikDebug scripts:
   // brk #0x69 with x0=addr, x1=len.
-  asm volatile("brk #0x69" : "+r"(x0), "+r"(x1) : : "memory");
+  uint64_t legacy_result_64 = aligned_start;
+  if (!xe::IOSJITBrokerPrepareExecutableRegion(
+          reinterpret_cast<void*>(aligned_start), aligned_length, false,
+          &legacy_result_64)) {
+    return false;
+  }
 
   // Newer StikDebug scripts intentionally reject legacy 0x69 and ask callers
   // to migrate to universal 0xf00d command dispatch.
-  const uint32_t legacy_result = static_cast<uint32_t>(x0);
+  const uint32_t legacy_result = static_cast<uint32_t>(legacy_result_64);
   if (legacy_result == kLegacyPrepareRejectedResult ||
       legacy_result == kLegacyPrepareRejectedResultSwapped) {
     const bool already_forced = ios_force_universal_prepare_command.exchange(
@@ -354,23 +259,27 @@ bool RequestExternalJitPrepare(void* address, size_t length) {
           "universal brk #0xf00d (x16=1)",
           legacy_result);
     }
-    InvokeUniversalPrepareBreakpoint(aligned_start, aligned_length);
-    MaybeRequestExternalJitDetach();
+    if (!xe::IOSJITBrokerPrepareExecutableRegion(
+            reinterpret_cast<void*>(aligned_start), aligned_length, true,
+            nullptr)) {
+      return false;
+    }
   }
 
   return true;
-#else
-  return false;
-#endif
 }
 
-bool MaybeRequestExternalJitPrepare(void* address, size_t length) {
+bool A64MaybeRequestExternalJitPrepare(void* address, size_t length) {
   bool expected = false;
   if (!ios_external_prepare_issued.compare_exchange_strong(
           expected, true, std::memory_order_acq_rel)) {
     return true;
   }
-  return RequestExternalJitPrepare(address, length);
+  if (A64RequestExternalJitPrepare(address, length)) {
+    return true;
+  }
+  ios_external_prepare_issued.store(false, std::memory_order_release);
+  return false;
 }
 
 bool AccessSatisfies(xe::memory::PageAccess actual,
@@ -383,7 +292,7 @@ bool AccessSatisfies(xe::memory::PageAccess actual,
 bool SetPageAlignedAccessWithExternalPrepareFallback(
     void* address, size_t length, xe::memory::PageAccess desired_access,
     const char* transition_name) {
-  const bool use_txm_broker_path = IOSUseTXMBrokerPath();
+  const bool use_txm_broker_path = A64IOSUseTXMBrokerPath();
 
   // Non-broker path must stay strict W^X and never request RWX max-protection
   // widening retries.
@@ -398,7 +307,7 @@ bool SetPageAlignedAccessWithExternalPrepareFallback(
   }
 
   if (!use_txm_broker_path) {
-    const int ios_major_version = IOSProductMajorVersion();
+    const int ios_major_version = A64IOSProductMajorVersion();
     if (ios_major_version > 0) {
       XELOGW(
           "iOS JIT mprotect flip: {} denied on iOS {} without RWX retry or "
@@ -423,7 +332,7 @@ bool SetPageAlignedAccessWithExternalPrepareFallback(
 
   XELOGW("iOS JIT mprotect flip: {} denied, requesting external prepare via {}",
          transition_name, ExternalPrepareBreakpointDescription());
-  if (!MaybeRequestExternalJitPrepare(address, length)) {
+  if (!A64MaybeRequestExternalJitPrepare(address, length)) {
     return false;
   }
 
@@ -459,8 +368,8 @@ bool SetPageAlignedAccessWithExternalPrepareFallback(
   return false;
 }
 
-bool RegionLockRead(void* address, size_t length) {
-  if (IOSUseTXMBrokerPath()) {
+bool A64RegionLockRead(void* address, size_t length) {
+  if (A64IOSUseTXMBrokerPath()) {
     return SetPageAlignedAccessWithMaxProtRetry(
         address, length, xe::memory::PageAccess::kReadOnly);
   }
@@ -468,12 +377,12 @@ bool RegionLockRead(void* address, size_t length) {
                               xe::memory::PageAccess::kReadOnly);
 }
 
-bool RegionUnlockWrite(void* address, size_t length) {
+bool A64RegionUnlockWrite(void* address, size_t length) {
   return SetPageAlignedAccessWithExternalPrepareFallback(
       address, length, xe::memory::PageAccess::kReadWrite, "RW transition");
 }
 
-bool RegionSetExec(void* address, size_t length) {
+bool A64RegionSetExec(void* address, size_t length) {
   return SetPageAlignedAccessWithExternalPrepareFallback(
       address, length, xe::memory::PageAccess::kExecuteReadOnly,
       "RX transition");
@@ -498,6 +407,20 @@ A64CodeCache::~A64CodeCache() {
     xe::memory::DeallocFixed(indirection_table_base_, kIndirectionTableSize,
                              xe::memory::DeallocationType::kRelease);
   }
+
+#if XE_PLATFORM_IOS && XE_ARCH_ARM64
+  if (generated_code_uses_ios_persistent_mapping_) {
+    auto& persistent_mapping = GetA64IOSPersistentGeneratedCodeMapping();
+    std::lock_guard<std::mutex> lock(persistent_mapping.mutex);
+    if (generated_code_execute_base_ == persistent_mapping.execute_base &&
+        generated_code_write_base_ == persistent_mapping.write_base) {
+      persistent_mapping.in_use = false;
+    }
+    generated_code_execute_base_ = nullptr;
+    generated_code_write_base_ = nullptr;
+    generated_code_uses_ios_persistent_mapping_ = false;
+  }
+#endif
 
   // Unmap all views and close mapping.
   if (mapping_ != xe::memory::kFileMappingHandleInvalid) {
@@ -537,6 +460,9 @@ A64CodeCache::~A64CodeCache() {
 bool A64CodeCache::Initialize() {
   generated_code_uses_vm_remap_fallback_ = false;
   generated_code_uses_mprotect_flip_ = false;
+#if XE_PLATFORM_IOS
+  generated_code_uses_ios_persistent_mapping_ = false;
+#endif
 
 #if XE_A64_INDIRECTION_64BIT
   // On ARM64 platforms, allocate the indirection table wherever the OS allows,
@@ -660,12 +586,12 @@ bool A64CodeCache::Initialize() {
 #if XE_PLATFORM_APPLE && XE_ARCH_ARM64
 #if XE_PLATFORM_IOS
     // iOS JIT path:
-    // - TXM on iOS 26+: dual-map with optional external BRK prepare.
+    // - TXM on iOS 26+: dual-map with required external BRK prepare.
     // - Everything else: strict W^X via single-view mprotect flips, without
     //   relying on external BRK/broker callbacks.
-    const bool has_txm = IOSHasTXM();
-    const int ios_major_version = IOSProductMajorVersion();
-    const bool use_txm_broker_path = IOSUseTXMBrokerPath();
+    const bool has_txm = A64IOSHasTXM();
+    const int ios_major_version = A64IOSProductMajorVersion();
+    const bool use_txm_broker_path = A64IOSUseTXMBrokerPath();
     // On iOS below 26, dual-mapping leaves a writable alias around that can
     // violate W^X enforcement on TXM devices (leading to a fault on first JIT
     // entry). Prefer the deterministic mprotect-flip path instead.
@@ -673,6 +599,32 @@ bool A64CodeCache::Initialize() {
     const bool force_mprotect_flip_requested =
         cvars::ios_jit_non_txm_force_mprotect_flip;
     const bool force_mprotect_flip = force_mprotect_flip_requested && !has_txm;
+    A64IOSPersistentGeneratedCodeMapping* persistent_mapping = nullptr;
+    std::unique_lock<std::mutex> persistent_mapping_lock;
+
+    if (use_txm_broker_path) {
+      persistent_mapping = &GetA64IOSPersistentGeneratedCodeMapping();
+      persistent_mapping_lock =
+          std::unique_lock<std::mutex>(persistent_mapping->mutex);
+      if (persistent_mapping->in_use) {
+        XELOGE(
+            "iOS JIT TXM: persistent generated-code mapping is already in "
+            "use by another code cache");
+        return false;
+      }
+      if (persistent_mapping->initialized) {
+        generated_code_execute_base_ = persistent_mapping->execute_base;
+        generated_code_write_base_ = persistent_mapping->write_base;
+        generated_code_uses_vm_remap_fallback_ = true;
+        generated_code_uses_ios_persistent_mapping_ = true;
+        persistent_mapping->in_use = true;
+        XELOGI(
+            "iOS JIT TXM: reusing persistent broker-prepared mapping: "
+            "execute={:p} write={:p}",
+            static_cast<void*>(generated_code_execute_base_),
+            static_cast<void*>(generated_code_write_base_));
+      }
+    }
 
     if (use_txm_broker_path) {
       if (ios_major_version > 0) {
@@ -709,7 +661,8 @@ bool A64CodeCache::Initialize() {
       XELOGI("iOS JIT: using mprotect-flip path (non-broker W^X)");
     }
 
-    if (!force_mprotect_flip && should_try_dual_map) {
+    if (!generated_code_execute_base_ && !force_mprotect_flip &&
+        should_try_dual_map) {
       generated_code_execute_base_ = reinterpret_cast<uint8_t*>(
           mmap(nullptr, kGeneratedCodeSize, PROT_READ | PROT_EXEC,
                MAP_PRIVATE | MAP_ANONYMOUS, -1, 0));
@@ -717,28 +670,27 @@ bool A64CodeCache::Initialize() {
         XELOGI("iOS JIT dual-map setup (RX base): {:p}",
                static_cast<void*>(generated_code_execute_base_));
 
-        if (use_txm_broker_path && cvars::ios_jit_brk_prepare_fallback) {
-          size_t prepare_size = kGeneratedCodeSize;
+        if (use_txm_broker_path) {
           if (cvars::ios_jit_initial_external_prepare_bytes > 0) {
-            prepare_size = static_cast<size_t>(
+            XELOGW(
+                "iOS JIT TXM: ignoring partial initial prepare size {}; "
+                "the complete execute cache must be broker-prepared",
                 cvars::ios_jit_initial_external_prepare_bytes);
-            if (prepare_size > kGeneratedCodeSize) {
-              prepare_size = kGeneratedCodeSize;
-            }
           }
           XELOGI(
               "iOS JIT TXM: requesting one-shot external prepare via {} "
               "for RX execute cache window (0x{:X} bytes)",
               ExternalPrepareBreakpointDescription(),
-              static_cast<uint32_t>(prepare_size));
-          if (!MaybeRequestExternalJitPrepare(generated_code_execute_base_,
-                                              prepare_size)) {
-            XELOGW("iOS JIT TXM: initial external prepare request failed");
+              static_cast<uint32_t>(kGeneratedCodeSize));
+          if (!A64MaybeRequestExternalJitPrepare(generated_code_execute_base_,
+                                                 kGeneratedCodeSize)) {
+            XELOGE(
+                "iOS JIT TXM: required external prepare was not handled; "
+                "refusing to create an unblessed code cache");
+            munmap(generated_code_execute_base_, kGeneratedCodeSize);
+            generated_code_execute_base_ = nullptr;
+            return false;
           }
-        } else if (use_txm_broker_path) {
-          XELOGI(
-              "iOS JIT TXM: external BRK prepare fallback disabled by "
-              "config");
         }
 
         vm_address_t remap_addr = 0;
@@ -757,12 +709,18 @@ bool A64CodeCache::Initialize() {
                        PROT_READ | PROT_WRITE) == 0) {
             generated_code_write_base_ = remap_write_base;
             generated_code_uses_vm_remap_fallback_ = true;
+            persistent_mapping->execute_base = generated_code_execute_base_;
+            persistent_mapping->write_base = generated_code_write_base_;
+            persistent_mapping->initialized = true;
+            persistent_mapping->in_use = true;
+            generated_code_uses_ios_persistent_mapping_ = true;
             XELOGI("iOS JIT dual-mapping active: execute={:p} write={:p}",
                    static_cast<void*>(generated_code_execute_base_),
                    static_cast<void*>(generated_code_write_base_));
             XELOGI(
                 "A64 code cache: iOS dual mapping active; skipping "
                 "incremental commit/protect updates");
+            A64MaybeRequestExternalJitDetach();
           } else {
             XELOGE(
                 "iOS JIT dual-mapping: mprotect RW alias failed "
@@ -779,8 +737,22 @@ bool A64CodeCache::Initialize() {
         generated_code_execute_base_ = nullptr;
         XELOGW("iOS JIT dual-map setup (RX base) failed");
       }
-    } else {
+    } else if (force_mprotect_flip) {
       XELOGI("iOS JIT: dual-map disabled by mprotect-flip override");
+    }
+
+    if (use_txm_broker_path &&
+        (!generated_code_execute_base_ || !generated_code_write_base_)) {
+      if (generated_code_execute_base_) {
+        munmap(generated_code_execute_base_, kGeneratedCodeSize);
+        generated_code_execute_base_ = nullptr;
+      }
+      generated_code_write_base_ = nullptr;
+      ios_external_prepare_issued.store(false, std::memory_order_release);
+      ios_external_detach_issued.store(false, std::memory_order_release);
+      XELOGE(
+          "iOS JIT TXM: required prepared dual mapping could not be created");
+      return false;
     }
 
     if (!generated_code_execute_base_ || !generated_code_write_base_) {
@@ -1299,11 +1271,11 @@ void A64CodeCache::PlaceGuestCode(uint32_t guest_address, void* machine_code,
 
 #if XE_PLATFORM_IOS && XE_ARCH_ARM64
     if (generated_code_uses_mprotect_flip_) {
-      if (!RegionLockRead(code_write_address, write_span_length)) {
+      if (!A64RegionLockRead(code_write_address, write_span_length)) {
         XELOGE("iOS JIT mprotect flip: failed to lock code range for writes");
         assert_always();
       }
-      if (!RegionUnlockWrite(code_write_address, write_span_length)) {
+      if (!A64RegionUnlockWrite(code_write_address, write_span_length)) {
         XELOGE(
             "iOS JIT mprotect flip: failed to enable writes before code "
             "publish");
@@ -1343,7 +1315,7 @@ void A64CodeCache::PlaceGuestCode(uint32_t guest_address, void* machine_code,
       // Transition the write-enabled mapping back to RX. Keeping an
       // intermediate non-executable state can fault concurrent execution on
       // iOS 18 and below.
-      if (!RegionSetExec(code_execute_address, write_span_length)) {
+      if (!A64RegionSetExec(code_execute_address, write_span_length)) {
         XELOGE("iOS JIT mprotect flip: failed to restore RX after code write");
         assert_always();
       }
@@ -1445,11 +1417,11 @@ uint32_t A64CodeCache::PlaceData(const void* data, size_t length) {
 
 #if XE_PLATFORM_IOS && XE_ARCH_ARM64
   if (generated_code_uses_mprotect_flip_) {
-    if (!RegionLockRead(data_address, reserved_length)) {
+    if (!A64RegionLockRead(data_address, reserved_length)) {
       XELOGE("iOS JIT mprotect flip: failed to lock data range for writes");
       assert_always();
     }
-    if (!RegionUnlockWrite(data_address, reserved_length)) {
+    if (!A64RegionUnlockWrite(data_address, reserved_length)) {
       XELOGE(
           "iOS JIT mprotect flip: failed to enable writes before data "
           "publish");
@@ -1475,11 +1447,11 @@ uint32_t A64CodeCache::PlaceData(const void* data, size_t length) {
 
 #if XE_PLATFORM_IOS && XE_ARCH_ARM64
   if (generated_code_uses_mprotect_flip_) {
-    if (!RegionLockRead(data_address, reserved_length)) {
+    if (!A64RegionLockRead(data_address, reserved_length)) {
       XELOGE("iOS JIT mprotect flip: failed to lock data range before RX");
       assert_always();
     }
-    if (!RegionSetExec(data_address, reserved_length)) {
+    if (!A64RegionSetExec(data_address, reserved_length)) {
       XELOGE("iOS JIT mprotect flip: failed to restore RX after data write");
       assert_always();
     }
