@@ -315,7 +315,7 @@ class TextureCache {
     bool mips_outdated_lockless() const {
       return mips_outdated_.load(std::memory_order_relaxed);
     }
-    void MakeUpToDateAndWatch(const global_unique_lock_type& global_lock);
+    bool MakeUpToDateAndWatch(const global_unique_lock_type& global_lock);
     void MakeLoadedDataUpToDateAndWatch(
         const global_unique_lock_type& global_lock, bool loaded_base,
         bool loaded_mips);

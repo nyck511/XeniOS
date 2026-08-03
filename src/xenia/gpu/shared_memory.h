@@ -10,6 +10,8 @@
 #ifndef XENIA_GPU_SHARED_MEMORY_H_
 #define XENIA_GPU_SHARED_MEMORY_H_
 
+#include <atomic>
+
 #include "xenia/memory.h"
 
 namespace xe {

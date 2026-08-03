@@ -672,14 +672,30 @@ TextureCache::Texture::~Texture() {
 
 bool TextureCache::Texture::MakeUpToDateAndWatch(
     const global_unique_lock_type& global_lock) {
+  SharedMemory& shared_memory = texture_cache().shared_memory();
+  const bool watch_base = base_outdated_.load(std::memory_order_relaxed);
+  const bool watch_mips = mips_outdated_.load(std::memory_order_relaxed);
+  assert_true(global_lock.owns_lock());
+  if (watch_base &&
+      !shared_memory.IsRangeValid(
+          key().base_page << 12, xe::align(GetGuestBaseSize(), UINT32_C(16)))) {
+    return false;
+  }
+  if (watch_mips &&
+      !shared_memory.IsRangeValid(
+          key().mip_page << 12, xe::align(GetGuestMipsSize(), UINT32_C(16)))) {
+    return false;
+  }
+
   MakeLoadedDataUpToDateAndWatch(global_lock, true, true);
+  return true;
 }
 
 void TextureCache::Texture::MakeLoadedDataUpToDateAndWatch(
     const global_unique_lock_type& global_lock, bool loaded_base,
     bool loaded_mips) {
   SharedMemory& shared_memory = texture_cache().shared_memory();
-  if (base_outdated_.load(std::memory_order_relaxed)) {
+  if (loaded_base && base_outdated_.load(std::memory_order_relaxed)) {
     assert_not_zero(GetGuestBaseSize());
     base_outdated_.store(false, std::memory_order_relaxed);
     base_watch_handle_ = shared_memory.WatchMemoryRange(
@@ -688,7 +704,7 @@ void TextureCache::Texture::MakeLoadedDataUpToDateAndWatch(
     shared_memory.WatchRangeForCpuWrites(key().base_page << 12,
                                          GetGuestBaseSize());
   }
-  if (mips_outdated_.load(std::memory_order_relaxed)) {
+  if (loaded_mips && mips_outdated_.load(std::memory_order_relaxed)) {
     assert_not_zero(GetGuestMipsSize());
     mips_outdated_.store(false, std::memory_order_relaxed);
     mips_watch_handle_ = shared_memory.WatchMemoryRange(
@@ -697,7 +713,6 @@ void TextureCache::Texture::MakeLoadedDataUpToDateAndWatch(
     shared_memory.WatchRangeForCpuWrites(key().mip_page << 12,
                                          GetGuestMipsSize());
   }
-  return true;
 }
 
 void TextureCache::Texture::MarkAsUsed() {

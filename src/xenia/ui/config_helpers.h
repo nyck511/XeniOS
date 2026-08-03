@@ -299,13 +299,13 @@ GetKnownEnumOptions() {
         {"apu", {"xaudio2", "sdl", "nop"}},
         {"hid", {"sdl", "nop"}},
 #elif XE_PLATFORM_LINUX
-      {"gpu", {"vulkan", "null"}},
-      {"apu", {"alsa", "sdl", "nop"}},
-      {"hid", {"sdl", "nop"}},
+        {"gpu", {"vulkan", "null"}},
+        {"apu", {"alsa", "sdl", "nop"}},
+        {"hid", {"sdl", "nop"}},
 #elif XE_PLATFORM_APPLE
-      {"gpu", {"metal", "null"}},
-      {"apu", {"nop", "sdl"}},
-      {"hid", {"sdl", "nop"}},
+        {"gpu", {"metal", "null"}},
+        {"apu", {"nop", "sdl"}},
+        {"hid", {"sdl", "nop"}},
 #else
         {"gpu", {"vulkan", "null"}},
         {"apu", {"nop", "sdl"}},

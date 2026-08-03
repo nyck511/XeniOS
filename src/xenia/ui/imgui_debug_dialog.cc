@@ -292,8 +292,7 @@ void ImGuiDebugDialog::LoadCurrentSettings() {
       cvars::occlusion_query_fake_lower_threshold;
   occlusion_query_fake_upper_threshold_ =
       cvars::occlusion_query_fake_upper_threshold;
-  occlusion_query_saturation_ =
-      cvars::occlusion_query_saturation;
+  occlusion_query_saturation_ = cvars::occlusion_query_saturation;
 
   present_letterbox_ = cvars::present_letterbox;
 
