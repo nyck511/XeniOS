@@ -202,6 +202,11 @@ class A64CodeCache : public CodeCacheBase<A64CodeCache> {
   // True when iOS generated code uses single-view protection flips (R/RW/RX)
   // rather than dual-alias mappings.
   bool generated_code_uses_mprotect_flip_ = false;
+#if XE_PLATFORM_IOS
+  // TXM executable pages remain prepared after the debugger broker detaches.
+  // Keep that mapping alive across in-process code-cache recreation.
+  bool generated_code_uses_ios_persistent_mapping_ = false;
+#endif
   // Current offset to empty space in generated code.
   size_t generated_code_offset_ = 0;
   // Current high water mark of COMMITTED code.

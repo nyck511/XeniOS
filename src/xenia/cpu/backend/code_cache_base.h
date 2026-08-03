@@ -31,6 +31,7 @@
 #include "xenia/base/memory.h"
 #include "xenia/base/mutex.h"
 #include "xenia/base/platform.h"
+#include "xenia/base/system.h"
 #include "xenia/cpu/backend/code_cache.h"
 #include "xenia/cpu/function.h"
 
@@ -38,11 +39,9 @@
 #include <pthread.h>
 #endif
 #if XE_PLATFORM_IOS && XE_ARCH_ARM64
-#include <dirent.h>
 #include <mach/mach.h>
 #include <mach/vm_map.h>
 #include <sys/mman.h>
-#include <sys/sysctl.h>
 #include <unistd.h>
 #endif
 
@@ -893,111 +892,11 @@ class CodeCacheBase : public CodeCache {
     return true;
   }
 
-  static std::string FindChildWithNameLength(const std::string& directory,
-                                             size_t name_length) {
-    DIR* dir = opendir(directory.c_str());
-    if (!dir) {
-      return std::string();
-    }
+  static bool IOSHasTXM() { return xe::IOSDeviceHasTXM(); }
 
-    std::string found;
-    while (dirent* entry = readdir(dir)) {
-      const char* name = entry->d_name;
-      if (!name || name[0] == '.') {
-        continue;
-      }
-      if (std::strlen(name) == name_length) {
-        found = directory + "/" + name;
-        break;
-      }
-    }
-    closedir(dir);
-    return found;
-  }
+  static int IOSProductMajorVersion() { return xe::IOSProductMajorVersion(); }
 
-  static bool IOSHasTXM() {
-    static const bool has_txm = []() -> bool {
-      if (const char* env = std::getenv("HAS_TXM")) {
-        if (env[0] == '1' && env[1] == '\0') {
-          return true;
-        }
-        if (env[0] == '0' && env[1] == '\0') {
-          return false;
-        }
-      }
-
-      const std::string preboot_uuid =
-          FindChildWithNameLength("/System/Volumes/Preboot", 36);
-      if (!preboot_uuid.empty()) {
-        const std::string txm_root =
-            FindChildWithNameLength(preboot_uuid + "/boot", 96);
-        if (!txm_root.empty()) {
-          const std::string txm_path =
-              txm_root +
-              "/usr/standalone/firmware/FUD/Ap,TrustedExecutionMonitor.img4";
-          if (access(txm_path.c_str(), F_OK) == 0) {
-            return true;
-          }
-        }
-      }
-
-      const std::string private_preboot_root =
-          FindChildWithNameLength("/private/preboot", 96);
-      if (!private_preboot_root.empty()) {
-        const std::string txm_path = private_preboot_root +
-                                     "/usr/standalone/firmware/FUD/"
-                                     "Ap,TrustedExecutionMonitor.img4";
-        if (access(txm_path.c_str(), F_OK) == 0) {
-          return true;
-        }
-      }
-
-      return false;
-    }();
-    return has_txm;
-  }
-
-  static int IOSProductMajorVersion() {
-    static const int major_version = []() -> int {
-      size_t version_size = 0;
-      if (sysctlbyname("kern.osproductversion", nullptr, &version_size, nullptr,
-                       0) != 0 ||
-          version_size == 0) {
-        return -1;
-      }
-
-      std::string version(version_size, '\0');
-      if (sysctlbyname("kern.osproductversion", version.data(), &version_size,
-                       nullptr, 0) != 0 ||
-          version_size == 0) {
-        return -1;
-      }
-      if (!version.empty() && version.back() == '\0') {
-        version.pop_back();
-      }
-      if (version.empty()) {
-        return -1;
-      }
-
-      int parsed_major = 0;
-      size_t index = 0;
-      while (index < version.size() && version[index] >= '0' &&
-             version[index] <= '9') {
-        parsed_major = parsed_major * 10 + (version[index] - '0');
-        ++index;
-      }
-      return parsed_major > 0 ? parsed_major : -1;
-    }();
-    return major_version;
-  }
-
-  static bool IOSUseTXMBrokerPath() {
-    if (!IOSHasTXM()) {
-      return false;
-    }
-    const int ios_major_version = IOSProductMajorVersion();
-    return ios_major_version >= 26;
-  }
+  static bool IOSUseTXMBrokerPath() { return xe::IOSRequiresTXMJITBroker(); }
 
   static bool GetPageAlignedGeneratedCodeRange(void* address, size_t length,
                                                uintptr_t& aligned_start,

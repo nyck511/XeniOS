@@ -222,6 +222,7 @@ class XeniosIOSJITStopHook:
                   "xenios-jit-broker: one-shot prepare done; awaiting detach command",
               )
           else:
+            _write_reg_u64(frame, "x0", 0)
             _stream_write(
                 stream,
                 "xenios-jit-broker: failed universal prepare "
@@ -248,6 +249,7 @@ class XeniosIOSJITStopHook:
                 "xenios-jit-broker: detached after one-shot legacy prepare and broker hook disabled",
             )
         else:
+          _write_reg_u64(frame, "x0", 0)
           _stream_write(
               stream,
               "xenios-jit-broker: failed legacy prepare "
