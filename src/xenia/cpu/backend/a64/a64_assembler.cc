@@ -91,19 +91,11 @@ bool A64Assembler::Assemble(GuestFunction* function, HIRBuilder* builder,
   static_cast<A64Function*>(function)->Setup(
       reinterpret_cast<uint8_t*>(machine_code), code_size);
   // Install into indirection table.
-  const uint64_t host_address = reinterpret_cast<uint64_t>(machine_code);
-#if XE_A64_INDIRECTION_64BIT
   // On ARM64 platforms, AddIndirection64 encodes the host address as rel32
   // offset (or tagged external target) for compact dispatch table entries.
   reinterpret_cast<A64CodeCache*>(backend_->code_cache())
       ->AddIndirection64(function->address(),
                          reinterpret_cast<uint64_t>(machine_code));
-#else
-  assert_true((host_address >> 32) == 0);
-  reinterpret_cast<A64CodeCache*>(backend_->code_cache())
-      ->AddIndirection(function->address(),
-                       static_cast<uint32_t>(host_address));
-#endif
 
   return true;
 }

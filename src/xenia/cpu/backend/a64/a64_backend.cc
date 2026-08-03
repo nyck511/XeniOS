@@ -350,16 +350,10 @@ bool A64Backend::Initialize(Processor* processor) {
   reserved_store_32_helper = reinterpret_cast<void*>(ReservedStore32Helper);
   reserved_store_64_helper = reinterpret_cast<void*>(ReservedStore64Helper);
 
-#if XE_A64_INDIRECTION_64BIT
   // On ARM64 platforms, the indirection table stores rel32 offsets with
   // tagged external targets. The code cache encodes this host pointer.
   static_cast<A64CodeCache*>(code_cache_.get())
       ->set_indirection_default_64(uint64_t(resolve_function_thunk_));
-#else
-  assert_zero(uint64_t(resolve_function_thunk_) & 0xFFFFFFFF00000000ull);
-  code_cache_->set_indirection_default(
-      uint32_t(uint64_t(resolve_function_thunk_)));
-#endif
 
   // Commit special indirection ranges (force return address, etc.).
   code_cache_->CommitExecutableRange(0x9FFF0000, 0x9FFFFFFF);
@@ -819,14 +813,8 @@ uint32_t A64Backend::CreateGuestTrampoline(GuestTrampolineProc proc,
   uint32_t guest_addr =
       kGuestTrampolineBase +
       static_cast<uint32_t>(new_index) * kGuestTrampolineMinLen;
-#if XE_A64_INDIRECTION_64BIT
   code_cache()->AddIndirection64(guest_addr,
                                  reinterpret_cast<uint64_t>(write_pos));
-#else
-  code_cache()->AddIndirection(
-      guest_addr,
-      static_cast<uint32_t>(reinterpret_cast<uintptr_t>(write_pos)));
-#endif
   return guest_addr;
 }
 
