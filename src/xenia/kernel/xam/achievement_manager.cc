@@ -186,7 +186,7 @@ void AchievementManager::ShowAchievementEarnedNotification(
   if (!imgui_drawer) {
 #if XE_PLATFORM_IOS
     auto& ios_app_context =
-        static_cast<ui::IOSWindowedAppContext&>(app_context);
+        static_cast<ui::IOSWindowedAppContext&>(*app_context);
     ui::IOSAchievementNotificationData notification;
     notification.title = "Achievement unlocked";
     notification.subtitle = achievement_name;
@@ -210,40 +210,16 @@ void AchievementManager::ShowAchievementEarnedNotification(
                                ? kernel_state()->notification_position_
                                : 2;
 
-  app_context.CallInUIThread([imgui_drawer, description, position]() {
+  app_context->CallInUIThread([imgui_drawer, description, position]() {
   // TODO(wmarti): Implement iOS audio helper (AVAudioPlayer) to restore this.
 #if !XE_PLATFORM_IOS
     // Play achievement sound
     ui::AudioHelper::Instance().PlayAchievementSound();
 #endif
 
-#if XE_PLATFORM_IOS
-    auto* ios_context = dynamic_cast<ui::IOSWindowedAppContext*>(app_context);
-    if (ios_context && ios_context->PresentAchievementNotification(payload)) {
-      return;
-    }
-#endif  // XE_PLATFORM_IOS
-
-    if (!imgui_drawer) {
-      XELOGI("Achievement notification skipped: no ImGui drawer available");
-      return;
-    }
-
-#if XE_PLATFORM_IOS
-    auto* ios_context = dynamic_cast<ui::IOSWindowedAppContext*>(app_context);
-    if (ios_context && ios_context->PresentAchievementNotification(payload)) {
-      return;
-    }
-#endif  // XE_PLATFORM_IOS
-
-    if (!imgui_drawer) {
-      XELOGI("Achievement notification skipped: no ImGui drawer available");
-      return;
-    }
-
     // Show notification
-    new ui::AchievementNotificationWindow(imgui_drawer, title, description, 0,
-                                          position);
+    new ui::AchievementNotificationWindow(imgui_drawer, "Achievement unlocked",
+                                          description, 0, position);
   });
 }
 

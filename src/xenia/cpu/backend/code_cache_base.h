@@ -801,7 +801,7 @@ class CodeCacheBase : public CodeCache {
   std::atomic<uint32_t> external_indirection_target_count_{0};
   std::mutex external_indirection_mutex_;
 
- private:
+ protected:
   Derived& self() { return static_cast<Derived&>(*this); }
 
 #if XE_PLATFORM_IOS && XE_ARCH_ARM64

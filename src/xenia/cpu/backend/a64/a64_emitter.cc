@@ -340,7 +340,7 @@ void A64Emitter::EmitTitleStopPollIOS() {
 
   mov(x15, static_cast<uint64_t>(stop_word));
   ldr(w15, ptr(x15));
-  Label continue_execution;
+  Xbyak_aarch64::Label continue_execution;
   cbz(w15, continue_execution);
 
   CallNativeSafe(
@@ -580,8 +580,8 @@ void A64Emitter::TailCallGuestAddressInW16() {
       ldr(w9, ptr(x16, static_cast<uint32_t>(0)));
     } else {
       // Encoded path: see A64CodeCache for the entry format.
-      Label external_target;
-      Label indirection_ready;
+      Xbyak_aarch64::Label external_target;
+      Xbyak_aarch64::Label indirection_ready;
 
       mov(x14, code_cache_->indirection_table_base_bias());
       add(x14, x14, w16, UXTW);

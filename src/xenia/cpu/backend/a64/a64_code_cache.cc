@@ -1274,7 +1274,9 @@ void A64CodeCache::PlaceGuestCode(uint32_t guest_address, void* machine_code,
     size_t old_commit_mark, new_commit_mark;
     do {
       old_commit_mark = generated_code_commit_mark_;
-      if (high_mark <= old_commit_mark) break;
+      if (high_mark <= old_commit_mark) {
+        break;
+      }
 
       new_commit_mark = old_commit_mark + 16_MiB;
       if (!generated_code_uses_vm_remap_fallback_ &&
@@ -1418,7 +1420,9 @@ uint32_t A64CodeCache::PlaceData(const void* data, size_t length) {
   size_t old_commit_mark, new_commit_mark;
   do {
     old_commit_mark = generated_code_commit_mark_;
-    if (high_mark <= old_commit_mark) break;
+    if (high_mark <= old_commit_mark) {
+      break;
+    }
 
     new_commit_mark = old_commit_mark + 16_MiB;
     if (!generated_code_uses_vm_remap_fallback_ &&

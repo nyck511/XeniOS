@@ -188,7 +188,9 @@ PipelineAttachmentFormats ResolvePipelineAttachmentFormats(
     result.stencil_format = MTL::PixelFormatInvalid;
 
     auto update_sample_count = [&](MTL::Texture* texture) {
-      if (!texture) return;
+      if (!texture) {
+        return;
+      }
       NS::UInteger sc = texture->sampleCount();
       if (sc > 0) {
         result.sample_count =
@@ -200,9 +202,13 @@ PipelineAttachmentFormats ResolvePipelineAttachmentFormats(
     for (uint32_t i = 0; i < 4; ++i) {
       auto* attachment =
           color_attachments ? color_attachments->object(i) : nullptr;
-      if (!attachment) continue;
+      if (!attachment) {
+        continue;
+      }
       MTL::Texture* texture = attachment->texture();
-      if (!texture) continue;
+      if (!texture) {
+        continue;
+      }
       result.color_formats[i] = texture->pixelFormat();
       update_sample_count(texture);
     }
@@ -2317,7 +2323,6 @@ void MetalCommandProcessor::OnPrimaryBufferEnd() {
 }
 
 Shader* MetalCommandProcessor::LoadShader(xenos::ShaderType shader_type,
-                                          uint32_t guest_address,
                                           const uint32_t* host_address,
                                           uint32_t dword_count) {
   // Create hash for caching using XXH3 (same as D3D12)
@@ -2333,9 +2338,9 @@ Shader* MetalCommandProcessor::LoadShader(xenos::ShaderType shader_type,
                                               dword_count);
     MslShader* result = shader.get();
     msl_shader_cache_[hash] = std::move(shader);
-    XELOGD("Loaded {} shader (SPIRV-Cross) at {:08X} ({} dwords, hash {:016X})",
+    XELOGD("Loaded {} shader (SPIRV-Cross) ({} dwords, hash {:016X})",
            shader_type == xenos::ShaderType::kVertex ? "vertex" : "pixel",
-           guest_address, dword_count, hash);
+           dword_count, hash);
     return result;
   }
 
@@ -2354,9 +2359,9 @@ Shader* MetalCommandProcessor::LoadShader(xenos::ShaderType shader_type,
   MetalShader* result = shader.get();
   shader_cache_[hash] = std::move(shader);
 
-  XELOGD("Loaded {} shader at {:08X} ({} dwords, hash {:016X})",
+  XELOGD("Loaded {} shader ({} dwords, hash {:016X})",
          shader_type == xenos::ShaderType::kVertex ? "vertex" : "pixel",
-         guest_address, dword_count, hash);
+         dword_count, hash);
 
   return result;
 #else
@@ -3370,7 +3375,9 @@ bool MetalCommandProcessor::UploadConstants(
             for (size_t i = 0;
                  i < tex_bindings.size() && i < texture_indices.size(); ++i) {
               uint32_t d = tex_bindings[i].bindless_descriptor_index;
-              if (d >= kCBVSize / sizeof(uint32_t)) continue;
+              if (d >= kCBVSize / sizeof(uint32_t)) {
+                continue;
+              }
               indices[d] = texture_indices[i];
             }
             const auto& smp_bindings =
@@ -3378,7 +3385,9 @@ bool MetalCommandProcessor::UploadConstants(
             for (size_t i = 0;
                  i < smp_bindings.size() && i < sampler_indices.size(); ++i) {
               uint32_t d = smp_bindings[i].bindless_descriptor_index;
-              if (d >= kCBVSize / sizeof(uint32_t)) continue;
+              if (d >= kCBVSize / sizeof(uint32_t)) {
+                continue;
+              }
               indices[d] = sampler_indices[i];
             }
           };

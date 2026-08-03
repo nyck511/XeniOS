@@ -523,7 +523,9 @@ void QtWindow::LoadAndApplyIcon(const void* buffer, size_t size,
 }
 
 void QtWindow::ApplyNewMainMenu(MenuItem* old_main_menu) {
-  if (!qwindow_) return;
+  if (!qwindow_) {
+    return;
+  }
 
   // Clear old menu
   if (old_main_menu) {

@@ -50,9 +50,11 @@ bool SharedMemory::InitializeCommon() {
       ((kBufferSize >> page_size_log2_) + 63) / 64;
   num_system_page_flags_ = static_cast<uint32_t>(num_system_page_flags_entries);
 
-  // Two flag arrays (valid, valid_and_gpu_written), 8 bytes per 64-page entry.
+  // Allocate double-buffered valid flags (2x) plus gpu_written (1x) = 3 total
+  // arrays. With 2048 entries per array and 8 bytes per entry, that's 49152
+  // bytes total.
   uint64_t* system_page_flags_base = (uint64_t*)memory::AllocFixed(
-      nullptr, num_system_page_flags_ * 2 * sizeof(uint64_t),
+      nullptr, num_system_page_flags_ * 3 * sizeof(uint64_t),
       memory::AllocationType::kReserveCommit, memory::PageAccess::kReadWrite);
 
   if (!system_page_flags_base) {
@@ -60,13 +62,21 @@ bool SharedMemory::InitializeCommon() {
     return false;
   }
 
-  system_page_flags_valid_ = system_page_flags_base;
+  // Set up double buffer for valid flags.
+  valid_buffer_a_ = system_page_flags_base;
+  valid_buffer_b_ = system_page_flags_base + num_system_page_flags_;
   system_page_flags_valid_and_gpu_written_ =
-      system_page_flags_base + num_system_page_flags_;
+      system_page_flags_base + (num_system_page_flags_ * 2);
 
-  memset(system_page_flags_valid_, 0, 8 * num_system_page_flags_entries);
+  // Initialize all buffers to zero.
+  memset(valid_buffer_a_, 0, 8 * num_system_page_flags_entries);
+  memset(valid_buffer_b_, 0, 8 * num_system_page_flags_entries);
   memset(system_page_flags_valid_and_gpu_written_, 0,
          8 * num_system_page_flags_entries);
+
+  // Buffer A is active, buffer B is staging.
+  active_valid_flags_.store(valid_buffer_a_, std::memory_order_relaxed);
+  staging_valid_flags_.store(valid_buffer_b_, std::memory_order_relaxed);
 
   watch_blind_pages_.assign(num_system_page_flags_, 0);
   has_watch_blind_pages_ = false;
@@ -125,11 +135,14 @@ void SharedMemory::ShutdownCommon() {
   host_gpu_memory_sparse_allocated_.shrink_to_fit();
   host_gpu_memory_sparse_granularity_log2_ = UINT32_MAX;
 
-  // One AllocFixed backs both flag arrays; valid_ is its base pointer.
-  if (system_page_flags_valid_) {
-    memory::DeallocFixed(system_page_flags_valid_, 0,
+  // One AllocFixed backs all three arrays; valid_buffer_a_ is its base pointer.
+  if (valid_buffer_a_) {
+    memory::DeallocFixed(valid_buffer_a_, 0,
                          memory::DeallocationType::kRelease);
-    system_page_flags_valid_ = nullptr;
+    valid_buffer_a_ = nullptr;
+    valid_buffer_b_ = nullptr;
+    active_valid_flags_.store(nullptr, std::memory_order_relaxed);
+    staging_valid_flags_.store(nullptr, std::memory_order_relaxed);
   }
 
   system_page_flags_valid_and_gpu_written_ = nullptr;
@@ -181,60 +194,48 @@ void SharedMemory::ClearCache() {
 void SharedMemory::SetSystemPageBlocksValidWithGpuDataWritten() {
   auto global_lock = global_critical_region_.Acquire();
 
-  if (gpu_written_data_dirty_) {
-    // Only copy the chunks that changed. Read and reset the dirty bitmap.
-    uint32_t dirty_mask = dirty_blocks_;
-    dirty_blocks_ = 0;
-    gpu_written_data_dirty_ = false;
-
+  if (gpu_written_data_dirty_.load(std::memory_order_relaxed)) {
+    uint64_t* staging = staging_valid_flags_.load(std::memory_order_acquire);
+    uint32_t dirty_mask = dirty_blocks_.exchange(0, std::memory_order_relaxed);
     uint32_t dirty_count = xe::bit_count(dirty_mask);
-
-    // Past ~50% dirty the per-chunk bookkeeping costs more than a straight
-    // copy.
     if (dirty_count == 0 || dirty_count > 16) {
-      std::memcpy(system_page_flags_valid_,
-                  system_page_flags_valid_and_gpu_written_,
-                  num_system_page_flags_ * sizeof(uint64_t));
+      for (uint32_t i = 0; i < num_system_page_flags_; ++i) {
+        StoreValidFlag(
+            &staging[i],
+            LoadValidFlag(&system_page_flags_valid_and_gpu_written_[i]));
+      }
     } else {
       while (dirty_mask) {
         uint32_t block_index;
         xe::bit_scan_forward(dirty_mask, &block_index);
         dirty_mask &= ~(1u << block_index);
 
-  // Threshold: if >50% of blocks are dirty, full copy is more efficient.
-  if (dirty_count == 0 || dirty_count > 16) {
-    // Full copy: either no blocks marked (race/init) or many blocks dirty.
-    for (uint32_t i = 0; i < num_system_page_flags_; ++i) {
-      StoreValidFlag(
-          &staging[i],
-          LoadValidFlag(&system_page_flags_valid_and_gpu_written_[i]));
-    }
-  } else {
-    // Partial copy: only copy dirty blocks (64 entries per block).
-    while (dirty_mask) {
-      uint32_t block_index;
-      xe::bit_scan_forward(dirty_mask, &block_index);
-      dirty_mask &= ~(1u << block_index);  // Clear this bit
-
-      // Each block is 64 entries.
-      uint32_t entry_offset = block_index * 64;
-      for (uint32_t i = 0; i < 64; ++i) {
-        uint32_t entry = entry_offset + i;
-        StoreValidFlag(
-            &staging[entry],
-            LoadValidFlag(&system_page_flags_valid_and_gpu_written_[entry]));
+        uint32_t entry_offset = block_index * 64;
+        for (uint32_t i = 0; i < 64; ++i) {
+          uint32_t entry = entry_offset + i;
+          StoreValidFlag(
+              &staging[entry],
+              LoadValidFlag(&system_page_flags_valid_and_gpu_written_[entry]));
+        }
       }
     }
+
+    uint64_t* old_active =
+        active_valid_flags_.exchange(staging, std::memory_order_acq_rel);
+    staging_valid_flags_.store(old_active, std::memory_order_release);
+    gpu_written_data_dirty_.store(false, std::memory_order_relaxed);
   }
 
   // Pages the write watch can't cover never get invalidated by a fault, so
   // re-invalidate them every frame to force a fresh re-upload. Skip any that
   // became GPU-written (their GPU copy is authoritative).
   if (has_watch_blind_pages_) {
+    uint64_t* active = active_valid_flags_.load(std::memory_order_relaxed);
     for (uint32_t i = 0; i < num_system_page_flags_; ++i) {
       uint64_t blind_cpu =
-          watch_blind_pages_[i] & ~system_page_flags_valid_and_gpu_written_[i];
-      system_page_flags_valid_[i] &= ~blind_cpu;
+          watch_blind_pages_[i] &
+          ~LoadValidFlag(&system_page_flags_valid_and_gpu_written_[i]);
+      AndValidFlag(&active[i], ~blind_cpu);
     }
   }
 }
@@ -366,8 +367,8 @@ void SharedMemory::FireWatches(uint32_t page_first, uint32_t page_last,
     }
     while (node != nullptr) {
       WatchRange* range = node->range;
-      // Store the next node now since when the callback is triggered, the links
-      // will be broken.
+      // Store the next node now since when the callback is triggered, the
+      // links will be broken.
       node = node->bucket_node_next;
       if (node) {
         swcache::PrefetchL1(node);
@@ -394,12 +395,13 @@ void SharedMemory::RangeWrittenByGpu(uint32_t start, uint32_t length) {
   uint32_t page_first = start >> page_size_log2_;
   uint32_t page_last = end >> page_size_log2_;
 
-  // Trigger modification callbacks so, for instance, resolved data is loaded to
-  // the texture.
+  // Trigger modification callbacks so, for instance, resolved data is
+  // loaded to the texture.
   FireWatches(page_first, page_last, true);
 
-  // Mark the range as valid (so pages are not reuploaded until modified by the
-  // CPU) and watch it so the CPU can reuse it and this will be caught.
+  // Mark the range as valid (so pages are not reuploaded until modified
+  // by the CPU) and watch it so the CPU can reuse it and this will be
+  // caught.
   MakeRangeValid(start, length, true);
 }
 
@@ -452,10 +454,10 @@ void SharedMemory::MakeRangeValid(uint32_t start, uint32_t length,
       }
     }
 
-    // Flag CPU pages the access-callback watch can't catch, so the frame-end
-    // clear keeps re-reading them. Simple heuristic: any page not writable
-    // (no-access or read-only) in the physical windows, since the watch can
-    // only arm on a window-writable page.
+    // Flag CPU pages the access-callback watch can't catch, so the
+    // frame-end clear keeps re-reading them. Simple heuristic: any page
+    // not writable (no-access or read-only) in the physical windows,
+    // since the watch can only arm on a window-writable page.
     if (!written_by_gpu) {
       for (uint32_t page = valid_page_first; page <= valid_page_last; ++page) {
         uint64_t page_bit = uint64_t(1) << (page & 63);
@@ -517,23 +519,14 @@ bool SharedMemory::IsRangeValid(uint32_t start, uint32_t length) const {
   uint32_t block_last = page_last >> 6;
 
   uint64_t* valid_flags = active_valid_flags_.load(std::memory_order_acquire);
-  if (valid_flags) {
-    bool all_valid = true;
-    for (uint32_t i = block_first; i <= block_last && all_valid; ++i) {
-      uint64_t block_valid = LoadValidFlag(&valid_flags[i]);
-      if (i == block_first) {
-        // Mask out pages before page_first
-        uint64_t block_before = (uint64_t(1) << (page_first & 63)) - 1;
-        block_valid |= block_before;
-      }
-      if (i == block_last && (page_last & 63) != 63) {
-        // Mask out pages after page_last
-        uint64_t block_after = ~((uint64_t(1) << ((page_last & 63) + 1)) - 1);
-        block_valid |= block_after;
-      }
-      if (block_valid != ~uint64_t(0)) {
-        all_valid = false;
-      }
+  if (!valid_flags) {
+    return false;
+  }
+  for (uint32_t i = block_first; i <= block_last; ++i) {
+    uint64_t block_valid = LoadValidFlag(&valid_flags[i]);
+    if (i == block_first) {
+      uint64_t block_before = (uint64_t(1) << (page_first & 63)) - 1;
+      block_valid |= block_before;
     }
     if (i == block_last && (page_last & 63) != 63) {
       uint64_t block_after = ~((uint64_t(1) << ((page_last & 63) + 1)) - 1);
@@ -572,7 +565,7 @@ bool SharedMemory::IsRangeInvalid(uint32_t start, uint32_t length) const {
     if (i == block_last && (page_last & 63) != 63) {
       range_mask &= (uint64_t(1) << ((page_last & 63) + 1)) - 1;
     }
-    if (valid_flags[i] & range_mask) {
+    if (LoadValidFlag(&valid_flags[i]) & range_mask) {
       return false;
     }
   }
@@ -706,34 +699,6 @@ bool SharedMemory::RequestRanges(const Range* ranges, uint32_t range_count,
   return UploadRanges(uploads, coalesced_upload_range_count);
 }
 
-bool SharedMemory::IsRangeValid(uint32_t start, uint32_t length) const {
-  if (!length) {
-    return true;
-  }
-  if (start > kBufferSize || (kBufferSize - start) < length) {
-    return false;
-  }
-
-  const uint32_t page_first = start >> page_size_log2_;
-  const uint32_t page_last = (start + length - 1) >> page_size_log2_;
-  const uint32_t block_first = page_first >> 6;
-  const uint32_t block_last = page_last >> 6;
-
-  for (uint32_t i = block_first; i <= block_last; ++i) {
-    uint64_t valid_mask = UINT64_MAX;
-    if (i == block_first) {
-      valid_mask &= ~((uint64_t(1) << (page_first & 63)) - 1);
-    }
-    if (i == block_last && (page_last & 63) != 63) {
-      valid_mask &= (uint64_t(1) << ((page_last & 63) + 1)) - 1;
-    }
-    if ((system_page_flags_valid_[i] & valid_mask) != valid_mask) {
-      return false;
-    }
-  }
-  return true;
-}
-
 template <typename T>
 XE_FORCEINLINE XE_NOALIAS static T mod_shift_left(T value, uint32_t by) {
 #if XE_ARCH_AMD64 == 1
@@ -750,6 +715,7 @@ void SharedMemory::TryFindUploadRange(const uint32_t& block_first,
                                       uint32_t& range_start,
                                       unsigned int& current_upload_range,
                                       std::pair<uint32_t, uint32_t>* uploads) {
+  uint64_t* valid_flags = active_valid_flags_.load(std::memory_order_relaxed);
   for (uint32_t i = block_first; i <= block_last; ++i) {
     uint64_t block_valid = LoadValidFlag(&valid_flags[i]);
     if (i == block_first) {
@@ -809,8 +775,8 @@ void SharedMemory::TryGetNextUploadRange(
       if (current_upload_range + 1 < MAX_UPLOAD_RANGES) {
         uploads[current_upload_range++] =
             std::make_pair(range_start, (i << 6) + block_page - range_start);
-        // In the next iteration within this block, consider this range valid
-        // since it has been queued for upload.
+        // In the next iteration within this block, consider this range
+        // valid since it has been queued for upload.
         block_valid |= (uint64_t(1) << block_page) - 1;
         range_start = UINT32_MAX;
       } else {
@@ -845,14 +811,14 @@ std::pair<uint32_t, uint32_t> SharedMemory::MemoryInvalidationCallback(
   auto global_lock = global_critical_region_.Acquire();
 
   if (!exact_range) {
-    // Check if a somewhat wider range (up to 256 KB with 4 KB pages) can be
-    // invalidated - if no GPU-written data nearby that was not intended to be
-    // invalidated since it's not in sync with CPU memory and can't be
-    // reuploaded. It's a lot cheaper to upload some excess data than to catch
-    // access violations - with 4 KB callbacks, 58410824 (being a
-    // software-rendered game) runs at 4 FPS on Intel Core i7-3770, with 64 KB,
-    // the CPU game code takes 3 ms to run per frame, but with 256 KB, it's
-    // 0.7 ms.
+    // Check if a somewhat wider range (up to 256 KB with 4 KB pages) can
+    // be invalidated - if no GPU-written data nearby that was not
+    // intended to be invalidated since it's not in sync with CPU memory
+    // and can't be reuploaded. It's a lot cheaper to upload some excess
+    // data than to catch access violations - with 4 KB callbacks,
+    // 58410824 (being a software-rendered game) runs at 4 FPS on Intel
+    // Core i7-3770, with 64 KB, the CPU game code takes 3 ms to run per
+    // frame, but with 256 KB, it's 0.7 ms.
     if (page_first & 63) {
       uint64_t gpu_written_start =
           LoadValidFlag(&system_page_flags_valid_and_gpu_written_[block_first]);
@@ -886,7 +852,8 @@ std::pair<uint32_t, uint32_t> SharedMemory::MemoryInvalidationCallback(
     dirty_blocks_mask |= (1u << (i >> 6));
   }
 
-  // Mark as dirty since GPU-written flags changed due to CPU invalidation.
+  // Mark as dirty since GPU-written flags changed due to CPU
+  // invalidation.
   gpu_written_data_dirty_.store(true, std::memory_order_relaxed);
   dirty_blocks_.fetch_or(dirty_blocks_mask, std::memory_order_relaxed);
   invalidation_epoch_.fetch_add(1, std::memory_order_relaxed);
@@ -903,12 +870,13 @@ void SharedMemory::PrepareForTraceDownload() {
   assert_zero(trace_download_page_count_);
 
   // Invalidate the entire memory CPU->GPU memory copy so all the history
-  // doesn't have to be written into every frame trace, and collect the list of
-  // ranges with data modified on the GPU.
+  // doesn't have to be written into every frame trace, and collect the
+  // list of ranges with data modified on the GPU.
 
   uint32_t fire_watches_range_start = UINT32_MAX;
   uint32_t gpu_written_range_start = UINT32_MAX;
   auto global_lock = global_critical_region_.Acquire();
+  uint64_t* valid_flags = active_valid_flags_.load(std::memory_order_relaxed);
   for (uint32_t i = 0; i < num_system_page_flags_; ++i) {
     // SystemPageFlagsBlock& page_flags_block = system_page_flags_[i];
     uint64_t previously_valid_block = LoadValidFlag(&valid_flags[i]);
@@ -956,10 +924,10 @@ void SharedMemory::PrepareForTraceDownload() {
       } else {
         uint32_t gpu_written_range_length =
             gpu_written_page - gpu_written_range_start;
-        // Call EnsureHostGpuMemoryAllocated in case the page was marked as
-        // GPU-written not as a result to an actual write to the shared memory
-        // buffer, but, for instance, by resolving with resolution scaling (to a
-        // separate buffer).
+        // Call EnsureHostGpuMemoryAllocated in case the page was marked
+        // as GPU-written not as a result to an actual write to the shared
+        // memory buffer, but, for instance, by resolving with resolution
+        // scaling (to a separate buffer).
         if (EnsureHostGpuMemoryAllocated(
                 gpu_written_range_start << page_size_log2_,
                 gpu_written_range_length << page_size_log2_)) {

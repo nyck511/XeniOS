@@ -82,14 +82,18 @@ ControllerNavigationMapper::ResolveDirection(
   const bool dpad_right =
       (gamepad.buttons & hid::X_INPUT_GAMEPAD_DPAD_RIGHT) != 0;
 
-  if (dpad_up)
+  if (dpad_up) {
     return {true, NavigationDirection::kUp, DirectionalSource::kDpad};
-  if (dpad_down)
+  }
+  if (dpad_down) {
     return {true, NavigationDirection::kDown, DirectionalSource::kDpad};
-  if (dpad_left)
+  }
+  if (dpad_left) {
     return {true, NavigationDirection::kLeft, DirectionalSource::kDpad};
-  if (dpad_right)
+  }
+  if (dpad_right) {
     return {true, NavigationDirection::kRight, DirectionalSource::kDpad};
+  }
 
   const int16_t lx = gamepad.thumb_lx;
   const int16_t ly = gamepad.thumb_ly;

@@ -424,7 +424,9 @@ MetalPipelineCache::~MetalPipelineCache() {
   }
   creation_request_cond_.notify_all();
   for (auto& thread : creation_threads_) {
-    if (thread.joinable()) thread.join();
+    if (thread.joinable()) {
+      thread.join();
+    }
   }
   creation_threads_.clear();
 
@@ -1579,7 +1581,9 @@ void MetalPipelineCache::CreationThread(size_t thread_index) {
 // ---------------------------------------------------------------------------
 
 bool MetalPipelineCache::IsCreatingPipelines() {
-  if (creation_threads_.empty()) return false;
+  if (creation_threads_.empty()) {
+    return false;
+  }
   std::lock_guard<std::mutex> lock(creation_request_lock_);
   return !creation_queue_.empty() || creation_threads_busy_ != 0;
 }

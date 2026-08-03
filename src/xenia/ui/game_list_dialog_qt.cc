@@ -102,19 +102,37 @@ void GameListDialogQt::RefreshFonts() {
   question_font.setBold(true);
 
   // Apply fonts to toolbar labels
-  if (open_label_) open_label_->setFont(toolbar_font);
-  if (play_label_) play_label_->setFont(toolbar_font);
-  if (settings_label_) settings_label_->setFont(toolbar_font);
-  if (profile_label_) profile_label_->setFont(toolbar_font);
-  if (search_box_) search_box_->setFont(search_font);
-  if (profile_question_label_) profile_question_label_->setFont(question_font);
+  if (open_label_) {
+    open_label_->setFont(toolbar_font);
+  }
+  if (play_label_) {
+    play_label_->setFont(toolbar_font);
+  }
+  if (settings_label_) {
+    settings_label_->setFont(toolbar_font);
+  }
+  if (profile_label_) {
+    profile_label_->setFont(toolbar_font);
+  }
+  if (search_box_) {
+    search_box_->setFont(search_font);
+  }
+  if (profile_question_label_) {
+    profile_question_label_->setFont(question_font);
+  }
 
   // Apply fonts to table header labels
   QFont header_font = QApplication::font();
   header_font.setBold(true);
-  if (icon_header_) icon_header_->setFont(header_font);
-  if (title_header_) title_header_->setFont(header_font);
-  if (last_played_header_) last_played_header_->setFont(header_font);
+  if (icon_header_) {
+    icon_header_->setFont(header_font);
+  }
+  if (title_header_) {
+    title_header_->setFont(header_font);
+  }
+  if (last_played_header_) {
+    last_played_header_->setFont(header_font);
+  }
 
   // Reload game list to refresh game item fonts
   LoadGameList();

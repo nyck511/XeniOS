@@ -496,11 +496,11 @@ X_STATUS XThread::Create() {
   } else {
     xe::threading::Thread::CreationParameters params;
 
-  params.create_suspended = true;
-  params.stack_size = GuestHostThreadStackSize();
-  thread_ = xe::threading::Thread::Create(params, [this]() {
-    // Set thread ID override. This is used by logging.
-    xe::threading::set_current_thread_id(handle());
+    params.create_suspended = true;
+    params.stack_size = GuestHostThreadStackSize();
+    thread_ = xe::threading::Thread::Create(params, [this]() {
+      // Set thread ID override. This is used by logging.
+      xe::threading::set_current_thread_id(handle());
 
       // Set name immediately, if we have one.
       thread_->set_name(thread_name_);
@@ -515,24 +515,24 @@ X_STATUS XThread::Create() {
       running_ = true;
 
 #if XE_PLATFORM_LINUX || XE_PLATFORM_ANDROID || XE_PLATFORM_APPLE
-    pthread_cleanup_push(HostThreadExitCleanupThunk, this);
-    Execute();
-    pthread_cleanup_pop(1);
+      pthread_cleanup_push(HostThreadExitCleanupThunk, this);
+      Execute();
+      pthread_cleanup_pop(1);
 #else
       Execute();
       OnHostThreadExitCleanup();
 #endif
     });
 
-  if (!thread_) {
-    // TODO(benvanik): translate error?
-    XELOGE(
-        "CreateThread failed (guest_stack=0x{:X}, host_stack=0x{:X}, "
-        "creation_flags=0x{:X}, start=0x{:X})",
-        creation_params_.stack_size, static_cast<uint32_t>(params.stack_size),
-        creation_params_.creation_flags, creation_params_.start_address);
-    return X_STATUS_NO_MEMORY;
-  }
+    if (!thread_) {
+      // TODO(benvanik): translate error?
+      XELOGE(
+          "CreateThread failed (guest_stack=0x{:X}, host_stack=0x{:X}, "
+          "creation_flags=0x{:X}, start=0x{:X})",
+          creation_params_.stack_size, static_cast<uint32_t>(params.stack_size),
+          creation_params_.creation_flags, creation_params_.start_address);
+      return X_STATUS_NO_MEMORY;
+    }
 
     // Set the thread name based on host ID (for easier debugging).
     if (thread_name_.empty()) {
@@ -1449,25 +1449,25 @@ object_ref<XThread> XThread::Restore(KernelState* kernel_state,
       // Set thread ID override. This is used by logging.
       xe::threading::set_current_thread_id(thread->handle());
 
-          // Set name immediately, if we have one.
-          thread->thread_->set_name(thread->name());
+      // Set name immediately, if we have one.
+      thread->thread_->set_name(thread->name());
 
-          // Profiler needs to know about the thread.
-          xe::Profiler::ThreadEnter(thread->name().c_str());
+      // Profiler needs to know about the thread.
+      xe::Profiler::ThreadEnter(thread->name().c_str());
 
-          current_xthread_tls_ = thread;
-          current_thread_ = thread;
+      current_xthread_tls_ = thread;
+      current_thread_ = thread;
 
-          // Acquire any mutants
-          for (auto mutant : thread->pending_mutant_acquires_) {
-            uint64_t timeout = 0;
-            auto status = mutant->Wait(0, 0, 0, &timeout);
-            assert_true(status == X_STATUS_SUCCESS);
-          }
-          thread->pending_mutant_acquires_.clear();
+      // Acquire any mutants
+      for (auto mutant : thread->pending_mutant_acquires_) {
+        uint64_t timeout = 0;
+        auto status = mutant->Wait(0, 0, 0, &timeout);
+        assert_true(status == X_STATUS_SUCCESS);
+      }
+      thread->pending_mutant_acquires_.clear();
 
-          // Execute user code.
-          thread->running_ = true;
+      // Execute user code.
+      thread->running_ = true;
 
 #if XE_PLATFORM_LINUX || XE_PLATFORM_ANDROID || XE_PLATFORM_APPLE
       pthread_cleanup_push(HostThreadExitCleanupThunk, thread);

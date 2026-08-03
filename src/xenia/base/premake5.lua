@@ -19,6 +19,15 @@ project("xenia-base")
       "platform_amd64.cc",
       "platform_amd64.h",
     })
+  filter({"system:ios", "architecture:ARM64"})
+    files({
+      project_root.."/third_party/boost_context/context/src/asm/"..
+          "make_arm64_aapcs_macho_gas.S",
+      project_root.."/third_party/boost_context/context/src/asm/"..
+          "jump_arm64_aapcs_macho_gas.S",
+      project_root.."/third_party/boost_context/context/src/asm/"..
+          "ontop_arm64_aapcs_macho_gas.S",
+    })
   filter({})
   files({
     "debug_visualizers.natvis",
