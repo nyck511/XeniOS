@@ -11,10 +11,6 @@
 #define XENIA_CPU_BACKEND_A64_A64_CODE_CACHE_H_
 
 #include <memory>
-#include <mutex>
-#include <string>
-#include <utility>
-#include <vector>
 
 #include "xenia/cpu/backend/code_cache_base.h"
 
@@ -25,110 +21,15 @@ namespace a64 {
 
 class A64CodeCache : public CodeCacheBase<A64CodeCache> {
  public:
-  ~A64CodeCache() override;
+  ~A64CodeCache() override = default;
 
   static std::unique_ptr<A64CodeCache> Create();
-  bool Initialize() override;
 
   void* LookupUnwindInfo(uint64_t host_pc) override { return nullptr; }
 
-  const std::filesystem::path& file_name() const override { return file_name_; }
-  uintptr_t execute_base_address() const override {
-    return generated_code_execute_base_
-               ? reinterpret_cast<uintptr_t>(generated_code_execute_base_)
-               : kGeneratedCodeExecuteBase;
-  }
-  size_t total_size() const override { return kGeneratedCodeSize; }
-
-  // TODO(benvanik): ELF serialization/etc
-  // TODO(benvanik): keep track of code blocks
-  // TODO(benvanik): padding/guards/etc
-
-  bool has_indirection_table() { return indirection_table_base_ != nullptr; }
-  void set_indirection_default(uint32_t default_value);
-#if XE_A64_INDIRECTION_64BIT
-  void set_indirection_default_64(uint64_t default_value);
-#endif
-  void AddIndirection(uint32_t guest_address, uint32_t host_address);
-#if XE_A64_INDIRECTION_64BIT
-  void AddIndirection64(uint32_t guest_address, uint64_t host_address);
-#endif
-
-  void CommitExecutableRange(uint32_t guest_low, uint32_t guest_high);
-
-  void PlaceHostCode(uint32_t guest_address, void* machine_code,
-                     const EmitFunctionInfo& func_info,
-                     void*& code_execute_address_out,
-                     void*& code_write_address_out);
-  void PlaceGuestCode(uint32_t guest_address, void* machine_code,
-                      const EmitFunctionInfo& func_info,
-                      GuestFunction* function_info,
-                      void*& code_execute_address_out,
-                      void*& code_write_address_out);
-  uint32_t PlaceData(const void* data, size_t length);
+  // CRTP hooks for CodeCacheBase.
   void FillCode(void* write_address, size_t size);
   void FlushCodeRange(void* address, size_t size);
-
-  GuestFunction* LookupFunction(uint64_t host_pc) override;
-
-  // Access to indirection table base for emitter
-  uint8_t* indirection_table_base() const { return indirection_table_base_; }
-
-  // Returns the actual base address used for indirection table
-  uintptr_t indirection_table_base_address() const {
-    return indirection_table_actual_base_;
-  }
-#if XE_A64_INDIRECTION_64BIT
-  uintptr_t indirection_table_base_bias() const {
-    return indirection_table_base_bias_;
-  }
-  uintptr_t external_indirection_table_base_address() const {
-    return reinterpret_cast<uintptr_t>(external_indirection_targets_.get());
-  }
-#endif
-
- public:
-  // All executable code falls within 0x80000000 to 0x9FFFFFFF, so we can
-  // only map enough for lookups within that range.
-  // Size of the indirection table in bytes.
-  // On ARM64 platforms, entries store 32-bit relative offsets from the code
-  // cache execute base (plus tagged external targets for trampolines).
-  // This keeps dispatch O(1) while reducing contiguous VA reservation
-  // requirements on constrained iOS devices.
-#if XE_A64_INDIRECTION_64BIT
-  static const size_t kIndirectionTableSize = 0x20000000;  // 512 MiB
-#else
-  static const size_t kIndirectionTableSize =
-      0x20000000 - 1;  // 512 MiB - 1 (legacy)
-#endif
-#if XE_A64_INDIRECTION_64BIT
-  // On ARM64 platforms, the base address is determined dynamically at runtime
-  // based on where the OS allows us to allocate memory
-  static uintptr_t kIndirectionTableBase;
-#else
-  static const uintptr_t kIndirectionTableBase = 0x80000000;
-#endif
-  // The code range is 512MB, but we know the total code games will have is
-  // pretty small (dozens of mb at most) and our expansion is reasonablish
-  // so 256MB should be more than enough.
-  static const size_t kGeneratedCodeSize = 0x0FFFFFFF;
-  static const uintptr_t kGeneratedCodeExecuteBase = 0xA0000000;
-  // Used for writing when PageAccess::kExecuteReadWrite is not supported.
-  static const uintptr_t kGeneratedCodeWriteBase =
-      kGeneratedCodeExecuteBase + kGeneratedCodeSize + 1;
-
-  // This is picked to be high enough to cover whatever we can reasonably
-  // expect. If we hit issues with this it probably means some corner case
-  // in analysis triggering.
-  static const size_t kMaximumFunctionCount = 100000;
-
-  struct UnwindReservation {
-    size_t data_size = 0;
-    size_t table_slot = 0;
-    uint8_t* entry_address = 0;
-  };
-
-  A64CodeCache();
 
   // Virtual for platform-specific overrides (_win.cc / _posix.cc).
   virtual UnwindReservation RequestUnwindReservation(uint8_t* entry_address) {
@@ -139,82 +40,8 @@ class A64CodeCache : public CodeCacheBase<A64CodeCache> {
                          void* code_execute_address,
                          UnwindReservation unwind_reservation) {}
 
-  // Platform-specific code copying with JIT protection handling
-  virtual void CopyMachineCode(void* dest, const void* src, size_t size) {
-    std::memcpy(dest, src, size);
-  }
-
-  std::filesystem::path file_name_;
-  xe::memory::FileMappingHandle mapping_ =
-      xe::memory::kFileMappingHandleInvalid;
-
-  // NOTE: the global critical region must be held when manipulating the offsets
-  // or counts of anything, to keep the tables consistent and ordered.
-  xe::global_critical_region global_critical_region_;
-
-  // Value that the indirection table will be initialized with upon commit.
-#if XE_A64_INDIRECTION_64BIT
-  uint32_t indirection_default_value_ = 0xFEEDF00D;
-#else
-  uint32_t indirection_default_value_ = 0xFEEDF00D;
-#endif
-
-#if XE_A64_INDIRECTION_64BIT
-  // On ARM64 platforms, we store rel32 offsets for generated code and tagged
-  // indexes for non-cache targets (for example guest trampolines).
-  using indirection_entry_t = uint32_t;
-  static constexpr size_t kIndirectionEntrySize = 4;
-  static constexpr uint32_t kIndirectionExternalTag = 0x80000000u;
-  static constexpr uint32_t kIndirectionExternalIndexMask = 0x7FFFFFFFu;
-  static constexpr uint32_t kIndirectionExternalCapacity = 0x00010000u;
-#else
-  // Other platforms use 32-bit pointers
-  using indirection_entry_t = uint32_t;
-  static constexpr size_t kIndirectionEntrySize = 4;
-#endif
-
-  // Fixed at kIndirectionTableBase in host space, holding pointers into
-  // the generated code table that correspond to the PPC functions in guest
-  // space.
-  uint8_t* indirection_table_base_ = nullptr;
-  // Actual base address of the indirection table (may differ from
-  // kIndirectionTableBase on systems where fixed address allocation fails)
-  uintptr_t indirection_table_actual_base_ = 0;
-#if XE_A64_INDIRECTION_64BIT
-  uintptr_t indirection_table_base_bias_ = 0;
-  std::unique_ptr<uint64_t[]> external_indirection_targets_;
-  std::atomic<uint32_t> external_indirection_target_count_ = {0};
-  std::mutex external_indirection_mutex_;
-
-  uint32_t EncodeIndirectionTarget(uint64_t host_address);
-#endif
-  // Fixed at kGeneratedCodeExecuteBase and holding all generated code, growing
-  // as needed.
-  uint8_t* generated_code_execute_base_ = nullptr;
-  // View of the memory that backs generated_code_execute_base_ when
-  // PageAccess::kExecuteReadWrite is not supported, for writing the generated
-  // code. Equals to generated_code_execute_base_ when it's supported.
-  uint8_t* generated_code_write_base_ = nullptr;
-  // True when generated code dual mapping is created via vm_remap fallback.
-  // In this mode, pages are already fully mapped/protected at setup time and
-  // additional commit/protect calls can break execute permissions on iOS.
-  bool generated_code_uses_vm_remap_fallback_ = false;
-  // True when iOS generated code uses single-view protection flips (R/RW/RX)
-  // rather than dual-alias mappings.
-  bool generated_code_uses_mprotect_flip_ = false;
-#if XE_PLATFORM_IOS
-  // TXM executable pages remain prepared after the debugger broker detaches.
-  // Keep that mapping alive across in-process code-cache recreation.
-  bool generated_code_uses_ios_persistent_mapping_ = false;
-#endif
-  // Current offset to empty space in generated code.
-  size_t generated_code_offset_ = 0;
-  // Current high water mark of COMMITTED code.
-  std::atomic<size_t> generated_code_commit_mark_ = {0};
-  // Sorted map by host PC base offsets to source function info.
-  // This can be used to bsearch on host PC to find the guest function.
-  // The key is [start address | end address].
-  std::vector<std::pair<uint64_t, GuestFunction*>> generated_code_map_;
+ protected:
+  A64CodeCache() = default;
 };
 
 }  // namespace a64
