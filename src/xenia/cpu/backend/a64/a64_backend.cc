@@ -1257,7 +1257,7 @@ uint64_t ResolveFunction(void* raw_context, uint64_t target_address) {
 
 ResolveFunctionThunk A64ThunkEmitter::EmitResolveFunctionThunk() {
   // Entry:
-  // W17 = target PPC address
+  // W16 = target PPC address
   // X0 = context
 
   struct _code_offsets {
@@ -1288,7 +1288,7 @@ ResolveFunctionThunk A64ThunkEmitter::EmitResolveFunctionThunk() {
   // mov(rax, reinterpret_cast<uint64_t>(&ResolveFunction));
   // call(rax)
   mov(x0, GetContextReg());  // context
-  mov(w1, w17);
+  mov(w1, w16);
   mov(x16, reinterpret_cast<uint64_t>(&ResolveFunction));
   blr(x16);
   mov(x16, x0);
