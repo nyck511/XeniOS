@@ -307,9 +307,6 @@ void VdSetGraphicsInterruptCallback_entry(function_t callback,
   // r3 = bool 0/1 - 0 is normal interrupt, 1 is some acquire/lock mumble
   // r4 = user_data (r4 of VdSetGraphicsInterruptCallback)
   auto graphics_system = kernel_state()->emulator()->graphics_system();
-  if (!graphics_system) {
-    return;
-  }
   graphics_system->SetInterruptCallback(callback, user_data);
 }
 DECLARE_XBOXKRNL_EXPORT1(VdSetGraphicsInterruptCallback, kVideo, kImplemented);

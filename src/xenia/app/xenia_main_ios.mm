@@ -905,6 +905,22 @@ void EmulatorAppIOS::EmulatorThread(const std::filesystem::path& game_path,
       return;
     }
 
+    if (require_cpu_backend) {
+      X_STATUS subsystem_result = emulator_->SetupSubsystems();
+      if (XFAILED(subsystem_result)) {
+        XELOGE("iOS: Emulator::SetupSubsystems failed with status {:08X}", subsystem_result);
+        emulator_initialized_.store(false, std::memory_order_release);
+        emulator_cpu_initialized_.store(false, std::memory_order_release);
+        if (launched_with_game) {
+          app_context().CallInUIThread([this]() {
+            auto& ios_context = static_cast<ui::IOSWindowedAppContext&>(app_context());
+            ios_context.NotifyGameExited();
+          });
+        }
+        return;
+      }
+    }
+
     emulator_->MountStandardDrives();
     if (auto* fs = emulator_->file_system()) {
       std::string cache_target;
