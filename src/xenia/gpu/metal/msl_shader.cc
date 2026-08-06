@@ -15,6 +15,7 @@
 
 #include "xenia/base/assert.h"
 #include "xenia/base/logging.h"
+#include "xenia/gpu/metal/msl_bindings.h"
 
 namespace xe {
 namespace gpu {
@@ -144,12 +145,11 @@ static void AddResourceBindings(spirv_cross::CompilerMSL& compiler,
     compiler.add_msl_resource_binding(binding);
   }
 
-  // Set 2 (vertex textures) and Set 3 (pixel textures): up to 32 textures.
-  // Map all possible texture bindings.
+  // Set 2 (vertex textures) and Set 3 (pixel textures): map image bindings.
+  // Samplers are mapped separately to avoid overriding texture maps.
   for (uint32_t set = SpirvBindingLayout::kDescriptorSetTexturesVertex;
        set <= SpirvBindingLayout::kDescriptorSetTexturesPixel; ++set) {
     for (uint32_t i = 0; i < 32; ++i) {
-      // Texture binding.
       {
         MSLBinding binding;
         binding.stage = stage;
@@ -160,17 +160,36 @@ static void AddResourceBindings(spirv_cross::CompilerMSL& compiler,
         binding.msl_sampler = 0;
         compiler.add_msl_resource_binding(binding);
       }
-      // Sampler binding (same index).
-      {
-        MSLBinding binding;
-        binding.stage = stage;
-        binding.desc_set = set;
-        binding.binding = i;
-        binding.msl_buffer = 0;
-        binding.msl_texture = 0;
-        binding.msl_sampler = MslBindings::kSamplerBase + i;
-        compiler.add_msl_resource_binding(binding);
-      }
+    }
+  }
+
+  // Map separate samplers to contiguous indices based on their actual usage.
+  // This mirrors previous working behavior and avoids collisions when SPIR-V
+  // sampler bindings are not contiguous or start above the expected texture
+  // index range.
+  auto resources = compiler.get_shader_resources();
+  uint32_t sampler_msl_index = 0;
+  for (const auto& sampler : resources.separate_samplers) {
+    uint32_t set =
+        compiler.get_decoration(sampler.id, spv::DecorationDescriptorSet);
+    uint32_t binding =
+        compiler.get_decoration(sampler.id, spv::DecorationBinding);
+    if (sampler_msl_index >= MslSamplerIndex::kMaxPerStage) {
+      XELOGW("MslShader: too many samplers for Metal backend: {}",
+             sampler_msl_index);
+      break;
+    }
+    if (set == SpirvBindingLayout::kDescriptorSetTexturesVertex ||
+        set == SpirvBindingLayout::kDescriptorSetTexturesPixel) {
+      MSLBinding msl_binding;
+      msl_binding.stage = stage;
+      msl_binding.desc_set = set;
+      msl_binding.binding = binding;
+      msl_binding.msl_buffer = 0;
+      msl_binding.msl_texture = 0;
+      msl_binding.msl_sampler = MslBindings::kSamplerBase + sampler_msl_index;
+      compiler.add_msl_resource_binding(msl_binding);
+      ++sampler_msl_index;
     }
   }
 }
