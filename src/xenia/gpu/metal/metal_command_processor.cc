@@ -1013,6 +1013,18 @@ bool MetalCommandProcessor::SetupContext() {
   bool supports_mac2 = device_->supportsFamily(MTL::GPUFamilyMac2);
   mesh_shader_supported_ = supports_apple7 || supports_mac2;
 
+  draw_ring_count_ = std::max<int32_t>(1, ::cvars::metal_draw_ring_count);
+#if XE_PLATFORM_IOS && !METAL_SHADER_CONVERTER_AVAILABLE
+  constexpr size_t kMaxIosSpirvRingPages = 8;
+  if (draw_ring_count_ > kMaxIosSpirvRingPages) {
+    XELOGW(
+        "SPIRV-Cross: clamping draw ring pages on iOS from {} to {} to keep "
+        "uniforms pool latency bounded",
+        draw_ring_count_, kMaxIosSpirvRingPages);
+    draw_ring_count_ = kMaxIosSpirvRingPages;
+  }
+#endif
+
   // Initialize shared memory
   shared_memory_ = std::make_unique<MetalSharedMemory>(*this, *memory_);
   if (!shared_memory_->Initialize()) {
