@@ -2,8 +2,6 @@ name: CI
 
 on:
   push:
-    branches:
-      - main
     paths-ignore:
       - '*.md'
       - 'docs/**'
@@ -16,7 +14,7 @@ on:
   workflow_dispatch:
 
 concurrency:
-  group: ci-${{ github.event.pull_request.number || github.ref }}
+  group: ci-${{ github.event.pull_request.head.ref || github.ref_name }}
   cancel-in-progress: true
 
 jobs:
