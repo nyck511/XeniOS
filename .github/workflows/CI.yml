@@ -13,10 +13,6 @@ on:
       - 'LICENSE'
   workflow_dispatch:
 
-concurrency:
-  group: ci-${{ github.event.pull_request.head.ref || github.ref_name }}
-  cancel-in-progress: true
-
 jobs:
   lint:
     name: Lint
@@ -40,9 +36,8 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v5
-
-      - name: Initialize submodules
-        run: .github/scripts/update-submodules.sh
+        with:
+          submodules: recursive
 
       - name: Validate build bootstrap
         run: |
@@ -181,9 +176,7 @@ jobs:
       - uses: actions/checkout@v5
         with:
           fetch-depth: 0
-
-      - name: Initialize submodules
-        run: .github/scripts/update-submodules.sh
+          submodules: recursive
 
       - name: Select Xcode and validate Apple shader tools
         run: |
@@ -267,9 +260,7 @@ jobs:
       - uses: actions/checkout@v5
         with:
           fetch-depth: 0
-
-      - name: Initialize submodules
-        run: .github/scripts/update-submodules.sh
+          submodules: recursive
 
       - name: Build bootstrap smoke checks
         run: |
