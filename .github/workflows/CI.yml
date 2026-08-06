@@ -170,7 +170,7 @@ jobs:
 
   shader-generation-smoke:
     name: iPhoneOS Metal shader generation
-    runs-on: macos-26
+    runs-on: xcode-27
     timeout-minutes: 35
     steps:
       - uses: actions/checkout@v5
@@ -180,17 +180,16 @@ jobs:
 
       - name: Select Xcode and validate Apple shader tools
         run: |
-          xcode_app="$(find /Applications -maxdepth 1 -type d -name 'Xcode_26*.app' ! -iname '*beta*' | sort -V | tail -n 1)"
-          if [ -z "$xcode_app" ]; then
-            xcode_app="$(find /Applications -maxdepth 1 -type d -name 'Xcode_26*.app' | sort -V | tail -n 1)"
-          fi
-          if [ -z "$xcode_app" ]; then
-            echo "::error::Xcode 26 not found on runner"
+          developer_dir="/Applications/Xcode.app/Contents/Developer"
+          if [ ! -d "$developer_dir" ]; then
+            echo "::error::Default Xcode 27 developer directory not found"
             exit 1
           fi
-          echo "DEVELOPER_DIR=$xcode_app/Contents/Developer" >> "$GITHUB_ENV"
-          export DEVELOPER_DIR="$xcode_app/Contents/Developer"
+          echo "DEVELOPER_DIR=$developer_dir" >> "$GITHUB_ENV"
+          export DEVELOPER_DIR="$developer_dir"
           xcodebuild -version
+          xcodebuild -version | grep -q '^Xcode 27\.'
+          xcrun --sdk iphoneos --show-sdk-version | grep -q '^27\.'
           xcrun --sdk iphoneos --show-sdk-path
           if ! xcrun --find metal >/dev/null 2>&1 || \
              ! xcrun --find metallib >/dev/null 2>&1; then
@@ -256,7 +255,7 @@ jobs:
     needs:
       - bootstrap-smoke
       - shader-generation-smoke
-    runs-on: macos-26
+    runs-on: xcode-27
     steps:
       - uses: actions/checkout@v5
         with:
@@ -307,16 +306,16 @@ jobs:
         uses: actions/cache@v5
         with:
           path: tools/build/bin/premake5
-          key: ${{ runner.os }}-${{ runner.arch }}-macos26-premake5-ios-${{ hashFiles('.gitmodules', 'xenia-build.py', 'tools/build/premake.py') }}
+          key: ${{ runner.os }}-${{ runner.arch }}-xcode27-premake5-ios-${{ hashFiles('.gitmodules', 'xenia-build.py', 'tools/build/premake.py') }}
 
       - name: Cache build output
         id: cache-build-ios
         uses: actions/cache@v5
         with:
           path: build/DerivedData
-          key: ${{ runner.os }}-${{ runner.arch }}-macos26-ios-deriveddata-${{ hashFiles('src/**', 'premake5.lua', 'third_party/**/*.lua', 'assets/apple/**', 'xenia-build.py', 'tools/build/shader_cc.cc', 'tools/build/generate_metal_shaders.py') }}
+          key: ${{ runner.os }}-${{ runner.arch }}-xcode27-ios-deriveddata-${{ hashFiles('src/**', 'premake5.lua', 'third_party/**/*.lua', 'assets/apple/**', 'xenia-build.py', 'tools/build/shader_cc.cc', 'tools/build/generate_metal_shaders.py') }}
           restore-keys: |
-            ${{ runner.os }}-${{ runner.arch }}-macos26-ios-deriveddata-
+            ${{ runner.os }}-${{ runner.arch }}-xcode27-ios-deriveddata-
 
       - name: Setup
         env:
@@ -333,18 +332,16 @@ jobs:
             done
           }
 
-          xcode_app="$(find /Applications -maxdepth 1 -type d -name 'Xcode_26*.app' ! -iname '*beta*' | sort -V | tail -n 1)"
-          if [ -z "$xcode_app" ]; then
-            xcode_app="$(find /Applications -maxdepth 1 -type d -name 'Xcode_26*.app' | sort -V | tail -n 1)"
-          fi
-          if [ -z "$xcode_app" ]; then
-            echo "::error::Xcode 26 not found on runner"
-            ls -1 /Applications | sed 's/^/  /'
+          developer_dir="/Applications/Xcode.app/Contents/Developer"
+          if [ ! -d "$developer_dir" ]; then
+            echo "::error::Default Xcode 27 developer directory not found"
             exit 1
           fi
-          echo "DEVELOPER_DIR=$xcode_app/Contents/Developer" >> "$GITHUB_ENV"
-          export DEVELOPER_DIR="$xcode_app/Contents/Developer"
+          echo "DEVELOPER_DIR=$developer_dir" >> "$GITHUB_ENV"
+          export DEVELOPER_DIR="$developer_dir"
           xcodebuild -version
+          xcodebuild -version | grep -q '^Xcode 27\.'
+          xcrun --sdk iphoneos --show-sdk-version | grep -q '^27\.'
 
           ensure_metal_toolchain() {
             if xcrun --find metal >/dev/null 2>&1 && xcrun --find metallib >/dev/null 2>&1; then
