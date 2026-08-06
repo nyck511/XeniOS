@@ -1108,6 +1108,12 @@ bool MetalCommandProcessor::SetupContext() {
 
   // Create and initialize pipeline cache (shader translation + pipeline
   // management).
+#if !METAL_SHADER_CONVERTER_AVAILABLE
+  if (cvars::metal_use_spirvcross && !InitializeShaderTranslation()) {
+    XELOGE("Failed to initialize SPIRV shader translation");
+    return false;
+  }
+#endif  // !METAL_SHADER_CONVERTER_AVAILABLE
 #if METAL_SHADER_CONVERTER_AVAILABLE
   pipeline_cache_manager_ =
       std::make_unique<MetalPipelineCache>(device_, *register_file_);
