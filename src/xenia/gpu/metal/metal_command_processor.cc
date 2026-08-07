@@ -2203,23 +2203,12 @@ void MetalCommandProcessor::IssueSwap(uint32_t frontbuffer_ptr,
   last_swap_width_ = frontbuffer_width;
   last_swap_height_ = frontbuffer_height;
 
-  // End any active render encoder
-  EndRenderEncoder();
-
-  // Submit and wait for command buffer
-  if (current_command_buffer_) {
-    current_command_buffer_->commit();
-    current_command_buffer_->release();
-    current_command_buffer_ = nullptr;
-    submission_has_draws_ = false;
-    copy_resolve_writes_pending_ = false;
-  }
-  DrainCommandBufferAutoreleasePool();
-
-  if (primitive_processor_ && frame_open_) {
-    primitive_processor_->EndFrame();
-    frame_open_ = false;
-  }
+  // Submit the guest rendering before the presenter submits its copy, and
+  // close the submission and frame together so the next guest command opens a
+  // fresh submission.
+  EndSubmission(true);
+  submission_has_draws_ = false;
+  copy_resolve_writes_pending_ = false;
   // Proactive descriptor-pressure trimming: at frame boundaries the GPU has
   // likely completed prior submissions, so retired descriptor indices can be
   // reclaimed and the texture cache can be trimmed before we start the next
