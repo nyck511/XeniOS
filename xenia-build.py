@@ -11,6 +11,7 @@ from functools import partial
 from argparse import ArgumentParser, ArgumentTypeError
 from glob import glob
 from json import loads as jsonloads
+from urllib.parse import urlparse
 import os
 import platform
 import shutil
@@ -1005,7 +1006,7 @@ def fetch_data_repos():
 
     vendored_master = os.path.join("assets", "game-compatibility", "master.json")
     if os.path.isfile(vendored_master):
-        copy2(vendored_master, os.path.join(compat_dir, "master.json"))
+        shutil.copy2(vendored_master, os.path.join(compat_dir, "master.json"))
     else:
         print_warning("vendored master.json not found at " + vendored_master)
 
