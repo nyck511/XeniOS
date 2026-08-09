@@ -1835,9 +1835,7 @@ def run_premake(target_os, action, cc=None, enable_tests=False,
 
         embedded_bundles = [
             (
-                os.path.join(
-                    "build", "data_repos", "xenia-manager-database", "data",
-                    "game-compatibility"),
+                os.path.join("build", "data_repos", "game-compatibility"),
                 os.path.join("build", "generated", "xenia-app"),
                 "game_compat",
             ),
