@@ -167,6 +167,12 @@ jobs:
             git config -f .gitmodules \
               submodule.third_party/metal-shader-converter.url \
               https://github.com/wmarti/metal-shader-converter.git
+            git config -f .gitmodules \
+              submodule.third_party/mesa.path \
+              third_party/mesa
+            git config -f .gitmodules \
+              submodule.third_party/mesa.url \
+              https://gitlab.freedesktop.org/has207/mesa.git
             git add .gitmodules
           }
 
