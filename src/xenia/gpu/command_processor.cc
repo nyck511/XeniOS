@@ -49,11 +49,12 @@ DEFINE_bool(
     "of the guest thread that wrote the new read position.",
     "GPU");
 
-DEFINE_bool(clear_memory_page_state, true,
+DEFINE_bool(clear_memory_page_state, false,
             "Refresh state of memory pages to enable gpu written data. "
             "Uses mostly lock-free double-buffering for minimal overhead. "
-            "(Disable for minor performance boost, but may break rendering)",
+            "(Enable if rendering breaks, at a minor performance cost)",
             "GPU");
+UPDATE_from_bool(clear_memory_page_state, 2026, 8, 1, 12, true);
 
 DEFINE_string(
     occlusion_query, "fast",
@@ -75,11 +76,28 @@ DEFINE_string(
 
 DEFINE_string(
     readback_resolve, "fast",
-    "Controls CPU readback of render-to-texture resolve results.\n"
-    " fast: Read from previous frame, copy every frame (default)\n"
-    " some: Read from previous frame, skip copy on cache hit\n"
-    " full: Wait for GPU to finish (accurate but slow, GPU-CPU sync stall)\n"
-    " none: Disable readback completely (some games render better without it)",
+    "Controls which render-to-texture resolves are copied back into guest "
+    "RAM.\n"
+    " fast: Copy only resolves the CPU reads back (default)\n"
+    " all: Copy every resolve\n"
+    " none: Disable readback completely (improves performance).\n",
+    "GPU");
+
+DEFINE_bool(
+    memexport_enable, true,
+    "Make memory export output visible to the CPU by routing the draws that "
+    "write it to a buffer aliasing guest RAM. Needed by games that read "
+    "exported data on the CPU. Disabling it keeps the output in device-local "
+    "memory, which is faster for the draws that consume it on the GPU. Applies "
+    "at title launch.",
+    "GPU");
+
+DEFINE_bool(
+    memexport_await_fences, true,
+    "Wait for the GPU to finish outstanding memory export before signalling a "
+    "fence the guest reads, so exported data is in guest RAM by the time the "
+    "guest looks at it. Disabling it avoids the stall but games reading "
+    "exported data on the CPU may see stale contents. Needs memexport_enable.",
     "GPU");
 
 DEFINE_bool(
@@ -94,22 +112,6 @@ DEFINE_bool(
     "Vulkan, SV_Barycentrics on Direct3D 12).",
     "GPU");
 
-DEFINE_bool(
-    readback_memexport, true,
-    "Read data written by memory export in shaders on the CPU. "
-    "This is needed in some games but many only access exported data on "
-    "the GPU, so can be disabled for minor optimization. When "
-    "combined with readback_memexport_fast, performance impact is minimal.",
-    "GPU");
-
-DEFINE_bool(readback_memexport_fast, true,
-            "Use fast (double-buffered, 1 frame delayed) readback for "
-            "memexport instead\n"
-            "of immediate GPU sync. Removes main performance penalty when "
-            "readback_memexport\n"
-            "is enabled at the expense of accuracy.",
-            "GPU");
-
 namespace xe {
 namespace gpu {
 
@@ -120,11 +122,8 @@ void SaveGPUSetting(GPUSetting setting, uint64_t value) {
     case GPUSetting::ClearMemoryPageState:
       OVERRIDE_bool(clear_memory_page_state, static_cast<bool>(value));
       break;
-    case GPUSetting::ReadbackMemexport:
-      OVERRIDE_bool(readback_memexport, static_cast<bool>(value));
-      break;
-    case GPUSetting::ReadbackMemexportFast:
-      OVERRIDE_bool(readback_memexport_fast, static_cast<bool>(value));
+    case GPUSetting::MemexportAwaitFences:
+      OVERRIDE_bool(memexport_await_fences, static_cast<bool>(value));
       break;
   }
 }
@@ -133,10 +132,8 @@ bool GetGPUSetting(GPUSetting setting) {
   switch (setting) {
     case GPUSetting::ClearMemoryPageState:
       return cvars::clear_memory_page_state;
-    case GPUSetting::ReadbackMemexport:
-      return cvars::readback_memexport;
-    case GPUSetting::ReadbackMemexportFast:
-      return cvars::readback_memexport_fast;
+    case GPUSetting::MemexportAwaitFences:
+      return cvars::memexport_await_fences;
     default:
       return false;
   }
@@ -144,10 +141,8 @@ bool GetGPUSetting(GPUSetting setting) {
 
 static ReadbackResolveMode ParseReadbackResolveMode() {
   const std::string& mode = cvars::readback_resolve;
-  if (mode == "full") {
-    return ReadbackResolveMode::kFull;
-  } else if (mode == "some") {
-    return ReadbackResolveMode::kSome;
+  if (mode == "all") {
+    return ReadbackResolveMode::kAll;
   } else if (mode == "none") {
     return ReadbackResolveMode::kDisabled;
   } else {
@@ -368,11 +363,8 @@ void CommandProcessor::SetReadbackResolveMode(ReadbackResolveMode mode) {
     case ReadbackResolveMode::kDisabled:
       mode_str = "none";
       break;
-    case ReadbackResolveMode::kSome:
-      mode_str = "some";
-      break;
-    case ReadbackResolveMode::kFull:
-      mode_str = "full";
+    case ReadbackResolveMode::kAll:
+      mode_str = "all";
       break;
     default:
       break;
@@ -1323,7 +1315,9 @@ bool CommandProcessor::EndZPDReport(uint32_t report_address,
 
   if (logical.pending_segments == 0) {
     resolved_immediately = true;
-    final_value = NormalizeSampleCount(logical.accumulated_samples);
+    // Segments were already normalized as they resolved.
+    final_value = static_cast<uint32_t>(
+        std::min<uint64_t>(logical.accumulated_samples, UINT32_MAX));
 
     // Use the current report's result. A cached delta carried over from an
     // earlier lifetime on this slot should not replace a real zero.
@@ -1451,6 +1445,7 @@ void CommandProcessor::CloseQuerySegment() {
   uint64_t submission = 0;
   if (!CloseZPDQuery(zpd_active_segment_.report_handle, submission)) {
     zpd_active_segment_.segment_active = false;
+    zpd_active_segment_.scale_area = 0;
     zpd_active_segment_.segment_pending_begin =
         zpd_active_segment_.logical_active;
     zpd_stats_.failed++;
@@ -1469,14 +1464,30 @@ void CommandProcessor::CloseQuerySegment() {
   }
 
   zpd_active_segment_.segment_active = false;
+  zpd_active_segment_.scale_area = 0;
 
   zpd_active_segment_.segment_pending_begin =
       zpd_active_segment_.logical_active;
   zpd_stats_.segments_ended++;
 }
 
+void CommandProcessor::UpdateZPDScale(uint32_t scale_area) {
+  if (GetZPDMode() == ZPDMode::kFake || !zpd_active_segment_.logical_active) {
+    return;
+  }
+  if (zpd_active_segment_.segment_active && zpd_active_segment_.scale_area &&
+      zpd_active_segment_.scale_area != scale_area) {
+    // Draw scale changed in the middle of a report, so close the segment so
+    // normalization divides correctly, and start a fresh one for this draw.
+    CloseQuerySegment();
+    OpenQuerySegment(false);
+  }
+  zpd_active_segment_.scale_area = scale_area;
+}
+
 void CommandProcessor::OnZPDQueryResolved(ReportHandle report_handle,
-                                          uint64_t raw_samples) {
+                                          uint64_t raw_samples,
+                                          uint32_t scale_area) {
   auto it = logical_zpd_reports_.find(report_handle);
   if (it == logical_zpd_reports_.end()) {
     return;
@@ -1488,10 +1499,11 @@ void CommandProcessor::OnZPDQueryResolved(ReportHandle report_handle,
     logical.pending_segments--;
   }
 
-  logical.accumulated_samples += raw_samples;
+  logical.accumulated_samples += NormalizeSampleCount(raw_samples, scale_area);
 
   if (logical.ended && logical.pending_segments == 0) {
-    uint32_t final_value = NormalizeSampleCount(logical.accumulated_samples);
+    uint32_t final_value = static_cast<uint32_t>(
+        std::min<uint64_t>(logical.accumulated_samples, UINT32_MAX));
 
     logical.cached_delta = final_value;
     if (logical.end_record) {
@@ -1621,12 +1633,13 @@ bool CommandProcessor::IsZPDReportCurrent(const ZPDReport& report) const {
   return current_seq == report.slot_sequence_id;
 }
 
-uint32_t CommandProcessor::NormalizeSampleCount(uint64_t samples) const {
+uint32_t CommandProcessor::NormalizeSampleCount(uint64_t samples,
+                                                uint32_t scale_area) {
   if (samples == 0) {
     return 0;
   }
 
-  uint64_t scale = zpd_draw_resolution_scale_x_ * zpd_draw_resolution_scale_y_;
+  uint64_t scale = scale_area;
   // Round, don't truncate. 1 guest sample at 2x = 4 host samples, need >= 1.
   uint64_t normalized = scale <= 1 ? samples : (samples + (scale >> 1)) / scale;
 

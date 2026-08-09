@@ -147,9 +147,20 @@ bool A64Emitter::Emit(GuestFunction* function, hir::HIRBuilder* builder,
   tail_code_.clear();
   fpcr_mode_ = FPCRMode::Unknown;
 
-  // Try to emit.
+  // The prolog, epilog and helpers emit outside the per-opcode guard below, so
+  // an unencodable operand needs catching here too.
   EmitFunctionInfo func_info = {};
-  if (!Emit(builder, func_info)) {
+  bool emitted = false;
+  try {
+    emitted = Emit(builder, func_info);
+  } catch (const Xbyak_aarch64::Error& e) {
+    XELOGE("A64: assembler error while emitting guest function {:08X}: {}",
+           current_guest_function_, e.what());
+    emitted = false;
+  }
+  if (!emitted) {
+    // Emplace only runs on success, so a failed compile has to reset too.
+    ResetPerFunctionState();
     return false;
   }
 
@@ -268,7 +279,20 @@ bool A64Emitter::Emit(hir::HIRBuilder* builder, EmitFunctionInfo& func_info) {
         }
       }
       const hir::Instr* new_tail = instr;
-      if (!SelectSequence(this, instr, &new_tail)) {
+      bool selected = false;
+      try {
+        selected = SelectSequence(this, instr, &new_tail);
+      } catch (const Xbyak_aarch64::Error& e) {
+        // Uncaught this aborts the process with no context, so name the opcode
+        // and the guest function and fail just this compile.
+        XELOGE(
+            "A64: assembler rejected HIR opcode {} in guest function {:08X}: "
+            "{}",
+            hir::GetOpcodeName(instr->GetOpcodeInfo()), current_guest_function_,
+            e.what());
+        return false;
+      }
+      if (!selected) {
         // No sequence matched — this is expected in Phase 1 before
         // sequences are implemented.
         XELOGE("A64: Unable to process HIR opcode {}",
@@ -313,7 +337,13 @@ bool A64Emitter::Emit(hir::HIRBuilder* builder, EmitFunctionInfo& func_info) {
     // ARM64 instructions are always 4-byte aligned, so alignment is mostly
     // a no-op unless we want cache-line alignment for hot paths.
     L(tail_item.label);
-    tail_item.func(*this, tail_item.label);
+    try {
+      tail_item.func(*this, tail_item.label);
+    } catch (const Xbyak_aarch64::Error& e) {
+      XELOGE("A64: assembler rejected tail code in guest function {:08X}: {}",
+             current_guest_function_, e.what());
+      return false;
+    }
   }
   code_offsets.tail = getSize();
 
@@ -372,22 +402,28 @@ void* A64Emitter::Emplace(const EmitFunctionInfo& func_info,
   // In xbyak_aarch64, labels are resolved at define time (backpatching),
   // so all relative offsets are already correct. We just need to reset
   // the codegen state for the next function.
+  ResetPerFunctionState();
+
+  return new_execute_address;
+}
+
+void A64Emitter::ResetPerFunctionState() {
   reset();
   tail_code_.clear();
 
   // Clean up cached labels.
+  epilog_label_ = nullptr;
   for (auto* cached_label : label_cache_) {
     delete cached_label;
   }
   label_cache_.clear();
 
-  // Clean up HIR->xbyak label map.
+  // Clean up HIR->xbyak label map. HIR label ids restart at each function, so
+  // stale entries would hand the next function this one's labels.
   for (auto& pair : label_map_) {
     delete pair.second;
   }
   label_map_.clear();
-
-  return new_execute_address;
 }
 
 void A64Emitter::MarkSourceOffset(const hir::Instr* i) {

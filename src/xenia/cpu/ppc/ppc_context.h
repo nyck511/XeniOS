@@ -426,10 +426,14 @@ typedef struct alignas(64) PPCContext_s {
 
   uint8_t* physical_membase;
 
-  // Value of last reserved load
-  uint64_t reserved_val;
   ThreadState* thread_state;
   uint8_t* virtual_membase;
+
+  // Nonzero asks the running fiber to yield at its next JIT safepoint. Other
+  // host threads write it as a single byte store, raced reads are benign. Not
+  // std::atomic because this struct lives in raw memory no constructor runs
+  // over.
+  uint8_t preempt_requested;
 
   template <typename T = uint8_t*>
   inline T TranslateVirtual(uint32_t guest_address) XE_RESTRICT const {

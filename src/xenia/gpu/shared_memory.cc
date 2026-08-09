@@ -147,9 +147,6 @@ void SharedMemory::ShutdownCommon() {
 
   system_page_flags_valid_and_gpu_written_ = nullptr;
   num_system_page_flags_ = 0;
-
-  watch_blind_pages_ = {};
-  has_watch_blind_pages_ = false;
 }
 
 void SharedMemory::InvalidateAllPages() {
@@ -386,7 +383,8 @@ void SharedMemory::FireWatches(uint32_t page_first, uint32_t page_last,
   }
 }
 
-void SharedMemory::RangeWrittenByGpu(uint32_t start, uint32_t length) {
+void SharedMemory::RangeWrittenByGpu(uint32_t start, uint32_t length,
+                                     bool written_to_buffer) {
   if (length == 0 || start >= kBufferSize) {
     return;
   }
@@ -474,6 +472,9 @@ void SharedMemory::MakeRangeValid(uint32_t start, uint32_t length,
   }
 
   if (memory_invalidation_callback_handle_) {
+    // A page that isn't writable here gets no watch. A later guest
+    // protect-to-writable invalidates it unconditionally, so its writes are
+    // still caught.
     memory().EnablePhysicalMemoryAccessCallbacks(
         valid_page_first << page_size_log2_,
         (valid_page_last - valid_page_first + 1) << page_size_log2_, true,

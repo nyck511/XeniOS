@@ -10,6 +10,7 @@
 #ifndef XENIA_CPU_BACKEND_A64_A64_BACKEND_H_
 #define XENIA_CPU_BACKEND_A64_A64_BACKEND_H_
 
+#include <atomic>
 #include <memory>
 
 #include "xenia/base/bit_map.h"
