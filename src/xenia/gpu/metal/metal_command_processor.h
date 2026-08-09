@@ -382,6 +382,11 @@ class MetalCommandProcessor : public CommandProcessor {
   void StopCaptureIfActive();
   bool CanEndSubmissionImmediately() const;
   void EnsureDrawRingCapacity();
+#if !METAL_SHADER_CONVERTER_AVAILABLE
+  bool EnsureSpirvUniformBuffer();
+  bool EnsureSpirvUniformBufferCapacity();
+  void ScheduleSpirvUniformBufferRelease(MTL::CommandBuffer* command_buffer);
+#endif
   void WaitForPendingCompletionHandlers();
   void ProcessCompletedSubmissions();
 
@@ -688,6 +693,18 @@ class MetalCommandProcessor : public CommandProcessor {
   // Uniforms buffer and draw ring count (shared between MSC and SPIRV-Cross)
   MTL::Buffer* uniforms_buffer_ = nullptr;
   size_t draw_ring_count_ = 0;
+
+#if !METAL_SHADER_CONVERTER_AVAILABLE
+  // SPIRV-Cross may rotate through multiple uniforms buffers within a single
+  // Metal command buffer at draw-ring wrap boundaries. The pool owns the
+  // buffers; the other containers only track availability and in-flight use.
+  std::vector<MTL::Buffer*> command_buffer_spirv_uniform_buffers_;
+  std::vector<MTL::Buffer*> spirv_uniforms_pool_;
+  std::vector<MTL::Buffer*> spirv_uniforms_available_;
+  std::mutex spirv_uniforms_mutex_;
+  dispatch_semaphore_t spirv_uniforms_available_semaphore_ = nullptr;
+  bool spirv_uniforms_pool_initialized_ = false;
+#endif  // !METAL_SHADER_CONVERTER_AVAILABLE
 
 #if METAL_SHADER_CONVERTER_AVAILABLE
   // IR Converter runtime buffers for shader resource binding (MSC path)
