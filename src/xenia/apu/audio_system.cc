@@ -9,7 +9,7 @@
 
 #include "xenia/apu/audio_system.h"
 
-#include <cstring>
+#include <limits>
 
 #include "xenia/apu/apu_flags.h"
 #include "xenia/apu/audio_driver.h"
@@ -139,23 +139,38 @@ void AudioSystem::WorkerThreadMain() {
     }
 #endif  // XE_PLATFORM_IOS
 
-    // These handles signify the number of submitted samples. Once we reach
-    // 64 samples, we wait until our audio backend releases a semaphore
-    // (signaling a sample has finished playing)
-    auto result =
-        xe::threading::WaitAny(wait_handles_, xe::countof(wait_handles_), true);
-    if (result.first == xe::threading::WaitResult::kFailed) {
-      // TODO: Assert?
-      continue;
+    const uint64_t now = static_cast<uint64_t>(
+        std::chrono::duration_cast<std::chrono::microseconds>(
+            std::chrono::steady_clock::now().time_since_epoch())
+            .count());
+
+    size_t client_index = kMaximumClientCount;
+    uint64_t earliest_pump_us = std::numeric_limits<uint64_t>::max();
+    {
+      auto global_lock = global_critical_region_.Acquire();
+
+      for (size_t i = 0; i < kMaximumClientCount; ++i) {
+        if (!clients_[i].in_use ||
+            clients_[i].next_pump_us >= earliest_pump_us) {
+          continue;
+        }
+        earliest_pump_us = clients_[i].next_pump_us;
+        client_index = i;
+      }
+
+      if (client_index != kMaximumClientCount) {
+        const double scalar = xe::Clock::guest_time_scalar();
+        const uint64_t min_us =
+            scalar > 0.0 ? static_cast<uint64_t>(kAudioPumpInterval / scalar)
+                         : kAudioPumpInterval;
+        clients_[client_index].next_pump_us =
+            (earliest_pump_us > now ? earliest_pump_us : now) + min_us;
+      }
     }
 
-    if (!worker_running_) {
-      break;
-    }
-
-    if (result.first == threading::WaitResult::kSuccess &&
-        result.second == kMaximumClientCount) {
-      // Shutdown event signaled.
+    // No clients yet: park until one registers or we're told to stop.
+    if (client_index == kMaximumClientCount) {
+      xe::threading::Wait(pending_work_event_.get(), true);
       if (paused_.load(std::memory_order_acquire)) {
         pause_fence_.Signal();
         xe::threading::Wait(resume_event_.get(), false);
@@ -172,33 +187,20 @@ void AudioSystem::WorkerThreadMain() {
       auto result =
           xe::threading::Wait(pending_work_event_.get(), true, timeout);
       if (result == xe::threading::WaitResult::kSuccess) {
-        if (paused_) {
+        if (paused_.load(std::memory_order_acquire)) {
           pause_fence_.Signal();
           xe::threading::Wait(resume_event_.get(), false);
         }
         continue;
       }
 
-#if XE_PLATFORM_IOS
-      if (IsTitleStopRequested(processor_)) {
-        break;
+      const uint64_t now_precise = static_cast<uint64_t>(
+          std::chrono::duration_cast<std::chrono::microseconds>(
+              std::chrono::steady_clock::now().time_since_epoch())
+              .count());
+      if (wake_target_us > now_precise) {
+        xe::threading::NanoSleepPrecise((wake_target_us - now_precise) * 1000);
       }
-#endif  // XE_PLATFORM_IOS
-
-      if (client_callback) {
-        SCOPE_profile_cpu_i("apu", "xe::apu::AudioSystem->client_callback");
-        uint64_t args[] = {client_callback_arg};
-        processor_->Execute(worker_thread_->thread_state(), client_callback,
-                            args, xe::countof(args));
-      }
-
-#if XE_PLATFORM_IOS
-      if (IsTitleStopRequested(processor_)) {
-        break;
-      }
-#endif  // XE_PLATFORM_IOS
-
-      pumped = true;
     }
 
     // Submit only if the host has a free output slot; otherwise drop (the host
@@ -222,12 +224,24 @@ void AudioSystem::WorkerThreadMain() {
       }
     }
 
+#if XE_PLATFORM_IOS
+    if (IsTitleStopRequested(processor_)) {
+      break;
+    }
+#endif  // XE_PLATFORM_IOS
+
     if (client_callback) {
       SCOPE_profile_cpu_i("apu", "xe::apu::AudioSystem->client_callback");
       uint64_t args[] = {client_callback_arg};
       processor_->Execute(worker_thread_->thread_state(), client_callback, args,
                           xe::countof(args));
     }
+
+#if XE_PLATFORM_IOS
+    if (IsTitleStopRequested(processor_)) {
+      break;
+    }
+#endif  // XE_PLATFORM_IOS
   }
   worker_running_ = false;
 
@@ -249,12 +263,9 @@ void AudioSystem::Initialize() {}
 
 void AudioSystem::Shutdown() {
   worker_running_ = false;
-  shutdown_event_->Set();
+  pending_work_event_->Set();
 #if XE_PLATFORM_IOS
   resume_event_->Set();
-  for (size_t i = 0; i < kMaximumClientCount; ++i) {
-    client_semaphores_[i]->Release(1, nullptr);
-  }
 #endif  // XE_PLATFORM_IOS
   if (worker_thread_) {
     worker_thread_->Wait(0, 0, 0, nullptr);

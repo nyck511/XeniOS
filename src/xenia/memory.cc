@@ -111,18 +111,6 @@ void CrashDump() {
   --in_crash_dump;
 }
 
-xe::memory::PageAccess ToPageAccess(uint32_t protect) {
-  bool is_writable = IsWritableProtect(protect);
-
-  if ((protect & kMemoryProtectRead) && !is_writable) {
-    return xe::memory::PageAccess::kReadOnly;
-  } else if ((protect & kMemoryProtectRead) && is_writable) {
-    return xe::memory::PageAccess::kReadWrite;
-  } else {
-    return xe::memory::PageAccess::kNoAccess;
-  }
-}
-
 static inline bool ShouldSkipHostCommit(const BaseHeap& heap) {
 #if XE_PLATFORM_APPLE
   // On macOS ARM64 the host page size is 16 KB, and mprotect-based "commit"

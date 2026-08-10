@@ -244,6 +244,11 @@ class A64Emitter : public Xbyak_aarch64::CodeGenerator {
   // Get or create a xbyak_aarch64 label for a HIR label ID.
   Xbyak_aarch64::Label& GetLabel(uint32_t label_id);
   Xbyak_aarch64::Label& NewCachedLabel();
+
+  // Emits a cooperative-scheduler preemption safepoint: yields the fiber once
+  // the context's preempt_requested flag is raised. Only valid at a block head.
+  void EmitPreemptCheck();
+
   void LoadConstantV(const Xbyak_aarch64::QReg& reg, float value);
   void LoadConstantV(const Xbyak_aarch64::QReg& reg, double value);
   void LoadConstantV(const Xbyak_aarch64::QReg& reg, const vec128_t& value,
