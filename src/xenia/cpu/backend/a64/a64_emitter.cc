@@ -912,6 +912,25 @@ Xbyak_aarch64::Label& A64Emitter::NewCachedLabel() {
   return *label;
 }
 
+uint32_t A64Emitter::MapReg(const hir::Value* v, const uint32_t* map, int count,
+                            const char* set_name) {
+  // reg.index is a signed int32 and is -1 while unassigned, so the unsigned
+  // compare catches both "never allocated" and "past the end of the set".
+  const uint32_t index = static_cast<uint32_t>(v->reg.index);
+  if (index >= static_cast<uint32_t>(count)) {
+    XELOGE(
+        "A64: value v{} (type {}, def opcode {}) has no {} register assignment "
+        "(index {} of {}); codegen would emit a bogus register",
+        v->ordinal, static_cast<uint32_t>(v->type),
+        v->def ? hir::GetOpcodeName(v->def->GetOpcodeInfo()) : "<none>",
+        set_name, index, count);
+    assert_always("register allocation missed a value");
+    // Clamp so the assembler still produces a decodable instruction.
+    return map[0];
+  }
+  return map[index];
+}
+
 void A64Emitter::EmitPreemptCheck() {
   // Only safe at a block head, where the per-block register allocator leaves no
   // guest value live and ForgetFpcrMode has already run, so the unannounced
