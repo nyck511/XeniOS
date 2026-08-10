@@ -24,6 +24,8 @@ body:
         required: true
       - label: The build used is a current XeniOS or Xenia Edge build. (not UWP/MLBS/AlexVS/master/pull requests, etc)
         required: true
+      - label: The issue is on Windows or Linux, and NOT macOS which is currently unsupported.
+        required: true
       - label: This issue isn't for tech support (help with Xenia).
         required: true
       - label: If this issue occurs in a specific game, I've identified an earlier build or Xenia fork where the issue does not occur.

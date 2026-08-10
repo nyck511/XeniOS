@@ -22,7 +22,12 @@ void HandleDiscordJoinGame(const char* joinSecret) {}
 void HandleDiscordJoinRequest(const DiscordUser* request) {}
 void HandleDiscordSpectateGame(const char* spectateSecret) {}
 
+bool DiscordPresence::initialized_ = false;
+
 void DiscordPresence::Initialize() {
+  if (initialized_) {
+    return;
+  }
   DiscordEventHandlers handlers = {};
   handlers.ready = &HandleDiscordReady;
   handlers.errored = &HandleDiscordError;
@@ -58,7 +63,13 @@ void DiscordPresence::PlayingTitle(const std::string_view game_title) {
   Discord_UpdatePresence(&discordPresence);
 }
 
-void DiscordPresence::Shutdown() { Discord_Shutdown(); }
+void DiscordPresence::Shutdown() {
+  if (!initialized_) {
+    return;
+  }
+  Discord_Shutdown();
+  initialized_ = false;
+}
 
 }  // namespace discord
 }  // namespace xe

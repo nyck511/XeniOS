@@ -7,6 +7,10 @@ add_executable(xenia-cpu-ppc-tests
   ${PROJECT_SOURCE_DIR}/src/xenia/cpu/testing/test_backend_cvars.cc
 )
 
+target_compile_definitions(xenia-cpu-ppc-tests PRIVATE
+    XE_SOURCE_ROOT="${PROJECT_SOURCE_DIR}")
+
+# Add platform-specific console app main
 if(WIN32)
   target_sources(xenia-cpu-ppc-tests PRIVATE
     ${PROJECT_SOURCE_DIR}/src/xenia/base/console_app_main_win.cc)

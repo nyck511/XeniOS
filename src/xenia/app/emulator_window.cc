@@ -9,6 +9,7 @@
 
 #include "xenia/app/emulator_window.h"
 
+#include "xenia/app/discord/discord_presence.h"
 #include "xenia/app/game_compat_db.h"
 #include "xenia/ui/advanced_settings_dialog_wx.h"
 #include "xenia/ui/game_list_panel_wx.h"
@@ -174,6 +175,7 @@
 DECLARE_bool(debug);
 DECLARE_path(target);
 DECLARE_bool(in_process_title_relaunch);
+DECLARE_bool(discord);
 
 DECLARE_string(hid);
 DECLARE_string(gpu);
@@ -183,10 +185,9 @@ DECLARE_bool(guide_button);
 DECLARE_string(config);
 
 DECLARE_bool(clear_memory_page_state);
+DECLARE_bool(memexport_await_fences);
 
 DECLARE_string(readback_resolve);
-
-DECLARE_bool(readback_memexport);
 
 DEFINE_transient_bool(return_to_ui, false,
                       "Return to UI process when game exits. Set automatically "
@@ -650,8 +651,10 @@ void EmulatorWindow::AddLaunchedTitleToLibrary(uint32_t title_id,
   if (!game_library_) {
     return;
   }
-  game_library_->AddDisc(title_id, name, emulator_->last_launch_path(),
-                         std::string());
+  const auto& launched = emulator_->last_launch_path();
+  game_library_->AddDisc(title_id, name, launched, std::string());
+  // The disc we just booted becomes the default for next launch.
+  game_library_->SetDefaultPath(title_id, launched);
 
   // Adopt the running title's icon if we have no art yet. The SPA writes it to
   // the per-title GPD on boot, so a signed-in profile has it by now.
@@ -2066,6 +2069,8 @@ void EmulatorWindow::FileAddGames() {
       if (!changed) {
         continue;
       }
+      // A moved file reimports at its new path, so drop any now-missing ones.
+      library->PruneMissingPaths(primary.title_id);
       // STFS provides an icon; XEX/ISO don't. Only overwrite when we have one.
       if (!primary.icon_png.empty()) {
         library->SetIcon(primary.title_id, primary.icon_png);
@@ -2106,6 +2111,10 @@ void EmulatorWindow::FileClose() {
 bool EmulatorWindow::StopTitleAndReturnToList() {
   if (!emulator_->is_title_open()) {
     return false;
+  }
+  // Tear down Discord presence as the game stops, before we return to the list.
+  if (cvars::discord) {
+    discord::DiscordPresence::Shutdown();
   }
   target_pending_launch_ = false;
   // When in-process relaunch is off, spawn a fresh process with no target.
@@ -3630,10 +3639,10 @@ void EmulatorWindow::ToggleGPUSetting(gpu::GPUSetting setting) {
       SaveGPUSetting(GPUSetting::ClearMemoryPageState, new_value);
       cvar_name = "clear_memory_page_state";
       break;
-    case GPUSetting::ReadbackMemexport:
-      new_value = !cvars::readback_memexport;
-      SaveGPUSetting(GPUSetting::ReadbackMemexport, new_value);
-      cvar_name = "readback_memexport";
+    case GPUSetting::MemexportAwaitFences:
+      new_value = !cvars::memexport_await_fences;
+      SaveGPUSetting(GPUSetting::MemexportAwaitFences, new_value);
+      cvar_name = "memexport_await_fences";
       break;
   }
 
@@ -3672,13 +3681,10 @@ void EmulatorWindow::CycleReadbackResolve() {
   gpu::ReadbackResolveMode next;
   switch (current) {
     case gpu::ReadbackResolveMode::kDisabled:
-      next = gpu::ReadbackResolveMode::kSome;
-      break;
-    case gpu::ReadbackResolveMode::kSome:
       next = gpu::ReadbackResolveMode::kFast;
       break;
     case gpu::ReadbackResolveMode::kFast:
-      next = gpu::ReadbackResolveMode::kFull;
+      next = gpu::ReadbackResolveMode::kAll;
       break;
     default:
       next = gpu::ReadbackResolveMode::kDisabled;
@@ -4109,7 +4115,7 @@ std::filesystem::path EmulatorWindow::GetFilePickerInitialDirectory() const {
   // Recency from play data (newest first); the launch path from the library.
   for (const auto& title : profile_manager->ScanAllProfilesForTitles()) {
     auto* entry = game_library_->Find(title.title_id);
-    if (!entry) {
+    if (!entry || entry->paths.empty()) {
       continue;
     }
     const auto& path = entry->default_path().path;
@@ -4148,7 +4154,7 @@ void EmulatorWindow::ClearDialogs() {
   }
 
   imgui_drawer_.get()->ClearDialogs();
-  emulator_->kernel_state()->xam_state()->xam_dialogs_shown_ = 0;
+  emulator_->kernel_state()->xam_state()->is_xam_dialog_present_.store(false);
 }
 
 }  // namespace app

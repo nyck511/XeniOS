@@ -133,41 +133,41 @@ class A64Emitter : public Xbyak_aarch64::CodeGenerator {
   static constexpr int VEC_COUNT = 28;
   static constexpr size_t kStashOffset = 32;
 
+  // A value that reached codegen without a register assignment indexes the maps
+  // out of bounds, which otherwise surfaces far away as an unencodable-register
+  // exception. Report the culprit here, where it is still in hand.
+  static uint32_t MapReg(const hir::Value* v, const uint32_t* map, int count,
+                         const char* set_name);
+
   static void SetupReg(const hir::Value* v, Xbyak_aarch64::WReg& r) {
-    auto idx = gpr_reg_map_[v->reg.index];
-    r = Xbyak_aarch64::WReg(idx);
+    r = Xbyak_aarch64::WReg(MapReg(v, gpr_reg_map_, GPR_COUNT, "gpr"));
   }
   static void SetupReg(const hir::Value* v, Xbyak_aarch64::XReg& r) {
-    auto idx = gpr_reg_map_[v->reg.index];
-    r = Xbyak_aarch64::XReg(idx);
+    r = Xbyak_aarch64::XReg(MapReg(v, gpr_reg_map_, GPR_COUNT, "gpr"));
   }
   static void SetupReg(const hir::Value* v, Xbyak_aarch64::SReg& r) {
-    auto idx = vec_reg_map_[v->reg.index];
-    r = Xbyak_aarch64::SReg(idx);
+    r = Xbyak_aarch64::SReg(MapReg(v, vec_reg_map_, VEC_COUNT, "vec"));
   }
   static void SetupReg(const hir::Value* v, A64SReg& r) {
     auto idx = vec_reg_map_[v->reg.index];
     r = A64SReg(idx);
   }
   static void SetupReg(const hir::Value* v, Xbyak_aarch64::DReg& r) {
-    auto idx = vec_reg_map_[v->reg.index];
-    r = Xbyak_aarch64::DReg(idx);
+    r = Xbyak_aarch64::DReg(MapReg(v, vec_reg_map_, VEC_COUNT, "vec"));
   }
   static void SetupReg(const hir::Value* v, A64DReg& r) {
     auto idx = vec_reg_map_[v->reg.index];
     r = A64DReg(idx);
   }
   static void SetupReg(const hir::Value* v, Xbyak_aarch64::QReg& r) {
-    auto idx = vec_reg_map_[v->reg.index];
-    r = Xbyak_aarch64::QReg(idx);
+    r = Xbyak_aarch64::QReg(MapReg(v, vec_reg_map_, VEC_COUNT, "vec"));
   }
   static void SetupReg(const hir::Value* v, A64VReg& r) {
     auto idx = vec_reg_map_[v->reg.index];
     r = A64VReg(idx);
   }
   static void SetupReg(const hir::Value* v, Xbyak_aarch64::VReg& r) {
-    auto idx = vec_reg_map_[v->reg.index];
-    r = Xbyak_aarch64::VReg(idx);
+    r = Xbyak_aarch64::VReg(MapReg(v, vec_reg_map_, VEC_COUNT, "vec"));
   }
 
   Xbyak_aarch64::Label& epilog_label() { return *epilog_label_; }
@@ -244,6 +244,11 @@ class A64Emitter : public Xbyak_aarch64::CodeGenerator {
   // Get or create a xbyak_aarch64 label for a HIR label ID.
   Xbyak_aarch64::Label& GetLabel(uint32_t label_id);
   Xbyak_aarch64::Label& NewCachedLabel();
+
+  // Emits a cooperative-scheduler preemption safepoint: yields the fiber once
+  // the context's preempt_requested flag is raised. Only valid at a block head.
+  void EmitPreemptCheck();
+
   void LoadConstantV(const Xbyak_aarch64::QReg& reg, float value);
   void LoadConstantV(const Xbyak_aarch64::QReg& reg, double value);
   void LoadConstantV(const Xbyak_aarch64::QReg& reg, const vec128_t& value,
@@ -254,6 +259,9 @@ class A64Emitter : public Xbyak_aarch64::CodeGenerator {
  protected:
   void* Emplace(const EmitFunctionInfo& func_info,
                 GuestFunction* function = nullptr);
+  // Drops the code buffer, tail entries and both label pools. Both the success
+  // path and a failed compile must run it, or stale labels carry over.
+  void ResetPerFunctionState();
   bool Emit(hir::HIRBuilder* builder, EmitFunctionInfo& func_info);
 
 #if XE_PLATFORM_IOS && XE_ARCH_ARM64

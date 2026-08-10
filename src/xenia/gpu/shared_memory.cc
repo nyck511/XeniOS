@@ -78,9 +78,6 @@ bool SharedMemory::InitializeCommon() {
   active_valid_flags_.store(valid_buffer_a_, std::memory_order_relaxed);
   staging_valid_flags_.store(valid_buffer_b_, std::memory_order_relaxed);
 
-  watch_blind_pages_.assign(num_system_page_flags_, 0);
-  has_watch_blind_pages_ = false;
-
   memory_invalidation_callback_handle_ =
       memory_.RegisterPhysicalMemoryInvalidationCallback(
           MemoryInvalidationCallbackThunk, this);
@@ -147,9 +144,6 @@ void SharedMemory::ShutdownCommon() {
 
   system_page_flags_valid_and_gpu_written_ = nullptr;
   num_system_page_flags_ = 0;
-
-  watch_blind_pages_ = {};
-  has_watch_blind_pages_ = false;
 }
 
 void SharedMemory::InvalidateAllPages() {
@@ -224,19 +218,6 @@ void SharedMemory::SetSystemPageBlocksValidWithGpuDataWritten() {
         active_valid_flags_.exchange(staging, std::memory_order_acq_rel);
     staging_valid_flags_.store(old_active, std::memory_order_release);
     gpu_written_data_dirty_.store(false, std::memory_order_relaxed);
-  }
-
-  // Pages the write watch can't cover never get invalidated by a fault, so
-  // re-invalidate them every frame to force a fresh re-upload. Skip any that
-  // became GPU-written (their GPU copy is authoritative).
-  if (has_watch_blind_pages_) {
-    uint64_t* active = active_valid_flags_.load(std::memory_order_relaxed);
-    for (uint32_t i = 0; i < num_system_page_flags_; ++i) {
-      uint64_t blind_cpu =
-          watch_blind_pages_[i] &
-          ~LoadValidFlag(&system_page_flags_valid_and_gpu_written_[i]);
-      AndValidFlag(&active[i], ~blind_cpu);
-    }
   }
 }
 
@@ -386,7 +367,8 @@ void SharedMemory::FireWatches(uint32_t page_first, uint32_t page_last,
   }
 }
 
-void SharedMemory::RangeWrittenByGpu(uint32_t start, uint32_t length) {
+void SharedMemory::RangeWrittenByGpu(uint32_t start, uint32_t length,
+                                     bool written_to_buffer) {
   if (length == 0 || start >= kBufferSize) {
     return;
   }
@@ -453,27 +435,12 @@ void SharedMemory::MakeRangeValid(uint32_t start, uint32_t length,
         AndValidFlag(&system_page_flags_valid_and_gpu_written_[i], ~valid_bits);
       }
     }
-
-    // Flag CPU pages the access-callback watch can't catch, so the
-    // frame-end clear keeps re-reading them. Simple heuristic: any page
-    // not writable (no-access or read-only) in the physical windows,
-    // since the watch can only arm on a window-writable page.
-    if (!written_by_gpu) {
-      for (uint32_t page = valid_page_first; page <= valid_page_last; ++page) {
-        uint64_t page_bit = uint64_t(1) << (page & 63);
-        uint32_t phys = page << page_size_log2_;
-        if (memory_.GetPhysicalPageWindowAccess(phys) !=
-            xe::memory::PageAccess::kReadWrite) {
-          watch_blind_pages_[page >> 6] |= page_bit;
-          has_watch_blind_pages_ = true;
-        } else {
-          watch_blind_pages_[page >> 6] &= ~page_bit;
-        }
-      }
-    }
   }
 
   if (memory_invalidation_callback_handle_) {
+    // A page that isn't writable here gets no watch. A later guest
+    // protect-to-writable invalidates it unconditionally, so its writes are
+    // still caught.
     memory().EnablePhysicalMemoryAccessCallbacks(
         valid_page_first << page_size_log2_,
         (valid_page_last - valid_page_first + 1) << page_size_log2_, true,

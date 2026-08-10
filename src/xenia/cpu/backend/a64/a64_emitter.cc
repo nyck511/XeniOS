@@ -147,9 +147,20 @@ bool A64Emitter::Emit(GuestFunction* function, hir::HIRBuilder* builder,
   tail_code_.clear();
   fpcr_mode_ = FPCRMode::Unknown;
 
-  // Try to emit.
+  // The prolog, epilog and helpers emit outside the per-opcode guard below, so
+  // an unencodable operand needs catching here too.
   EmitFunctionInfo func_info = {};
-  if (!Emit(builder, func_info)) {
+  bool emitted = false;
+  try {
+    emitted = Emit(builder, func_info);
+  } catch (const Xbyak_aarch64::Error& e) {
+    XELOGE("A64: assembler error while emitting guest function {:08X}: {}",
+           current_guest_function_, e.what());
+    emitted = false;
+  }
+  if (!emitted) {
+    // Emplace only runs on success, so a failed compile has to reset too.
+    ResetPerFunctionState();
     return false;
   }
 
@@ -268,7 +279,20 @@ bool A64Emitter::Emit(hir::HIRBuilder* builder, EmitFunctionInfo& func_info) {
         }
       }
       const hir::Instr* new_tail = instr;
-      if (!SelectSequence(this, instr, &new_tail)) {
+      bool selected = false;
+      try {
+        selected = SelectSequence(this, instr, &new_tail);
+      } catch (const Xbyak_aarch64::Error& e) {
+        // Uncaught this aborts the process with no context, so name the opcode
+        // and the guest function and fail just this compile.
+        XELOGE(
+            "A64: assembler rejected HIR opcode {} in guest function {:08X}: "
+            "{}",
+            hir::GetOpcodeName(instr->GetOpcodeInfo()), current_guest_function_,
+            e.what());
+        return false;
+      }
+      if (!selected) {
         // No sequence matched — this is expected in Phase 1 before
         // sequences are implemented.
         XELOGE("A64: Unable to process HIR opcode {}",
@@ -313,7 +337,13 @@ bool A64Emitter::Emit(hir::HIRBuilder* builder, EmitFunctionInfo& func_info) {
     // ARM64 instructions are always 4-byte aligned, so alignment is mostly
     // a no-op unless we want cache-line alignment for hot paths.
     L(tail_item.label);
-    tail_item.func(*this, tail_item.label);
+    try {
+      tail_item.func(*this, tail_item.label);
+    } catch (const Xbyak_aarch64::Error& e) {
+      XELOGE("A64: assembler rejected tail code in guest function {:08X}: {}",
+             current_guest_function_, e.what());
+      return false;
+    }
   }
   code_offsets.tail = getSize();
 
@@ -372,22 +402,28 @@ void* A64Emitter::Emplace(const EmitFunctionInfo& func_info,
   // In xbyak_aarch64, labels are resolved at define time (backpatching),
   // so all relative offsets are already correct. We just need to reset
   // the codegen state for the next function.
+  ResetPerFunctionState();
+
+  return new_execute_address;
+}
+
+void A64Emitter::ResetPerFunctionState() {
   reset();
   tail_code_.clear();
 
   // Clean up cached labels.
+  epilog_label_ = nullptr;
   for (auto* cached_label : label_cache_) {
     delete cached_label;
   }
   label_cache_.clear();
 
-  // Clean up HIR->xbyak label map.
+  // Clean up HIR->xbyak label map. HIR label ids restart at each function, so
+  // stale entries would hand the next function this one's labels.
   for (auto& pair : label_map_) {
     delete pair.second;
   }
   label_map_.clear();
-
-  return new_execute_address;
 }
 
 void A64Emitter::MarkSourceOffset(const hir::Instr* i) {
@@ -874,6 +910,56 @@ Xbyak_aarch64::Label& A64Emitter::NewCachedLabel() {
   auto* label = new Xbyak_aarch64::Label();
   label_cache_.push_back(label);
   return *label;
+}
+
+uint32_t A64Emitter::MapReg(const hir::Value* v, const uint32_t* map, int count,
+                            const char* set_name) {
+  // reg.index is a signed int32 and is -1 while unassigned, so the unsigned
+  // compare catches both "never allocated" and "past the end of the set".
+  const uint32_t index = static_cast<uint32_t>(v->reg.index);
+  if (index >= static_cast<uint32_t>(count)) {
+    XELOGE(
+        "A64: value v{} (type {}, def opcode {}) has no {} register assignment "
+        "(index {} of {}); codegen would emit a bogus register",
+        v->ordinal, static_cast<uint32_t>(v->type),
+        v->def ? hir::GetOpcodeName(v->def->GetOpcodeInfo()) : "<none>",
+        set_name, index, count);
+    assert_always("register allocation missed a value");
+    // Clamp so the assembler still produces a decodable instruction.
+    return map[0];
+  }
+  return map[index];
+}
+
+void A64Emitter::EmitPreemptCheck() {
+  // Only safe at a block head, where the per-block register allocator leaves no
+  // guest value live and ForgetFpcrMode has already run, so the unannounced
+  // guest->host call cannot lose a register or desync the mode tracking.
+  //
+  // Tests the preempt flag other threads raise. The cold path clears it, a
+  // deferred yield re-sets it.
+  Xbyak_aarch64::Label& after = NewCachedLabel();
+  // ldrb/strb unsigned-offset encoding caps at 4095.
+  static_assert(offsetof(ppc::PPCContext, preempt_requested) < 4096);
+  const uint32_t flag_offset =
+      static_cast<uint32_t>(offsetof(ppc::PPCContext, preempt_requested));
+  Xbyak_aarch64::Label& do_yield =
+      AddToTail([&after, flag_offset](A64Emitter& e, Xbyak_aarch64::Label&) {
+        e.strb(e.wzr, ptr(e.x20, flag_offset));
+        // Null until the scheduler starts, and a stale flag can reach here
+        // after it shuts down, so check before calling.
+        e.mov(e.x0, reinterpret_cast<uint64_t>(
+                        &xe::cpu::backend::preempt_yield_handler));
+        e.ldr(e.x0, ptr(e.x0));
+        e.cbz(e.x0, after);
+        e.mov(e.x9,
+              reinterpret_cast<uint64_t>(e.backend()->guest_to_host_thunk()));
+        e.blr(e.x9);
+        e.b(after);
+      });
+  ldrb(w8, ptr(x20, flag_offset));
+  cbnz(w8, do_yield);
+  L(after);
 }
 
 Xbyak_aarch64::Label& A64Emitter::GetLabel(uint32_t label_id) {
