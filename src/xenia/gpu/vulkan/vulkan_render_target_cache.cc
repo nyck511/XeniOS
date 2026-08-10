@@ -1911,7 +1911,8 @@ bool VulkanRenderTargetCache::TryDirectHostResolveCopy(
   }
 
   texture_cache.MarkRangeAsResolved(resolve_info.copy_dest_extent_start,
-                                    resolve_info.copy_dest_extent_length);
+                                    resolve_info.copy_dest_extent_length,
+                                    scaled_buffer_ready);
   written_address_out = resolve_info.copy_dest_extent_start;
   written_length_out = resolve_info.copy_dest_extent_length;
   return true;
