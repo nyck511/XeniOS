@@ -279,7 +279,7 @@ project("xenia-app")
     linkoptions({
       "-Wl,-weak_framework,CoreHaptics",
     })
-    xcodebuildsettings({
+    local ios_build_settings = {
       ["INFOPLIST_FILE"] = path.getabsolute("Info_ios.plist"),
       ["IPHONEOS_DEPLOYMENT_TARGET"] = "16.0",
       ["SDKROOT"] = "iphoneos",
@@ -291,7 +291,20 @@ project("xenia-app")
       ["CODE_SIGN_STYLE"] = "Automatic",
       ["CODE_SIGN_ENTITLEMENTS"] = ios_entitlements_path,
       ["CODE_SIGN_ALLOW_ENTITLEMENTS_MODIFICATION"] = "YES",
-    })
+    }
+    if os.getenv("CI_XCODE_CLOUD") == "TRUE" then
+      local cloud_team = os.getenv("CI_TEAM_ID")
+      if not cloud_team or cloud_team == "" then
+        error("Xcode Cloud did not provide CI_TEAM_ID")
+      end
+      local cloud_bundle_id = os.getenv("CI_BUNDLE_ID")
+      if not cloud_bundle_id or cloud_bundle_id == "" then
+        error("Xcode Cloud did not provide CI_BUNDLE_ID")
+      end
+      ios_build_settings["DEVELOPMENT_TEAM"] = cloud_team
+      ios_build_settings["PRODUCT_BUNDLE_IDENTIFIER"] = cloud_bundle_id
+    end
+    xcodebuildsettings(ios_build_settings)
     local ios_lldbinit_installer =
         path.getabsolute(path.join(project_root, "tools", "ios", "install_lldbinit_xenios_jit.sh"))
     local ios_achievement_sound =

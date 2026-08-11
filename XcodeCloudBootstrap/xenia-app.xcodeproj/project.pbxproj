@@ -1,0 +1,187 @@
+// !$*UTF8*$!
+{
+  archiveVersion = 1;
+  classes = {
+  };
+  objectVersion = 56;
+  objects = {
+
+/* Begin PBXFileReference section */
+    0EDA5DAE806576202F669BEE /* XeniOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XeniOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+    F054AC1EFD115B9071FBCA5E /* Frameworks */ = {
+      isa = PBXFrameworksBuildPhase;
+      buildActionMask = 2147483647;
+      files = (
+      );
+      runOnlyForDeploymentPostprocessing = 0;
+    };
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+    041A22EA2C54DB9C13F0692A /* Products */ = {
+      isa = PBXGroup;
+      children = (
+        0EDA5DAE806576202F669BEE /* XeniOS.app */,
+      );
+      name = Products;
+      sourceTree = "<group>";
+    };
+    510AE783D45044F5FD97C5C3 /* xenia-app */ = {
+      isa = PBXGroup;
+      children = (
+        041A22EA2C54DB9C13F0692A /* Products */,
+      );
+      sourceTree = "<group>";
+    };
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+    19D637D41D470A069EB3AE14 /* xenia-app */ = {
+      isa = PBXNativeTarget;
+      buildConfigurationList = DE8FF47DEB4CA3EF603712BD /* Build configuration list for PBXNativeTarget "xenia-app" */;
+      buildPhases = (
+        C9E94615D6A5F5874B906455 /* Sources */,
+        F054AC1EFD115B9071FBCA5E /* Frameworks */,
+        603C2CBE6CF8DC30E1E34AFE /* Resources */,
+      );
+      buildRules = (
+      );
+      dependencies = (
+      );
+      name = "xenia-app";
+      productName = "xenia-app";
+      productReference = 0EDA5DAE806576202F669BEE /* XeniOS.app */;
+      productType = "com.apple.product-type.application";
+    };
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+    08FB7793FE84155DC02AAC07 /* Project object */ = {
+      isa = PBXProject;
+      attributes = {
+        BuildIndependentTargetsInParallel = 1;
+        LastUpgradeCheck = 2700;
+        TargetAttributes = {
+          19D637D41D470A069EB3AE14 = {
+            DevelopmentTeam = CYPLLD8ATV;
+            ProvisioningStyle = Automatic;
+          };
+        };
+      };
+      buildConfigurationList = 1DEB928908733DD80010E9CD /* Build configuration list for PBXProject "xenia-app" */;
+      compatibilityVersion = "Xcode 14.0";
+      developmentRegion = en;
+      hasScannedForEncodings = 0;
+      knownRegions = (
+        en,
+        Base,
+      );
+      mainGroup = 510AE783D45044F5FD97C5C3 /* xenia-app */;
+      productRefGroup = 041A22EA2C54DB9C13F0692A /* Products */;
+      projectDirPath = "";
+      projectRoot = "";
+      targets = (
+        19D637D41D470A069EB3AE14 /* xenia-app */,
+      );
+    };
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+    603C2CBE6CF8DC30E1E34AFE /* Resources */ = {
+      isa = PBXResourcesBuildPhase;
+      buildActionMask = 2147483647;
+      files = (
+      );
+      runOnlyForDeploymentPostprocessing = 0;
+    };
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+    C9E94615D6A5F5874B906455 /* Sources */ = {
+      isa = PBXSourcesBuildPhase;
+      buildActionMask = 2147483647;
+      files = (
+      );
+      runOnlyForDeploymentPostprocessing = 0;
+    };
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+    0B2B047D3ABCD36F15CA12BD /* Release */ = {
+      isa = XCBuildConfiguration;
+      buildSettings = {
+        ARCHS = arm64;
+        CODE_SIGN_STYLE = Automatic;
+        DEVELOPMENT_TEAM = CYPLLD8ATV;
+        GENERATE_INFOPLIST_FILE = YES;
+        IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+        PRODUCT_BUNDLE_IDENTIFIER = jp.xenios.xenios.ios;
+        PRODUCT_NAME = XeniOS;
+        SDKROOT = iphoneos;
+        SUPPORTED_PLATFORMS = iphoneos;
+        TARGETED_DEVICE_FAMILY = "1,2";
+      };
+      name = Release;
+    };
+    6DC47B7212171924244F61B2 /* Debug */ = {
+      isa = XCBuildConfiguration;
+      buildSettings = {
+        ARCHS = arm64;
+        CODE_SIGN_STYLE = Automatic;
+        DEVELOPMENT_TEAM = CYPLLD8ATV;
+        GENERATE_INFOPLIST_FILE = YES;
+        IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+        PRODUCT_BUNDLE_IDENTIFIER = jp.xenios.xenios.ios;
+        PRODUCT_NAME = XeniOS;
+        SDKROOT = iphoneos;
+        SUPPORTED_PLATFORMS = iphoneos;
+        TARGETED_DEVICE_FAMILY = "1,2";
+      };
+      name = Debug;
+    };
+    A8D96B079E1D4F7A8B72A101 /* Debug */ = {
+      isa = XCBuildConfiguration;
+      buildSettings = {
+        CLANG_ENABLE_MODULES = YES;
+        IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+        SDKROOT = iphoneos;
+      };
+      name = Debug;
+    };
+    A8D96B079E1D4F7A8B72A102 /* Release */ = {
+      isa = XCBuildConfiguration;
+      buildSettings = {
+        CLANG_ENABLE_MODULES = YES;
+        IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+        SDKROOT = iphoneos;
+      };
+      name = Release;
+    };
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+    1DEB928908733DD80010E9CD /* Build configuration list for PBXProject "xenia-app" */ = {
+      isa = XCConfigurationList;
+      buildConfigurations = (
+        A8D96B079E1D4F7A8B72A101 /* Debug */,
+        A8D96B079E1D4F7A8B72A102 /* Release */,
+      );
+      defaultConfigurationIsVisible = 0;
+      defaultConfigurationName = Release;
+    };
+    DE8FF47DEB4CA3EF603712BD /* Build configuration list for PBXNativeTarget "xenia-app" */ = {
+      isa = XCConfigurationList;
+      buildConfigurations = (
+        6DC47B7212171924244F61B2 /* Debug */,
+        0B2B047D3ABCD36F15CA12BD /* Release */,
+      );
+      defaultConfigurationIsVisible = 0;
+      defaultConfigurationName = Release;
+    };
+/* End XCConfigurationList section */
+  };
+  rootObject = 08FB7793FE84155DC02AAC07 /* Project object */;
+}
