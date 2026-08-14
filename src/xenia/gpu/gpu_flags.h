@@ -96,6 +96,8 @@ DECLARE_bool(ac6_ground_fix);
 
 DECLARE_bool(use_fuzzy_alpha_epsilon);
 
+DECLARE_bool(force_depth_clamp);
+
 #define XE_GPU_FINE_GRAINED_DRAW_SCOPES 1
 
 #endif  // XENIA_GPU_GPU_FLAGS_H_
